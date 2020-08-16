@@ -1,4 +1,4 @@
-#include <wiringpi.h>
+#include <wiringPi.h>
 int main()
 {
     wiringPiSetup();

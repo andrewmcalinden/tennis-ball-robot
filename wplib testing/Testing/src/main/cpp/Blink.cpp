@@ -11,6 +11,6 @@ int main()
         std::cout << "on";
         digitalWrite(0, LOW);
         delay(1000);
-        std::cout << "off";
+        std::cout << "off"; //test
     }
 }

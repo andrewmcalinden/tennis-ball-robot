@@ -7,7 +7,9 @@ int main()
     {
         digitalWrite(0, HIGH);
         delay(1000);
+        std::cout << "on";
         digitalWrite(0, LOW);
         delay(1000);
+        std::cout << "off";
     }
 }

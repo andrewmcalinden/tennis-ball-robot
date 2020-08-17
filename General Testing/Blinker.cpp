@@ -1,5 +1,3 @@
-//https://www.digikey.com/en/maker/blogs/2019/how-to-use-gpio-on-the-raspberry-pi-with-c
-
 #include <iostream>		// Include all needed libraries here
 #include <wiringPi.h>
 

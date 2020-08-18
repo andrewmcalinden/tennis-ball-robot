@@ -10,6 +10,6 @@ int main(){
     delay(2000);
     m.setPower(.5);
     delay(2000);
-    m.setPoweR(0);
+    m.setPower(0);
     delay(2000);
 }

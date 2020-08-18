@@ -8,7 +8,7 @@ class Motor
         int powerPin;
 
     public:
-        Motor(int dirForwardPinLoc, int dirBackwardPinLoc, int powerPinLoc)
+        Motor(int dirForwardPinLoc, int dirBackwardPinLoc, int powerPinLoc);
         
-        void setPower(double power)
+        void setPower(double power);
 };

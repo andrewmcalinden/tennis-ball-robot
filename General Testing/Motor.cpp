@@ -1,19 +1,18 @@
 #include <wiringPi.h>
-#include<Motor.h>
-class Motor
-{
+#include "Motor.h"
 
-    public:
+
+    
         Motor::Motor(int dirForwardPinLoc, int dirBackwardPinLoc, int powerPinLoc)
             : dirForwardPin{dirForwardPinLoc}, dirBackwardPin{dirBackwardPinLoc}, powerPin{powerPinLoc}
         {
             wiringPiSetup();
-            pinMode(dirForwardPin, OUTPUT));
-            pinMode(dirBackwardPin, OUTPUT));
+            pinMode(dirForwardPin, OUTPUT);
+            pinMode(dirBackwardPin, OUTPUT);
             pinMode(powerPin, PWM_OUTPUT);
         }
 
-        Motor::void setPower(double power)
+        void Motor::setPower(double power)
         {
             if (power < 0)
             {
@@ -22,7 +21,7 @@ class Motor
                 digitalWrite(dirBackwardPin, HIGH);
 
                 //give power to motor adjusted (usually from 0 to 1024), negate as power was initially negative
-                double adjustedPower = -1 * power * 1024;
+                double adjustedPower = -1 * power * 1024.0;
                 pwmWrite(powerPin, adjustedPower);
             }
 
@@ -33,8 +32,7 @@ class Motor
                 digitalWrite(dirBackwardPin, LOW);
 
                 //give power to motor adjusted (usually from 0 to 1024)
-                double adjustedPower = power * 1024;
+                double adjustedPower = power * 1024.0;
                 pwmWrite(powerPin, adjustedPower);
             }
         }
-};

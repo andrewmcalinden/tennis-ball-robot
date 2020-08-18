@@ -8,4 +8,4 @@ MotorTest.o: MotorTest.cpp Motor.h
 	g++ -c MotorTest.cpp -lwiringPi
 
 clean:
-	rm *.o test
+	rm *.o motorTest

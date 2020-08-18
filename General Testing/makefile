@@ -1,4 +1,4 @@
-test: Motor.o MotorTest.o
+motorTest: Motor.o MotorTest.o
 	g++ -o test Motor.o MotorTest.o -lwiringPi
 
 Motor.o: Motor.cpp Motor.h

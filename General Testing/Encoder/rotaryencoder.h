@@ -114,7 +114,7 @@ struct encoder *setupencoder(char *label, int pin_a, int pin_b, unsigned char se
 
 struct button
 {
-	char *label ;                          // name or label as "Effect" or "Mute" or "+10dB", etc...
+	const char *label ;                          // name or label as "Effect" or "Mute" or "+10dB", etc...
 	int pin ;                              // which GPIO received the button wire
 	volatile long int value ;              // used to drive your solution, can be the starting default value or something in memory somewhere
 	unsigned long int timestamp ;          // time when last state change occured (ON or OFF) to detect a loooonger push ON

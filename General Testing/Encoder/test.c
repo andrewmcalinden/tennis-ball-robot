@@ -119,10 +119,19 @@ int main(void)
 	setupbutton("LUMIERE",7,1) ; // pin  7 and ON  at starting
 	setupbutton("GRAVE",21,0) ;  // pin 21 and OFF at starting
 	setupbutton("VOLUME",22,0) ; // pin 22 and OFF at starting
-	
+
+	#ifdef __cplusplus
+	extern "C"{
+	#endif
+
 	extern numberofencoders ;
 	extern numberofbuttons ;
 	
+    #ifdef __cplusplus
+	}
+	#endif
+
+
 	long int memo_rotary[numberofencoders] ; // record the rotary encoder value for modification detection later
 	long int memo_button[numberofbuttons] ; // record the button value for modification detection later
 

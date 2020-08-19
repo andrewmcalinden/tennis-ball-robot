@@ -62,7 +62,7 @@
 #include <wiringPi.h>
 
 #include "rotaryencoder.c"
-#include "rotaryencoder.h"
+//#include "rotaryencoder.h"
 
 #define	ON    1
 #define	OFF   0
@@ -122,8 +122,8 @@ int main(void)
 	setupbutton("VOLUME",22,0) ; // pin 22 and OFF at starting
 
 	
-	extern numberofencoders ;
-	extern numberofbuttons ;
+	extern int numberofencoders ;
+	extern int numberofbuttons ;
 	
     
 	long int memo_rotary[numberofencoders] ; // record the rotary encoder value for modification detection later

@@ -106,7 +106,7 @@ struct encoder
 
 struct encoder encoders[max_encoders] ;
 
-struct encoder *setupencoder(char *label, int pin_a, int pin_b, unsigned char sequence, 
+struct encoder *setupencoder(const char *label, int pin_a, int pin_b, unsigned char sequence, 
 	unsigned char reverse, unsigned char looping, long int low_Limit, long int high_Limit, 
 	long int value, unsigned long int pause, 
 	int speed_Level_Threshold_2, int speed_Level_Threshold_3, int speed_Level_Threshold_4,
@@ -127,7 +127,7 @@ struct button
 
 struct button buttons[max_buttons] ;
 
-struct button *setupbutton(char *label, int pin, long int value) ;
+struct button *setupbutton(const char *label, int pin, long int value) ;
 
 #ifdef __cplusplus
 }

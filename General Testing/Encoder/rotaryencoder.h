@@ -75,7 +75,10 @@
 #define HIGH 1
 #define LOW 0
 
+#ifdef __cplusplus
 extern "C"{
+#endif
+
 struct encoder
 {
 	char *label ;                   // name or label as "Volume" or "Balance" or "Treble", etc...
@@ -125,4 +128,7 @@ struct button
 struct button buttons[max_buttons] ;
 
 struct button *setupbutton(char *label, int pin, long int value) ;
+
+#ifdef __cplusplus
 }
+#endif

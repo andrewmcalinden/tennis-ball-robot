@@ -101,7 +101,9 @@ unsigned char writeOk = 1 ;            // a flag which authorize the current val
 struct encoder *lastEncoder ;
 struct encoder *currentEncoder ;
 
+#ifdef __cplusplus
 extern "C"{
+#endif
 
 void updateOneEncoder(unsigned char interrupt) ;
 int check_rotation_direction(unsigned char previous_step, unsigned char current_step, unsigned char sequence) ;
@@ -143,7 +145,9 @@ void Inter26 (void) { updateOneButton(26) ; }
 void Inter27 (void) { updateOneButton(27) ; }
 void Inter28 (void) { updateOneButton(28) ; }
 void Inter29 (void) { updateOneButton(29) ; }
+#ifdef __cplusplus
 }
+#endif
 
 //======================================================================
 void updateOneEncoder(unsigned char interrupt)

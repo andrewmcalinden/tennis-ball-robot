@@ -635,7 +635,7 @@ struct encoder *setupencoder(char *label, int pin_a, int pin_b, unsigned char se
 	return newencoder ;
 }
 //======================================================================
-struct button *setupbutton(char *label, int pin, long int value)
+struct button *setupbutton(const char *label, int pin, long int value)
 {
 	if (numberofbuttons > max_buttons)
 	{

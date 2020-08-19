@@ -524,7 +524,7 @@ void updateOneButton(unsigned char interrupt)
 	lastupdate_5 = micros() ; // reset/start (gap measurement)
 }
 //======================================================================
-struct encoder *setupencoder(char *label, int pin_a, int pin_b, unsigned char sequence, 
+struct encoder *setupencoder(const char *label, int pin_a, int pin_b, unsigned char sequence, 
 	unsigned char reverse, unsigned char looping, long int low_Limit, long int high_Limit, 
 	long int value, unsigned long int pause, 
 	int speed_Level_Threshold_2, int speed_Level_Threshold_3, int speed_Level_Threshold_4,

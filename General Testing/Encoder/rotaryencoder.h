@@ -81,7 +81,7 @@ extern "C"{
 
 struct encoder
 {
-	char *label ;                   // name or label as "Volume" or "Balance" or "Treble", etc...
+	const char *label ;                   // name or label as "Volume" or "Balance" or "Treble", etc...
 	int pin_a ;                     // which GPIO received the A pin from the rotary encoder
 	int pin_b ;                     // which GPIO received the B pin from the rotary encoder
 	unsigned char sequence ;        // rotary encoder sends a complete 4 steps sequence (full cycle) or 1/4 cycle only per detent

@@ -75,7 +75,7 @@ double angleWrap(double angle)
     double correctAngle = angle;
     if (correctAngle > 180)
     {
-        correctAngle -= 360
+        correctAngle -= 360;
     }
     else if (correctAngle < -180)
     {

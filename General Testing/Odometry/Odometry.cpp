@@ -82,3 +82,18 @@ double angleWrap(double angle)
         correctAngle += 360;
     }
 }
+
+double getX()
+{
+    return globalXPos;
+}
+
+double getY()
+{
+    return globalYPos;
+}
+
+double getHeading()
+{
+    return globalHeading;
+}

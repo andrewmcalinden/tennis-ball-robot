@@ -63,7 +63,7 @@ void updatePos()
         cosTerm = (1 - cos(dTheta)) / dTheta;
     }
 
-    Vector deltaVector = Vector(cosTerm * movement, sineTerm * movement);
+    Vector deltaVector = Vector(-(cosTerm * movement), sineTerm * movement);
     deltaVector = deltaVector.rotated(-globalHeading);
 
     globalXPos += deltaVector.getX();

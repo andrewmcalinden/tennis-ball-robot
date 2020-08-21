@@ -24,14 +24,14 @@ bool epsilonEquals(double value1, double value2)
 
 void updateLeftEncoder()
 {
-    double currentInches = 0; //actual current inches
+    double currentInches = 40; //actual current inches
     leftChange = currentInches - prevLeft;
     prevLeft = currentInches;
 }
 
 void updateRightEncoder()
 {
-    double currentInches = 0; //actual current inches
+    double currentInches = 40; //actual current inches
     rightChange = currentInches - prevRight;
     prevRight = currentInches;
 }
@@ -42,7 +42,7 @@ void updatePos()
     updateLeftEncoder();
     updateRightEncoder();
 
-    double angleChangeRad = (leftChange + rightChange) / TRACKWIDTH;
+    double angleChangeRad = (leftChange - rightChange) / TRACKWIDTH;
     double angleChangeDeg = (180 * angleChangeRad) / M_PI;
     globalHeading = angleWrap(globalHeading + angleChangeDeg);
 

@@ -64,7 +64,7 @@ void updatePos()
     }
 
     Vector deltaVector = Vector(cosTerm * movement, sineTerm * movement);
-    deltaVector = deltaVector.rotated(globalHeading);
+    deltaVector = deltaVector.rotated(-globalHeading);
 
     globalXPos += deltaVector.getX();
     globalYPos += deltaVector.getY();

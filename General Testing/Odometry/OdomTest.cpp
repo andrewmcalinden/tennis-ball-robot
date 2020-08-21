@@ -4,5 +4,5 @@
 int main()
 {
     updatePos();
-    std::cout << getX() << ", " << getY() << " " << getHeading;
+    std::cout << getX() << ", " << getY() << " " << getHeading();
 }

@@ -4,7 +4,7 @@
 #include "Odometry.h"
 #include "Vector.h"
 
-#define TRACKWIDTH 0
+#define TRACKWIDTH 1
 #define EPSILON 1.0e-6
 
 double globalXPos = 0;
@@ -81,6 +81,7 @@ double angleWrap(double angle)
     {
         correctAngle += 360;
     }
+    return correctAngle;
 }
 
 double getX()

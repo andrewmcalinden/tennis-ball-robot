@@ -12,8 +12,8 @@ int main()
 	while(true)
 	{
 		//if button pressed, toggle LED
-		if(digitalRead(BUTTON_IN) == HIGH)
-		{		
+		if(digitalRead(BUTTON_IN) == LOW)
+		{
 		digitalWrite(LED_OUT, !digitalRead(LED_OUT));
 		delay(500);
 		}

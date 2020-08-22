@@ -1,20 +1,23 @@
 #include "Motor.h"
 #include <iostream>
 
-
-#define directionPinForward 2
-#define directionPinBackward 1
-#define powerPin 23
+#define DIRECTION_PIN_FORWARD 2
+#define DIRECTION_PIN_BACKWARD 1
+#define POWER_PIN 3 //GPIO 22
+#define BUTTON_IN 6 //GPIO 25
 
 int main(){
-    Motor m(directionPinForward, directionPinBackward, powerPin);
-    m.setPower(1);
-    delay(2000);
-    std::cout << "YEET2\n";
-    m.setPower(.5);
-    delay(2000);
-    std::cout << "YEET1\n";
-    m.setPower(.2);
-    delay(2000);
-    std::cout << "YEE3T\n";
+    wiringPiSetup();
+    pinMode(BUTTON_IN, INPUT);
+
+    Motor m(DIRECTION_PIN_FORWARD, DIRECTION_PIN_BACKWARD, POWER_PIN);
+    double power = 0;
+    while (true)
+    {
+        if (digitalRead(BUTTON_IN) == 0)
+        {
+            power += 0.01
+        }
+        m.setPower(power)
+    }
 }

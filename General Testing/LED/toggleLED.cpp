@@ -9,23 +9,14 @@ int main()
 	wiringPiSetup();
 	pinMode(LED_OUT, OUTPUT);
 	pinMode(BUTTON_IN, INPUT);
-
-	while (true)
-	{
-		std::cout << digitalRead(BUTTON_IN) << "\n";
-		delay(300);
-	}
-
-
-	/*
+	
 	while(true)
 	{
 		//if button pressed, toggle LED
-		if(digitalRead(BUTTON_IN) == LOW)
+		if(digitalRead(BUTTON_IN) == 0)
 		{
 		digitalWrite(LED_OUT, !digitalRead(LED_OUT));
 		delay(500);
 		}
 	}
-	*/
 }

@@ -16,8 +16,8 @@ int main(){
     {
         if (digitalRead(BUTTON_IN) == 0)
         {
-            power += 0.01
+            power += 0.01;
         }
-        m.setPower(power)
+        m.setPower(power);
     }
 }

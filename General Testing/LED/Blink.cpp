@@ -3,14 +3,14 @@
 int main()
 {
     wiringPiSetup();
-    pinMode(0, OUTPUT);
+    pinMode(3, OUTPUT);
     for (int i = 0; i < 10; i++)
     {
-        digitalWrite(0, HIGH);
+        digitalWrite(3, HIGH);
         delay(1000);
-        std::cout << "on";
-        digitalWrite(0, LOW);
+        std::cout << "on\n";
+        digitalWrite(3, LOW);
         delay(1000);
-        std::cout << "off"; //test
+        std::cout << "off\n"; //test
     }
 }

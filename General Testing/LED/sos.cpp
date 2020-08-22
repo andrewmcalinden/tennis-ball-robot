@@ -1,5 +1,4 @@
 #include <wiringPi.h>
-#include <iostream>
 
 #define GPIO_NUM	3
 #define DELAY_DOT	200

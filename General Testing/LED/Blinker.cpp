@@ -1,26 +1,21 @@
-//https://www.digikey.com/en/maker/blogs/2019/how-to-use-gpio-on-the-raspberry-pi-with-c
-
-#include <iostream>		// Include all needed libraries here
 #include <wiringPi.h>
 
-using namespace std;		// No need to keep using “std”
+#define LED_OUT 3 //GPIO 22
+#define BUTTON_IN 6 //GPIO 25
 
 int main()
 {
-	wiringPiSetup();			// Setup the library
-	pinMode(8, OUTPUT);		// Configure GPIO0 as an output
-	pinMode(9, INPUT);		// Configure GPIO1 as an input
+	wiringPiSetup();
+	pinMode(LED_OUT, OUTPUT);	
+	pinMode(BUTTON_IN, INPUT);
 
-	// Main program loop
 	while(true)
 	{
-		// Button is pressed if digitalRead returns 0
-		if(digitalRead(9) == true)
+		//if button pressed, toggle LED
+		if(digitalRead(BUTTON_IN) == HIGH)
 		{		
-		// Toggle the LED
-		digitalWrite(8, !digitalRead(8));
-		delay(500); 	// Delay 500ms
+		digitalWrite(LED_OUT, !digitalRead(LED_OUT));
+		delay(500);
 		}
 	}
-	return 0;
 }

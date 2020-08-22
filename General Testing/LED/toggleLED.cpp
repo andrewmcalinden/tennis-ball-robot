@@ -10,7 +10,12 @@ int main()
 	pinMode(LED_OUT, OUTPUT);
 	pinMode(BUTTON_IN, INPUT);
 
-	std::cout << digitalRead(BUTTON_IN);
+	while (true)
+	{
+		std::cout << digitalRead(BUTTON_IN) << "\n";
+		delay(300);
+	}
+
 
 	/*
 	while(true)

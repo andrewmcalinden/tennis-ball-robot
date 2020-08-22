@@ -18,6 +18,7 @@ int main(){
         {
             power += 0.01;
         }
+        std::cout << power << "\n";
         m.setPower(power);
     }
 }

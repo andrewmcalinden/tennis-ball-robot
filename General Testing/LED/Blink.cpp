@@ -4,7 +4,7 @@ int main()
 {
     wiringPiSetup();
     pinMode(3, OUTPUT);
-    for (int i = 0; i < 10; i++)
+    while (true)
     {
         digitalWrite(3, HIGH);
         delay(1000);

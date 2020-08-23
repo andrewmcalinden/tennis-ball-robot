@@ -3,7 +3,7 @@
 
 #define DIRECTION_PIN_FORWARD 2
 #define DIRECTION_PIN_BACKWARD 1
-#define POWER_PIN 3 //GPIO 22
+#define POWER_PIN 23 //GPIO 13
 #define BUTTON_IN 6 //GPIO 25
 
 int main()

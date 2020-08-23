@@ -24,7 +24,7 @@ bool epsilonEquals(double value1, double value2)
 
 void updateLeftEncoder()
 {
-    double currentInches = 40; //actual current inches
+    double currentInches = 60; //actual current inches
     leftChange = currentInches - prevLeft;
     prevLeft = currentInches;
 }

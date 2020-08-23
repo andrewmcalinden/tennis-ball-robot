@@ -1,5 +1,5 @@
 #include <wiringPi.h>
-#include "Motor.h"
+#include "motor.h"
     
 Motor::Motor(int dirForwardPinLoc, int dirBackwardPinLoc, int powerPinLoc)
     : dirForwardPin{dirForwardPinLoc}, dirBackwardPin{dirBackwardPinLoc}, powerPin{powerPinLoc}

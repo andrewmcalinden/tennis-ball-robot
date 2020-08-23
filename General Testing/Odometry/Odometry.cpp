@@ -22,6 +22,7 @@ bool epsilonEquals(double value1, double value2)
     return (abs(value1 - value2) < EPSILON);
 }
 
+//might want to make current tics a parameter in updatePos
 void updateLeftEncoder()
 {
     double currentInches = 60; //actual current inches

@@ -18,7 +18,7 @@ int main()
         if (digitalRead(BUTTON_IN) == 0)
         {
             power += 0.05;
-            delay(50)
+            delay(50);
         }
         if (power > 1){
             power = 0;

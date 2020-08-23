@@ -1,0 +1,42 @@
+-o
+"C:\\Users\\andre\\OneDrive\\Documents\\wplib testing\\Testing\\build\\exe\\frcUserProgram\\debug\\frcUserProgram"
+"C:\\Users\\andre\\OneDrive\\Documents\\wplib testing\\Testing\\build\\objs\\frcUserProgram\\debug\\frcUserProgramCpp\\3bg5a77l7vd4edmrxq5jco6ri\\Robot.o"
+"C:\\Users\\andre\\OneDrive\\Documents\\wplib testing\\Testing\\build\\objs\\frcUserProgram\\debug\\frcUserProgramCpp\\45vqxio4pi9nbs4dcvmcpqo1r\\RobotContainer.o"
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\9ffb2dccfd701ef9588e2188529b80d6\\wpilibc-cpp-2020.3.2-linuxathenadebug\\linux\\athena\\shared\\libwpilibcd.so
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\bdc9d9054d4ec1f7b0817a76fb998c60\\ntcore-cpp-2020.3.2-linuxathenadebug\\linux\\athena\\shared\\libntcored.so
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\8a34264ec29b5bc5f0946fb71c6f0188\\hal-cpp-2020.3.2-linuxathenadebug\\linux\\athena\\shared\\libwpiHald.so
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\baf6b81f0c20f132c0f8bf46f2a8e622\\wpiutil-cpp-2020.3.2-linuxathenadebug\\linux\\athena\\shared\\libwpiutild.so
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\a9784c38627eb03a6893a8b6905e0975\\chipobject-2020.10.1-linuxathenadebug\\linux\\athena\\shared\\libRoboRIO_FRC_ChipObject.so.20.0.0
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\04a025ba28e8ea4baec66a5c75450357\\netcomm-2020.10.1-linuxathenadebug\\linux\\athena\\shared\\libFRC_NetworkCommunication.so.20.0.0
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\7db2324b6c9762b395d21a0bc800f2e2\\visa-2020.10.1-linuxathenadebug\\linux\\athena\\shared\\libvisa.so
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\2916884bbf93b3812856bccbf2e81e89\\runtime-2020.10.1-linuxathenadebug\\linux\\athena\\shared\\libNiFpga.so.19.0.0
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\2916884bbf93b3812856bccbf2e81e89\\runtime-2020.10.1-linuxathenadebug\\linux\\athena\\shared\\libNiFpgaLv.so.19.0.0
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\2916884bbf93b3812856bccbf2e81e89\\runtime-2020.10.1-linuxathenadebug\\linux\\athena\\shared\\libniriodevenum.so.19.0.0
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\2916884bbf93b3812856bccbf2e81e89\\runtime-2020.10.1-linuxathenadebug\\linux\\athena\\shared\\libniriosession.so.18.0.0
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\2916884bbf93b3812856bccbf2e81e89\\runtime-2020.10.1-linuxathenadebug\\linux\\athena\\shared\\libNiRioSrv.so.19.0.0
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\2916884bbf93b3812856bccbf2e81e89\\runtime-2020.10.1-linuxathenadebug\\linux\\athena\\shared\\libnirio_emb_can.so.16.0.0
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\2916884bbf93b3812856bccbf2e81e89\\runtime-2020.10.1-linuxathenadebug\\linux\\athena\\shared\\libni_emb.so.12.0.0
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\2916884bbf93b3812856bccbf2e81e89\\runtime-2020.10.1-linuxathenadebug\\linux\\athena\\shared\\libni_rtlog.so.2.8.0
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\83d1fd898b8983ae60b0b6aa87d1b31d\\cameraserver-cpp-2020.3.2-linuxathenadebug\\linux\\athena\\shared\\libcameraserverd.so
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\9d9664474a3bb189af168612b9930439\\cscore-cpp-2020.3.2-linuxathenadebug\\linux\\athena\\shared\\libcscored.so
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\8b8270a5b35cf1e4d13e1762d0743031\\opencv-cpp-3.4.7-2-linuxathenadebug\\linux\\athena\\shared\\libopencv_calib3dd.so.3.4
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\8b8270a5b35cf1e4d13e1762d0743031\\opencv-cpp-3.4.7-2-linuxathenadebug\\linux\\athena\\shared\\libopencv_cored.so.3.4
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\8b8270a5b35cf1e4d13e1762d0743031\\opencv-cpp-3.4.7-2-linuxathenadebug\\linux\\athena\\shared\\libopencv_features2dd.so.3.4
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\8b8270a5b35cf1e4d13e1762d0743031\\opencv-cpp-3.4.7-2-linuxathenadebug\\linux\\athena\\shared\\libopencv_flannd.so.3.4
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\8b8270a5b35cf1e4d13e1762d0743031\\opencv-cpp-3.4.7-2-linuxathenadebug\\linux\\athena\\shared\\libopencv_highguid.so.3.4
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\8b8270a5b35cf1e4d13e1762d0743031\\opencv-cpp-3.4.7-2-linuxathenadebug\\linux\\athena\\shared\\libopencv_imgcodecsd.so.3.4
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\8b8270a5b35cf1e4d13e1762d0743031\\opencv-cpp-3.4.7-2-linuxathenadebug\\linux\\athena\\shared\\libopencv_imgprocd.so.3.4
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\8b8270a5b35cf1e4d13e1762d0743031\\opencv-cpp-3.4.7-2-linuxathenadebug\\linux\\athena\\shared\\libopencv_mld.so.3.4
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\8b8270a5b35cf1e4d13e1762d0743031\\opencv-cpp-3.4.7-2-linuxathenadebug\\linux\\athena\\shared\\libopencv_objdetectd.so.3.4
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\8b8270a5b35cf1e4d13e1762d0743031\\opencv-cpp-3.4.7-2-linuxathenadebug\\linux\\athena\\shared\\libopencv_photod.so.3.4
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\8b8270a5b35cf1e4d13e1762d0743031\\opencv-cpp-3.4.7-2-linuxathenadebug\\linux\\athena\\shared\\libopencv_shaped.so.3.4
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\8b8270a5b35cf1e4d13e1762d0743031\\opencv-cpp-3.4.7-2-linuxathenadebug\\linux\\athena\\shared\\libopencv_stitchingd.so.3.4
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\8b8270a5b35cf1e4d13e1762d0743031\\opencv-cpp-3.4.7-2-linuxathenadebug\\linux\\athena\\shared\\libopencv_superresd.so.3.4
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\8b8270a5b35cf1e4d13e1762d0743031\\opencv-cpp-3.4.7-2-linuxathenadebug\\linux\\athena\\shared\\libopencv_videod.so.3.4
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\8b8270a5b35cf1e4d13e1762d0743031\\opencv-cpp-3.4.7-2-linuxathenadebug\\linux\\athena\\shared\\libopencv_videoiod.so.3.4
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\8b8270a5b35cf1e4d13e1762d0743031\\opencv-cpp-3.4.7-2-linuxathenadebug\\linux\\athena\\shared\\libopencv_videostabd.so.3.4
+C:\\Users\\andre\\.gradle\\caches\\transforms-2\\files-2.1\\d6997863b2545edd9818146d25c2eb36\\wpilibNewCommands-cpp-2020.3.2-linuxathenadebug\\linux\\athena\\shared\\libwpilibNewCommandsd.so
+-rdynamic
+-pthread
+-ldl
+-latomic

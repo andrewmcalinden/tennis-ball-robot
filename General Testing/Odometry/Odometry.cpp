@@ -24,14 +24,14 @@ bool epsilonEquals(double value1, double value2)
 
 void updateLeftEncoder()
 {
-    double currentInches = 120; //actual current inches
+    double currentInches = 40; //actual current inches
     leftChange = currentInches - prevLeft;
     prevLeft = currentInches;
 }
 
 void updateRightEncoder()
 {
-    double currentInches = 70; //actual current inches
+    double currentInches = 40; //actual current inches
     rightChange = currentInches - prevRight;
     prevRight = currentInches;
 }
@@ -63,8 +63,8 @@ void updatePos()
         cosTerm = (1 - cos(dTheta)) / dTheta;
     }
 
-    Vector deltaVector = Vector(-(cosTerm * movement), sineTerm * movement);
-    deltaVector = deltaVector.rotated(-globalHeading);
+    Vector deltaVector = Vector(cosTerm * movement, sineTerm * movement);
+    deltaVector = deltaVector.rotated(globalHeading);
 
     globalXPos += deltaVector.getX();
     globalYPos += deltaVector.getY();

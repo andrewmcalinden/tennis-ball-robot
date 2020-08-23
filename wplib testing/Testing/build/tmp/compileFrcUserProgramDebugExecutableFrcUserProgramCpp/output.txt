@@ -1,0 +1,6 @@
+See file:///C:/Users/andre/OneDrive/Documents/wplib%20testing/Testing/build/tmp/compileFrcUserProgramDebugExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramDebugExecutableFrcUserProgramCpp.
+compiling Robot.cpp successful.
+
+compiling RobotContainer.cpp successful.
+
+Finished compileFrcUserProgramDebugExecutableFrcUserProgramCpp, see full log file:///C:/Users/andre/OneDrive/Documents/wplib%20testing/Testing/build/tmp/compileFrcUserProgramDebugExecutableFrcUserProgramCpp/output.txt.

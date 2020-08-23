@@ -55,7 +55,7 @@ void updatePos(double leftReading, double rightReading)
     //if we have almost no angle change
     if (epsilonEquals(dTheta, 0))
     {
-        sineTerm = 1.0 - dTheta * dTheta / 6.0;
+        sineTerm = 1.0 - 1.0 / 6.0 * dTheta * dTheta;
         cosTerm = dTheta / 2.0;
     }
     else //we have angle change

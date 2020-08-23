@@ -14,7 +14,7 @@ int main()
         rightReading += .6;
 
         updatePos(leftReading, rightReading);
-        std::cout << getX() << ", " << getY() << " " << getHeading() << "\n";
+        //std::cout << getX() << ", " << getY() << " " << getHeading() << "\n";
     }
     //std::cout << getX() << ", " << getY() << " " << getHeading();
 }

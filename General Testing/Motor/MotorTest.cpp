@@ -6,7 +6,8 @@
 #define POWER_PIN 3 //GPIO 22
 #define BUTTON_IN 6 //GPIO 25
 
-int main(){
+int main()
+{
     wiringPiSetup();
     pinMode(BUTTON_IN, INPUT);
 
@@ -17,6 +18,9 @@ int main(){
         if (digitalRead(BUTTON_IN) == 0)
         {
             power += 0.01;
+        }
+        if (power > 1){
+            power = 0;
         }
         std::cout << power << "\n";
         m.setPower(power);

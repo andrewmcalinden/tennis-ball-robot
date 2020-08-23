@@ -1,12 +1,12 @@
 #include <wiringPi.h>
 class Motor
 {
-    private:
+private:
     int dirForwardPin;
     int dirBackwardPin;
     int powerPin;
 
-    public:
+public:
     Motor(int dirForwardPinLoc, int dirBackwardPinLoc, int powerPinLoc);
     void setPower(double power);
 };

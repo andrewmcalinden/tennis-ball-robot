@@ -23,25 +23,25 @@ bool epsilonEquals(double value1, double value2)
 }
 
 //might want to make current tics a parameter in updatePos
-void updateLeftEncoder()
+void updateLeftEncoder(double reading)
 {
-    double currentInches = 60; //actual current inches
+    double currentInches = reading; //actual encoder reading
     leftChange = currentInches - prevLeft;
     prevLeft = currentInches;
 }
 
-void updateRightEncoder()
+void updateRightEncoder(double reading)
 {
-    double currentInches = 40; //actual current inches
+    double currentInches = reading; //actual encoder reading
     rightChange = currentInches - prevRight;
     prevRight = currentInches;
 }
 
-void updatePos()
+void updatePos(double leftReading, double rightReading)
 {
     //find left and right change
-    updateLeftEncoder();
-    updateRightEncoder();
+    updateLeftEncoder(leftReading);
+    updateRightEncoder(rightReading);
 
     double angleChangeRad = (leftChange - rightChange) / TRACKWIDTH;
     double angleChangeDeg = (180 * angleChangeRad) / M_PI;

@@ -1,7 +1,7 @@
-void updateLeftEncoder();
-void updateRightEncoder();
+void updateLeftEncoder(double reading);
+void updateRightEncoder(double reading);
 
-void updatePos();
+void updatePos(double leftReading, double rightReading);
 
 double angleWrap(double angle);
 

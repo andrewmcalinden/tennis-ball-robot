@@ -8,10 +8,10 @@ int main()
 
     for (int i = 0; i < 100; i++){
         //want to end at 60, so increase by .6
-        leftReading += .6;
+        leftReading += .4;
 
         //want to end at 40, so increase by .4
-        rightReading += .4;
+        rightReading += .6;
 
         updatePos(leftReading, rightReading);
     }

@@ -50,8 +50,12 @@ void updatePos(double leftReading, double rightReading)
     double angleChangeDeg = (180 * angleChangeRad) / M_PI;
     globalHeading = angleWrap(globalHeading + angleChangeDeg);
 
-    double movement = (leftChange + rightChange) / 2.0; // total change in movement by robot
+    double movement = (leftChange + rightChange) / 2.0; // total change in movement by robot (dx)
     double dTheta = angleChangeRad;
+
+    double sinTheta = sin(dTheta);
+    double cosTheta = cos(dTheta);
+
     double sineTerm;
     double cosTerm;
 
@@ -63,11 +67,12 @@ void updatePos(double leftReading, double rightReading)
     }
     else //we have angle change
     {
-        sineTerm = sin(dTheta) / dTheta;
-        cosTerm = (1 - cos(dTheta)) / dTheta;
+        sineTerm = sinTheta / dTheta;
+        cosTerm = (1 - cosTheta) / dTheta;
     }
 
-    Vector deltaVector = Vector(sineTerm * movement, cosTerm * movement);
+    Vector deltaVector = Vector(sineTerm * movement, cosTerm * movement); //translation
+
     deltaVector = deltaVector.rotated(initialHeading);
 
     globalXPos += deltaVector.getX();

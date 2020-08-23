@@ -43,6 +43,9 @@ void updatePos(double leftReading, double rightReading)
     updateLeftEncoder(leftReading);
     updateRightEncoder(rightReading);
 
+    //store initialHeading for later
+    double initialHeading = globalHeading;
+
     double angleChangeRad = (leftChange - rightChange) / TRACKWIDTH;
     double angleChangeDeg = (180 * angleChangeRad) / M_PI;
     globalHeading = angleWrap(globalHeading + angleChangeDeg);
@@ -64,8 +67,8 @@ void updatePos(double leftReading, double rightReading)
         cosTerm = (1 - cos(dTheta)) / dTheta;
     }
 
-    Vector deltaVector = Vector(cosTerm * movement, sineTerm * movement);
-    deltaVector = deltaVector.rotated(globalHeading);
+    Vector deltaVector = Vector(sineTerm * movement, cosTerm * movement);
+    deltaVector = deltaVector.rotated(initialHeading);
 
     globalXPos += deltaVector.getX();
     globalYPos += deltaVector.getY();

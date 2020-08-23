@@ -17,13 +17,13 @@ int main()
     {
         if (digitalRead(BUTTON_IN) == 0)
         {
-            power += 0.05;
-            delay(50);
+            power += 0.01;
+            delay(15);
         }
         if (power > 1){
             power = 0;
         }
-        std::cout << power << "\n";
+        //std::cout << power << "\n";
         m.setPower(power);
     }
 }

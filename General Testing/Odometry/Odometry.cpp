@@ -75,7 +75,7 @@ void updatePos(double leftReading, double rightReading)
 
     Vector deltaVector = Vector(sineTerm * movement, cosTerm * movement); //translation
 
-    deltaVector = deltaVector.rotated(initialHeading - 90);
+    deltaVector = deltaVector.rotated(initialHeading);
 
     globalXPos += deltaVector.getX();
     globalYPos += deltaVector.getY();

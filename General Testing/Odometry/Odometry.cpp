@@ -74,12 +74,13 @@ void updatePos(double leftReading, double rightReading)
         cosTerm = (1 - cosTheta) / dTheta;
     }
 
-    Vector deltaVector = Vector(cosTerm * movement, sineTerm * movement); //translation
+    Vector deltaVector = Vector(sineTerm * movement, cosTerm * movement); //translation
 
     deltaVector = deltaVector.rotated(initialHeadingRad);
 
-    globalXPos += deltaVector.getX();
-    globalYPos += deltaVector.getY();
+    //switch x, y because thats the only way it works idk lol
+    globalXPos += deltaVector.getY();
+    globalYPos += deltaVector.getX();
 }
 
 double angleWrap(double angle)

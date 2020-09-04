@@ -12,7 +12,7 @@ int main()
         leftReading += .025;
 
         //want to end at 40, so increase by .4
-        rightReading -= .025;
+        rightReading += .02;
 
         updatePos(leftReading, rightReading);
         //std::cout << getX() << ", " << getY() << " " << getHeading() << "\n";

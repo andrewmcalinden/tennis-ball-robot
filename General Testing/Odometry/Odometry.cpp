@@ -74,7 +74,7 @@ void updatePos(double leftReading, double rightReading)
         cosTerm = (1 - cosTheta) / dTheta;
     }
 
-    Vector deltaVector = Vector(sineTerm * movement, cosTerm * movement); //translation
+    Vector deltaVector = Vector(cosTerm * movement, sineTerm * movement); //translation
 
     deltaVector = deltaVector.rotated(initialHeadingRad);
 

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<hr>
+In this example, "myApp.js" contains an application module definition, while "myCtrl.js" contains the controller
+<br>
+
+The [] parameter in the module definition can be used to define dependent modules.
+<hr>
+DIV:
+<div ng-app="myApp" ng-controller="myCtrl">
+here we concatinate 2 variables belonging to an app:  {{ firstName + " " + lastName }}
+</div>
+<hr>
+<script src="myApp.js"></script> <== THIS is App <br>
+<script src="myCtrl.js"></script>  <== THIS is Cntrler
+
+
+</body>
+</html>

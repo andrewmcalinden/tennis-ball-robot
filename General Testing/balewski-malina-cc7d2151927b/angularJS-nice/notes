@@ -1,0 +1,15 @@
+
+AngularJS Application Skeleton
+Above you have the skeleton (scaffolding) of a real life AngularJS, single page application (SPA).
+
+The <html> element is the "container" for the AngularJS application (ng-app=).
+
+A <div> elements defines the scope of an AngularJS controller (ng-controller=).
+
+You can have many controllers in one application.
+
+An application file (my...App.js) defines the application module code.
+
+One or more controller files (my...Ctrl.js) defines the controller code.
+
+A controller is a JavaScript Object, created by a standard JavaScript object constructor.

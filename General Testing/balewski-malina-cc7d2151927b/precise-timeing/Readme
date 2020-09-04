@@ -1,0 +1,29 @@
+----  interval 2 --------
+The code should compile with:
+cc interval2.c -o interval2   -L/usr/local/lib
+
+you run it as
+./interval2
+
+It is design to verify how much variation in CPU time may happen if you perform the same  amour of computation, 
+defined by the function hardTask(n):
+
+void hardTask(int n) {
+   int i;
+  for(i=0; i< n*10000; i++)   {
+    double x=sin(i), y=cos(x), z= pow(x,2.34)+sqrt(x*y);
+  }
+}
+
+You can scale the amour of work by taking n>1. FYI, on my MacBookPro  hardTask(2)  costs about 1.5mSec.
+
+The main program consist of 2 parts.
+In step 1 you calibrate your computer by running  hardTask(1000), to learn how fast it is.
+In my case it took 891 mSec:
+
+
+In step 2 you request a tinny bit of computation:   hardTask(2)  
+and now duration will vary for each call because your CPU is doing other things.
+
+
+Below is example output form my laptop, you can see that step2  took 1.59, 1.53, 1.51, …  mSec .

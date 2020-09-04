@@ -1,0 +1,11 @@
+#!/bin/bash
+myExec=${1-test_ADXL345}
+echo execute $myExec
+
+if [ $myExec == "0" ]; then 
+   echo "only scan I2C ports: ADXL345 accel. is 0x53 "
+sudo i2cdetect -y 1
+exit
+fi
+
+sudo ./$myExec

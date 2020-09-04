@@ -1,0 +1,11 @@
+This 2 executables mimic the python code in 
+../py-pulseCntr-SPI-LS7366-SPI/
+
+rwMDR01.c
+sets MDR), MDR1 register, reads the values back
+
+rdCNTRviaOTR.c
+also sets those 2 registers so pulser uses 2-byte word and counts 4 pulses per quadrature (the highest angular resolution)
+
+Note,
+you need to modify Makefile to compile one program or the other

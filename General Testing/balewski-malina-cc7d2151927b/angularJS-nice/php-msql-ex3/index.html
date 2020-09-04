@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <link rel="stylesheet" href="tableStyle.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+     <script src="phpCntrl.js"> </script>
+
+     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+</head>
+
+
+<body>
+
+<hr>
+<div   ng-app="myApp3" ng-controller="phpCtrl"> 
+<p class="ex0">
+Use custom padding:<br>
+merge 2 different mySQL tables in to one ,<br> sorting direction asc/desc is passed from JS-controller 
+</p>
+
+<br> dbg >1  greaks table but allows to see more from php
+<br>  
+ <button type="button" class="btn btn-success  btn-lg" ng-click="actQuery()">  DB-query</button> 
+ &nbsp;&nbsp;&nbsp;&nbsp;
+<button type="button" class="btn btn-info" ng-click="debug =debug-1"> (-) debug</button>   
+ &nbsp;&nbsp;&nbsp;&nbsp;
+<button type="button" class="btn btn-warning" ng-click="debug = debug+ 1"> (+) debug</button> 
+
+<br> JS controller, stype-css on separate files, sorting  change 
+<input type="radio" ng-model="sDir" value="asc">=asc 
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" ng-model="sDir" value="desc">=desc
+<br> This is formated table, color changes when hover:
+<p ng-hide="debug <1" > <font color="red">This  will not show  DB data if debug>0</font> </p>
+<table >
+<tr ng-repeat="x in resultPhp.records track by $index">
+<td>{{ x.Name1 }}</td>
+<td>{{ x.Name2 }}</td>
+</tr>
+<tr> <td> sort dir <td>debug</td></tr>
+<tr> <td> {{sDir}} <td>{{debug}}</td></tr>
+</table>
+
+
+<hr>
+RAW DUMP of PHP status:
+{{statusPhp}}<br>
+
+RAW DUMP of PHP output:<br>
+{{resultPhp}}
+
+</div>
+
+
+</body>
+</html>

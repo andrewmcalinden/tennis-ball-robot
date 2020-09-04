@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="./style.css">  works:angularjs/1.2.9/
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+
+  <body ng-app="myApp" ng-controller="MyController">  
+  	Polled Request , show JSON format <pre>{{data | json}}</pre>
+	Note, the resp value is read from a local file data77.json
+  	Data value: {{data.count}}
+<hr>
+Data from controllerRAW: {{data}}
+
+<hr>
+Button's stuff, active mySwitch={{mySwitch}}
+   
+      <button ng-click="hour = hour + 1" ng-disabled="mySwitch">hour incr Button</button> 
+      <label ng-show="mySwitch"> Now button is disabled  </label>
+   <br>	disable-button-Check-box: <input type="checkbox" ng-model="mySwitch"/>
+<br> hour={{hour}}
+  </body>
+
+</html>

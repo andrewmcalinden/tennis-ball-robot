@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form>
+  What color do you prefer?<br>
+  <input type="radio" name="colors" id="red">Red<br>
+  <input type="radio" name="colors" id="blue">Blue 
+</form>
+
+External controll over red:
+<button onclick="check()">Check "Red"</button>
+<button onclick="uncheck()">Uncheck "Red"</button>
+<hr>
+A demonstration of how to access a Green Button
+
+ <input type="radio" id="myRadio">
+
+<p>Click the button to check the radio button.
+
+<button onclick="myFunction()">set-to-true</button>
+<br>
+Output :
+ blue=<span id=blueVal >nadaB</span> <br>
+ red=<span id=redVal >nadaR</span> <br>
+ green=<span id=greenVal >nadaG</span> <br>
+
+ 
+
+
+<p id="p1">Hello World!</p>
+
+<script>
+
+document.getElementById("p1").innerHTML = "New text! ccc";
+
+
+function check() {
+    document.getElementById("red").checked = true;
+}
+function uncheck() {
+    document.getElementById("red").checked = false;
+}
+ 
+function myFunction() {
+    var x = document.getElementById("myRadio");
+    x.checked = true;
+
+    document.getElementById("redVal").innerHTML = document.getElementById("red").checked
+   document.getElementById("blueVal").innerHTML =  document.getElementById("blue").checked
+   document.getElementById("greenVal").innerHTML =  x.checked
+
+}
+// State variable.
+
+</script>
+
+</body>
+</html>

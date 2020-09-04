@@ -1,0 +1,20 @@
+1) open  dmtpcData.xml 
+It contains my guess  (probably incorrect)  of groups of params for different devices
+There are sections:
+
+<m3RunCfg   >…
+<CCD_Camera  > ...
+<CEAN_Scope > …
+    <channel  id='6’  > …
+    <channel  id=‘8'  > …
+    <channel  id=‘12’  > …
+
+I arbitrary assigned some values to be XML  values and some to be XML attributes. One can add a comment text for every object.
+The units for values are specified.
+
+
+2) To read this XML in to C++ and unpack and compile all attached code like this:
+$ g++ xmljan2.cxx tinyxml2.cpp tinyxml2.h  -o xmljan2
+
+2.1) run the code giving .xml file name as an argument:
+$ ./xmljan2 dmtpcData.xml

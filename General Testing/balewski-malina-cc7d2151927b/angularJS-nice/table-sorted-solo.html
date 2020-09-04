@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="customersCtrl">
+
+<p>Looping with objects with alphabetic sorting:</p>
+<ul>
+  <li ng-repeat="x in names | orderBy:'Country'">
+    {{ x.Name + ', ' + x.Country }}
+  </li>
+</ul>
+<hr>
+This is usorted table, but rows are auto-numbered, and odd rows are gerayed
+<hr>
+<table>
+<tr ng-repeat="x in names">
+ <td>{{ $index + 1 }}</td>
+<td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Name }}</td>
+<td>{{ x.Country }}</td>
+</tr>
+</table>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('customersCtrl', function($scope, $http) {
+    $http.get("http://www.w3schools.com/angular/customers.php")
+    .then(function (response) {$scope.names = response.data.records;});
+});
+</script>
+
+
+</body>
+</html>

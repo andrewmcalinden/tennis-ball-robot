@@ -1,0 +1,4 @@
+DNS-name, DNS-IP, MAC-eth0, MAC-eth1 
+reuse63.lns.mit.edu, 198.125.163.63, 00:1e:c9:b5:ae:db, 00:1e:c9:b5:ae:dd
+reuse64.lns.mit.edu, 198.125.163.64, 00:1e:c9:fd:ea:c0, 00:1e:c9:fd:ea:c2
+reuse65.lns.mit.edu, 198.125.163.65, 00:1e:c9:fd:e9:67, 00:1e:c9:fd:e9:69

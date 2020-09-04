@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script>
+      var app1 = angular.module('myApp3', []);
+
+    app1.controller('tableCtrl', function($scope, $http) {
+ 
+      $scope.names = [
+      { "Name" : "Max Joe", "City" : "Lulea", "Country" : "Sweden" },
+      { "Name" : "Manish", "City" : "Delhi", "Country" : "India" },
+      { "Name" : "Koniglich", "City" : "Barcelona", "Country" : "Spain" },
+      { "Name" : "Wolski", "City" : "Arhus", "Country" : "Denmark" }
+    ];
+     });
+
+    </script> 
+    
+
+  <body>
+
+
+<b>Working with pre-seeded table from ng-controller="tableCtrl"</b>
+<br>
+<div ng-app="myApp3" ng-controller="tableCtrl"> 
+
+<table>
+  <tr ng-repeat="x in names">
+    <td>{{ x.Name }}</td>
+    <td>{{ x.Country }}</td>
+  </tr>
+</table>   
+
+
+
+<hr>
+<b>Table ordered by country</b>
+<table>
+  <tr ng-repeat="x in names | orderBy : 'Country'">
+    <td>{{ x.Name }}</td>
+    <td>{{ x.Country }}</td>
+  </tr>
+</table>
+<hr>
+
+<b> To display the table index, add $index: </b>
+<table>
+  <tr ng-repeat="x in names">
+    <td>{{ $index + 1 }}</td>
+    <td>{{ x.Name }}</td>
+    <td>{{ x.Country }}</td>
+  </tr>
+</table>
+
+<hr><b> To display  key-value pairs for this table </b>
+<table>
+<tr ng-repeat="(key, value) in names">
+  <td> {{key}} </td> <td> {{ value }} </td>
+</tr>
+
+<hr><b>Various forms of indexing w/o input table</b>
+</table>
+
+<hr><b> edit the property value with two way binding </b>
+<table> 
+<tr ng-repeat="(key, value) in names" >
+  <td>{{key}}<input type="text" ng-model='value["Name"]'>  </td> 
+<td> {{value}}</td>
+<td> {{value["Name"]=="Wolski"}}</td>
+</tr>
+</table>
+<br>
+
+<hr><b> shows only rows with name 'Wolski' - edit it to go away </b>
+<table> 
+<tr ng-repeat="(key, value) in names"  ng-show='value["Name"]=="Wolski"'>
+  <td>{{key}}<input type="text" ng-model='value["Name"]'>  </td> 
+<td> {{value}}</td>
+<td> {{value["Name"]=="Wolski"}}</td>
+</tr>
+</table>
+<br>
+
+<hr>
+<hr>
+<table > <br>Example table with loop over some columns, different approaches
+<tr> <th>i in [1,2,5,9] </th> <td data-ng-repeat="i in [1,2,5,9]">  ch_{{i}} </td>
+<tr> <th>n in [].constructor(6) </th> <td ng-repeat="n in [].constructor(6) track by $index">  idx_{{$index}} </td>
+</table>
+</div> 
+ 
+<hr>
+
+</body>
+</html>

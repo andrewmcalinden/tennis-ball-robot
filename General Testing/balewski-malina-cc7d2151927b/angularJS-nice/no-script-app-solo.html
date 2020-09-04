@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+Normally, you will not use ng-init. You will use a controller or module instead.
+<br>
+Expression w/ numbers (does addition for you)
+<div ng-app="" 
+ng-init="quantity=1;
+cost=5;person={firstName:'John',lastName:'Doe'};
+points=[1,15,19,2,40]
+">
+quantity={{quantity}}, cost={{cost}}
+<p>Total in dollar: {{ quantity * cost }}=quantity * cost</p>
+<p>The name is {{ person.lastName }}</p>
+<p>The third result is in array {{ points[2] }}</p>
+
+ <p>Looping over array  with ng-repeat and scale x3</p>
+  <ul>
+    <li data-ng-repeat="x in points">
+      {{ x *3}}
+    </li>
+  </ul>
+
+</div>
+
+<hr>
+
+
+
+</body>
+</html>

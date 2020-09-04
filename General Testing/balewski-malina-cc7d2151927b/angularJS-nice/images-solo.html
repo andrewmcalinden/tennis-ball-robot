@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script>
+      var app1 = angular.module('myApp3', []);
+
+    app1.controller('imgCtrl', function($scope, $http) {
+ 
+ //$scope.image = "https://www.google.com/images/srpr/logo11w.png";
+  //$scope.image = "http://m3slow.lns.mit.edu/daq/post/timingBelt.png";
+      $scope.imageURLorg = "http://m3slow.lns.mit.edu/daq/post/dc_residue_scope0_ch6.png";  
+
+
+      $scope.imageUrl = $scope.imageURLorg + '?' + new Date().getTime() ;
+      $scope.badImage="junk-url";
+
+     
+     }); // end of controller
+
+    </script> 
+    
+
+  <body>
+
+
+
+<br>
+All about images
+<div ng-app="myApp3" ng-controller="imgCtrl"> 
+
+<b>Diaply bad link protected w/ ?image:' ' does not throw error</b><br>
+Plot '{{badImage}}' w/  here:<img ng-src="{{badImage?image:' '}}" />:
+
+<br><b>Display again not protected ....</b><br>
+Here: <img ng-src="{{badImage}}" />:
+
+</div> 
+ 
+
+
+</body>
+</html>

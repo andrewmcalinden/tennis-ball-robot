@@ -1,0 +1,10 @@
+To generate some 'event' run:
+./myGen
+
+To see generated data run:
+root -l plGen.C
+
+To run regression run:
+./myReco
+
+root -l plReco.C

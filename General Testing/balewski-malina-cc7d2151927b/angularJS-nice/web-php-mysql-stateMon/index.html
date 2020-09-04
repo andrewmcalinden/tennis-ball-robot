@@ -1,0 +1,86 @@
+<html>
+
+  <head>
+   <link rel="stylesheet" href="pageStyle.css">
+WEB:"http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"
+    <script src="../tmp/ver-1.4.8-angular.min.js"></script>
+
+WEB:href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+     <link rel="stylesheet" href="../tmp/ver-3.3.5-bootstrap.min.css">
+
+     <script src="php-timer-Cntrl.js"> </script>
+
+  </head>
+
+
+<body>
+
+<div ng-app="myApp3" ng-controller="phpTimeCtrl">
+   
+Manual 
+ <button type="button" class="btn btn-success  btn-lg" ng-click="actQuery()">  DB-query</button>
+ &nbsp;&nbsp;&nbsp;&nbsp;
+<button type="button" class="btn btn-info" ng-click="debug =debug-1"> (-) debug</button>
+ &nbsp;&nbsp;&nbsp;&nbsp;
+<button type="button" class="btn btn-warning" ng-click="debug = debug+ 1"> (+) debug</button> <br>
+debug level={{debug}} , PAUSE Timer:  <input type="checkbox" ng-model="pauseTimer" /> 
+ &nbsp;&nbsp;&nbsp;&nbsp;
+ heartbit={{counter}} 
+
+
+<p ng-hide="debug <1" > <font color="red">Table below  will NOT show  DB data if debug>0</font> </p>
+<br><button  type="button" class="btn btn-primary btn-block" ng-click="restart()"  ng-disabled="! pauseTimer">Restart DB poll</button>
+
+<hr>
+My SysMon  heartbit={{counter}} , this page elapsed Time: {{time_s| number:0}} (sec) <br>
+DB poll period: <input type="number" ng-model="pollPeriod_s"  min="1" max="30" required > (sec)
+ <table > <br>Table-1
+<tr> <th> DB age {{db_age_s | number:1}} sec </th>  <th> CPU load </th> <th> free disc (GB) </th></tr>
+<tr >
+ <td> {{resultPhp.timeStamp}}</td> 
+ <td> {{resultPhp.wLoad}}</td> 
+ <td> {{resultPhp.freeDisc}}</td> 
+</tr>
+<tr><td colspan=2>  {{resultPhp.remark}}</td> </tr>
+</table >
+ &nbsp;&nbsp;&nbsp;&nbsp;
+<table > <br>Table-2
+<tr> <th> Active Tasks </th>  <th># instances </th> <th> PID  </th>  <th> run time (sec)</tr>
+<tr >
+ <td> fakeJobA (#0)</td> 
+ <td> {{resultPhp.numTask0}}</td> 
+ <td> {{resultPhp.pidTask0}}</td> 
+ <td> {{resultPhp.secTask0}}</td> 
+</tr>
+<tr >
+ <td> fakeJobB (#1)</td> 
+ <td> {{resultPhp.numTask1}}</td> 
+ <td> {{resultPhp.pidTask1}}</td> 
+ <td> {{resultPhp.secTask1}}</td> 
+</tr>
+</table >
+
+<p ng-hide="true"> {{turnOff=(resultPhp.numTask0+resultPhp.numTask1>0)}}  - this trick hides calculations</p>
+This red button is active only if there are<br> no active tasks
+
+<button type="button" class="btn btn-danger"  
+	ng-disabled="turnOff"> 
+Start Task  <b ng-show="turnOff"> IS OFF </b>
+</button>
+
+
+
+<hr>
+RAW DUMP of PHP status:
+{{statusPhp}}<br>
+
+RAW DUMP of PHP output:<br>
+{{resultPhp}}
+
+
+
+</div>
+
+  </body>
+
+</html>

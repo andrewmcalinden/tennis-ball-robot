@@ -1,0 +1,37 @@
+<!DOCTYPE html> 
+<html>
+<head>
+  <title>Javascript Finite State Machine</title>
+
+</head> 
+ 
+<body> 
+
+  <div id="demo" class='green'>
+
+    <h1> Finite State Machine </h1>
+
+    <div id="controls">
+      <button id="walk" onclick="Demo.walk();">walk</button>
+      <button id="panic" onclick="Demo.panic();">panic!</button>
+      <button id="drive" onclick="Demo.drive();">drive</button>
+    </div>
+
+    <div id="diagram">
+    </div>
+
+    <div id="notes">
+      <i>dashed lines are asynchr.</i>
+    </div>
+
+    <textarea id="output">
+    </textarea>
+
+  </div>
+
+
+  <script src="./state-machine.js"></script>
+  <script src="./demo.js"></script>
+
+</body> 
+</html>

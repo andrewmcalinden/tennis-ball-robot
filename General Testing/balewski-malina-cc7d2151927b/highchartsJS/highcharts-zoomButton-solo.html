@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+    <script src="http://code.highcharts.com/highcharts.js" type="text/javascript"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js" type="text/javascript"></script>
+
+
+
+<body>
+This plot can be enlarged
+<hr>
+<div id="container"></div>
+
+<script  type="text/javascript">
+$(function () {
+    var $container = $('#container'),
+        chart,
+        origChartWidth = 400,
+        origChartHeight = 300,
+        chartWidth = origChartWidth,
+        chartHeight = origChartHeight;
+
+    $container.highcharts({
+
+        chart: {
+            width: 400,
+            height: 300
+        },
+
+        xAxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May']
+        },
+
+        series: [{
+            data: [29.9, 71.5, 106.4, 129.2, 144.0]
+        }]
+    });
+
+    // create some buttons to test the resize logic
+    chart = $container.highcharts();
+
+    $('<button>+</button>').insertBefore($container).click(function () {
+        chartWidth *= 1.1;
+        chartHeight *= 1.1;
+        chart.setSize(chartWidth, chartHeight);
+    });
+    $('<button>-</button>').insertBefore($container).click(function () {
+        chartWidth *= 0.9;
+        chartHeight *= 0.9;
+        chart.setSize(chartWidth, chartHeight);
+    });
+    $('<button>1:1</button>').insertBefore($container).click(function () {
+        chartWidth = origChartWidth;
+        chartHeight = origChartHeight;
+        chart.setSize(origChartWidth, origChartHeight);
+    });
+});
+</script>
+
+</body>
+</html>

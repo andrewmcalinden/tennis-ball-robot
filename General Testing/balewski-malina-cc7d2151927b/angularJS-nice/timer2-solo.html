@@ -1,0 +1,60 @@
+<html>
+
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+  </head>
+
+  <script>
+   var app1 = angular.module('myApp', []);
+    app1.controller('timerCtrl', function($scope, $timeout) {
+    $scope.timeInMs = 0;
+    $scope.period=400;
+    $scope.counter=0;
+    $scope.myOffSwitch=true;
+    $scope.myPauseSwitch=false;
+
+    var countUp = function() {
+    if (  $scope.counter%1==0 )
+      { console.log( $scope.counter,"=counter, elaps sec=", $scope.timeInMs/1000.," period/ms=",$scope.period); }
+      $scope.counter+=1;
+      $scope.timeInMs+= $scope.period;
+      if ( $scope.myPauseSwitch ) {
+            console.log( "Pause Timer");  
+            return;
+      }
+      $timeout(countUp, $scope.period);
+    }
+   
+    countUp(); // activate counter
+
+    $scope.restart  = function() {  
+      console.log( "Timer Reactivated Activated, pause=",$scope.myPauseSwitch);  
+      $scope.myPauseSwitch=false;
+      countUp();
+    }
+
+});
+ 
+</script>
+
+<body>
+
+<div ng-app="myApp" ng-controller="timerCtrl">
+    <span>Elapsed Time (in ms): {{timeInMs}}</span>
+<hr>
+
+
+Period/ms: <input type="number" ng-model="period"  ng-disabled="myOffSwitch">
+ <label ng-show="myOffSwitch"> no it is disabled  </label> <br>
+<input type="checkbox" ng-model="myOffSwitch"/>disable period change Check-box
+
+<p>set period(sec)={{period/1000.}},  pulse counter={{counter}},  myOffSwitch={{myOffSwitch}}</p>
+
+<input type="checkbox" ng-model="myPauseSwitch"/>PAUSE Timer Check-box
+<br><button ng-click="restart()">Restart </button>
+</div>
+
+  </body>
+
+</html>

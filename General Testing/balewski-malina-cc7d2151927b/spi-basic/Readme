@@ -1,0 +1,112 @@
+This are simple python scripts  issues basic commands to 
+the LS7366 pulse counter
+
+First check if SPI devie is visible, on R-Pi2 you want to use '0.0'
+$ ls /dev |grep spi
+spidev0.0
+spidev0.1
+
+
+Next check if driver is active:
+$  lsmod | grep spi
+spi_bcm2835             7248  0 
+
+
+Before using this .py you need to download  .C code from Git
+compile it as python egg and install.
+This is instruction for the steps above:
+
+sudo apt-get install python-dev
+git clone git://github.com/doceme/py-spidev
+cd py-spidev
+sudo python setup.py install
+
+>>>
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -I/usr/include/python2.7 -c spidev_module.c -o build/temp.linux-armv7l-2.7/spidev_module.o
+creating build/lib.linux-armv7l-2.7
+
+gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-z,relro build/temp.linux-armv7l-2.7/spidev_module.o -o build/lib.linux-armv7l-2.7/spidev.so
+running install_lib
+copying build/lib.linux-armv7l-2.7/spidev.so -> /usr/local/lib/python2.7/dist-packages
+running install_egg_info
+Writing /usr/local/lib/python2.7/dist-packages/spidev-3.0.egg-info
+>>>
+
+
+There is good explanation what this C-library does at
+https://github.com/doceme/py-spidev
+and here
+http://tightdev.net/SpiDev_Doc.pdf
+
+The 1-st test to make SPI talk to itself. Do:
+short MOSI-MISO  wires
+
+$ wget https://raw.githubusercontent.com/raspberrypi/linux/rpi-3.10.y/Documentation/spi/spidev_test.c
+$ gcc spidev_test.c -o spidev_test
+$ ./spidev_test -D /dev/spidev0.0
+spi mode: 0
+bits per word: 8
+max speed: 500000 Hz (500 KHz)
+
+FF FF FF FF FF FF 
+40 00 00 00 00 95 
+FF FF FF FF FF FF 
+FF FF FF FF FF FF 
+FF FF FF FF FF FF 
+DE AD BE EF BA AD 
+F0 0D 
+
+If you see this, your SPI is not working properly
+>>>>>
+...
+max speed: 500000 Hz (500 KHz)
+
+00 00 00 00 00 00 
+00 00 00 00 00 00 
+00 00 00 00 00 00 
+....
+>>>
+
+======================
+
+After this all works, connect  SPI wires:  CLK, MISO, MOSI, SS/
+
+and execute few examples below:
+
+1)  set pulse counting mode:
+pulse-counter to be 4x8 bit long , and to count 1 count per quadrature cycle
+
+This is LS7366 chip description
+https://drive.google.com/drive/u/1/folders/0B0Jn-k3UAPZLdVA5YTVmODRsbDQ
+
+
+Execute :  rwMDR01.py
+
+Correct answer:
+RD:MDR0  cmd=0x48=0b1001000 -->  ans=0x1=0b1
+RD:MDR1  cmd=0x50=0b1010000 -->  ans=0x0=0b0
+
+If pulse-counter is power cycled both registers are set to 0
+
+2) Manually write/read CNTR counter. Needs to be done via DRT register.
+Execute:  rwCNTR.py
+
+Correct value before reseting at the end is : 0xCA
+RD:CNTR  cmd=0x67=0b1100111 --> 
+   wr-data: 0x0=0b0   0x0=0b0   0xC1=0b11000001   0xC2=0b11000010   
+   rd-data: 0xCA 
+
+3) read CNTR in infinite loop, assemble 32-bit counter every 0.5 sec.
+Note, for proper working the MDR0,MDR1 registers must be loaded properly
+./rdPulseDireect.py
+
+If you move in one direction you see pulse counter increasing
+6  nPules= 2789
+RD:CNTR  cmd=0x67=0b1100111 --> 
+   rd-data: 0x0=0b0   0x0=0b0   0xA=0b1010   0xF7=0b11110111   
+7  nPules= 2807
+RD:CNTR  cmd=0x67=0b1100111 --> 
+   rd-data: 0x0=0b0   0x0=0b0   0xB=0b1011   0xD=0b1101   
+8  nPules= 2829
+
+

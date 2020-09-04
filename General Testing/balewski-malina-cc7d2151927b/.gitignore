@@ -1,0 +1,9 @@
+*~
+*pyc
+*log
+*.so
+*.d
+*.o
+\#*
+.depend
+*.a

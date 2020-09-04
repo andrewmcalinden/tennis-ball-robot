@@ -1,0 +1,65 @@
+<m3RunCfg  fakeCameras="true" enableFliProline="false"  verbose = '2' >
+  
+Elaborate here what is the purpose of this DMTPC configuration. 
+You can spany over many lines, must be placed before 1st item.
+
+<outDir type='string'>    /data/JanData/  </outDir>
+<runTag type='string'>   cosmic_at_night  </runTag>
+
+<CCD_Camera  shutterAlwaysOpen = 'true'>
+  Describe here why those CCD-Camera settings are optimal.
+  
+  <xbin type='int'> 3 </xbin>
+  <ybin type='int'> 4 </ybin>
+  <exposure type='int'    unit='ms'  > 2000 </exposure>
+  <temp     type='int'    unit='Cdeg'> -29  </temp>
+  <bufferSize  type='int' unit='xx?' > 30   </bufferSize>
+  <nFlushes type='int'>  1 </nFlushes>
+</CCD_Camera>
+
+<CEAN_Scope enabled='true' >
+Any comments about CEAN settings would go here
+or here.
+  <buffer_size type='int' units='traces per event'>  20000 </buffer_size>
+  <record_length type='int' units='us'            >   20 </record_length>
+  <nboards type='int' units='1 or 2'              >  1 </nboards>
+
+  <channel  id='6' enabled='true' >
+    Write here issue with this scope-channel SIX
+    <post_trigger type='int' units='procent' >  80    </post_trigger>
+    <num_events_BLT type='int'               >  5     </num_events_BLT>
+    <connection_type  type='string'          >  pcielink </connection_type>
+    <link_board type='int'                   >  0     </link_board>
+    <conet_node type='int'                   >  0    </conet_node>
+  </channel>
+  
+  <channel  id='8' enabled='false' >
+    Write here about DEAD  scope-channel EIGHT
+    <post_trigger type='int' units='procent' >  75    </post_trigger>
+    <num_events_BLT type='int'               >  4     </num_events_BLT>
+    <connection_type  type='string'          >  pcielink </connection_type>
+    <link_board type='int'                   >  0     </link_board>
+    <conet_node type='int'                   >  0    </conet_node>
+  </channel>
+
+  <channel  id='12' enabled='false' >
+    Write here about NOT-EXISTING   scope-channel TWELVE
+  </channel>
+  
+</CEAN_Scope>
+
+<FloatValue3>0.5</FloatValue3>
+    <Date day="26" month="April" year="2014" dateFormat="26/04/2014"/>
+    <IntValue2   >310</IntValue2>
+
+    <List4 itemCount="8">
+        <Item>10</Item>
+        <Item>11</Item>
+        <Item>12</Item>
+        <Item>13</Item>
+        <Item>15</Item>
+        <Item>18</Item>
+        <Item>13</Item>
+        <Item>21</Item>
+    </List4>
+</m3RunCfg>

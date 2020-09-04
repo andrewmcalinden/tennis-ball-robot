@@ -1,0 +1,33 @@
+-------- Exmaple 1 - printing
+
+root-threads/threadsPrint.C
+Lanuches 2 threads  which print values 0,...,5 with randomized delay
+
+------- Exmaple 2 - filling/plotting histos
+
+root-threads/threadsDyn2Plots.C
+Lanuches:
+-  2 threads   filling simultanously 2 plots
+- 1  joiner thread  awaiting for filller threads to finish
+- main updates canvas untill joiner tells it to stop
+
+
+------- Exmaple 3 -  mini data acqusition  
+
+None
+
+------- Exmaple 4 -  mini data acqusition  , 
+	plotter and filler in symmetric threads
+
+root-threads/threadsDAQ_Plot_Fill.C
+Lanuches:
+-  1 thread   generating record vs. time, adding to TGraph
+-  1 thread updates canvas untill joiner tells it to stop
+-  main thread  awaiting for filller thread to finish
+
+
+
+
+
+
+

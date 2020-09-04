@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html >
+<script src="./ver-1.4.8-angular.min.js"></script>
+<body>
+
+Example of 2 controllers accessing  same variable with the method: assign  just the data to a controller's scope. <br>
+<hr>
+
+<div ng-app="myApp" >
+<div ng-controller="FirstCtrl">
+ Enter 1stName in "FirstCtrl" <input type="text" ng-model="data.firstName">
+  <br>and see it in "FirstCtrl": 1st name= <strong>{{data.firstName}}, lastName={{data.lastName}}</strong>=
+</div>
+<hr>
+<div ng-controller="SecondCtrl">
+ Enter lastName in "SecondCtrl" <input type="text" ng-model="data.lastName">
+  1stName should also be seen in "SecondCtrl"  {{data.firstName}}
+</div>
+</div>
+
+<script>
+ var myApp = angular.module('myApp', []);
+
+myApp.factory('MyService', function(){
+  return {
+    data: {
+      firstName: '',
+      lastName: ''
+    }
+    // Other methods or objects can go here
+  };
+});
+
+myApp.controller('FirstCtrl', function($scope, MyService){
+  $scope.data = MyService.data;
+});
+
+myApp.controller('SecondCtrl', function($scope, MyService){
+   $scope.data = MyService.data;
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+WARN - compilation of this simpletest code takes 2-4 minutes on Rpi - it is barely acceptable - only 1st time.
+
+Code use:
+A) generate TTree:
+ root -b -q wrWtree.C
+
+B) read it:
+root -b -q rdWtree.C 
+
+
+Complete example of define/write/reed TTree contains a  <vector>-lists.
+
+Warn: on Raspberry-Pi compilation takes above 2 minutes
+
+Body of the event-class  is defined in:
+ Wevent2011.h 
+
+It consist of list of vertices, each vertex is a list of tracks.
+
+Operational one can unpack such event as:
+
+Wevent2011	*myEvent=...
+ printf("unpackEve() ID=%d  nVert=%d\n",myEve->id, (int)myEve->vertex.size());
+ for(unsigned int iv=0;iv< myEve->vertex.size();iv++) {
+    WeveVertex  *vert=&(myEve->vertex[iv]);
+    printf("%d-vertex: Z=%f  nTrack=%d\n",iv,vert->z, vert->eleTrack.size());
+    for(unsigned int it=0;it< vert->eleTrack.size();it++){
+      WeveEleTrack *tr=&(vert->eleTrack[it]);
+      printf("   Track  Pxyz=%.1f,%.1f,%.1f \n",tr->P.X(), tr->P.Y(), tr->P.Z());
+    }
+ }
+
+resulting with:
+
+print W2011event:  ID=12  nVert=2
+ Vertex Z=202.0 cm  nTrack=2
+   Track  Pxyz=2.0,0.0,2.0  PT=2.0  hitSect=40
+   Track  Pxyz=3.0,0.0,3.0  PT=3.0  hitSect=41
+ Vertex Z=302.0 cm  nTrack=3
+   Track  Pxyz=-2.0,0.0,2.0  PT=2.0  hitSect=60
+   Track  Pxyz=-3.0,0.0,2.0  PT=3.0  hitSect=61
+   Track  Pxyz=-4.0,0.0,2.0  PT=4.0  hitSect=61
+
+
+Note, this operation will NOT work under root CINT (inside .C macro). One MUST use the compiled C++ code to manipulate  those events (what is rather good).
+The utility class  WeventIO demostartes how to do it:
+
+class WeventIO {
+  void fillEve(Wevent2011 *eve, int k);
+  void unpackEve(Wevent2011 *eve);
+};
+
+
+
+To compile the code do:  make
+
+It builds dynamic libary: libWtreeCode.so which can be loaded to regular root .C macro using:
+ gSystem->Load("libWtreeCode.so");
+
+
+'make clean' is provided as well. Note, perl needs to be installed on the machine to allow automatic generation of Dictionary and LinkDef.h .
+
+
+The grand demonstration of the whole concept is with the following 2  root macros:
+
+root -b -q  wrWtree.C
+writes 4 events in to the branch "eveJan" file  "toyEve.tree.root". 
+The TTree name is 'toy6D', the branch name is 'eveJan'
+
+root -b -q  rdWtree.C
+read all events form this file and print them using: unpackEve(Wevent2011 *eve)
+The TChain name is 'toy6D', the branch name is 'eveJan'
+It also draws one histogram with z-vertex
+
+
+

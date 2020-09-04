@@ -1,4 +1,0 @@
-See file:///C:/Users/andre/OneDrive/Documents/wplib%20testing/Testing/build/tmp/linkFrcUserProgramReleaseExecutable/output.txt for all output for linkFrcUserProgramReleaseExecutable.
-linking frcUserProgram successful.
-
-Finished linkFrcUserProgramReleaseExecutable, see full log file:///C:/Users/andre/OneDrive/Documents/wplib%20testing/Testing/build/tmp/linkFrcUserProgramReleaseExecutable/output.txt.

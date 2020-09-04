@@ -45,6 +45,7 @@ void updatePos(double leftReading, double rightReading)
 
     //store initialHeading for later
     double initialHeading = globalHeading;
+    double initialHeadingRad = (initialHeading * M_PI) / 180.0;
 
     double angleChangeRad = (leftChange - rightChange) / TRACKWIDTH;
     double angleChangeDeg = (180 * angleChangeRad) / M_PI;
@@ -75,7 +76,7 @@ void updatePos(double leftReading, double rightReading)
 
     Vector deltaVector = Vector(sineTerm * movement, cosTerm * movement); //translation
 
-    deltaVector = deltaVector.rotated(initialHeading);
+    deltaVector = deltaVector.rotated(initialHeadingRad);
 
     globalXPos += deltaVector.getX();
     globalYPos += deltaVector.getY();

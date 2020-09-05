@@ -2,7 +2,6 @@
 #include <iostream>
 
 #define DIRECTION_PIN_FORWARD 2
-#define DIRECTION_PIN_BACKWARD 1
 #define POWER_PIN 23 //GPIO 13
 #define BUTTON_IN 6 //GPIO 25
 
@@ -11,7 +10,7 @@ int main()
     wiringPiSetup();
     pinMode(BUTTON_IN, INPUT);
 
-    Motor m(DIRECTION_PIN_FORWARD, DIRECTION_PIN_BACKWARD, POWER_PIN);
+    Motor m(DIRECTION_PIN_FORWARD, POWER_PIN);
     double power = 0;
     while (true)
     {

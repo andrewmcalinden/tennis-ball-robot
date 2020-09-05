@@ -1,8 +1,9 @@
 #include <cmath>
 #include <iostream>
 
-#include "Odometry.h"
-#include "Vector.h"
+#include "odometry.h"
+#include "vector.h"
+#include "mathUtil.h"
 
 #define TRACKWIDTH 16
 #define EPSILON 1.0e-6
@@ -49,7 +50,7 @@ void updatePos(double leftReading, double rightReading)
 
     double angleChangeRad = (leftChange - rightChange) / TRACKWIDTH;
     double angleChangeDeg = (180 * angleChangeRad) / M_PI;
-    globalHeading = angleWrap(globalHeading + angleChangeDeg);
+    globalHeading = angleWrapDeg(globalHeading + angleChangeDeg);
 
     double movement = (leftChange + rightChange) / 2.0; // total change in movement by robot (dx)
     double dTheta = angleChangeRad;
@@ -81,20 +82,6 @@ void updatePos(double leftReading, double rightReading)
     //switch x, y because thats the only way it works idk lol
     globalXPos += deltaVector.getY();
     globalYPos += deltaVector.getX();
-}
-
-double angleWrap(double angle)
-{
-    double correctAngle = angle;
-    if (correctAngle > 180)
-    {
-        correctAngle -= 360;
-    }
-    else if (correctAngle < -180)
-    {
-        correctAngle += 360;
-    }
-    return correctAngle;
 }
 
 double getX()

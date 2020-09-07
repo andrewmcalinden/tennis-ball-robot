@@ -150,6 +150,7 @@ void updateOneEncoder(unsigned char interrupt)
 	
 	struct encoder *encoder = encoders ;
 	
+	printf("\nEntering updateOneEncoder");
 	step = 0 ;	
 	now = micros() ; // mark elapsed time for chrono 1 - elaped time between two detends (or steps if 1/4 grey code sequence rotary encoder model) for "speed rotation"
 	lastupdate_2 = now_2 = micros() ; // start chrono 2 - step duration - 
@@ -318,115 +319,127 @@ void updateOneEncoder(unsigned char interrupt)
 int check_rotation_direction(unsigned char previous_step, unsigned char current_step, unsigned char sequence)
 { // rotation direction finder
 //	printf("DIR-FINDER-IN - previous-step: %d - current-step: %d - sequence: %d \n", previous_step, current_step, sequence) ;
-
-	switch (current_step) 
+printf("\nEntering CRD");
+switch (current_step)
+{
+case 0:
+	switch (previous_step)
 	{
-		case 0:
-			switch (previous_step)
-			{
-				case 1:
-					if (sequence) 
-						{ step = 0 ; } 
-					else 
-					{ 
-						step = 1 ;
-						digitalWrite(LED_UP, ON) ; // ON
-						digitalWrite (LED_DOWN, OFF) ;	// OFF
-					}
-					break ;
-				case 2:
-					if (sequence) 
-						{ step = 0 ; } 
-					else 
-					{ 
-						step = -1 ;
-						digitalWrite (LED_DOWN, ON) ;	// ON
-						digitalWrite (LED_UP, OFF) ;	// OFF
-					}
-					break ;
-				default:
-					break ;
-			}
-			break ;	
-									
-		case 1:
-			switch (previous_step)
-			{
-				case 0:
-					if (sequence)
-						{ step = 0 ; } 
-					else 
-					{ 
-						step = -1 ;
-						digitalWrite (LED_DOWN, ON) ;	// ON
-						digitalWrite (LED_UP, OFF) ;	// OFF
-					}
+	case 1:
+		if (sequence)
+		{
+			step = 0;
+		}
+		else
+		{
+			step = 1;
+			digitalWrite(LED_UP, ON);	 // ON
+			digitalWrite(LED_DOWN, OFF); // OFF
+		}
+		break;
+	case 2:
+		if (sequence)
+		{
+			step = 0;
+		}
+		else
+		{
+			step = -1;
+			digitalWrite(LED_DOWN, ON); // ON
+			digitalWrite(LED_UP, OFF);	// OFF
+		}
+		break;
+	default:
+		break;
+	}
+	break;
 
-					break ;
-				case 3:
-					if (sequence) 
-						{ step = 0 ; } 
-					else 
-					{ 
-						step = 1 ;
-						digitalWrite (LED_UP, ON) ;	// ON
-						digitalWrite (LED_DOWN, OFF) ;	// OFF
-					}
-					break ;
-				default:
-					break ;
-			}
-			break ;
-									
-		case 2:
-			switch (previous_step)
-			{
-				case 0:
-					if (sequence) 
-						{ step = 0 ; } 
-					else 
-					{ 
-						step = 1 ;
-						digitalWrite (LED_UP, ON) ;	// ON
-						digitalWrite (LED_DOWN, OFF) ;	// OFF
-					}
-					break ;
-				case 3:
-					if (sequence) 
-						{ step = 0 ; } 
-					else 
-					{ 
-						step = -1 ;
-						digitalWrite (LED_DOWN, ON) ;	// ON
-						digitalWrite (LED_UP, OFF) ;	// OFF
-					} 
-					
-					break ;
-				default:
-					break ;
-			}
-			break ;
+case 1:
+	switch (previous_step)
+	{
+	case 0:
+		if (sequence)
+		{
+			step = 0;
+		}
+		else
+		{
+			step = -1;
+			digitalWrite(LED_DOWN, ON); // ON
+			digitalWrite(LED_UP, OFF);	// OFF
+		}
 
-		case 3:
-			switch (previous_step)
-			{
-				case 1:
-					step = -1 ;
-					digitalWrite (LED_DOWN, ON) ;	// On
-					digitalWrite (LED_UP, OFF) ;	// Off
-					break ;
-				case 2:
-					step = 1 ;
-					digitalWrite (LED_UP, ON) ;		// On
-					digitalWrite (LED_DOWN, OFF) ;	// Off
-					break ;
-				default:
-					break ;
-			}
-			break ;	
-						
-		default:
-			break ;
+		break;
+	case 3:
+		if (sequence)
+		{
+			step = 0;
+		}
+		else
+		{
+			step = 1;
+			digitalWrite(LED_UP, ON);	 // ON
+			digitalWrite(LED_DOWN, OFF); // OFF
+		}
+		break;
+	default:
+		break;
+	}
+	break;
+
+case 2:
+	switch (previous_step)
+	{
+	case 0:
+		if (sequence)
+		{
+			step = 0;
+		}
+		else
+		{
+			step = 1;
+			digitalWrite(LED_UP, ON);	 // ON
+			digitalWrite(LED_DOWN, OFF); // OFF
+		}
+		break;
+	case 3:
+		if (sequence)
+		{
+			step = 0;
+		}
+		else
+		{
+			step = -1;
+			digitalWrite(LED_DOWN, ON); // ON
+			digitalWrite(LED_UP, OFF);	// OFF
+		}
+
+		break;
+	default:
+		break;
+	}
+	break;
+
+case 3:
+	switch (previous_step)
+	{
+	case 1:
+		step = -1;
+		digitalWrite(LED_DOWN, ON); // On
+		digitalWrite(LED_UP, OFF);	// Off
+		break;
+	case 2:
+		step = 1;
+		digitalWrite(LED_UP, ON);	 // On
+		digitalWrite(LED_DOWN, OFF); // Off
+		break;
+	default:
+		break;
+	}
+	break;
+
+default:
+	break;
 	}
 	return step ;
 }

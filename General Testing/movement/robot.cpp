@@ -3,7 +3,7 @@
 #include "mathUtil.h"
 #include <cmath>
 
-void Robot::goToPoint(double x, double y, double angle, double power)
+void Robot::goToPoint(double x, double y, double power)
 {
     double distanceToPoint = hypot(x - getX(), y - getY());
     double angleToPointRad = atan2(y - getY(), x - getX()); //distance to turn assuming robot is same angle as point

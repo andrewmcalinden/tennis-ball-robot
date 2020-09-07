@@ -61,7 +61,7 @@
 #include <stdio.h>
 #include <wiringPi.h>
 
-#include "rotaryencoder.h"
+#include "rotaryencoder.c"
 
 #define	ON    1
 #define	OFF   0

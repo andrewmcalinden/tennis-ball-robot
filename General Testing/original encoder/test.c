@@ -52,9 +52,9 @@
   * be displayed, and axial push buttons included if any.
   * Then, two lines will be displayed reporting all the values status.
   * Each modification of any will display two new lines of status.
-  * Not beautifull, but efficient to check the library, the components
-  * and your wiring. ;-)  Each switch must be at ground during the "ON",
-  * pullup resistors are programmed inside the GPIO, don't add them.
+  * Not beautifull, but efficient itch must be at ground during the "ON",
+  * pullup resistors are prograto check the library, the components
+  * and your wiring. ;-)  Each swmmed inside the GPIO, don't add them.
   * Enjoy !
   */
 

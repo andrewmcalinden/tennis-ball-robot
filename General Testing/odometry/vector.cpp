@@ -1,5 +1,5 @@
 #include <cmath>
-#include "Vector.h"
+#include "vector.h"
 
 Vector::Vector(double hor, double vert): x{hor}, y{vert}{}
 

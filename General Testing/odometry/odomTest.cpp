@@ -1,21 +1,23 @@
 #include<iostream>
+#include <cstdlib>
+#include <ctime>
+
 #include "Odometry.h"
 
 int main()
 {
-    double leftReading = 0;
-    double rightReading = 0;
+    std::clock_t timer;
+    timer = std::clock();
 
-    for (int i = 0; i < 1000; i++)
+    srand((unsigned)time(0));
+    while (true)
     {
-        //want to end at 60, so increase by .6
-        leftReading += .025;
-
-        //want to end at 40, so increase by .4
-        rightReading += .02;
+        double leftReading = rand();
+        double rightReading = rand();
 
         updatePos(leftReading, rightReading);
-        //std::cout << getX() << ", " << getY() << " " << getHeading() << "\n";
+
+        double time = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
+        std::cout << time << "\n";
     }
-    std::cout << getX() << ", " << getY() << " " << getHeading();
 }

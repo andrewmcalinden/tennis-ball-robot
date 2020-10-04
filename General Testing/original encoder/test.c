@@ -120,12 +120,12 @@ int main(void)
 					 1024,	 //low limit is 1024
 					 500,	 //starting value is 500
 					 500000, //reset speed level every 500,000 microseconds
-					 40000,
-					 25000,
-					 10000,
-					 10,
-					 25,
-					 50);
+					 40000,	 //speed level 2 is 40000
+					 25000,	 //speed level 3 is 25000
+					 10000,	 //speed level 4 is 10000
+					 10,	 //speed multiplier 2 is 10
+					 25,	 //speed multiplier 3 is 25
+					 50);	 //speed multiplier 4 is 50
 
 	// setupencoder ("GRAVE",3,4,YES,NO,NO,-5000,5000,0,500000,30000,15000,6000,10,100,1000) ;
 	// setupencoder ("VOLUME",5,6,YES,YES,YES,0,5000,0,500000,30000,15000,6000,10,100,1000) ;
@@ -159,26 +159,27 @@ int main(void)
 	
 	while (1)
 	{
+		updateOneEncoder(0); //updating encoder with pin 0
 		delay (10) ; // 10 ms default, decreases the loop speed (and the CPU load from about 25% to minus than 0.3%)
 		// digitalWrite (LED_DOWN, OFF) ;	// OFF
 		// digitalWrite (LED_UP, OFF) ; 	// OFF
 
-		int step = 0 ;
-		unsigned char print = 0 ;
+		// int step = 0 ;
+		// unsigned char print = 0 ;
 
-		// check if any rotary encoder modified value		
-		struct encoder *encoder = encoders ;
-		for (; encoder < encoders + numberofencoders ; encoder++)
-		{
-			if (encoder->value != memo_rotary[step])
-			{	
-				print = 1 ;
-				memo_rotary[step] = encoder->value ;
-			}	
-			++step ;	
-		} 
+		// // check if any rotary encoder modified value		
+		// struct encoder *encoder = encoders ;
+		// for (; encoder < encoders + numberofencoders ; encoder++)
+		// {
+		// 	if (encoder->value != memo_rotary[step])
+		// 	{	
+		// 		print = 1 ;
+		// 		memo_rotary[step] = encoder->value ;
+		// 	}	
+		// 	++step ;	
+		// } 
 		
-		step = 0 ;
+		// step = 0 ;
 	
 		// // check if any button modified value	
 		// struct button *button = buttons ;
@@ -191,7 +192,8 @@ int main(void)
 		// 	}	
 		// 	++step ;	
 		// }
-		
+
+		unsigned char print = 1;
 		// and if any value modified, then display the new value (and all others too)
 		if (print) 
 		{
@@ -215,7 +217,7 @@ int main(void)
 			// 	printf("\"%s\"[%d](pin:%d):%d  ", button->label, button, button->pin, button->value) ; 
 			// }
 			// printf("- for all, cancelled bounces: %-5d \n\n", bounces) ;
-			print = 0 ;
+			//print = 0 ;
 		}
 	}
 	return(0) ;

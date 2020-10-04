@@ -73,11 +73,11 @@
 #define	NON   0
 
 // used GPIO for 2 UP/DOWN monitor flashing LEDs (arbitrary, you can change as desired)
-#define	LED_DOWN  25
-#define	LED_UP    29
+// #define	LED_DOWN  25
+// #define	LED_UP    29
 
 // used PWM GPIO for LED dim demo with the first rotary encoder
-#define PWM_LED   1
+// #define PWM_LED   1
 // the first encoder is used to play with PWM_LED dim, "1" is mandatory: only one PWM output !
 
 extern int speed ;
@@ -94,37 +94,53 @@ int main(void)
 	enlighted for 2 sec at starting to check them, 
 	then when moving values up or down 
 */
-	pinMode (25,OUTPUT) ;           // output to drive LED
-	pinMode (29,OUTPUT) ;           // output to drive LED
-	digitalWrite (25,ON) ;          // ON
-	digitalWrite (29,ON) ;          // ON
-	pinMode (PWM_LED, PWM_OUTPUT) ; // pin 1 is the only one PWM capable pin on RapsberryPi pcb
-	pinMode (PWM_LED,1024) ;        // Max bright value at starting
-	delay (2000) ;                  // mS
-	digitalWrite (25,OFF) ;         // OFF
-	digitalWrite (29,OFF) ;         // OFF
+	// pinMode (25,OUTPUT) ;           // output to drive LED
+	// pinMode (29,OUTPUT) ;           // output to drive LED
+	// digitalWrite (25,ON) ;          // ON
+	// digitalWrite (29,ON) ;          // ON
+	// pinMode (PWM_LED, PWM_OUTPUT) ; // pin 1 is the only one PWM capable pin on RapsberryPi pcb
+	// pinMode (PWM_LED,1024) ;        // Max bright value at starting
+	// delay (2000) ;                  // mS
+	// digitalWrite (25,OFF) ;         // OFF
+	// digitalWrite (29,OFF) ;         // OFF
  
 /*
  *  Please, see variables meaning in the rotaryencoder.c and rotaryencoder.h files
  *  and adapt them to your case, suppress or add the neccessary encoders and witches
  *  depending your project, in this two following structure types (one "object" each line) :
  */
-	struct encoder *encoder = 
-	setupencoder ("LUMIERE",0,2,YES,NO,NO,0,1024,500,500000,40000,25000,10000,10,25,50) ;
-	setupencoder ("GRAVE",3,4,YES,NO,NO,-5000,5000,0,500000,30000,15000,6000,10,100,1000) ;
-	setupencoder ("VOLUME",5,6,YES,YES,YES,0,5000,0,500000,30000,15000,6000,10,100,1000) ;
+	struct encoder *encoder =
+		setupencoder("TEST", //name = test
+					 0,		 //pin1 = 0
+					 2,		 //pin2 = 2
+					 YES,	 //sends complete 4 step sequence
+					 NO,	 //don't read in reverse
+					 NO,	 //doesn't loop
+					 0,		 //high limit is 0
+					 1024,	 //low limit is 1024
+					 500,	 //starting value is 500
+					 500000, //reset speed level every 500,000 microseconds
+					 40000,
+					 25000,
+					 10000,
+					 10,
+					 25,
+					 50);
+
+	// setupencoder ("GRAVE",3,4,YES,NO,NO,-5000,5000,0,500000,30000,15000,6000,10,100,1000) ;
+	// setupencoder ("VOLUME",5,6,YES,YES,YES,0,5000,0,500000,30000,15000,6000,10,100,1000) ;
 	
 	// axial buttons (or any button) are there :
-	struct button *button = 
-	setupbutton("LUMIERE",7,1) ; // pin  7 and ON  at starting
-	setupbutton("GRAVE",21,0) ;  // pin 21 and OFF at starting
-	setupbutton("VOLUME",22,0) ; // pin 22 and OFF at starting
+	// struct button *button = 
+	// setupbutton("LUMIERE",7,1) ; // pin  7 and ON  at starting
+	// setupbutton("GRAVE",21,0) ;  // pin 21 and OFF at starting
+	// setupbutton("VOLUME",22,0) ; // pin 22 and OFF at starting
 	
 	extern numberofencoders ;
-	extern numberofbuttons ;
+	// extern numberofbuttons ;
 	
 	long int memo_rotary[numberofencoders] ; // record the rotary encoder value for modification detection later
-	long int memo_button[numberofbuttons] ; // record the button value for modification detection later
+	//long int memo_button[numberofbuttons] ; // record the button value for modification detection later
 
 	printf("\nROTARY ENCODERS list :\n\n-----------------\n") ;
 	for (; encoder < encoders + numberofencoders ; encoder++)
@@ -132,20 +148,20 @@ int main(void)
 		printf("Label:\"%s\" \n pin A: %d \n pin B: %d \n mem address: %d \n full sequence each step: %d \n reverse rotation: %d \n looping if limit reached: %d \n low_Limit value: %d \n high_Limit value: %d \n operator rotation pause duration detection (time between two steps in microsec): %d \n speed_Level_Threshold_2 (time between two steps in microsec): %d \n speed_Level_Multiplier_2: %d \n speed_Level_Threshold_3 (time between two steps in microsec): %d \n speed_Level_Multiplier_3: %d \n speed_Level_Threshold_4 (time between two steps in microsec): %d \n speed_Level_Multiplier_4: %d \n-----------------\n",
 		encoder->label, encoder->pin_a, encoder->pin_b, encoder, encoder->sequence, encoder->reverse, encoder->looping, encoder->low_Limit, encoder->high_Limit, encoder->pause, encoder->speed_Level_Threshold_2, encoder->speed_Level_Multiplier_2, encoder->speed_Level_Threshold_3, encoder->speed_Level_Multiplier_3, encoder->speed_Level_Threshold_4, encoder->speed_Level_Multiplier_4) ;
 	}
-	printf("\nBUTTONS list :\n\n-----------------\n") ;
-	for (; button < buttons + numberofbuttons ; button++)
-		{ printf("Label:\"%s\" \n pin: %d \n mem address: %d \n-----------------\n", button->label, button->pin, button) ; }
+	// printf("\nBUTTONS list :\n\n-----------------\n") ;
+	// for (; button < buttons + numberofbuttons ; button++)
+	// 	{ printf("Label:\"%s\" \n pin: %d \n mem address: %d \n-----------------\n", button->label, button->pin, button) ; }
 
-	printf("\n Two LEDs must be connected at #25 and #29 pins if you want to observe the rotation direction (normal or reverse). \n") ;
-	printf(" The positive pin of the LED is to connect to the Raspi output pin, the negative pin of the LED to the minus (the \"ground\" or \"0V\"),\n but a serial resistor of about 1kOhms must be inserted to limit the current.") ;
-	printf("\n The first rotary encoder is used to modify the PWM-LED dim which must be connected on pin #1, not another, which s the only one PWM capable. \n") ;
-	printf("\n Some rotary encoders own a push button in their axis to trigger some extra feature, \n as to load or save something in memory, or change the feature to modify, etc... \n\n") ;
+	// printf("\n Two LEDs must be connected at #25 and #29 pins if you want to observe the rotation direction (normal or reverse). \n") ;
+	// printf(" The positive pin of the LED is to connect to the Raspi output pin, the negative pin of the LED to the minus (the \"ground\" or \"0V\"),\n but a serial resistor of about 1kOhms must be inserted to limit the current.") ;
+	// printf("\n The first rotary encoder is used to modify the PWM-LED dim which must be connected on pin #1, not another, which s the only one PWM capable. \n") ;
+	// printf("\n Some rotary encoders own a push button in their axis to trigger some extra feature, \n as to load or save something in memory, or change the feature to modify, etc... \n\n") ;
 	
 	while (1)
 	{
 		delay (10) ; // 10 ms default, decreases the loop speed (and the CPU load from about 25% to minus than 0.3%)
-		digitalWrite (LED_DOWN, OFF) ;	// OFF
-		digitalWrite (LED_UP, OFF) ; 	// OFF
+		// digitalWrite (LED_DOWN, OFF) ;	// OFF
+		// digitalWrite (LED_UP, OFF) ; 	// OFF
 
 		int step = 0 ;
 		unsigned char print = 0 ;
@@ -164,17 +180,17 @@ int main(void)
 		
 		step = 0 ;
 	
-		// check if any button modified value	
-		struct button *button = buttons ;
-		for (; button < buttons + numberofbuttons ; button++)
-		{
-			if (button->value != memo_button[step])
-			{	
-				print = 1 ;
-				memo_button[step] = button->value ;
-			}	
-			++step ;	
-		}
+		// // check if any button modified value	
+		// struct button *button = buttons ;
+		// for (; button < buttons + numberofbuttons ; button++)
+		// {
+		// 	if (button->value != memo_button[step])
+		// 	{	
+		// 		print = 1 ;
+		// 		memo_button[step] = button->value ;
+		// 	}	
+		// 	++step ;	
+		// }
 		
 		// and if any value modified, then display the new value (and all others too)
 		if (print) 
@@ -184,21 +200,21 @@ int main(void)
 			{
 				// encoder pins, name, address in memory, current value 
 				printf("A:%d B:%d \"%s\"[%d]:%-5d ", encoder->pin_a, encoder->pin_b, encoder->label, encoder, encoder->value) ;
-				if (encoder == encoders)
-				{ // first encoder is "reserved" for PWM_LED dim demo
-					pwmWrite (PWM_LED, encoder->value) ;
-				}
+				// if (encoder == encoders)
+				// { // first encoder is "reserved" for PWM_LED dim demo
+				// 	pwmWrite (PWM_LED, encoder->value) ;
+				// }
 			}
 			// current rotation speed, last pause duration, number of eliminated bounces from starting
 			printf("- speed: %-4d - gap: %-10d \nBUTTONS:  ", speed, gap) ;
 			
-			struct button *button = buttons ;
-			for (; button < buttons + numberofbuttons; button++)
-			{
-				// button pin, name, address in memory, current value
-				printf("\"%s\"[%d](pin:%d):%d  ", button->label, button, button->pin, button->value) ; 
-			}
-			printf("- for all, cancelled bounces: %-5d \n\n", bounces) ;
+			// struct button *button = buttons ;
+			// for (; button < buttons + numberofbuttons; button++)
+			// {
+			// 	// button pin, name, address in memory, current value
+			// 	printf("\"%s\"[%d](pin:%d):%d  ", button->label, button, button->pin, button->value) ; 
+			// }
+			// printf("- for all, cancelled bounces: %-5d \n\n", bounces) ;
 			print = 0 ;
 		}
 	}

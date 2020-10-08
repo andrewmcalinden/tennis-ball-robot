@@ -35,7 +35,7 @@
 #include "Wiring.h"
 #else
 // #include "WProgram.h"
-#include "pins_arduino.h"
+// #include "pins_arduino.h"
 #endif
 
 #include "utility/direct_pin_read.h"

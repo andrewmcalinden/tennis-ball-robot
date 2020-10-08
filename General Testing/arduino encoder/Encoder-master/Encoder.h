@@ -34,7 +34,7 @@
 #elif defined(WIRING)
 #include "Wiring.h"
 #else
-#include "WProgram.h"
+// #include "WProgram.h"
 #include "pins_arduino.h"
 #endif
 

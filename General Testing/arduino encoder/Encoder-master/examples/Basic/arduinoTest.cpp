@@ -4,8 +4,7 @@
  * This example code is in the public domain.
  */
 
-#include <Encoder.h>
-
+#include "../../Encoder.h"
 
 //   avoid using pins with LEDs attached
 

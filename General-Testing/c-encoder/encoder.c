@@ -150,7 +150,7 @@ void continueReading( void )
   if( RUNNING )
   {
     sem_post(&consumed);
-    printf("\nPosted consumed");
+    printf("\nPosted consumed\n");
   }
 }
 

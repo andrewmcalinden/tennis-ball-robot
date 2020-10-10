@@ -21,7 +21,7 @@ int main( )
   while( 1 )
   {
     char reading = getReading();
-    printf(reading);
+    printf("" + reading);
     /* ["critical section"]
      * Do whatever you like with the reading here
      * For now we are just printing a knob value.

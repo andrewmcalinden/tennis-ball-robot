@@ -52,7 +52,8 @@ int main( )
       value = 100;
     }
     printf( "%d\n", value );
-   /* ["critical section end"] */
+    printf("dog");
+    /* ["critical section end"] */
 
     continueReading(); 
   }

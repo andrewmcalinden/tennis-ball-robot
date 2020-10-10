@@ -25,17 +25,21 @@ char buffer[BUFFER_SIZE];
 int START = -1, END = 0;
 long long HOLD_TIME = 2000; // in milliseconds
 bool isSetup = false;
+int PA,PB,PC;
 
 bool setup( int pinA, int pinB, int pinC ) 
 {
   wiringPiSetup(); // will abort the program if fails in here
   pinMode( pinA, INPUT );
   pullUpDnControl( pinA, PUD_UP );
+  PA = pinA;
   pinMode( pinB, INPUT );
   pullUpDnControl( pinB, PUD_UP );
+  PB = pinB;
   pinMode( pinC, INPUT );
   pullUpDnControl( pinC, PUD_UP );
   bufferingEnabled = false;
+  PC = pinC;
 
   // TODO - add checks for these init functions below
   sem_init( &produced, 0, 0 );
@@ -133,7 +137,9 @@ char getReading( void )
   {
     fprintf( stderr, "Called getReading() without a successful startReading() call. Exiting..." );
   }
+  print("\nWaiting on produced")
   sem_wait(&produced);
+  print("\nGot produced")
   char value = buffer[START];
   START = (START+1) % BUFFER_SIZE;
   return value;
@@ -144,6 +150,7 @@ void continueReading( void )
   if( RUNNING )
   {
     sem_post(&consumed);
+    print("\nPosted consumed")
   }
 }
 
@@ -227,8 +234,8 @@ char getKnobReading( char prev )
   char state;
 
   do {
-    int A = digitalRead( 7 );
-    int B = digitalRead( 0 );
+    int A = digitalRead( PA );
+    int B = digitalRead( PB );
     state = 0x00;
 
     if( A == 0 ) 
@@ -257,7 +264,7 @@ char getKnobReading( char prev )
 bool getPushButtonReading( void )
 {
   // returns true when pressed, otherwise false
-  if( !digitalRead( 2 ) )
+  if( !digitalRead( PC ) )
   {
     return true;
   }

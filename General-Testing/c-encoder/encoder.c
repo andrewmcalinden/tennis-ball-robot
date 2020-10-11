@@ -137,7 +137,7 @@ char getReading( void )
   {
     fprintf( stderr, "Called getReading() without a successful startReading() call. Exiting..." );
   }
-  printf("\nWaiting on produced");
+  printf("\nWaiting on produced\n");
   sem_wait(&produced);
   printf("\nGot produced");
   char value = buffer[START];

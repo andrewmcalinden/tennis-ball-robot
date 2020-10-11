@@ -14,11 +14,11 @@ int main( )
 
   while(true){
     printf("pin a: ");
-    printf(digitalRead(gpioA));
+    printf("%d", digitalRead(gpioA));
     printf("\n");
 
     printf("pin b: ");
-    printf(digitalRead(gpioB));
+    printf("%d", digitalRead(gpioB));
     printf("\n");
 
     printf("\n");

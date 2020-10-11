@@ -13,8 +13,9 @@ int main( )
   setup( gpioA, gpioB, gpioC );
 
   while(true){
-    printf(digitalRead(gpioA));
-    printf(digitalReaD(gpioB));
+    printf("pin a: " + digitalRead(gpioA) + "\n");
+    printf("pin b: " + digitalRead(gpioB) + "\n");
+    printf("\n");
   }
 
 

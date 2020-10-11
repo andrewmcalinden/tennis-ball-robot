@@ -13,17 +13,17 @@ int main( )
 
   setup( gpioA, gpioB, gpioC );
 
-  // while(true){
-  //   printf("pin a: ");
-  //   printf("%d", digitalRead(gpioA));
-  //   printf("\n");
+  while(true){
+    printf("pin a: ");
+    printf("%d", digitalRead(gpioA));
+    printf("\n");
 
-  //   printf("pin b: ");
-  //   printf("%d", digitalRead(gpioB));
-  //   printf("\n");
+    printf("pin b: ");
+    printf("%d", digitalRead(gpioB));
+    printf("\n");
 
-  //   printf("\n");
-  // }
+    printf("\n");
+  }
 
 
   startReading(); // spawns the threads in the

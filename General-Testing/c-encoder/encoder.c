@@ -92,11 +92,11 @@ bool startReading( void )
       fprintf( stderr, "Failed to create monitor rotation thread!\n" );
       return false;
     }
-    if( pthread_create( &pushThread, NULL, ( void* ) &monitorPushButton, NULL ) != 0 )
-    {
-      fprintf( stderr, "Failed to create monitor push button thread!\n" );
-      return false;
-    }
+    // if( pthread_create( &pushThread, NULL, ( void* ) &monitorPushButton, NULL ) != 0 )
+    // {
+    //   fprintf( stderr, "Failed to create monitor push button thread!\n" );
+    //   return false;
+    // }
     RUNNING = 1;
   }
   else

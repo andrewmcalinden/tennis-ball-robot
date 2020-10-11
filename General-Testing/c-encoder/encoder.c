@@ -188,15 +188,15 @@ void monitorRotation( void *input )
       char reading2 = getKnobReading( reading1 );
       if( reading2 == 0x03 )
       {
-	char reading3 = getKnobReading( reading2 );
-	if( 2 == reading2 - reading3 && reading1 == 2 )
-	{
-	  add_to_buffer( CLOCKWISE_STEP );
-	} 
-	else
-	{
-	  add_to_buffer( COUNTER_CLOCKWISE_STEP );
-	}
+        char reading3 = getKnobReading( reading2 );
+        if( 2 == reading2 - reading3 && reading1 == 2 )
+        {
+          add_to_buffer( CLOCKWISE_STEP );
+        } 
+        else
+        {
+          add_to_buffer( COUNTER_CLOCKWISE_STEP );
+        }
       }
     }
   }

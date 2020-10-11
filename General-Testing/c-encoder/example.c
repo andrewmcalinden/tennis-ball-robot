@@ -1,5 +1,6 @@
 #include "encoder.h"
 #include <stdio.h>
+#include <wiringPi.h>
 
 // the gpio pins to use
 int gpioA = 7,

@@ -143,7 +143,7 @@ char getReading( void )
   sem_wait(&produced);
   //printf("\nGot produced\n");
   char value = buffer[START];
-  START = (START+1) % BUFFER_SIZE;
+  //START = (START+1) % BUFFER_SIZE;
   return value;
 }
 

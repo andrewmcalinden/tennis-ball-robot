@@ -203,7 +203,8 @@ void monitorRotation( void *input )
         }
       }
     }
-    printf("%d", value);
+    printf("\n%d\n", value);
+    printf("dog");
   }
 }
 

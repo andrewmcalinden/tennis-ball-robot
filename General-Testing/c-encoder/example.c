@@ -13,19 +13,6 @@ int main( )
 
   setup( gpioA, gpioB, gpioC );
 
-  while(true){
-    printf("pin a: ");
-    printf("%d", digitalRead(gpioA));
-    printf("\n");
-
-    printf("pin b: ");
-    printf("%d", digitalRead(gpioB));
-    printf("\n");
-
-    printf("\n");
-  }
-
-
   startReading(); // spawns the threads in the
   //enableBuffering(); // disabled by default
 
@@ -36,7 +23,6 @@ int main( )
   while( 1 )
   {
     char reading = getReading();
-    printf("\n%d\n", (int) reading);
     /* ["critical section"]
      * Do whatever you like with the reading here
      * For now we are just printing a knob value.
@@ -67,11 +53,9 @@ int main( )
       value = 100;
     }
     printf( "%d\n", value );
-    printf("dog\n");
     /* ["critical section end"] */
 
     continueReading(); 
   }
-
   return 0;
 }

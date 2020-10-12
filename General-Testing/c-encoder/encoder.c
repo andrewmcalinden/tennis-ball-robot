@@ -137,9 +137,9 @@ char getReading( void )
   {
     fprintf( stderr, "Called getReading() without a successful startReading() call. Exiting..." );
   }
-  printf("\nWaiting on produced\n");
+  //printf("\nWaiting on produced\n");
   sem_wait(&produced);
-  printf("\nGot produced\n");
+  //printf("\nGot produced\n");
   char value = buffer[START];
   START = (START+1) % BUFFER_SIZE;
   return value;
@@ -150,7 +150,7 @@ void continueReading( void )
   if( RUNNING )
   {
     sem_post(&consumed);
-    printf("\nPosted consumed\n");
+    //printf("\nPosted consumed\n");
   }
 }
 

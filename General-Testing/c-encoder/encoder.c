@@ -41,6 +41,7 @@ bool setup( int pinA, int pinB, int pinC )
   pullUpDnControl( pinC, PUD_UP );
   bufferingEnabled = false;
   PC = pinC;
+  setvbuf(stdout, NULL, _IONBF, 0);
 
   // TODO - add checks for these init functions below
   sem_init( &produced, 0, 0 );

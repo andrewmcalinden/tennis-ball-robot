@@ -47,7 +47,7 @@ int main( )
     printf( "%d\n", value );
     /* ["critical section end"] */
 
-    //continueReading(); 
+    continueReading(); 
   }
   return 0;
 }

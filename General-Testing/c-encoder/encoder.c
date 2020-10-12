@@ -16,8 +16,8 @@ pthread_mutex_t bufferLock;
 
 void add_to_buffer( char value );
 void monitorRotation( void * );
-void monitorPushButton( void * );
-bool getPushButtonReading( void );
+// void monitorPushButton( void * );
+// bool getPushButtonReading( void );
 char getKnobReading( char prev );
 
 int RUNNING = 0;
@@ -80,63 +80,65 @@ void setHoldTime( long long holdTime )
 bool startReading( void )
 {
   // TODO - spawn threads in a joinable state? is that necessary?
-  if( !isSetup )
-  {
-    fprintf( stderr, "Called startReading() without a successful setup (did you forget to call setup()?)" );
-    exit(-1);
-  }
-  if( !RUNNING )
-  { // start threads for the rotation and push button 
-    if( pthread_create( &rotateThread, NULL, ( void* ) &monitorRotation, NULL ) != 0 )
-    {
-      fprintf( stderr, "Failed to create monitor rotation thread!\n" );
-      return false;
-    }
-    // if( pthread_create( &pushThread, NULL, ( void* ) &monitorPushButton, NULL ) != 0 )
-    // {
-    //   fprintf( stderr, "Failed to create monitor push button thread!\n" );
-    //   return false;
-    // }
-    RUNNING = 1;
-  }
-  else
-  {
-    fprintf( stderr, "Call to startReading() when threads are already running!\n" );
-  }
+  // if( !isSetup )
+  // {
+  //   fprintf( stderr, "Called startReading() without a successful setup (did you forget to call setup()?)" );
+  //   exit(-1);
+  // }
+  // if( !RUNNING )
+  // { // start threads for the rotation and push button 
+  //   if( pthread_create( &rotateThread, NULL, ( void* ) &monitorRotation, NULL ) != 0 )
+  //   {
+  //     fprintf( stderr, "Failed to create monitor rotation thread!\n" );
+  //     return false;
+  //   }
+  //   // if( pthread_create( &pushThread, NULL, ( void* ) &monitorPushButton, NULL ) != 0 )
+  //   // {
+  //   //   fprintf( stderr, "Failed to create monitor push button thread!\n" );
+  //   //   return false;
+  //   // }
+  //   pthread_create(&rotateThread, NULL, (void *)&monitorRotation, NULL)
+  pthread_create(&rotateThread, NULL, (void *)&monitorRotation, NULL)
+  RUNNING = 1;
   return true;
+  // else
+  // {
+  //   fprintf( stderr, "Call to startReading() when threads are already running!\n" );
+  // }
 }
 
 void stopReading( void )
 {
-  if( RUNNING == 0 )
-  {
-    if( pthread_cancel( rotateThread ) != 0 )
-    {
-      fprintf( stderr, "Failed to stop monitor rotation thread!\n" );
-    }
-    if( pthread_cancel( pushThread ) != 0 )
-    {
-      fprintf( stderr, "Failed to stop monitor push button thread!\n" );
-    }
-    RUNNING = 0;
-  }
-  else
-  {
-    fprintf( stderr, "Call to stopReading when threads are already stopped!\n" );
-  }
+  // if( RUNNING == 0 )
+  // {
+  //   if( pthread_cancel( rotateThread ) != 0 )
+  //   {
+  //     fprintf( stderr, "Failed to stop monitor rotation thread!\n" );
+  //   }
+  //   if( pthread_cancel( pushThread ) != 0 )
+  //   {
+  //     fprintf( stderr, "Failed to stop monitor push button thread!\n" );
+  //   }
+  //   RUNNING = 0;
+  // }
+  // else
+  // {
+  //   fprintf( stderr, "Call to stopReading when threads are already stopped!\n" );
+  // }
+  pthread_cancel(rotateThread)
 }
 
 char getReading( void )
 {
-  if( !isSetup )
-  {
-    fprintf( stderr, "Called getReading() without a successful setup (did you forget to call setup()?)" );
-    exit(-1);
-  }
-  if( !RUNNING )
-  {
-    fprintf( stderr, "Called getReading() without a successful startReading() call. Exiting..." );
-  }
+  // if( !isSetup )
+  // {
+  //   fprintf( stderr, "Called getReading() without a successful setup (did you forget to call setup()?)" );
+  //   exit(-1);
+  // }
+  // if( !RUNNING )
+  // {
+  //   fprintf( stderr, "Called getReading() without a successful startReading() call. Exiting..." );
+  // }
   //printf("\nWaiting on produced\n");
   sem_wait(&produced);
   //printf("\nGot produced\n");
@@ -147,11 +149,12 @@ char getReading( void )
 
 void continueReading( void )
 {
-  if( RUNNING )
-  {
-    sem_post(&consumed);
-    //printf("\nPosted consumed\n");
-  }
+  // if( RUNNING )
+  // {
+  //   sem_post(&consumed);
+  //   //printf("\nPosted consumed\n");
+  // }
+  sem_post(&consumed);
 }
 
 void add_to_buffer( char value )
@@ -202,32 +205,32 @@ void monitorRotation( void *input )
   }
 }
 
-void monitorPushButton( void * input )
-{
-  int timeHeldDown = 0;
-  while(1)
-  {
-    if( getPushButtonReading() )
-    {
-      add_to_buffer( PUSHED );
-      timeHeldDown = 0;
-      while( getPushButtonReading() )
-      {
-	timeHeldDown += 1;
-	if( timeHeldDown >= HOLD_TIME * 2000 )
-	{ 
-	  add_to_buffer( PUSHED_AND_HELD );
-	  break;
-	}
-      }
-      while( getPushButtonReading() )
-      {
-	// wait for it to be released
-      }
-    }
-    //usleep( 1000 * 1 ); // 1 millisecond sleep
-  }
-}
+// void monitorPushButton( void * input )
+// {
+//   int timeHeldDown = 0;
+//   while(1)
+//   {
+//     if( getPushButtonReading() )
+//     {
+//       add_to_buffer( PUSHED );
+//       timeHeldDown = 0;
+//       while( getPushButtonReading() )
+//       {
+// 	timeHeldDown += 1;
+// 	if( timeHeldDown >= HOLD_TIME * 2000 )
+// 	{ 
+// 	  add_to_buffer( PUSHED_AND_HELD );
+// 	  break;
+// 	}
+//       }
+//       while( getPushButtonReading() )
+//       {
+// 	// wait for it to be released
+//       }
+//     }
+//     //usleep( 1000 * 1 ); // 1 millisecond sleep
+//   }
+// }
 
 char getKnobReading( char prev )
 {
@@ -261,12 +264,12 @@ char getKnobReading( char prev )
   return state;
 }
 
-bool getPushButtonReading( void )
-{
-  // returns true when pressed, otherwise false
-  if( !digitalRead( PC ) )
-  {
-    return true;
-  }
-  return false;
-}
+// bool getPushButtonReading( void )
+// {
+//   // returns true when pressed, otherwise false
+//   if( !digitalRead( PC ) )
+//   {
+//     return true;
+//   }
+//   return false;
+// }

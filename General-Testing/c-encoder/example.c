@@ -14,7 +14,7 @@ int main( )
   setup( gpioA, gpioB, gpioC );
 
   startReading(); // spawns the threads in the
-  enableBuffering(); // disabled by default
+  //enableBuffering(); // disabled by default
 
   // disable output buffering to stdout
   setvbuf(stdout, NULL, _IONBF, 0);

@@ -98,7 +98,7 @@ bool startReading( void )
   //   //   return false;
   //   // }
   //   pthread_create(&rotateThread, NULL, (void *)&monitorRotation, NULL)
-  pthread_create(&rotateThread, NULL, (void *)&monitorRotation, NULL)
+  pthread_create(&rotateThread, NULL, (void *)&monitorRotation, NULL);
   RUNNING = 1;
   return true;
   // else
@@ -125,7 +125,7 @@ void stopReading( void )
   // {
   //   fprintf( stderr, "Call to stopReading when threads are already stopped!\n" );
   // }
-  pthread_cancel(rotateThread)
+  pthread_cancel(rotateThread);
 }
 
 char getReading( void )

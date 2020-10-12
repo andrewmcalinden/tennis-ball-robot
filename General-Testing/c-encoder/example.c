@@ -44,14 +44,6 @@ int main( )
     {
       value--;
     }
-    else if( reading == PUSHED )
-    {
-      value = 0;
-    }
-    else if( reading == PUSHED_AND_HELD )
-    {
-      value = 100;
-    }
     printf( "%d\n", value );
     /* ["critical section end"] */
 

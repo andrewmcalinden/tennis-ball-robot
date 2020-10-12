@@ -225,7 +225,7 @@ void monitorPushButton( void * input )
 	// wait for it to be released
       }
     }
-    usleep( 1000 * 1 ); // 10 millisecond sleep
+    usleep( 1000 * 1 ); // 1 millisecond sleep
   }
 }
 

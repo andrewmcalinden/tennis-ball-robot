@@ -21,9 +21,10 @@ void monitorRotation( void * );
 char getKnobReading( char prev );
 
 int RUNNING = 0;
-char buffer[BUFFER_SIZE];
-int START = -1, END = 0;
-long long HOLD_TIME = 2000; // in milliseconds
+int value = 0;
+//char buffer[BUFFER_SIZE];
+//int START = -1, END = 0;
+//long long HOLD_TIME = 2000; // in milliseconds
 bool isSetup = false;
 int PA,PB,PC;
 
@@ -57,25 +58,25 @@ void clearBuffer( void )
   //sem_post(&consumed); TODO - is this right?
 }
 
-bool enableBuffering( void )
-{
-  clearBuffer();
-  bufferingEnabled = true;
-  return true;
-}
+// bool enableBuffering( void )
+// {
+//   clearBuffer();
+//   bufferingEnabled = true;
+//   return true;
+// }
 
-bool disableBuffering( void )
-{
-  clearBuffer();
-  bufferingEnabled = false;
-  return true;
-}
+// bool disableBuffering( void )
+// {
+//   clearBuffer();
+//   bufferingEnabled = false;
+//   return true;
+// }
 
-void setHoldTime( long long holdTime )
-{ // function to set the time (in milliseconds) of distinguishing between
-  // a button press and a button hold
-  HOLD_TIME = holdTime;
-}
+// void setHoldTime( long long holdTime )
+// { // function to set the time (in milliseconds) of distinguishing between
+//   // a button press and a button hold
+//   HOLD_TIME = holdTime;
+// }
 
 bool startReading( void )
 {
@@ -142,7 +143,7 @@ char getReading( void )
   //printf("\nWaiting on produced\n");
   sem_wait(&produced);
   //printf("\nGot produced\n");
-  char value = buffer[START];
+  // char value = buffer[START];
   //START = (START+1) % BUFFER_SIZE;
   return value;
 }
@@ -157,29 +158,29 @@ void continueReading( void )
   sem_post(&consumed);
 }
 
-void add_to_buffer( char value )
-{
-  pthread_mutex_lock(&bufferLock);
-  if( START == END )
-  {
-    sem_wait(&consumed);
-  }
-  if( START == -1 )
-  {
-    START++;
-  }
-  buffer[END] = value;
-  END = ( END + 1 ) % BUFFER_SIZE;
+// void add_to_buffer( char value )
+// {
+//   pthread_mutex_lock(&bufferLock);
+//   if( START == END )
+//   {
+//     sem_wait(&consumed);
+//   }
+//   if( START == -1 )
+//   {
+//     START++;
+//   }
+//   buffer[END] = value;
+//   END = ( END + 1 ) % BUFFER_SIZE;
 
-  sem_post( &produced );
+//   sem_post( &produced );
 
-  if( !bufferingEnabled )
-  {
-    sem_wait(&consumed);
-    clearBuffer();
-  }
-  pthread_mutex_unlock(&bufferLock);
-}
+//   if( !bufferingEnabled )
+//   {
+//     sem_wait(&consumed);
+//     clearBuffer();
+//   }
+//   pthread_mutex_unlock(&bufferLock);
+// }
 
 void monitorRotation( void *input )
 {
@@ -194,11 +195,11 @@ void monitorRotation( void *input )
         char reading3 = getKnobReading( reading2 );
         if( 2 == reading2 - reading3 && reading1 == 2 )
         {
-          add_to_buffer( CLOCKWISE_STEP );
+          value++;
         } 
         else
         {
-          add_to_buffer( COUNTER_CLOCKWISE_STEP );
+          value--;
         }
       }
     }

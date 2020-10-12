@@ -51,12 +51,12 @@ bool setup( int pinA, int pinB, int pinC )
   return true;
 }
 
-void clearBuffer( void )
-{
-  START = -1;
-  END = 0;
-  //sem_post(&consumed); TODO - is this right?
-}
+// void clearBuffer( void )
+// {
+//   START = -1;
+//   END = 0;
+//   //sem_post(&consumed); TODO - is this right?
+// }
 
 // bool enableBuffering( void )
 // {
@@ -129,34 +129,34 @@ void stopReading( void )
   pthread_cancel(rotateThread);
 }
 
-char getReading( void )
-{
-  // if( !isSetup )
-  // {
-  //   fprintf( stderr, "Called getReading() without a successful setup (did you forget to call setup()?)" );
-  //   exit(-1);
-  // }
-  // if( !RUNNING )
-  // {
-  //   fprintf( stderr, "Called getReading() without a successful startReading() call. Exiting..." );
-  // }
-  //printf("\nWaiting on produced\n");
-  sem_wait(&produced);
-  //printf("\nGot produced\n");
-  // char value = buffer[START];
-  //START = (START+1) % BUFFER_SIZE;
-  return value;
-}
+// char getReading( void )
+// {
+//   // if( !isSetup )
+//   // {
+//   //   fprintf( stderr, "Called getReading() without a successful setup (did you forget to call setup()?)" );
+//   //   exit(-1);
+//   // }
+//   // if( !RUNNING )
+//   // {
+//   //   fprintf( stderr, "Called getReading() without a successful startReading() call. Exiting..." );
+//   // }
+//   //printf("\nWaiting on produced\n");
+//   sem_wait(&produced);
+//   //printf("\nGot produced\n");
+//   // char value = buffer[START];
+//   //START = (START+1) % BUFFER_SIZE;
+//   return value;
+// }
 
-void continueReading( void )
-{
-  // if( RUNNING )
-  // {
-  //   sem_post(&consumed);
-  //   //printf("\nPosted consumed\n");
-  // }
-  sem_post(&consumed);
-}
+// void continueReading( void )
+// {
+//   // if( RUNNING )
+//   // {
+//   //   sem_post(&consumed);
+//   //   //printf("\nPosted consumed\n");
+//   // }
+//   sem_post(&consumed);
+// }
 
 // void add_to_buffer( char value )
 // {

@@ -1,4 +1,4 @@
-#include <wiringPi.h>
+//#include <wiringPi.h> MIGHT NEED THIS, NEVER TESTED WITHOUT IT
 #include "motor.h"
 
 Motor::Motor(int dirForwardPinLoc, int powerPinLoc)

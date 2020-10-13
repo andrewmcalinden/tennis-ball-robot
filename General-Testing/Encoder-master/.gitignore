@@ -1,7 +1,0 @@
-build
-dist
-*.egg
-*.egg-info
-
-.cache
-*__pycache__*

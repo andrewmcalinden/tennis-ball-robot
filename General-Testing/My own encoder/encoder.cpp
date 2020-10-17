@@ -21,7 +21,7 @@ Encoder::Encoder(int pinALoc, int pinBLoc)
     wiringPiISR(pinB, INT_EDGE_BOTH, &Encoder::update);
 }
 
-void Encoder::update(void)
+static void Encoder::update(void)
 {
     unsigned char state = this->state & 3;
     if (digitalRead(pinA))

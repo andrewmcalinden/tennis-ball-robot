@@ -3,7 +3,7 @@
 
 int main()
 {
-    Encoder enc(7, 2);
+    Encoder enc(7, 0);
     while(true)
     {
         std::cout << end.read() << "\n";

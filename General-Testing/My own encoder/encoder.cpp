@@ -23,7 +23,7 @@ Encoder::Encoder(int pinALoc, int pinBLoc)
 
 void Encoder::update()
 {
-    int state = this->state & 3;
+    unsigned char state = this->state & 3;
     if (digitalRead(pinA))
     {
         state |= 4;

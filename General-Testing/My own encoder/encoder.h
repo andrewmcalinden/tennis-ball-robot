@@ -5,7 +5,7 @@ private:
     int pinA;
     int pinB;
     int position;
-    double state;
+    unsigned char state;
 
 public:
     Encoder(int pinALoc, int pinBLoc);

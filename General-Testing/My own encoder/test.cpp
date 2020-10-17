@@ -1,41 +1,38 @@
 #include <wiringPi.h>
 //#include "encoder.h"
+#include "test.h"
 #include<iostream>
 
-int position;
-unsinged char state;
+int position = 0;
+unsinged char state = 0;
 
-    void
-    setup()
+void setup()
 {
     wiringPiSetup();
     pinMode(7, INPUT);
     pinMode(0, INPUT);
 
-    position = 0;
-    state = 0;
-
-    if (digitalRead(pinA))
+    if (digitalRead(7))
     {
         state |= 1;
     }
-    if (digitalRead(pinB))
+    if (digitalRead(0))
     {
         state |= 2;
     }
-    wiringPiISR(pinA, INT_EDGE_BOTH, &update);
-    wiringPiISR(pinB, INT_EDGE_BOTH, &update);
+    wiringPiISR(7, INT_EDGE_BOTH, &update);
+    wiringPiISR(0, INT_EDGE_BOTH, &update);
 }
 
 
 void update(void)
 {
     unsigned char currentState = state & 3;
-    if (digitalRead(pinA))
+    if (digitalRead(7))
     {
         currentState |= 4;
     }
-    if (digitalRead(pinB))
+    if (digitalRead(0))
     {
         currentState |= 8;
     }

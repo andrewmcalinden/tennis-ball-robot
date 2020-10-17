@@ -21,33 +21,33 @@ Encoder::Encoder(int pinALoc, int pinBLoc)
     wiringPiISR(pinB, INT_EDGE_BOTH, &Encoder::update);
 }
 
-static void Encoder::update(void)
+void Encoder::update(void)
 {
-    unsigned char state = this->state & 3;
-    if (digitalRead(pinA))
+    unsigned char currentState = state & 3;
+    if (digitalRead(7))
     {
-        state |= 4;
+        currentState |= 4;
     }
-    if (digitalRead(pinB))
+    if (digitalRead(0))
     {
-        state |= 8;
+        currentState |= 8;
     }
 
-    this->state = state >> 2;
+    state = currentState >> 2;
 
-    if (state == 1 || state == 7 || state == 8 || state == 14)
+    if (currentState == 1 || currentState == 7 || currentState == 8 || currentState == 14)
     {
         position += 1;
     }
-    else if (state == 2 || state == 4 || state == 11 || state == 13)
+    else if (currentState == 2 || currentState == 4 || currentState == 11 || currentState == 13)
     {
         position -= 1;
     }
-    else if(state == 3 || state == 12)
+    else if (currentState == 3 || currentState == 12)
     {
         position += 2;
     }
-    else if(state == 6 || state == 9)
+    else if (currentState == 6 || currentState == 9)
     {
         position -= 2;
     }

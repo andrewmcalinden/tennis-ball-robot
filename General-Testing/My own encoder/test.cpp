@@ -6,25 +6,6 @@
 int position = 0;
 unsigned char state = 0;
 
-void setup()
-{
-    wiringPiSetup();
-    pinMode(7, INPUT);
-    pinMode(0, INPUT);
-
-    if (digitalRead(7))
-    {
-        state |= 1;
-    }
-    if (digitalRead(0))
-    {
-        state |= 2;
-    }
-    wiringPiISR(7, INT_EDGE_BOTH, &update);
-    wiringPiISR(0, INT_EDGE_BOTH, &update);
-}
-
-
 void update(void)
 {
     unsigned char currentState = state & 3;
@@ -55,6 +36,24 @@ void update(void)
     {
         position -= 2;
     }
+}
+
+void setup()
+{
+    wiringPiSetup();
+    pinMode(7, INPUT);
+    pinMode(0, INPUT);
+
+    if (digitalRead(7))
+    {
+        state |= 1;
+    }
+    if (digitalRead(0))
+    {
+        state |= 2;
+    }
+    wiringPiISR(7, INT_EDGE_BOTH, &update);
+    wiringPiISR(0, INT_EDGE_BOTH, &update);
 }
 
 int read()

@@ -4,7 +4,7 @@
 #include<iostream>
 
 int position = 0;
-unsinged char state = 0;
+unsigned char state = 0;
 
 void setup()
 {

@@ -11,4 +11,5 @@ public:
     Encoder(int pinALoc, int pinBLoc);
     void update(void);
     int read();
+    static void updateCallback(void *this_pointer);
 };

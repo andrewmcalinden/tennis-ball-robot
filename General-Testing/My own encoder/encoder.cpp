@@ -17,8 +17,8 @@ Encoder::Encoder(int pinALoc, int pinBLoc)
     {
         state |= 2;
     }
-    wiringPiISR(pinA, INT_EDGE_BOTH, &update);
-    wiringPiISR(pinB, INT_EDGE_BOTH, &update);
+    wiringPiISR(pinA, INT_EDGE_BOTH, &Encoder::updateCallback, this);
+    wiringPiISR(pinB, INT_EDGE_BOTH, &Encoder::updateCallback, this);
 }
 
 void Encoder::update(void)
@@ -51,6 +51,12 @@ void Encoder::update(void)
     {
         position -= 2;
     }
+}
+
+static void updateCallback(void* this_pointer)
+{
+    Encoder* self = static_cast<Encoder*>(this_pointer);
+    self->update();
 }
 
 int Encoder::read()

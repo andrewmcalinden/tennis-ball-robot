@@ -1,6 +1,4 @@
 #include <wiringPi.h>
-//#include "encoder.h"
-#include "test.h"
 #include <iostream>
 
 int position = 0;

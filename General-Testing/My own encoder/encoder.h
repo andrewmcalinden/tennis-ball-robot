@@ -9,6 +9,6 @@ private:
 
 public:
     Encoder(int pinALoc, int pinBLoc);
-    static void update(void);
+    void update(void);
     int read();
 };

@@ -17,8 +17,8 @@ Encoder::Encoder(int pinALoc, int pinBLoc)
     {
         state |= 2;
     }
-    wiringPiISR(pinA, INT_EDGE_BOTH, &Encoder::update);
-    wiringPiISR(pinB, INT_EDGE_BOTH, &Encoder::update);
+    wiringPiISR(pinA, INT_EDGE_BOTH, &update);
+    wiringPiISR(pinB, INT_EDGE_BOTH, &update);
 }
 
 void Encoder::update(void)

@@ -7,6 +7,6 @@ int main()
     Encoder enc(7, 0);
     while (true)
     {
-        std::cout << end.read() << "\n";
+        std::cout << enc.read() << "\n";
     }
 }

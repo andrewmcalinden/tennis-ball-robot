@@ -67,6 +67,6 @@ int main()
     setup();
     while(true)
     {
-        std::cout << enc.read() << "\n";
+        std::cout << read() << "\n";
     }
 }

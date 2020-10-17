@@ -34,7 +34,7 @@ class Encoder(object):
     It updates the current position based on previous and current states
     of the rotary encoder.
     """
-    def __update(self, channel):
+    def __update(self, channel): #self is whatever you call it on
         state = self.state & 3
         if GPIO.input(self.A):
             state |= 4

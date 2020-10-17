@@ -4,10 +4,11 @@ class Encoder
 private:
     int pinA;
     int pinB;
-    double position;
+    int position;
     double state;
 
 public:
     Encoder(int pinALoc, int pinBLoc);
     void update();
+    int read();
 };

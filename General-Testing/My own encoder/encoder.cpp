@@ -56,7 +56,7 @@ void Encoder::update()
     }
 }
 
-static void Encoder::EncoderHouse::updateCallback(void)
+void Encoder::EncoderHouse::updateCallback(void)
 {
     encoderResident.update();
 }

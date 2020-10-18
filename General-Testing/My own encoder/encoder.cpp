@@ -55,7 +55,7 @@ void Encoder::update()
 
 static void updateCallback(void)
 {
-    Encoder self = static_cast<Encoder>(this);
+    Encoder* self = static_cast<Encoder*>(this);
     self->update();
 }
 

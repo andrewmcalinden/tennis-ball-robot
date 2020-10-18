@@ -6,7 +6,6 @@ private:
     int pinB;
     int position;
     unsigned char state;
-    Encoder* operator=(const Encoder& enc);
     class EncoderHouse
     {
         public:
@@ -16,6 +15,7 @@ private:
 
 public:
     Encoder(int pinALoc, int pinBLoc);
+    Encoder(const Encoder& enc);
     void update();
     int read();
     //static void updateCallback(void);

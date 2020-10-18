@@ -17,8 +17,11 @@ Encoder::Encoder(int pinALoc, int pinBLoc)
     {
         state |= 2;
     }
-    wiringPiISR(pinA, INT_EDGE_BOTH, &Encoder::updateCallback);
-    wiringPiISR(pinB, INT_EDGE_BOTH, &Encoder::updateCallback);
+
+    EncoderHouse::encoderResident = this;
+
+    wiringPiISR(pinA, INT_EDGE_BOTH, &Encoder::EncoderHouse::updateCallback);
+    wiringPiISR(pinB, INT_EDGE_BOTH, &Encoder::EncoderHouse::updateCallback);
 }
 
 void Encoder::update()
@@ -53,10 +56,9 @@ void Encoder::update()
     }
 }
 
-static void updateCallback(void)
+static void Encoder::EncoderHouse::updateCallback(void)
 {
-    Encoder* self = static_cast<Encoder*>(this);
-    self->update();
+    encoderResident.update();
 }
 
 int Encoder::read()

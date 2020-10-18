@@ -8,10 +8,9 @@ private:
     unsigned char state;
     class EncoderHouse
     {
-        private:
-            static Encoder encoderResident;
         public:
             static void updateCallback(void);
+            static Encoder encoderResident;
     };
 
 public:

@@ -9,7 +9,7 @@ private:
 
 public:
     Encoder(int pinALoc, int pinBLoc);
-    void update(void);
+    void update();
     int read();
-    static void updateCallback(void *this_pointer);
+    static void updateCallback(void);
 };

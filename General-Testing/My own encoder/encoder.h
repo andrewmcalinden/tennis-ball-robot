@@ -6,7 +6,7 @@ private:
     int pinB;
     int position;
     unsigned char state;
-    Encoder& operator=(const Encoder &enc);
+    Encoder* operator=(const Encoder& enc);
     class EncoderHouse
     {
         public:

@@ -15,7 +15,7 @@ private:
 
 public:
     Encoder(int pinALoc, int pinBLoc);
-    Encoder(const Encoder& enc);
+    //Encoder(const Encoder& enc);
     void update();
     int read();
     //static void updateCallback(void);

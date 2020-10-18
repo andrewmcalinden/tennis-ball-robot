@@ -24,13 +24,13 @@ Encoder::Encoder(int pinALoc, int pinBLoc)
     wiringPiISR(pinB, INT_EDGE_BOTH, &Encoder::EncoderHouse::updateCallback);
 }
 
-Encoder::Encoder(const Encoder &enc)
-{
-    pinA = enc.pinA;
-    pinB = enc.pinB;
-    position = 0;
-    state = 0;
-}
+// Encoder::Encoder(const Encoder &enc)
+// {
+//     pinA = enc.pinA;
+//     pinB = enc.pinB;
+//     position = 0;
+//     state = 0;
+// }
 
 void Encoder::update()
 {

@@ -53,9 +53,9 @@ void Encoder::update()
     }
 }
 
-static void updateCallback(void* this_pointer)
+static void updateCallback(void)
 {
-    Encoder* self = static_cast<Encoder*>(this_pointer);
+    Encoder self = static_cast<Encoder>(this_pointer);
     self->update();
 }
 

@@ -12,7 +12,7 @@ int main()
     EncoderL::begin();
     while(true)
     {
-        std::cout << "Left: " << EncoderL::read() << "\n";
+        //std::cout << "Left: " << EncoderL::read() << "\n";
         std::cout << "Right: " << EncoderR::read() << "\n";
     }
 }

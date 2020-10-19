@@ -10,6 +10,7 @@ unsigned char EncoderR::state = 0;
 int main()
 {
     EncoderL::begin();
+    EncoderR::begin();
     while(true)
     {
         std::cout << "Left: " << EncoderL::read() << "\n";

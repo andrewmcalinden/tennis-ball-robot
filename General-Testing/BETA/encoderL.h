@@ -5,7 +5,7 @@ private:
     static int pinA;
     static int pinB;
     static int position;
-    static unsigned char;
+    static unsigned char state;
 
 public:
     EncoderL();

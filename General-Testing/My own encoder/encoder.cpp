@@ -66,7 +66,7 @@ void Encoder::update()
 
 void Encoder::EncoderHouse::updateCallback(void)
 {
-    encoderResident.update();
+    Encoderhouse::encoderResident.update();
 }
 
 int Encoder::read()

@@ -2,8 +2,8 @@
 class EncoderL
 {
 private:
-    static int const pinA = 2;
-    static int const pinB = 3;
+    static int const pinA = 0;
+    static int const pinB = 7;
     static int position;
     static unsigned char state;
 

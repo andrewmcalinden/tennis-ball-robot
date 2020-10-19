@@ -6,9 +6,9 @@ unsigned char EncoderL::state = 0;
 
 int main()
 {
-    EncoderL enc;
+    EncoderL::begin();
     while(true)
     {
-        std::cout << enc.read() << "\n";
+        std::cout << EncoderL::read() << "\n";
     }
 }

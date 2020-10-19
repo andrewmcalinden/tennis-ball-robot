@@ -35,11 +35,11 @@ Encoder::Encoder(int pinALoc, int pinBLoc)
 void Encoder::update()
 {
     unsigned char currentState = state & 3;
-    if (digitalRead(7))
+    if (digitalRead(pinA))
     {
         currentState |= 4;
     }
-    if (digitalRead(0))
+    if (digitalRead(pinB))
     {
         currentState |= 8;
     }

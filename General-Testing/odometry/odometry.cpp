@@ -61,8 +61,6 @@ void updatePos(double leftReading, double rightReading)
     double movement = (leftChange + rightChange) / 2.0; // total change in movement by robot (dx)
     double dTheta = angleChangeRad;
 
-    std::cout << movement << " " << dTheta << "\n";
-
     double sinTheta = sin(dTheta);
     double cosTheta = cos(dTheta);
 

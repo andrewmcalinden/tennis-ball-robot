@@ -1,6 +1,11 @@
 #include "encoderL.h"
 EncoderL::EncoderL()
 {
+    pinA = 2;
+    pinB = 3;
+    position = 0;
+    state = 0;
+
     wiringPiSetup();
     pinMode(pinA, INPUT);
     pinMode(pinB, INPUT);

@@ -1,23 +1,15 @@
 #include<iostream>
-#include <cstdlib>
-#include <ctime>
-
 #include "odometry.h"
+#include "../BETA/encoderL.h"
+#include "../BETA/encoderR.h"
 
 int main()
 {
-    std::clock_t timer;
-    timer = std::clock();
-
-    srand((unsigned)time(0));
+    EncoderL::begin();
+    EncoderR::begin();
     while (true)
     {
-        double leftReading = rand();
-        double rightReading = rand();
-
-        updatePos(leftReading, rightReading);
-
-        double time = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
-        std::cout << time << "\n";
+        updatePos(EncoderL::read(), EncoderR::read());
+        std::cout << "X: " << getX() << "Y: " << getY() << "Heading: " << getHeading();
     }
 }

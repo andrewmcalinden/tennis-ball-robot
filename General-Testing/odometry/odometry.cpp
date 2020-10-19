@@ -1,9 +1,10 @@
 #include <cmath>
-#include <iostream>
 
 #include "odometry.h"
 #include "vector.h"
 #include "../math/mathUtil.h"
+#include "../BETA/encoderL.h"
+#include "../BETA/encoderR.h"
 
 #define TRACKWIDTH 16
 #define EPSILON 1.0e-6
@@ -12,11 +13,16 @@ double globalXPos = 0;
 double globalYPos = 0;
 double globalHeading = 0; //in degrees, from -180 to 180
 
-
 double prevLeft = 0;
 double prevRight = 0;
 double leftChange = 0;
 double rightChange = 0;
+
+int EncoderL::position = 0;
+unsigned char EncoderL::state = 0;
+
+int EncoderR::position = 0;
+unsigned char EncoderR::state = 0;
 
 bool epsilonEquals(double value1, double value2)
 {

@@ -1,5 +1,4 @@
 #include "motor.h"
-#include <iostream>
 
 #define DIRECTION_PIN_FORWARD 2
 #define POWER_PIN 23 //GPIO 13

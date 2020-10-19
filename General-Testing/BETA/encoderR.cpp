@@ -1,5 +1,5 @@
 #include "encoderR.h"
-void EncoderL::begin()
+void EncoderR::begin()
 {
     wiringPiSetup();
     pinMode(pinA, INPUT);
@@ -18,7 +18,7 @@ void EncoderL::begin()
     wiringPiISR(pinB, INT_EDGE_BOTH, &update);
 }
 
-void EncoderL::update()
+void EncoderR::update()
 {
     unsigned char currentState = state & 3;
     if (digitalRead(pinA))
@@ -50,7 +50,7 @@ void EncoderL::update()
     }
 }
 
-int EncoderL::read()
+int EncoderR::read()
 {
     return position;
 }

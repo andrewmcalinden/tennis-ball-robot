@@ -1,5 +1,5 @@
 #include <wiringPi.h>
-class EncoderL
+class EncoderR
 {
 private:
     static int const pinA = 2;

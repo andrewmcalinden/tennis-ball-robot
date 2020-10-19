@@ -1,22 +1,22 @@
 #include "encoderL.h"
 EncoderL::EncoderL()
 {
-    pinA = 2;
-    pinB = 3;
-    position = 0;
-    state = 0;
+    EncoderL::pinA = 2;
+    EncoderL::pinB = 3;
+    EncoderL::position = 0;
+    EncoderL::state = 0;
 
     wiringPiSetup();
-    pinMode(pinA, INPUT);
-    pinMode(pinB, INPUT);
+    pinMode(EncoderL::pinA, INPUT);
+    pinMode(EncoderL::pinB, INPUT);
 
-    if (digitalRead(pinA))
+    if (digitalRead(EncoderL::pinA))
     {
-        state |= 1;
+        EncoderL::state |= 1;
     }
-    if (digitalRead(pinB))
+    if (digitalRead(EncoderL::pinB))
     {
-        state |= 2;
+        EncoderL::state |= 2;
     }
 
     wiringPiISR(pinA, INT_EDGE_BOTH, &update);
@@ -25,37 +25,37 @@ EncoderL::EncoderL()
 
 void EncoderL::update()
 {
-    unsigned char currentState = state & 3;
-    if (digitalRead(pinA))
+    unsigned char currentState = EncoderL::state & 3;
+    if (digitalRead(EncoderL::pinA))
     {
         currentState |= 4;
     }
-    if (digitalRead(pinB))
+    if (digitalRead(EncoderL::pinB))
     {
         currentState |= 8;
     }
 
-    state = currentState >> 2;
+    EncoderL::state = currentState >> 2;
 
     if (currentState == 1 || currentState == 7 || currentState == 8 || currentState == 14)
     {
-        position += 1;
+        EncoderL::position += 1;
     }
     else if (currentState == 2 || currentState == 4 || currentState == 11 || currentState == 13)
     {
-        position -= 1;
+        EncoderL::position -= 1;
     }
     else if (currentState == 3 || currentState == 12)
     {
-        position += 2;
+        EncoderL::position += 2;
     }
     else if (currentState == 6 || currentState == 9)
     {
-        position -= 2;
+        EncoderL::position -= 2;
     }
 }
 
 int EncoderL::read()
 {
-    return position;
+    return EncoderL::position;
 }

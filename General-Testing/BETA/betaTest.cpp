@@ -1,5 +1,4 @@
-
-#include "encoderL.cpp"
+#include "encoderL.h"
 #include<iostream>
 int main()
 {

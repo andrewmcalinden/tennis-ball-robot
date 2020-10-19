@@ -20,8 +20,8 @@ Encoder::Encoder(int pinALoc, int pinBLoc)
 
     Encoder::EncoderHouse::encoderResident = *this;
 
-    wiringPiISR(pinA, INT_EDGE_BOTH, &Encoder::EncoderHouse::encoderResident::updateCallback);
-    wiringPiISR(pinB, INT_EDGE_BOTH, &Encoder::EncoderHouse::encoderResident::updateCallback);
+    wiringPiISR(pinA, INT_EDGE_BOTH, &Encoder::EncoderHouse::updateCallback);
+    wiringPiISR(pinB, INT_EDGE_BOTH, &Encoder::EncoderHouse::updateCallback);
 }
 
 // Encoder::Encoder(const Encoder &enc)

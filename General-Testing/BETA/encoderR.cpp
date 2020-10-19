@@ -1,4 +1,4 @@
-#include "encoderL.h"
+#include "encoderR.h"
 void EncoderL::begin()
 {
     wiringPiSetup();

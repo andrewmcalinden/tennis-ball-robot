@@ -16,6 +16,8 @@ BETAEncoders.o: ./BETA/encoderL.cpp ./BETA/encoderL.cpp ./BETA/encoderL.h ./BETA
 odometry.o: ./odometry/odometry.cpp ./odometry/vector.cpp ./odometry/odometry.h ./odometry/vector.h
 	g++ -c ./odometry/odometry.cpp ./odometry/vector.cpp
 
-
+Odometry:
+	g++ odomTest.cpp odometry.cpp vector.cpp ../BETA/encoderL.cpp ../BETA/encoderR.cpp ../math/mathUtil.cpp -lwiringPi
+	
 clean:
 	rm *.o motorTest

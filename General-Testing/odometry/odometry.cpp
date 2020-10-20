@@ -32,14 +32,18 @@ bool epsilonEquals(double value1, double value2)
 //might want to make current tics a parameter in updatePos
 void updateLeftEncoder(double reading)
 {
-    double currentInches = reading; //actual encoder reading
+    double currentPulses = reading; //actual encoder reading
+    double currentRotations = currentPulses / 1440.0
+    double currentInches = currentRotations * 2.04 * M_PI;
     leftChange = currentInches - prevLeft;
     prevLeft = currentInches;
 }
 
 void updateRightEncoder(double reading)
 {
-    double currentInches = reading; //actual encoder reading
+    double currentPulses = reading; //actual encoder reading
+    double currentRotations = currentPulses / 1440.0
+    double currentInches = currentRotations * 2.04 * M_PI;
     rightChange = currentInches - prevRight;
     prevRight = currentInches;
 }

@@ -10,6 +10,11 @@ int main()
     while (true)
     {
         updatePos(EncoderL::read(), EncoderR::read());
-        std::cout << "X: " << getX() << "Y: " << getY() << "Heading: " << getHeading() << "\n";
+        std::cout << "\nX: ";
+        printf("%.2f", getX());
+        std::cout << "\nY: ";
+        printf("%.2f", getY());
+        std::cout << "\nHeading: ";
+        printf("%.2f", getHeading());
     }
 }

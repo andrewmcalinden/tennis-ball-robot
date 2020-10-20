@@ -10,6 +10,6 @@ int main()
     while (true)
     {
         updatePos(EncoderL::read(), EncoderR::read());
-        std::cout << "X: " << getX() << "Y: " << getY() << "Heading: " << getHeading();
+        std::cout << "X: " << getX() << "Y: " << getY() << "Heading: " << getHeading() << "\n";
     }
 }

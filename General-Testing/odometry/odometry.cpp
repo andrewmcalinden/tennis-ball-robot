@@ -7,7 +7,7 @@
 #include "../BETA/encoderR.h"
 
 #define TRACKWIDTH 9.5
-#define pulsesPerRev 1440.0
+#define PULSESPERREV 1440.0
 #define EPSILON 1.0e-6
 
 double globalXPos = 0;

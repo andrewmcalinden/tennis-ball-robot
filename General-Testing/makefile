@@ -13,7 +13,7 @@ odomTest: BETAEncoders.o odometry.o
 BETAEncoders.o: ./BETA/encoderL.cpp ./BETA/encoderL.cpp ./BETA/encoderL.h ./BETA/encoderL.h
 	g++ -c ./BETA/encoderR.cpp ./BETA/encoderL.cpp -lwiringPi
 
-odometry.o: ./odometry/odometry.cpp ./BETA/vector.cpp ./BETA/odometry.h ./BETA/vector.h
+odometry.o: ./odometry/odometry.cpp ./odometry/vector.cpp ./BETA/odometry.h ./BETA/vector.h
 	g++ -c ./odometry/odometry.cpp ./odometry/vector.cpp
 
 

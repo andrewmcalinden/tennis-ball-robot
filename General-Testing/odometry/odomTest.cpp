@@ -12,9 +12,9 @@ int main()
         updatePos(EncoderL::read(), EncoderR::read());
         std::cout << "\nX: ";
         printf("%.2f", getX());
-        std::cout << "\nY: ";
+        std::cout << "  Y: ";
         printf("%.2f", getY());
-        std::cout << "\nHeading: ";
+        std::cout << "  Heading: ";
         printf("%.2f", getHeading());
     }
 }

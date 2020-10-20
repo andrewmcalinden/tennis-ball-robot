@@ -33,7 +33,7 @@ bool epsilonEquals(double value1, double value2)
 void updateLeftEncoder(double reading)
 {
     double currentPulses = reading; //actual encoder reading
-    double currentRotations = currentPulses / 1440.0
+    double currentRotations = currentPulses / 1440.0;
     double currentInches = currentRotations * 2.04 * M_PI;
     leftChange = currentInches - prevLeft;
     prevLeft = currentInches;
@@ -42,7 +42,7 @@ void updateLeftEncoder(double reading)
 void updateRightEncoder(double reading)
 {
     double currentPulses = reading; //actual encoder reading
-    double currentRotations = currentPulses / 1440.0
+    double currentRotations = currentPulses / 1440.0;
     double currentInches = currentRotations * 2.04 * M_PI;
     rightChange = currentInches - prevRight;
     prevRight = currentInches;

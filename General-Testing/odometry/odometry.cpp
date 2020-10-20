@@ -6,8 +6,8 @@
 #include "../BETA/encoderL.h"
 #include "../BETA/encoderR.h"
 
-#define TRACKWIDTH 9.5
-#define PULSESPERREV 1440.0
+#define TRACKWIDTH 9.75
+#define PULSES_PER_REV 1440.0
 #define EPSILON 1.0e-6
 
 double globalXPos = 0;
@@ -34,7 +34,7 @@ bool epsilonEquals(double value1, double value2)
 void updateLeftEncoder(double reading)
 {
     double currentPulses = reading; //actual encoder reading
-    double currentRotations = currentPulses / pulsesPerRev;
+    double currentRotations = currentPulses / PULSES_PER_REV;
     double currentInches = currentRotations * 2.04 * M_PI;
     leftChange = currentInches - prevLeft;
     prevLeft = currentInches;
@@ -43,7 +43,7 @@ void updateLeftEncoder(double reading)
 void updateRightEncoder(double reading)
 {
     double currentPulses = reading; //actual encoder reading
-    double currentRotations = currentPulses / pulsesPerRev;
+    double currentRotations = currentPulses / PULSES_PER_REV;
     double currentInches = currentRotations * 2.04 * M_PI;
     rightChange = currentInches - prevRight;
     prevRight = currentInches;

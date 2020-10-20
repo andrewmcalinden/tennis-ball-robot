@@ -6,7 +6,7 @@
 #include "../BETA/encoderL.h"
 #include "../BETA/encoderR.h"
 
-#define TRACKWIDTH 16
+#define TRACKWIDTH 12
 #define EPSILON 1.0e-6
 
 double globalXPos = 0;

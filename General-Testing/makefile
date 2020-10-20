@@ -8,7 +8,7 @@ MotorTest.o: ./Motor/MotorTest.cpp ./Motor/Motor.h
 	g++ -c ./Motor/MotorTest.cpp -lwiringPi
 
 odomTest: BETAEncoders.o odometry.o
-	g++ -o odomTest odomTest.cpp BETAEncoders.o odometry.o
+	g++ -o odomTest ./odometry/odomTest.cpp BETAEncoders.o odometry.o
 
 BETAEncoders.o: ./BETA/encoderL.cpp ./BETA/encoderL.cpp ./BETA/encoderL.h ./BETA/encoderL.h
 	g++ -c ./BETA/encoderR.cpp ./BETA/encoderL.cpp -lwiringPi

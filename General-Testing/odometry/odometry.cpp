@@ -6,7 +6,7 @@
 #include "../BETA/encoderL.h"
 #include "../BETA/encoderR.h"
 
-#define TRACKWIDTH 9.75
+#define TRACKWIDTH 9.25
 #define PULSES_PER_REV 1440.0
 #define EPSILON 1.0e-6
 

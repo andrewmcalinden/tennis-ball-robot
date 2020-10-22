@@ -11,6 +11,6 @@ int main()
     while(true)
     {
         std::cout << "Left: " << (EncoderL::read()/1440.0)*2.04*M_PI << "\n";
-        std::cout << "Boomer \n";
+        
     }
 }

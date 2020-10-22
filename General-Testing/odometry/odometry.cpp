@@ -68,7 +68,7 @@ void updatePos(double leftReading, double rightReading)
     globalHeading = angleWrapDeg(globalHeading + angleChangeDeg);
 
     double movement = (leftChange + rightChange) / 2.0; // total change in movement by robot (dx)
-    totalDist += movement;
+    totalDist += abs(movement);
     double dTheta = angleChangeRad;
 
     double sinTheta = sin(dTheta);

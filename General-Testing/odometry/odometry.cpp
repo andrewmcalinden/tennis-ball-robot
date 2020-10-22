@@ -1,4 +1,5 @@
 #include <cmath>
+#include <iostream>
 
 #include "odometry.h"
 #include "vector.h"
@@ -68,6 +69,8 @@ void updatePos(double leftReading, double rightReading)
     globalHeading = angleWrapDeg(globalHeading + angleChangeDeg);
 
     double movement = (leftChange + rightChange) / 2.0; // total change in movement by robot (dx)
+    std::cout << "Movement: " << movement << "\n";
+    std::cout << "Abs: " << abs(movement) << "\n";
     totalDist += abs(movement);
     double dTheta = angleChangeRad;
 

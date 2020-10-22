@@ -16,5 +16,7 @@ int main()
         printf("%.2f", getY());
         std::cout << "  Heading:";
         printf("%.2f", getHeading());
+        std::cout << "  Total Distance:";
+        printf("%.2f", getTotalDist());
     }
 }

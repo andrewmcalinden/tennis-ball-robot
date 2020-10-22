@@ -1,5 +1,6 @@
 #include <cmath>
 #include <iostream>
+#include <cstdlib>
 
 #include "odometry.h"
 #include "vector.h"
@@ -71,7 +72,7 @@ void updatePos(double leftReading, double rightReading)
     double movement = (leftChange + rightChange) / 2.0; // total change in movement by robot (dx)
     std::cout << "Movement: " << movement;
     std::cout << "Abs: " << abs(movement) << "\n";
-    totalDist += movement;
+    totalDist += cstdlib::abs(movement);
     double dTheta = angleChangeRad;
 
     double sinTheta = sin(dTheta);

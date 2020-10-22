@@ -9,6 +9,8 @@
 #define TRACKWIDTH 9.25
 #define PULSES_PER_REV 1440.0
 #define EPSILON 1.0e-6
+#define LEFT_WHEEL__DIAMETER 2.037
+#define RIGHT_WHEEL_DIAMETER 2.051
 
 double globalXPos = 0;
 double globalYPos = 0;
@@ -35,7 +37,7 @@ void updateLeftEncoder(double reading)
 {
     double currentPulses = reading; //actual encoder reading
     double currentRotations = currentPulses / PULSES_PER_REV;
-    double currentInches = currentRotations * 2.04 * M_PI;
+    double currentInches = currentRotations * LEFT_WHEEL__DIAMETER * M_PI;
     leftChange = currentInches - prevLeft;
     prevLeft = currentInches;
 }
@@ -44,7 +46,7 @@ void updateRightEncoder(double reading)
 {
     double currentPulses = reading; //actual encoder reading
     double currentRotations = currentPulses / PULSES_PER_REV;
-    double currentInches = currentRotations * 2.04 * M_PI;
+    double currentInches = currentRotations * RIGHT_WHEEL_DIAMETER * M_PI;
     rightChange = currentInches - prevRight;
     prevRight = currentInches;
 }

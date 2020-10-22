@@ -21,6 +21,8 @@ double prevRight = 0;
 double leftChange = 0;
 double rightChange = 0;
 
+double totalDist = 0;
+
 int EncoderL::position = 0;
 unsigned char EncoderL::state = 0;
 
@@ -66,6 +68,7 @@ void updatePos(double leftReading, double rightReading)
     globalHeading = angleWrapDeg(globalHeading + angleChangeDeg);
 
     double movement = (leftChange + rightChange) / 2.0; // total change in movement by robot (dx)
+    totalDist += movement;
     double dTheta = angleChangeRad;
 
     double sinTheta = sin(dTheta);
@@ -108,4 +111,9 @@ double getY()
 double getHeading()
 {
     return globalHeading;
+}
+
+double getTotalDist()
+{
+    return totalDist;
 }

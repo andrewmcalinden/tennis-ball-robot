@@ -8,3 +8,5 @@ bool epsilonEquals();
 double getX();
 double getY();
 double getHeading(); //in degrees
+
+double getTotalDist();

@@ -1,4 +1,11 @@
 #include "motor.h"
+#include "../BETA/encoderL.h"
+#include "../BETA/encoderR.h"
+#include "odometry.h"
+#include "mathUtil.h"
+#include <cmath>
+#include <ctime>
+#include <iostream>
 
 class Robot
 {
@@ -6,6 +13,13 @@ class Robot
     Motor l;
     Motor r;
 
+    std::clock_t timer;
+
+    //Encoders are static, put member variables here if needed
+
     public:
-    void goToPoint(double x, double y, double angle, double power);
+        Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin, double initialX, double initialY, double initialTheta);
+
+        void goStraight(double inches, double p, double i, double d, double f);
+        void turnHeading(double angle); //in degrees
 }

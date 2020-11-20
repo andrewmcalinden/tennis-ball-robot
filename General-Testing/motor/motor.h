@@ -2,7 +2,7 @@
 class Motor
 {
 private:
-    int dirForwardPin;;
+    int dirForwardPin;
     int powerPin;
 
 public:

@@ -1,7 +1,11 @@
-#include <cmath>
 #include "vector.h"
+#include <cmath>
 
-Vector::Vector(double hor, double vert): x{hor}, y{vert}{}
+Vector::Vector(double hor, double vert): x{hor}, y{vert}
+{
+    magnitude = hypot(x, y);
+    angle = atan2(y, x);
+}
 
 double Vector::getX()
 {
@@ -11,6 +15,16 @@ double Vector::getX()
 double Vector::getY()
 {
     return y;
+}
+
+double Vector::getMagnitude()
+{
+    return magnitude;
+}
+
+double Vector::getAngle()
+{
+    return angle;
 }
 
 Vector Vector::rotated(double angle)

@@ -1,4 +1,6 @@
 #include "robot.h"
+#include <functional>
+#include <vector>
 
 #define LEFT_MOTOR_DIR_PIN 0
 #define LEFT_MOTOR_POWER_PIN 1
@@ -9,23 +11,22 @@
 #define INITIAL_Y 0
 #define INITIAL_THETA 0
 
-
-PI_THREAD(localize)
-{
-    while (true)
-    {
-        updatePos(EncoderL::read(), EncoderR::read());
-    }
-}
-
 int main()
 {
     EncoderL::begin();
     EncoderR::begin();
 
-    piThreadCreate(localize);
-
     Robot r(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA);
-    r.goStraight(20, .1, 0, .1, .1);
 
+    typedef std::function<MotorPowers()> MotorPowersFunc;
+    typedef std::vector<MotorPowersFunc> FuncVector;
+
+    FuncVector movements;
+    movements.push_back(std::bind(&Robot::goStraight(20, .1, .1, .1, .1), r));
+
+    for (FuncVector::iterator i = functions.begin(); i != functions.end(); i++)
+    {
+        updatePos();
+        (*i)();
+    }
 }

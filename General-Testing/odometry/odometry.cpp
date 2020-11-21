@@ -1,4 +1,11 @@
 #include "odometry.h"
+#include "../math/vector.h"
+#include "../math/mathUtil.h"
+#include "../BETA/encoderL.h"
+#include "../BETA/encoderR.h"
+#include <cmath>
+#include <iostream>
+#include <cstdlib>
 
 #define TRACKWIDTH 9.25
 #define PULSES_PER_REV 1440.0

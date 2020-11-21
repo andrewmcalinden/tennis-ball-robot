@@ -1,4 +1,10 @@
 #include "robot.h"
+#include "motor.h"
+#include "odometry.h"
+#include "mathUtil.h"
+#include <cmath>
+#include <ctime>
+#include <iostream>
 
 Robot::Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin, double initialX, double initialY, double initialTheta)
     : l{MotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin} //initialize motors
@@ -26,4 +32,14 @@ void Robot::goStraight(double inches, double p, double i, double d, double f)
     double ratio = finalHypo / startHypo;
     double finalX = ratio * initialX;
     double finalY = ratio * initalY;
+}
+
+void Robot::run()
+{
+    boolean go = true;
+    while (go)
+    {
+        updatePos();
+        MotorPowers powers = currentMovement();
+    }
 }

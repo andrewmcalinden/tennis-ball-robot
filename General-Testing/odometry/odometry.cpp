@@ -70,10 +70,10 @@ void updatePos(double leftReading, double rightReading)
 
     //store initialHeading for later
     double initialHeading = globalHeading;
-    double initialHeadingRad = (initialHeading * M_PI) / 180.0;
+    double initialHeadingRad = toRadians(initialHeading);
 
     double angleChangeRad = (leftChange - rightChange) / TRACKWIDTH;
-    double angleChangeDeg = (180 * angleChangeRad) / M_PI;
+    double angleChangeDeg = toDegrees(angleChangeRad);
     globalHeading = angleWrapDeg(globalHeading + angleChangeDeg);
 
     double movement = (leftChange + rightChange) / 2.0; // total change in movement by robot (dx)

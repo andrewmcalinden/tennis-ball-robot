@@ -17,15 +17,5 @@ int main()
     EncoderR::begin();
 
     Robot r(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA);
-
-    //add all movements to the vector of movements
-    movements.push_back(std::bind(&Robot::goStraight(20, .1, .1, .1, .1), r));
-
-    for (FuncVector::iterator currentFunc = functions.begin(); currentFunc != functions.end(); currentFunc++)
-    {
-        updatePos(EncoderL::read(), EncoderR::read());
-        //update will call the current movement method from the movement vector which is in the robot class
-        //those methods set the motor powers
-        r.update();
-    }
+    r.goStraight(20, .1, 0, .1, .1);
 }

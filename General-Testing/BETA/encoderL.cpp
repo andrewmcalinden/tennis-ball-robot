@@ -1,4 +1,5 @@
 #include "encoderL.h"
+#include <iostream>
 void EncoderL::begin()
 {
     wiringPiSetup();

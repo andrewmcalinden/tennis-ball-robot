@@ -9,13 +9,14 @@
 Robot::Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin, double initialX, double initialY, double initialTheta)
     : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin} //initialize motors
 {
-    EncoderL::begin();
-    EncoderR::begin();
     setPose(initialX, initialY, initialTheta);
 }
 
 void Robot::goStraight(double inches, double p, double i, double d, double f)
 {
+    EncoderL::begin();
+    EncoderR::begin();
+
     double kp = p;
     double ki = i;
     double kd = d;

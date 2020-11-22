@@ -45,13 +45,14 @@ void Robot::goStraight(double inches, double p, double i, double d, double f)
 
     while (error > 2)
     {
+        std::cout << "Left read: " << EncoderL::read() << " Right read: " << EncoderR::read();
         updatePos(EncoderL::read(), EncoderR::read());
         double xError = abs(getX() - finalX);
         double yError = abs(getY() - finalY);
         double error = hypot(xError, yError);
-        std::cout << "X: " << getX();
-        std::cout << "Y: " << getY();
-        std::cout << "error: " << error;
+        std::cout << "  X: " << getX();
+        std::cout << "  Y: " << getY();
+        std::cout << "  error: " << error;
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         double dt = currentTime - pastTime;

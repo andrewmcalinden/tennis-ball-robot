@@ -97,6 +97,7 @@ void Robot::goStraight(double inches, double p, double i, double d, double f)
             }
         }
     }
+    setMotorPowers(0, 0);
 }
 
 void Robot::setMotorPowers(double lPower, double rPower)

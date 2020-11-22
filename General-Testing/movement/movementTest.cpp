@@ -1,6 +1,4 @@
 #include "robot.h"
-#include <functional>
-#include <vector>
 
 #define LEFT_MOTOR_DIR_PIN 0
 #define LEFT_MOTOR_POWER_PIN 1

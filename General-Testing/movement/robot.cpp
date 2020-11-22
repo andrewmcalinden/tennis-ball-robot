@@ -45,7 +45,7 @@ void Robot::goStraight(double inches, double p, double i, double d, double f)
 
     while (error > 2)
     {
-        updatePos(EncoderL::read, EncoderR::read);
+        updatePos(EncoderL::read(), EncoderR::read());
         double xError = abs(getX() - finalX);
         double yError = abs(getY() - finalY);
         double error = hypot(xError, yError);

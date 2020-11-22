@@ -49,6 +49,7 @@ void Robot::goStraight(double inches, double p, double i, double d, double f)
         double xError = abs(getX() - finalX);
         double yError = abs(getY() - finalY);
         double error = hypot(xError, yError);
+        std::cout << "error: " << error;
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         double dt = currentTime - pastTime;
@@ -104,5 +105,5 @@ void Robot::setMotorPowers(double lPower, double rPower)
 {
     l.setPower(lPower);
     r.setPower(rPower);
-    std::cout << "lPower: " << lPower << "rPower: " << rPower << "\n";
+    std::cout << "lPower: " << lPower << "  rPower: " << rPower << "\n";
 }

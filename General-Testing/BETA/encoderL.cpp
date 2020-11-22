@@ -16,6 +16,7 @@ void EncoderL::begin()
 
     wiringPiISR(pinA, INT_EDGE_BOTH, &update);
     wiringPiISR(pinB, INT_EDGE_BOTH, &update);
+    std::cout << "  started update interrupt";
 }
 
 void EncoderL::update()

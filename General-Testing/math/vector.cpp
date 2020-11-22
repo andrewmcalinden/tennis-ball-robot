@@ -7,15 +7,6 @@ Vector::Vector(double hor, double vert): x{hor}, y{vert}
     angle = atan2(y, x);
 }
 
-Vector::Vector(double mag, double angDeg)
-{
-    magnitude = mag;
-    angle = (M_PI / 180.0) * angDeg;
-    x = magnitude * cos(angle);
-    y = magnitude * sin(angle);
-
-}
-
 double Vector::getX()
 {
     return x;

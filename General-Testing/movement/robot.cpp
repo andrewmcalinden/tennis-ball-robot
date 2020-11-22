@@ -1,5 +1,4 @@
 #include "robot.h"
-#include "../motor/motor.h"
 #include "../odometry/odometry.h"
 #include "../math/mathUtil.h"
 #include "../math/vector.h"
@@ -7,13 +6,10 @@
 #include <ctime>
 #include <iostream>
 
-Robot::Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin, double initialX, double initialY, double initialTheta, FuncVector functions)
+Robot::Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin, double initialX, double initialY, double initialTheta)
     : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin} //initialize motors
 {
     setPose(initialX, initialY, initialTheta);
-    movements = functions;
-    lPower = 0;
-    rPower = 0;
 }
 
 void Robot::goStraight(double inches, double p, double i, double d, double f)

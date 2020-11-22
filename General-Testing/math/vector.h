@@ -8,7 +8,6 @@ class Vector
 
     public:
     Vector(double hor, double vert);
-    Vector(double mag, double angDeg);
     double getX();
     double getY();
     double getMagnitude();

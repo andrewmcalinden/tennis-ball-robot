@@ -4,10 +4,11 @@ class Vector
     double x;
     double y;
     double magnitude;
-    double angle;
+    double angle; //in radians
 
     public:
     Vector(double hor, double vert);
+    Vector(double mag, double angDeg);
     double getX();
     double getY();
     double getMagnitude();

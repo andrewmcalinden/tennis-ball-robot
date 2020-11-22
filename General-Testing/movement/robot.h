@@ -7,14 +7,22 @@ class Robot
     Motor l;
     Motor r;
 
-    std::clock_t timer;
+    double lPower;
+    double rPower;
 
-    //Encoders are static, put member variables here if needed
+    typedef std::function<MotorPowers()> MotorPowersFunc;
+    typedef std::vector<MotorPowersFunc> FuncVector;
+
+    FuncVector movements;
+
+    //Encoders are static
 
     public:
     Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin, double initialX, double initialY, double initialTheta);
 
     void goStraight(double inches, double p, double i, double d, double f);
     void turnHeading(double angle); //in degrees
-    void run();
+
+    void setMotorPowers(double lPower, double rPower);
+    void update();
 }

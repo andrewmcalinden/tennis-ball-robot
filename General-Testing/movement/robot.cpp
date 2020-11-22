@@ -41,7 +41,7 @@ void Robot::goStraight(double inches, double p, double i, double d, double f)
     double pastError = inches;
 
     double integral = 0;
-    double initialAngle = getAngle();
+    double initialAngle = getHeading();
 
     while (error > 2)
     {
@@ -102,5 +102,5 @@ void Robot::goStraight(double inches, double p, double i, double d, double f)
 void Robot::setMotorPowers(double lPower, double rPower)
 {
     l.setPower(lPower);
-    r.setPoweR(rPower);
+    r.setPower(rPower);
 }

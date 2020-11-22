@@ -7,8 +7,8 @@ int main()
     double initialHeadingRad = (M_PI / 180.0) * -45.0;
 
     //flipped because if you actually draw the triangle it works out
-    double additionalX = 20 * sin(initialHeadingRad);
-    double additionalY = 20 * cos(initialHeadingRad);
+    double additionalX = 20 * -sin(initialHeadingRad);
+    double additionalY = 20 * -cos(initialHeadingRad);
     std::cout << additionalY;
 
     double finalX = initialX + additionalX;

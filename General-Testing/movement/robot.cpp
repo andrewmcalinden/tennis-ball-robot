@@ -30,7 +30,7 @@ void Robot::goStraight(double inches, double p, double i, double d, double f)
 
     double initialX = getX();
     double initialY = getY();
-    double initialHeadingRad = (M_PI / 180.0) * getHeading();
+    double initialHeadingRad = (M_PI / 180.0) * (getHeading() + 90); //add 90 because we want the right to be 0 but right now up is 0
 
     //flipped because if you actually draw the triangle it works out
     double additionalX = inches * sin(initialHeadingRad);

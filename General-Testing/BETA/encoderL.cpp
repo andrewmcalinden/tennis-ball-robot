@@ -2,6 +2,7 @@
 #include <iostream>
 void EncoderL::begin()
 {
+    std::cout << "  started update interrupt";
     wiringPiSetup();
     pinMode(pinA, INPUT);
     pinMode(pinB, INPUT);

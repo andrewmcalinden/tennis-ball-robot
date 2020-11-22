@@ -35,8 +35,8 @@ void Robot::goStraight(double inches, double p, double i, double d, double f)
     double finalX = initialX + additionalX;
     double finalY = initialY + additionalY;
 
-    double xError = Math.abs(getX() - finalX);
-    double yError = Math.abs(getY() - finalY);
+    double xError = abs(getX() - finalX);
+    double yError = abs(getY() - finalY);
     double error = hypot(xError, yError);
     double pastError = inches;
 
@@ -46,8 +46,8 @@ void Robot::goStraight(double inches, double p, double i, double d, double f)
     while (error > 2)
     {
         updatePos(EncoderL::read, EncoderR::read);
-        double xError = Math.abs(getX() - finalX);
-        double yError = Math.abs(getY() - finalY);
+        double xError = abs(getX() - finalX);
+        double yError = abs(getY() - finalY);
         double error = hypot(xError, yError);
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
@@ -57,8 +57,8 @@ void Robot::goStraight(double inches, double p, double i, double d, double f)
         integral += dt * ((error + pastError) / 2.0);
         double derivative = (error - pastError) / dt;
 
-        double power = kP * proportional + kI * integral + kD * derivative;
-        double angle = getAngle();
+        double power = kp * proportional + ki * integral + kd * derivative;
+        double angle = getHeading();
 
         if (power > 0)
         {
@@ -66,11 +66,11 @@ void Robot::goStraight(double inches, double p, double i, double d, double f)
             {
                 if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
                 {
-                    setMotorPowers(power + f, (power + f) * .8)
+                    setMotorPowers(power + f, (power + f) * .8);
                 }
                 else
                 {
-                    setMotorPowers((power + f) * .8, power + f)
+                    setMotorPowers((power + f) * .8, power + f);
                 }
             }
             else
@@ -84,11 +84,11 @@ void Robot::goStraight(double inches, double p, double i, double d, double f)
             {
                 if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
                 {
-                    setMotorPowers(power - f, (power - f) * .8)
+                    setMotorPowers(power - f, (power - f) * .8);
                 }
                 else
                 {
-                    setMotorPowers((power - f) * .8, power - f)
+                    setMotorPowers((power - f) * .8, power - f);
                 }
             }
             else

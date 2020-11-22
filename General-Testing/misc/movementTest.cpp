@@ -12,5 +12,5 @@ int main()
 
     double finalX = initialX + additionalX;
     double finalY = initialY + additionalY;
-    std::cout << "finalX: " << finalX << "finalY: " << finalY;
+    std::cout << "finalX: " << finalX << "\nfinalY: " << finalY;
 }

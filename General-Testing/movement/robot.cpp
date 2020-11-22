@@ -49,6 +49,8 @@ void Robot::goStraight(double inches, double p, double i, double d, double f)
         double xError = abs(getX() - finalX);
         double yError = abs(getY() - finalY);
         double error = hypot(xError, yError);
+        std::cout << "X: " << getX();
+        std::cout << "Y: " << getY();
         std::cout << "error: " << error;
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);

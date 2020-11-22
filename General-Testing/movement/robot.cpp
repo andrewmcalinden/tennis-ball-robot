@@ -6,15 +6,11 @@
 #include <ctime>
 #include <iostream>
 
-int EncoderL::position = 0;
-unsigned char EncoderL::state = 0;
-
-int EncoderR::position = 0;
-unsigned char EncoderR::state = 0;
-
 Robot::Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin, double initialX, double initialY, double initialTheta)
     : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin} //initialize motors
 {
+    EncoderL::begin();
+    EncoderR::begin();
     setPose(initialX, initialY, initialTheta);
 }
 

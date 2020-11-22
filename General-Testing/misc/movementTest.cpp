@@ -9,6 +9,7 @@ int main()
     //flipped because if you actually draw the triangle it works out
     double additionalX = 20 * sin(initialHeadingRad);
     double additionalY = 20 * cos(initialHeadingRad);
+    std::cout << additionalY;
 
     double finalX = initialX + additionalX;
     double finalY = initialY + additionalY;

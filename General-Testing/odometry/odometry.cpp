@@ -103,7 +103,7 @@ void updatePos(double leftReading, double rightReading)
     deltaVector = deltaVector.rotated(initialHeadingRad);
 
     //switch x, y because thats the only way it works idk lol
-    globalXPos += deltaVector.getY();
+    globalXPos -= deltaVector.getY();
     globalYPos += deltaVector.getX();
 }
 

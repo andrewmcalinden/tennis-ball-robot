@@ -111,7 +111,7 @@ void Robot::setMotorPowers(double lPower, double rPower)
     std::cout << "lPower: " << lPower << "  rPower: " << rPower << "\n";
 }
 
-void Encoders::printEncoders()
+void Robot::printEncoders()
 {
     std::cout << "L: " << EncoderL::read();
     std::cout << "  R: " << EncoderR::read() << "\n";

@@ -18,8 +18,17 @@ Encoder::Encoder(int pinALoc, int pinBLoc)
     {
         state |= 2;
     }
+
     registerCallback();
 }
+
+// Encoder::Encoder(const Encoder &enc)
+// {
+//     pinA = enc.pinA;
+//     pinB = enc.pinB;
+//     position = 0;
+//     state = 0;
+// }
 
 static Encoder *callbackObject;
 
@@ -66,6 +75,11 @@ void Encoder::update()
         position -= 2;
     }
 }
+
+// void Encoder::EncoderHouse::updateCallback(void)
+// {
+//     Encoder::EncoderHouse::encoderResident.update();
+// }
 
 int Encoder::read()
 {

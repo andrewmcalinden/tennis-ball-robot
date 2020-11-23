@@ -1,4 +1,5 @@
 #include "encoder.h"
+#include <wiringPi.h>
 Encoder::Encoder(int pinALoc, int pinBLoc)
     :pinA{pinALoc}, pinB{pinBLoc}
 {
@@ -18,10 +19,8 @@ Encoder::Encoder(int pinALoc, int pinBLoc)
         state |= 2;
     }
 
-    Encoder::EncoderHouse::encoderResident = *this;
-
-    wiringPiISR(pinA, INT_EDGE_BOTH, &Encoder::EncoderHouse::updateCallback);
-    wiringPiISR(pinB, INT_EDGE_BOTH, &Encoder::EncoderHouse::updateCallback);
+    wiringPiISR(pinA, INT_EDGE_BOTH, boost::bind(&Encoder::update, this));
+    wiringPiISR(pinA, INT_EDGE_BOTH, boost::bind(&Encoder::update, this));
 }
 
 // Encoder::Encoder(const Encoder &enc)

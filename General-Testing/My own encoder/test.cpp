@@ -1,4 +1,3 @@
-#include <wiringPi.h>
 #include "encoder.h"
 #include <iostream>
 

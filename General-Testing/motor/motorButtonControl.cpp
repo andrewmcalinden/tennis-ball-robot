@@ -22,7 +22,7 @@ int main()
         {
             power = 0;
         }
-        //std::cout << power << "\n";
+        std::cout << power << "\n";
         m.setPower(power);
     }
 }

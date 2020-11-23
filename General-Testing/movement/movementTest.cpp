@@ -20,9 +20,9 @@ int main()
     EncoderL::begin();
     EncoderR::begin();
     Robot r;//(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA);
-    // r.goStraight(10, .1, 0, .1, .1);
-    while (true)
-    {
-        r.printEncoders();
-    }
+    r.goStraight(10, .1, 0, .1, .1);
+    // while (true)
+    // {
+    //     r.printEncoders();
+    // }
 }

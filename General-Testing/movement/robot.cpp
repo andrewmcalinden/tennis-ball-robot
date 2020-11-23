@@ -64,46 +64,47 @@ void Robot::goStraight(double inches, double p, double i, double d, double f)
         double derivative = (error - pastError) / dt;
 
         double power = kp * proportional + ki * integral + kd * derivative;
+        std::cout << "  power: " << power << "\n"; 
         double angle = getHeading();
 
-        if (power > 0)
-        {
-            if (abs(angle - initialAngle) > 2)
-            {
-                if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
-                {
-                    setMotorPowers(power + f, (power + f) * .8);
-                }
-                else
-                {
-                    setMotorPowers((power + f) * .8, power + f);
-                }
-            }
-            else
-            {
-                setMotorPowers(power + f, power + f);
-            }
-        }
-        else
-        {
-            if (abs(angle - initialAngle) > 2)
-            {
-                if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
-                {
-                    setMotorPowers(power - f, (power - f) * .8);
-                }
-                else
-                {
-                    setMotorPowers((power - f) * .8, power - f);
-                }
-            }
-            else
-            {
-                setMotorPowers(power - f, power - f);
-            }
-        }
-    }
-    setMotorPowers(0, 0);
+    //     if (power > 0)
+    //     {
+    //         if (abs(angle - initialAngle) > 2)
+    //         {
+    //             if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
+    //             {
+    //                 setMotorPowers(power + f, (power + f) * .8);
+    //             }
+    //             else
+    //             {
+    //                 setMotorPowers((power + f) * .8, power + f);
+    //             }
+    //         }
+    //         else
+    //         {
+    //             setMotorPowers(power + f, power + f);
+    //         }
+    //     }
+    //     else
+    //     {
+    //         if (abs(angle - initialAngle) > 2)
+    //         {
+    //             if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
+    //             {
+    //                 setMotorPowers(power - f, (power - f) * .8);
+    //             }
+    //             else
+    //             {
+    //                 setMotorPowers((power - f) * .8, power - f);
+    //             }
+    //         }
+    //         else
+    //         {
+    //             setMotorPowers(power - f, power - f);
+    //         }
+    //     }
+    // }
+    // setMotorPowers(0, 0);
 }
 
 void Robot::setMotorPowers(double lPower, double rPower)

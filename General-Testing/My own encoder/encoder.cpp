@@ -30,6 +30,8 @@ Encoder::Encoder(int pinALoc, int pinBLoc)
 //     state = 0;
 // }
 
+static Encoder *callbackObject;
+
 void Encoder::callbackMethod()
 {
     callbackObject -> update();

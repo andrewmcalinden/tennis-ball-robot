@@ -6,8 +6,6 @@ class Encoder
     int position;
     unsigned char state;
 
-    static Encoder* callbackObject;
-
     public:
     Encoder(int pinALoc, int pinBLoc);
     void update();

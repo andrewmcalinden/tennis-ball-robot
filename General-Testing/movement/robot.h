@@ -1,5 +1,3 @@
-#include "../BETA/encoderL.h"
-#include "../BETA/encoderR.h"
 #include "../motor/motor.h"
 class Robot
 {

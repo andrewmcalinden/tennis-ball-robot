@@ -2,6 +2,8 @@
 #include "../odometry/odometry.h"
 #include "../math/mathUtil.h"
 #include "../math/vector.h"
+#include "../BETA/encoderL.h"
+#include "../BETA/encoderR.h"
 #include <cmath>
 #include <ctime>
 #include <iostream>

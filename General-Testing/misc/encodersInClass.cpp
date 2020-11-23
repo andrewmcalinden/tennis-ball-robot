@@ -1,5 +1,7 @@
-#include "../BETA/"
+#include "../BETA/encoderL.h"
+#include "../BETA/encoderR.h"
 void Encoders::startEncoders()
 {
-    Encoder
+    EncoderL::begin();
+    EncoderR::begin();
 }

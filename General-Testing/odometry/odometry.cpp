@@ -24,12 +24,6 @@ double rightChange = 0;
 
 double totalDist = 0;
 
-int EncoderL::position = 0;
-unsigned char EncoderL::state = 0;
-
-int EncoderR::position = 0;
-unsigned char EncoderR::state = 0;
-
 void setPose(double x, double y, double theta)
 {
     globalXPos = x;

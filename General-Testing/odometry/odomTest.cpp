@@ -15,6 +15,8 @@ int main()
     EncoderR::begin();
     while (true)
     {
+        std::cout << "Left: " << (EncoderL::read() / 1440.0) * 2.04 * M_PI << "\n";
+        /*
         updatePos(EncoderL::read(), EncoderR::read());
         std::cout << "\nX:";
         printf("%.2f", getX());
@@ -24,5 +26,6 @@ int main()
         printf("%.2f", getHeading());
         std::cout << "  Total Distance:";
         printf("%.2f", getTotalDist());
+        */
     }
 }

@@ -13,6 +13,6 @@ class Encoder
     void update();
     int read();
 
-    static void Encoder::callbackMethod();
-    void Encoder::registerCallback();
+    static void callbackMethod();
+    void registerCallback();
 };

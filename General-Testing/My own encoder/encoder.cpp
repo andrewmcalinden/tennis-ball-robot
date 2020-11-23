@@ -41,7 +41,7 @@ void Encoder::registerCallback()
 {
     callbackObject = this;
     wiringPiISR(pinA, INT_EDGE_BOTH, &Encoder::callbackMethod);
-    wiringPiISR(pinA, INT_EDGE_BOTH, &Encoder::callbackMethod);
+    wiringPiISR(pinB, INT_EDGE_BOTH, &Encoder::callbackMethod);
 }
 
 void Encoder::update()

@@ -1,7 +1,7 @@
-#include "../BETA/encoderL.h"
-#include "../BETA/encoderR.h"
-void Encoders::startEncoders()
+#include <iostream>
+#include "encodersInClass.h"
+void Encoders::printEncoders()
 {
-    EncoderL::begin();
-    EncoderR::begin();
+    std::cout << "L: " << EncoderL::read();
+    std::cout << "  R: " << EncoderR::read();
 }

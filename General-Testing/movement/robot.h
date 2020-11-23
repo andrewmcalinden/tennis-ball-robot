@@ -4,8 +4,8 @@
 class Robot
 {
     private:
-    Motor l;
-    Motor r;
+    // Motor l;
+    // Motor r;
 
     //Encoders are static
 

@@ -17,7 +17,7 @@ odometry.o: ./odometry/odometry.cpp ./odometry/vector.cpp ./odometry/odometry.h 
 	g++ -c ./odometry/odometry.cpp ./odometry/vector.cpp
 
 Odometry:
-	g++ ./odometry/odomTest.cpp ./odometry/odometry.cpp vector.cpp ./BETA/encoderL.cpp ./BETA/encoderR.cpp ./math/mathUtil.cpp -lwiringPi
+	g++ odomTest.cpp odometry.cpp vector.cpp ../BETA/encoderL.cpp ../BETA/encoderR.cpp ../math/mathUtil.cpp -lwiringPi
 	
 clean:
 	rm *.o motorTest

@@ -19,8 +19,7 @@ Encoder::Encoder(int pinALoc, int pinBLoc)
         state |= 2;
     }
 
-    wiringPiISR(pinA, INT_EDGE_BOTH, bind(&Encoder::update, this));
-    wiringPiISR(pinA, INT_EDGE_BOTH, bind(&Encoder::update, this));
+    registerCallback();
 }
 
 // Encoder::Encoder(const Encoder &enc)
@@ -30,6 +29,18 @@ Encoder::Encoder(int pinALoc, int pinBLoc)
 //     position = 0;
 //     state = 0;
 // }
+
+static void Encoder::callbackMethod()
+{
+    callbackObject -> update();
+}
+
+void Encoder::registerCallback()
+{
+    callbackObject = this;
+    wiringPiISR(pinA, INT_EDGE_BOTH, &Encoder::callbackMethod);
+    wiringPiISR(pinA, INT_EDGE_BOTH, &Encoder::callbackMethod);
+}
 
 void Encoder::update()
 {

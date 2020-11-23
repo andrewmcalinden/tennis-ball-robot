@@ -16,8 +16,6 @@ int main()
     EncoderR::begin();
     while (true)
     {
-        std::cout << "lRead: " << EncoderL::read() << "\n";
-        std::cout << "  rRead: " << EncoderR::read();
         updatePos(EncoderL::read(), EncoderR::read());
         std::cout << "\nX:";
         printf("%.2f", getX());

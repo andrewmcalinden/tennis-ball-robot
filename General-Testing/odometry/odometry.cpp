@@ -1,8 +1,6 @@
 #include "odometry.h"
 #include "../math/vector.h"
 #include "../math/mathUtil.h"
-#include "../BETA/encoderL.h"
-#include "../BETA/encoderR.h"
 #include <cmath>
 #include <iostream>
 #include <cstdlib>

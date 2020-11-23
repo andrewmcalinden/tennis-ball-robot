@@ -9,7 +9,7 @@ int main()
     wiringPiSetup();
     pinMode(BUTTON_IN, INPUT);
 
-    Motor m(DIRECTION_PIN_FORWARD, POWER_PIN);
+    //Motor m(DIRECTION_PIN_FORWARD, POWER_PIN);
     double power = 0;
     while (true)
     {
@@ -23,6 +23,6 @@ int main()
             power = 0;
         }
         std::cout << power << "\n";
-        m.setPower(power);
+        //m.setPower(power);
     }
 }

@@ -1,4 +1,6 @@
 #include "../motor/motor.h"
+#include "../BETA/encoderL.h"
+#include "../BETA/encoderR.h"
 class Robot
 {
     private:

@@ -2,20 +2,9 @@
 #include "../odometry/odometry.h"
 #include "../math/mathUtil.h"
 #include "../math/vector.h"
-#include "../BETA/encoderL.h"
-#include "../BETA/encoderR.h"
 #include <cmath>
 #include <ctime>
 #include <iostream>
-
-int EncoderL::position = 0;
-unsigned char EncoderL::state = 0;
-
-int EncoderR::position = 0;
-unsigned char EncoderR::state = 0;
-
-EncoderL::begin();
-EncoderR::begin();
 
 Robot::Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin, double initialX, double initialY, double initialTheta)
     : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin} //initialize motors

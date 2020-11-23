@@ -9,6 +9,15 @@
 #define INITIAL_Y 0
 #define INITIAL_THETA 0
 
+int EncoderL::position = 0;
+unsigned char EncoderL::state = 0;
+
+int EncoderR::position = 0;
+unsigned char EncoderR::state = 0;
+
+EncoderL::begin();
+EncoderR::begin();
+
 int main()
 {
     Robot r(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA);

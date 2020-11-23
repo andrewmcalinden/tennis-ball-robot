@@ -108,8 +108,8 @@ void Robot::goStraight(double inches, double p, double i, double d, double f)
 
 void Robot::setMotorPowers(double lPower, double rPower)
 {
-    l.setPower(lPower);
-    r.setPower(rPower);
+    // l.setPower(lPower);
+    // r.setPower(rPower);
     std::cout << "lPower: " << lPower << "  rPower: " << rPower << "\n";
 }
 

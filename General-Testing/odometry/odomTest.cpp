@@ -1,4 +1,5 @@
 #include<iostream>
+#include <cmath>
 #include "odometry.h"
 #include "../BETA/encoderL.h"
 #include "../BETA/encoderR.h"

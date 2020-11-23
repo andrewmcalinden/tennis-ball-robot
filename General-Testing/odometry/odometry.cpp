@@ -13,9 +13,9 @@
 #define LEFT_WHEEL__DIAMETER 2.037
 #define RIGHT_WHEEL_DIAMETER 2.051
 
-static double globalXPos = 0;
-static double globalYPos = 0;
-static double globalHeading = 0; //in degrees, from -180 to 180
+double globalXPos = 0;
+double globalYPos = 0;
+double globalHeading = 0; //in degrees, from -180 to 180
 
 double prevLeft = 0;
 double prevRight = 0;

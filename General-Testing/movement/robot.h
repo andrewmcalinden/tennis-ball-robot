@@ -16,4 +16,6 @@ class Robot
     void turnHeading(double angle); //in degrees
 
     void setMotorPowers(double lPower, double rPower);
+
+    void printEncoders();
 };

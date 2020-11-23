@@ -9,8 +9,10 @@ int main()
 {
     EncoderL::begin();
     EncoderR::begin();
+
+    Encoders e;
     while(true)
     {
-        printEncoders();
+        e.printEncoders();
     }
 }

@@ -6,11 +6,13 @@
 #include <ctime>
 #include <iostream>
 
+/*
 Robot::Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin, double initialX, double initialY, double initialTheta)
     : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin} //initialize motors
 {
     setPose(initialX, initialY, initialTheta);
 }
+*/
 
 void Robot::goStraight(double inches, double p, double i, double d, double f)
 {

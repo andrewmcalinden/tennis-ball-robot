@@ -14,13 +14,13 @@ unsigned char EncoderL::state = 0;
 int EncoderR::position = 0;
 unsigned char EncoderR::state = 0;
 
+EncoderL::begin();
+EncoderR::begin();
+
 Robot::Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin, double initialX, double initialY, double initialTheta)
     : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin} //initialize motors
 {
     setPose(initialX, initialY, initialTheta);
-
-    EncoderL::begin();
-    EncoderR::begin();
 }
 
 void Robot::goStraight(double inches, double p, double i, double d, double f)

@@ -2,8 +2,8 @@
 #include <iostream>
 int main()
 {
-    Encoder enc1(0, 7);
-    Encoder enc2(5, 8);
+    Encoder enc1(5, 8);
+    Encoder enc2(0, 7);
     Encoder enc3(2, 3);
     while (true)
     {

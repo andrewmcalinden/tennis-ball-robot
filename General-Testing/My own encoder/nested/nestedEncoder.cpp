@@ -21,6 +21,11 @@ NestedEncoder::NestedEncoder(int pinALoc, int pinBLoc)
     registerCallback();
 }
 
+void NestedEncoder::EncoderReference::setCallBackObject()
+{
+    callbackObject = this;
+}
+
 void NestedEncoder::callbackMethod()
 {
     EncoderReference::callbackObject->update();
@@ -28,7 +33,7 @@ void NestedEncoder::callbackMethod()
 
 void NestedEncoder::registerCallback()
 {
-    EncoderReference::callbackObject = this;
+    EncoderReference::setCallBackObject();
     wiringPiISR(pinA, INT_EDGE_BOTH, &NestedEncoder::callbackMethod);
     wiringPiISR(pinB, INT_EDGE_BOTH, &NestedEncoder::callbackMethod);
 }

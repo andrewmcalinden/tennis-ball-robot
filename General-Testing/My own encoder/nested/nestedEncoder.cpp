@@ -26,7 +26,7 @@ NestedEncoder::NestedEncoder(int pinALoc, int pinBLoc)
 //     callbackObject = this;
 // }
 
-NestedEncoder *EncoderReference::callbackObject = this;
+NestedEncoder *NestedEncoder::EncoderReference::callbackObject = this;
 
 void NestedEncoder::callbackMethod()
 {

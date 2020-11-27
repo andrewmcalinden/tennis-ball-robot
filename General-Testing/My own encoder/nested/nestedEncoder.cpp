@@ -23,7 +23,7 @@ NestedEncoder::NestedEncoder(int pinALoc, int pinBLoc)
 
 void NestedEncoder::callbackMethod()
 {
-    EncoderReference::callbackObject->update();
+    static_cast<NestedEncoder *>(EncoderReference::callbackObject)->update();
 }
 
 void NestedEncoder::registerCallback()

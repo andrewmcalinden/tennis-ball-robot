@@ -24,20 +24,19 @@ ExperimentalEncoder::ExperimentalEncoder(int pinALoc, int pinBLoc)
 }
 
 static ExperimentalEncoder* callbackObject;
-//static std::vector<ExperimentalEncoder*> lookupTable;
+static std::vector<ExperimentalEncoder*> lookupTable;
 
 void ExperimentalEncoder::callbackMethod()
 {
-    // ExperimentalEncoder* currentCallbackObject = lookupTable.at(location);
-    callbackObject = this;
-    currentCallbackObject->update();
+    ExperimentalEncoder* currentCallbackObject = lookupTable.at(0);
+    callbackObject->update();
 }
 
 void ExperimentalEncoder::registerCallback()
 {
     callbackObject = this;
-    // lookupTable.push_back(callbackObject);
-    // location = lookupTable.size() - 1;
+    lookupTable.push_back(callbackObject);
+    location = lookupTable.size() - 1;
     wiringPiISR(pinA, INT_EDGE_BOTH, &ExperimentalEncoder::callbackMethod);
     wiringPiISR(pinB, INT_EDGE_BOTH, &ExperimentalEncoder::callbackMethod);
 }

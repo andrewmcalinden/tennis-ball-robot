@@ -1,7 +1,6 @@
-#include "experimentalEncoder.h"
+#include "nestedEncoder.h"
 #include <wiringPi.h>
-#include <vector>
-ExperimentalEncoder::ExperimentalEncoder(int pinALoc, int pinBLoc)
+NestedEncoder::NestedEncoder(int pinALoc, int pinBLoc)
     : pinA{pinALoc}, pinB{pinBLoc}
 {
     wiringPiSetup();
@@ -19,29 +18,22 @@ ExperimentalEncoder::ExperimentalEncoder(int pinALoc, int pinBLoc)
     {
         state |= 2;
     }
-
     registerCallback();
 }
 
-static ExperimentalEncoder* callbackObject;
-static std::vector<ExperimentalEncoder*> lookupTable;
-
-void ExperimentalEncoder::callbackMethod()
+void NestedEncoder::callbackMethod()
 {
-    ExperimentalEncoder* currentCallbackObject = lookupTable.at(location); //this is the only error
-    currentCallbackObject->update();
+    EncoderReference::callbackObject->update();
 }
 
-void ExperimentalEncoder::registerCallback()
+void NestedEncoder::registerCallback()
 {
-    callbackObject = this;
-    lookupTable.push_back(callbackObject);
-    location = lookupTable.size() - 1;
-    wiringPiISR(pinA, INT_EDGE_BOTH, &ExperimentalEncoder::callbackMethod);
-    wiringPiISR(pinB, INT_EDGE_BOTH, &ExperimentalEncoder::callbackMethod);
+    EncoderReference::callbackObject = this;
+    wiringPiISR(pinA, INT_EDGE_BOTH, &EncoderReference::callbackMethod);
+    wiringPiISR(pinB, INT_EDGE_BOTH, &EncoderReference::callbackMethod);
 }
 
-void ExperimentalEncoder::update()
+void NestedEncoder::update()
 {
     unsigned char currentState = state & 3;
     if (digitalRead(pinA))
@@ -73,7 +65,7 @@ void ExperimentalEncoder::update()
     }
 }
 
-int ExperimentalEncoder::read()
+int NestedEncoder::read()
 {
     return position;
 }

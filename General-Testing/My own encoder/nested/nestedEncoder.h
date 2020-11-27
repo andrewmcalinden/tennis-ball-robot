@@ -13,6 +13,7 @@ public:
 
     static void callbackMethod();
     void registerCallback();
+    void makeObjectStatic();
 
     class EncoderReference
     {

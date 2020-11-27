@@ -13,12 +13,11 @@ public:
 
     static void callbackMethod();
     void registerCallback();
-    void makeObjectStatic();
+    NestedEncoder* getThis();
 
     class EncoderReference
     {
     public:
-        NestedEncoder *callbackObject; //works if not static
-        //void setCallBackObject();
+        static NestedEncoder *callbackObject; //works if not static
     };
 };

@@ -6,12 +6,6 @@ private:
     int position;
     unsigned char state;
 
-    class EncoderReference
-    {
-        public:
-        static NestedEncoder *callbackObject;
-    };
-
 public:
     NestedEncoder(int pinALoc, int pinBLoc);
     void update();
@@ -19,4 +13,10 @@ public:
 
     static void callbackMethod();
     void registerCallback();
+
+    class EncoderReference
+    {
+    public:
+    static NestedEncoder *callbackObject;
+    };
 };

@@ -1,7 +1,8 @@
-#include "encoder.h"
+#include "experimentalEncoder.h"
 #include <wiringPi.h>
-Encoder::Encoder(int pinALoc, int pinBLoc)
-    :pinA{pinALoc}, pinB{pinBLoc}
+#include <vector>
+ExperimentalEncoder::ExperimentalEncoder(int pinALoc, int pinBLoc)
+    : pinA{pinALoc}, pinB{pinBLoc}
 {
     wiringPiSetup();
     pinMode(pinA, INPUT);
@@ -22,21 +23,25 @@ Encoder::Encoder(int pinALoc, int pinBLoc)
     registerCallback();
 }
 
-static Encoder *callbackObject;
+static ExperimentalEncoder* callbackObject;
+static std::vector<ExperimentalEncoder*> lookupTable;
 
-void Encoder::callbackMethod()
+void ExperimentalEncoder::callbackMethod()
 {
-    callbackObject -> update();
+    ExperimentalEncoder* currentCallbackObject = lookupTable.at(location);
+    currentCallbackObject->update();
 }
 
-void Encoder::registerCallback()
+void ExperimentalEncoder::registerCallback()
 {
     callbackObject = this;
-    wiringPiISR(pinA, INT_EDGE_BOTH, &Encoder::callbackMethod);
-    wiringPiISR(pinB, INT_EDGE_BOTH, &Encoder::callbackMethod);
+    lookupTable.push_back(callbackObject);
+    location = lookupTable.size() - 1;
+    wiringPiISR(pinA, INT_EDGE_BOTH, &ExperimentalEncoder::callbackMethod);
+    wiringPiISR(pinB, INT_EDGE_BOTH, &ExperimentalEncoder::callbackMethod);
 }
 
-void Encoder::update()
+void ExperimentalEncoder::update()
 {
     unsigned char currentState = state & 3;
     if (digitalRead(pinA))
@@ -68,7 +73,7 @@ void Encoder::update()
     }
 }
 
-int Encoder::read()
+int ExperimentalEncoder::read()
 {
     return position;
 }

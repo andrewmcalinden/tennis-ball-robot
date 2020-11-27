@@ -17,7 +17,7 @@ public:
     class EncoderReference
     {
     public:
-        NestedEncoder *callbackObject;
+        static NestedEncoder *callbackObject; //works if not static
         //void setCallBackObject();
     };
 };

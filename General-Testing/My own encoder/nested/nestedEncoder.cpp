@@ -33,7 +33,7 @@ void NestedEncoder::callbackMethod()
 
 void NestedEncoder::registerCallback()
 {
-    EncoderReference::callbackObject = this;
+    NestedEncoder* EncoderReference::callbackObject = this;
     wiringPiISR(pinA, INT_EDGE_BOTH, &NestedEncoder::callbackMethod);
     wiringPiISR(pinB, INT_EDGE_BOTH, &NestedEncoder::callbackMethod);
 }

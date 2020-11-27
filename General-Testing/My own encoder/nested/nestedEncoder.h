@@ -13,7 +13,7 @@ public:
 
     static void callbackMethod();
     void registerCallback();
-    NestedEncoder* getThis();
+    static NestedEncoder* getThis();
 
     class EncoderReference
     {

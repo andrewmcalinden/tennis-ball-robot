@@ -26,7 +26,7 @@ NestedEncoder *NestedEncoder::getThis()
     return this;
 }
 
-NestedEncoder *NestedEncoder::EncoderReference::callbackObject = getThis();
+NestedEncoder *NestedEncoder::EncoderReference::callbackObject = NestedEncoder::getThis();
 
 void NestedEncoder::callbackMethod()
 {

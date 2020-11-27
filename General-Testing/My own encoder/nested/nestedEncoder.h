@@ -18,6 +18,6 @@ public:
     {
     public:
         static NestedEncoder *callbackObject;
-        static void setCallBackObject();
+        void setCallBackObject();
     };
 };

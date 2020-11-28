@@ -23,60 +23,71 @@ ExperimentalEncoder::ExperimentalEncoder(int pinALoc, int pinBLoc)
     registerCallback();
 }
 
-static ExperimentalEncoder* callbackObject;
 static std::vector<ExperimentalEncoder*> lookupTable;
-
-void ExperimentalEncoder::callbackMethod()
-{
-    ExperimentalEncoder* currentCallbackObject = lookupTable.at(location); //this is the only error
-    currentCallbackObject->update(0);
-}
 
 void ExperimentalEncoder::registerCallback()
 {
-    callbackObject = this;
-    lookupTable.push_back(callbackObject);
-    location = lookupTable.size() - 1;
-    wiringPiISR(pinA, INT_EDGE_BOTH, &ExperimentalEncoder::callbackMethod);
-    wiringPiISR(pinB, INT_EDGE_BOTH, &ExperimentalEncoder::callbackMethod);
+    lookupTable.push_back(this);
+    switch(pinA)
+    {
+        case 0:
+            wiringPiISR(0, INT_EDGE_BOTH, &interrupt0);
+            break;
+        case 2:
+            wiringPiISR(2, INT_EDGE_BOTH, &interrupt2);
+            break;
+        case 3:
+            wiringPiISR(3, INT_EDGE_BOTH, &interrupt3);
+            break;
+        case 0:
+            wiringPiISR(7, INT_EDGE_BOTH, &interrupt7);
+            break;
+    }
 }
 
 void update(unsigned char pin)
 {
-    unsigned char currentState = state & 3;
-    if (digitalRead(pinA))
+    for (int i = 0; i < lookupTable.size(); i++)
     {
-        currentState |= 4;
-    }
-    if (digitalRead(pinB))
-    {
-        currentState |= 8;
-    }
+        if (lookupTable.at(i)->pinA == pin || lookupTable.at(i)->pinB == pin) //found the encoder which is interrupting
+        {
+            ExperimentalEncoder *currentEncoder = lookupTable.at(i);
+            unsigned char currentState = state & 3;
+            if (digitalRead(currentEncoder->pinA))
+            {
+                currentState |= 4;
+            }
+            if (digitalRead(currentEncoder->pinB))
+            {
+                currentState |= 8;
+            }
 
-    state = currentState >> 2;
+            currentEncoder->state = currentState >> 2;
 
-    if (currentState == 1 || currentState == 7 || currentState == 8 || currentState == 14)
-    {
-        position += 1;
-    }
-    else if (currentState == 2 || currentState == 4 || currentState == 11 || currentState == 13)
-    {
-        position -= 1;
-    }
-    else if (currentState == 3 || currentState == 12)
-    {
-        position += 2;
-    }
-    else if (currentState == 6 || currentState == 9)
-    {
-        position -= 2;
+            if (currentState == 1 || currentState == 7 || currentState == 8 || currentState == 14)
+            {
+                currentEncoder->position += 1;
+            }
+            else if (currentState == 2 || currentState == 4 || currentState == 11 || currentState == 13)
+            {
+                currentEncoder->position -= 1;
+            }
+            else if (currentState == 3 || currentState == 12)
+            {
+                currentEncoder->position += 2;
+            }
+            else if (currentState == 6 || currentState == 9)
+            {
+                currentEncoder->position -= 2;
+            }
+        }
     }
 }
 
-void Interrupt0(void) { update(0); }
-void Interrupt2(void) { update(2); }
-void Interrupt3(void) { update(3); }
-void Interrupt7(void) { update(7); }
+void interrupt0(void) { update(0); }
+void interrupt2(void) { update(2); }
+void interrupt3(void) { update(3); }
+void interrupt7(void) { update(7); }
 
 int ExperimentalEncoder::read()
 {

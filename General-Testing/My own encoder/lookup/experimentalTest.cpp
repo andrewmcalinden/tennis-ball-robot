@@ -1,5 +1,6 @@
 #include "experimentalEncoder.h"
 #include <iostream>
+#include <wiringPi.h>
 int main()
 {
     ExperimentalEncoder enc1(2, 3);

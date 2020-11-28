@@ -16,6 +16,6 @@ int main()
         // std::cout << "  Heading:";
         // printf("%.2f", getHeading());
         //std::cout << "\r        ";
-        printf("\rX: %.2f",getX());        
+        printf("\rX: %.2f",getX(),"Y: %.2f",getY(),"Heading: %.2f",getHeading());
     }
 }

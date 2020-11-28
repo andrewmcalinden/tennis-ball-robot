@@ -1,6 +1,7 @@
 #include "experimentalEncoder.h"
 #include <wiringPi.h>
 #include <vector>
+#include <iostream>
 
 ExperimentalEncoder::ExperimentalEncoder(int pinALoc, int pinBLoc)
     : pinA{pinALoc}, pinB{pinBLoc}
@@ -32,6 +33,7 @@ void update(unsigned char pin)
         if (lookupTable.at(i)->pinA == pin || lookupTable.at(i)->pinB == pin) //found the encoder which is interrupting
         {
             ExperimentalEncoder *currentEncoder = lookupTable.at(i);
+            std::cout << "pinA " << currentEncoder->pinA;
             
             unsigned char currentState = currentEncoder->state & 3;
             if (digitalRead(currentEncoder->pinA))

@@ -8,9 +8,11 @@ class Vector
 
     public:
     Vector(double hor, double vert);
+
     double getX();
     double getY();
     double getMagnitude();
     double getAngle();
+    
     Vector rotated(double angle);
 };

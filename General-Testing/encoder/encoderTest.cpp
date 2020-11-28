@@ -1,10 +1,10 @@
-#include "experimentalEncoder.h"
+#include "encoder.h"
 #include <iostream>
 #include <wiringPi.h>
 int main()
 {
-    ExperimentalEncoder enc1(0, 7);
-    ExperimentalEncoder enc2(2, 3);
+    Encoder enc1(0, 7);
+    Encoder enc2(2, 3);
 
     int read1 = 0;
     int pastRead1 = 0;

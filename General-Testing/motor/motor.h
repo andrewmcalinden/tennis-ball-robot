@@ -1,4 +1,3 @@
-#include <wiringPi.h>
 class Motor
 {
 private:

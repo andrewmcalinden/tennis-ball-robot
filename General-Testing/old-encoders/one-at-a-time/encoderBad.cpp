@@ -1,7 +1,7 @@
-#include "encoder.h"
+#include "encoderBad.h"
 #include <wiringPi.h>
-Encoder::Encoder(int pinALoc, int pinBLoc)
-    :pinA{pinALoc}, pinB{pinBLoc}
+EncoderBad::Encoder(int pinALoc, int pinBLoc)
+    : pinA{pinALoc}, pinB{pinBLoc}
 {
     wiringPiSetup();
     pinMode(pinA, INPUT);
@@ -22,21 +22,21 @@ Encoder::Encoder(int pinALoc, int pinBLoc)
     registerCallback();
 }
 
-static Encoder *callbackObject;
+static EncoderBad *callbackObject;
 
-void Encoder::callbackMethod()
+void EncoderBad::callbackMethod()
 {
     callbackObject -> update();
 }
 
-void Encoder::registerCallback()
+void EncoderBad::registerCallback()
 {
     callbackObject = this;
-    wiringPiISR(pinA, INT_EDGE_BOTH, &Encoder::callbackMethod);
-    wiringPiISR(pinB, INT_EDGE_BOTH, &Encoder::callbackMethod);
+    wiringPiISR(pinA, INT_EDGE_BOTH, &EncoderBad::callbackMethod);
+    wiringPiISR(pinB, INT_EDGE_BOTH, &EncoderBad::callbackMethod);
 }
 
-void Encoder::update()
+void EncoderBad::update()
 {
     unsigned char currentState = state & 3;
     if (digitalRead(pinA))
@@ -68,7 +68,7 @@ void Encoder::update()
     }
 }
 
-int Encoder::read()
+int EncoderBad::read()
 {
     return position;
 }

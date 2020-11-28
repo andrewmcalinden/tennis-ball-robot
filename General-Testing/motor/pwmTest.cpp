@@ -1,11 +1,11 @@
 #include "motor.h"
 #include <iostream>
+#include <wiringPi.h>
 #define DIRECTION_PIN_FORWARD 2
 #define POWER_PIN 10 //GPIO 13
 
 int main()
 {
-    wiringPiSetup();
     Motor m(DIRECTION_PIN_FORWARD, POWER_PIN);
     double power = 0;
     while (true)

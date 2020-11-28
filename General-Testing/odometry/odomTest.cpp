@@ -1,32 +1,19 @@
 #include<iostream>
-#include <cmath>
 #include "odometry.h"
-#include "../BETA/encoderL.h"
-#include "../BETA/encoderR.h"
-
-int EncoderL::position = 0;
-unsigned char EncoderL::state = 0;
-
-int EncoderR::position = 0;
-unsigned char EncoderR::state = 0;
+#include "../encoder/encoder.h"
 
 int main()
 { 
-    EncoderL::begin();
-    EncoderR::begin();
+    Encoder encoderL(0, 7);
+    Encoder encoderR(2, 3);
     while (true)
     {
-        std::cout << "lRead: " << EncoderL::read() << "\n";
-        std::cout << "  rRead: " << EncoderR::read();
-        updatePos(EncoderL::read(), EncoderR::read());
+        updatePos(encoderL.read(), encoderR.read());
         std::cout << "\nX:";
         printf("%.2f", getX());
         std::cout << "  Y:";
         printf("%.2f", getY());
         std::cout << "  Heading:";
-        printf("%.2f", getHeading());
-        std::cout << "  Total Distance:";
-        printf("%.2f", getTotalDist());
-        
+        printf("%.2f", getHeading());        
     }
 }

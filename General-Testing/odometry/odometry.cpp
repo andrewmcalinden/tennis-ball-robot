@@ -20,8 +20,6 @@ double prevRight = 0;
 double leftChange = 0;
 double rightChange = 0;
 
-double totalDist = 0;
-
 void setPose(double x, double y, double theta)
 {
     globalXPos = x;
@@ -29,13 +27,11 @@ void setPose(double x, double y, double theta)
     globalHeading = theta;
 }
 
-
 bool epsilonEquals(double value1, double value2)
 {
     return (abs(value1 - value2) < EPSILON);
 }
 
-//might want to make current tics a parameter in updatePos
 void updateLeftEncoder(double reading)
 {
     double currentPulses = reading; //actual encoder reading
@@ -69,7 +65,6 @@ void updatePos(double leftReading, double rightReading)
     globalHeading = angleWrapDeg(globalHeading + angleChangeDeg);
 
     double movement = (leftChange + rightChange) / 2.0; // total change in movement by robot (dx)
-    totalDist += std::abs(movement);
     double dTheta = angleChangeRad;
 
     double sinTheta = sin(dTheta);
@@ -91,7 +86,6 @@ void updatePos(double leftReading, double rightReading)
     }
 
     Vector deltaVector = Vector(sineTerm * movement, cosTerm * movement); //translation
-
     deltaVector = deltaVector.rotated(initialHeadingRad);
 
     //switch x, y because thats then +y is forward
@@ -113,9 +107,4 @@ double getY()
 double getHeading()
 {
     return globalHeading;
-}
-
-double getTotalDist()
-{
-    return totalDist;
 }

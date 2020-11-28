@@ -49,7 +49,7 @@ double angleDiff(double angle1, double angle2)
     { //diff btwn curr & goal is less than or equal to 180
         return -(angle1 - angle2);
     }
-     else if (angle1 > angle2)
+    else if (angle1 > angle2)
     { //curr is greater than goal
         return (360 - (angle1 - angle2));
     }

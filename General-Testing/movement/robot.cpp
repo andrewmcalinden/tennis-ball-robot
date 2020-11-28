@@ -6,19 +6,16 @@
 #include <ctime>
 #include <iostream>
 
-Robot::Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin, double initialX, double initialY, double initialTheta)
-    : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin} //initialize motors
+Robot::Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin,
+             double initialX, double initialY, double initialTheta,
+             int lEncoderPin1, int lEncoderPin2, int rEncoderPin1, int rEncoderPin2)
+    : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin}, encoderL{lEncoderPin1, lEncoderPin2}, encoderR{rEncoderPin1, rEncoderPin2} //initialize motors and encoders
 {
     setPose(initialX, initialY, initialTheta);
 }
 
-
-void Robot::goStraight(double inches, double p, double i, double d, double f)
+void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
 {
-    double kp = p;
-    double ki = i;
-    double kd = d;
-
     std::clock_t timer;
     timer = std::clock();
 
@@ -29,7 +26,6 @@ void Robot::goStraight(double inches, double p, double i, double d, double f)
     double initialY = getY();
     double initialHeadingRad = toRadians(getHeading() + 90); //add 90 because we want the right to be 0 but right now up is 0
 
-    //flipped because if you actually draw the triangle it works out
     double additionalX = inches * cos(initialHeadingRad);
     double additionalY = inches * sin(initialHeadingRad);
 
@@ -44,10 +40,9 @@ void Robot::goStraight(double inches, double p, double i, double d, double f)
     double integral = 0;
     double initialAngle = getHeading();
 
-    while (error > 2)
+    while (abs(error) > 2)
     {
-        //std::cout << "Left read: " << EncoderL::read() << " Right read: " << EncoderR::read();
-        updatePos(EncoderL::read(), EncoderR::read());
+        updatePos(encoderL.read(), encoderR.read());
         double xError = abs(getX() - finalX);
         double yError = abs(getY() - finalY);
         double error = hypot(xError, yError);
@@ -112,10 +107,3 @@ void Robot::setMotorPowers(double lPower, double rPower)
     r.setPower(rPower);
     std::cout << "lPower: " << lPower << "  rPower: " << rPower << "\n";
 }
-
-void Robot::printEncoders()
-{
-    std::cout << "L: " << EncoderL::read();
-    std::cout << "  R: " << EncoderR::read() << "\n";
-}
-

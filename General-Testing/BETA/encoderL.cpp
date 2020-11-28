@@ -1,5 +1,6 @@
 #include "encoderL.h"
 #include <iostream>
+#include <wiringPi.h>
 void EncoderL::begin()
 {
     std::cout << "  started update interrupt";

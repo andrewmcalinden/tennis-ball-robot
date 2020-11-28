@@ -1,4 +1,5 @@
 #include "encoderR.h"
+#include <wiringPi.h>
 void EncoderR::begin()
 {
     wiringPiSetup();

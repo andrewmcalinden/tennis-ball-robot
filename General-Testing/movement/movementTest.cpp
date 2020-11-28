@@ -9,16 +9,13 @@
 #define INITIAL_Y 0
 #define INITIAL_THETA 0
 
-int EncoderL::position = 0;
-unsigned char EncoderL::state = 0;
-
-int EncoderR::position = 0;
-unsigned char EncoderR::state = 0;
+#define L_ENCODER_PIN1 0
+#define L_ENCODER_PIN2 7
+#define R_ENCODER_PIN1 2
+#define R_ENCODER_PIN2 3
 
 int main()
 {
-    EncoderL::begin();
-    EncoderR::begin();
-    Robot r(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA);
+    Robot r(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA, L_ENCODER_PIN1, L_ENCODER_PIN2, R_ENCODER_PIN1, R_ENCODER_PIN2);
     r.goStraight(10, .1, 0, .1, .1);
 }

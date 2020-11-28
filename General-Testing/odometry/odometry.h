@@ -10,8 +10,6 @@ double getX();
 double getY();
 double getHeading(); //in degrees
 
-double getTotalDist();
-
 extern double globalXPos;
 extern double globalYPos;
 extern double globalHeading; //in degrees, from -180 to 180

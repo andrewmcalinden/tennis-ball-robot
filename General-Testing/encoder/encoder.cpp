@@ -3,7 +3,7 @@
 #include <vector>
 #include <iostream>
 
-Encoder::ExperimentalEncoder(int pinALoc, int pinBLoc)
+Encoder::Encoder(int pinALoc, int pinBLoc)
     : pinA{pinALoc}, pinB{pinBLoc}
 {
     wiringPiSetup();
@@ -34,7 +34,7 @@ void interrupt2(void) { update(2); }
 void interrupt3(void) { update(3); }
 void interrupt7(void) { update(7); }
 
-std::vector<ExperimentalEncoder *> lookupTable;
+std::vector<Encoder *> lookupTable;
 
 void Encoder::registerCallback()
 {
@@ -77,7 +77,7 @@ void update(unsigned char pin)
     {
         if (lookupTable.at(i)->pinA == pin || lookupTable.at(i)->pinB == pin) //found the encoder which is interrupting
         {
-            ExperimentalEncoder *currentEncoder = lookupTable.at(i);
+            Encoder *currentEncoder = lookupTable.at(i);
 
             unsigned char currentState = (currentEncoder->state) & 3;
 

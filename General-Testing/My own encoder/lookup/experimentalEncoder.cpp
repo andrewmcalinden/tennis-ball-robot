@@ -88,6 +88,21 @@ void ExperimentalEncoder::registerCallback()
         wiringPiISR(7, INT_EDGE_BOTH, &interrupt7);
         break;
     }
+    switch (pinB)
+    {
+    case 0:
+        wiringPiISR(0, INT_EDGE_BOTH, &interrupt0);
+        break;
+    case 2:
+        wiringPiISR(2, INT_EDGE_BOTH, &interrupt2);
+        break;
+    case 3:
+        wiringPiISR(3, INT_EDGE_BOTH, &interrupt3);
+        break;
+    case 7:
+        wiringPiISR(7, INT_EDGE_BOTH, &interrupt7);
+        break;
+    }
 }
 
 int ExperimentalEncoder::read()

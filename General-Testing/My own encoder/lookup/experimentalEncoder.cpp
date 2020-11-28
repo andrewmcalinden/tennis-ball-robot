@@ -2,11 +2,6 @@
 #include <wiringPi.h>
 #include <vector>
 
-void Interrupt0 (void){update(0);}
-void Interrupt2(void) {update(2);}
-void Interrupt3(void) {update(3);}
-void Interrupt7(void) {update(7);}
-
 ExperimentalEncoder::ExperimentalEncoder(int pinALoc, int pinBLoc)
     : pinA{pinALoc}, pinB{pinBLoc}
 {
@@ -35,7 +30,7 @@ static std::vector<ExperimentalEncoder*> lookupTable;
 void ExperimentalEncoder::callbackMethod()
 {
     ExperimentalEncoder* currentCallbackObject = lookupTable.at(location); //this is the only error
-    currentCallbackObject->update();
+    currentCallbackObject->update(0);
 }
 
 void ExperimentalEncoder::registerCallback()
@@ -78,6 +73,11 @@ void ExperimentalEncoder::update(unsigned char pin)
         position -= 2;
     }
 }
+
+void Interrupt0(void) { update(0); }
+void Interrupt2(void) { update(2); }
+void Interrupt3(void) { update(3); }
+void Interrupt7(void) { update(7); }
 
 int ExperimentalEncoder::read()
 {

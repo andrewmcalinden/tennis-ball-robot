@@ -3,8 +3,8 @@
 #include <wiringPi.h>
 int main()
 {
-    ExperimentalEncoder enc1(2, 3);
-    ExperimentalEncoder enc2(0, 7);
+    ExperimentalEncoder enc1(0, 7);
+    ExperimentalEncoder enc2(2, 3);
 
     int read1 = 0;
     int pastRead1 = 0;

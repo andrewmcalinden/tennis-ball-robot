@@ -41,7 +41,7 @@ void ExperimentalEncoder::registerCallback()
     wiringPiISR(pinB, INT_EDGE_BOTH, &ExperimentalEncoder::callbackMethod);
 }
 
-void ExperimentalEncoder::update(unsigned char pin)
+void update(unsigned char pin)
 {
     unsigned char currentState = state & 3;
     if (digitalRead(pinA))

@@ -35,6 +35,8 @@ void update(unsigned char pin)
             ExperimentalEncoder *currentEncoder = lookupTable.at(i);
 
             unsigned char currentState = (currentEncoder->state) & 3;
+
+            std::cout << "readA: " << digitalRead(currentEncoder->pinA) << "readB: " << digitalRead(currentEncoder->pinB) << "\n";
             if (digitalRead(currentEncoder->pinA))
             {
                 currentState |= 4;
@@ -46,7 +48,7 @@ void update(unsigned char pin)
 
             (currentEncoder->state) = currentState >> 2;
 
-            std::cout << "current state: " << static_cast<unsigned>(currentState) << std::endl;
+            //std::cout << "current state: " << static_cast<unsigned>(currentState) << std::endl;
 
             if (currentState == 1 || currentState == 7 || currentState == 8 || currentState == 14)
             {

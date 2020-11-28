@@ -24,7 +24,7 @@ ExperimentalEncoder::ExperimentalEncoder(int pinALoc, int pinBLoc)
     registerCallback();
 }
 
-static std::vector<ExperimentalEncoder*> lookupTable;
+std::vector<ExperimentalEncoder*> lookupTable;
 
 void update(unsigned char pin)
 {

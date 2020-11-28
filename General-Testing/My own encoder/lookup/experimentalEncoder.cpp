@@ -2,7 +2,11 @@
 #include <wiringPi.h>
 #include <vector>
 
-void Interrupt0 (void){digitalWrite(3, HIGH);}
+void Interrupt0 (void){update(0);}
+void Interrupt2(void) {update(2);}
+void Interrupt3(void) {update(3);}
+void Interrupt7(void) {update(7);}
+
 ExperimentalEncoder::ExperimentalEncoder(int pinALoc, int pinBLoc)
     : pinA{pinALoc}, pinB{pinBLoc}
 {
@@ -43,7 +47,7 @@ void ExperimentalEncoder::registerCallback()
     wiringPiISR(pinB, INT_EDGE_BOTH, &ExperimentalEncoder::callbackMethod);
 }
 
-void ExperimentalEncoder::update()
+void ExperimentalEncoder::update(unsigned char pin)
 {
     unsigned char currentState = state & 3;
     if (digitalRead(pinA))

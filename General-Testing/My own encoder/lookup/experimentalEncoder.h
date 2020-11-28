@@ -9,7 +9,7 @@ private:
 
 public:
     ExperimentalEncoder(int pinALoc, int pinBLoc);
-    void update();
+    void update(unsigned char pin);
     int read();
 
     static void callbackMethod();

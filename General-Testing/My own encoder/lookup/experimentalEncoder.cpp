@@ -36,7 +36,7 @@ void update(unsigned char pin)
 
             unsigned char currentState = (currentEncoder->state) & 3;
 
-            std::cout << "pinA: " << (currentEncoder->pinA) << "pinB: " << (currentEncoder->pinB) << "\n";
+            //std::cout << "pinA: " << (currentEncoder->pinA) << "pinB: " << (currentEncoder->pinB) << "\n";
             if (digitalRead(currentEncoder->pinA))
             {
                 currentState |= 4;

@@ -29,6 +29,8 @@ int Encoder::read()
     return position;
 }
 
+void update(unsigned char pin);
+
 void interrupt0(void) { update(0); }
 void interrupt2(void) { update(2); }
 void interrupt3(void) { update(3); }

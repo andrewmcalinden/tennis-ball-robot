@@ -23,7 +23,10 @@ int main()
         {
             std::cout << "  read2: " << read2;
         }
-        std::cout << "\n";
+        if (read1 != pastRead1 || read2 != pastRead2)
+        {
+            std::cout << "\n";
+        }
         delay(15);
         pastRead1 = read1;
         pastRead2 = read2;

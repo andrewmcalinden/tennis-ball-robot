@@ -25,26 +25,6 @@ ExperimentalEncoder::ExperimentalEncoder(int pinALoc, int pinBLoc)
 
 static std::vector<ExperimentalEncoder*> lookupTable;
 
-void ExperimentalEncoder::registerCallback()
-{
-    lookupTable.push_back(this);
-    switch(pinA)
-    {
-        case 0:
-            wiringPiISR(0, INT_EDGE_BOTH, &interrupt0);
-            break;
-        case 2:
-            wiringPiISR(2, INT_EDGE_BOTH, &interrupt2);
-            break;
-        case 3:
-            wiringPiISR(3, INT_EDGE_BOTH, &interrupt3);
-            break;
-        case 0:
-            wiringPiISR(7, INT_EDGE_BOTH, &interrupt7);
-            break;
-    }
-}
-
 void update(unsigned char pin)
 {
     for (int i = 0; i < lookupTable.size(); i++)
@@ -88,6 +68,26 @@ void interrupt0(void) { update(0); }
 void interrupt2(void) { update(2); }
 void interrupt3(void) { update(3); }
 void interrupt7(void) { update(7); }
+
+void ExperimentalEncoder::registerCallback()
+{
+    lookupTable.push_back(this);
+    switch (pinA)
+    {
+    case 0:
+        wiringPiISR(0, INT_EDGE_BOTH, &interrupt0);
+        break;
+    case 2:
+        wiringPiISR(2, INT_EDGE_BOTH, &interrupt2);
+        break;
+    case 3:
+        wiringPiISR(3, INT_EDGE_BOTH, &interrupt3);
+        break;
+    case 7:
+        wiringPiISR(7, INT_EDGE_BOTH, &interrupt7);
+        break;
+    }
+}
 
 int ExperimentalEncoder::read()
 {

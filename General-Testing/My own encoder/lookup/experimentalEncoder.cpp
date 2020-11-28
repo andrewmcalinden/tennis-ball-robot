@@ -46,7 +46,7 @@ void update(unsigned char pin)
 
             (currentEncoder->state) = currentState >> 2;
 
-            std::cout << "current state: " << currentState;
+            std::cout << "current state: " << static_cast<unsigned>(currentState) << std::endl;
 
             if (currentState == 1 || currentState == 7 || currentState == 8 || currentState == 14)
             {

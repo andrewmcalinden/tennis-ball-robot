@@ -20,7 +20,6 @@ ExperimentalEncoder::ExperimentalEncoder(int pinALoc, int pinBLoc)
     {
         state |= 2;
     }
-
     registerCallback();
 }
 

@@ -14,4 +14,6 @@ public:
 
     static void callbackMethod();
     void registerCallback();
+
+    void Interrupt0(void);
 };

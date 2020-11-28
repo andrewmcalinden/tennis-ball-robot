@@ -1,6 +1,8 @@
 #include "experimentalEncoder.h"
 #include <wiringPi.h>
 #include <vector>
+
+void Interrupt0 (void){digitalWrite(3, HIGH);}
 ExperimentalEncoder::ExperimentalEncoder(int pinALoc, int pinBLoc)
     : pinA{pinALoc}, pinB{pinBLoc}
 {

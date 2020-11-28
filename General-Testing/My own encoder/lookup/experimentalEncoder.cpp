@@ -32,7 +32,8 @@ void update(unsigned char pin)
         if (lookupTable.at(i)->pinA == pin || lookupTable.at(i)->pinB == pin) //found the encoder which is interrupting
         {
             ExperimentalEncoder *currentEncoder = lookupTable.at(i);
-            unsigned char currentState = state & 3;
+            
+            unsigned char currentState = currentEncoder->state & 3;
             if (digitalRead(currentEncoder->pinA))
             {
                 currentState |= 4;

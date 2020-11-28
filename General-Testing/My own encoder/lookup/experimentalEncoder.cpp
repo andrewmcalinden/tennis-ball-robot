@@ -33,8 +33,8 @@ void update(unsigned char pin)
         if (lookupTable.at(i)->pinA == pin || lookupTable.at(i)->pinB == pin) //found the encoder which is interrupting
         {
             ExperimentalEncoder *currentEncoder = lookupTable.at(i);
-            std::cout << "pinA " << currentEncoder->pinA;
-            
+            std::cout << "pinA " << currentEncoder->pinA << "pinB " << currentEncoder->pinB;
+
             unsigned char currentState = currentEncoder->state & 3;
             if (digitalRead(currentEncoder->pinA))
             {

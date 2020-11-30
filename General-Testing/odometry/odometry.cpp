@@ -90,8 +90,8 @@ void updatePos(double leftReading, double rightReading)
 
     //switch x, y because thats then +y is forward
     //-x because then +x is right
-    globalXPos += deltaVector.getY();
-    globalYPos += deltaVector.getX();
+    globalXPos -= deltaVector.getY();
+    globalYPos -= deltaVector.getX();
 }
 
 double getX()

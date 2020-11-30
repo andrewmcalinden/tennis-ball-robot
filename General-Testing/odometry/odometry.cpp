@@ -60,7 +60,7 @@ void updatePos(double leftReading, double rightReading)
     double initialHeading = globalHeading;
     double initialHeadingRad = toRadians(initialHeading);
 
-    double angleChangeRad = (leftChange - rightChange) / TRACKWIDTH;
+    double angleChangeRad = (rightChange - leftChange) / TRACKWIDTH;
     double angleChangeDeg = toDegrees(angleChangeRad);
     globalHeading = angleWrapDeg(globalHeading + angleChangeDeg);
 
@@ -90,7 +90,7 @@ void updatePos(double leftReading, double rightReading)
 
     //switch x, y because thats then +y is forward
     //-x because then +x is right
-    globalXPos -= deltaVector.getY();
+    globalXPos += deltaVector.getY();
     globalYPos += deltaVector.getX();
 }
 

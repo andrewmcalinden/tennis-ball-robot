@@ -8,7 +8,7 @@ int main()
     std::cout << "xpress";
     while(true){
      c = getline();
-    if (c == "run"){
+    if (c.equals("run")){
         std::cout << "x";
     }
     }

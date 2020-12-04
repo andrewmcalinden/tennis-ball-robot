@@ -18,6 +18,7 @@ int main()
     double Rpower = -1;
     while (true)
     {
+<<<<<<< HEAD
         while (Rpower < 1){
         motorL.setPower(Lpower);
         motorR.setPower(Rpower);
@@ -31,6 +32,19 @@ int main()
         Rpower -= .01;
         Lpower += .01;
         usleep(10000);
+=======
+        while (power < 1){
+        motorL.setPower(power);
+        motorR.setPower(power);
+        power += .01;
+        usleep(50000);
+        }
+        while (power > -1){
+        motorL.setPower(power);
+        motorR.setPower(power);
+        power -= .01;
+        usleep(50000);
+>>>>>>> parent of fb08e04... Update motorTestNoEncoder.cpp
     }
 }
 }

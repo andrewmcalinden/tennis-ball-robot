@@ -15,7 +15,7 @@ int main()
     Motor motorL(DIRECTION_PIN_FORWARD_LEFT, POWER_PIN_LEFT);
     Motor motorR(DIRECTION_PIN_FORWARD_RIGHT, POWER_PIN_RIGHT);
     double Lpower = 1;
-    double Rpower = 0;
+    double Rpower = -1;
     while (true)
     {
         while (Rpower < 1){

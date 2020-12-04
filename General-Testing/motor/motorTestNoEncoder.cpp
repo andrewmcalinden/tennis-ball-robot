@@ -21,13 +21,13 @@ int main()
         motorL.setPower(power);
         motorR.setPower(power);
         power += .01;
-        usleep(50000);
+        usleep(10000);
         }
         while (power > -1){
         motorL.setPower(power);
         motorR.setPower(power);
         power -= .01;
-        usleep(50000);
+        usleep(10000);
     }
 }
 }

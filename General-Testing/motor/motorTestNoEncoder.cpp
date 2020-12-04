@@ -23,7 +23,7 @@ int main()
         power += .01;
         usleep(10000);
         }
-        while (power > -1){
+        while (power > 0){
         motorL.setPower(power);
         motorR.setPower(power);
         power -= .01;

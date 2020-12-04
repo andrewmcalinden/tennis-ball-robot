@@ -18,18 +18,16 @@ int main()
     while (true)
     {
         while (power < 1){
-        std::cout << power << "\r";
         motorL.setPower(power);
         motorR.setPower(power);
         power += .01;
-        usleep(10000);
+        usleep(50000);
         }
         while (power > -1){
-        std::cout << power << "\r";
         motorL.setPower(power);
         motorR.setPower(power);
         power -= .01;
-        usleep(10000);
+        usleep(50000);
     }
 }
 }

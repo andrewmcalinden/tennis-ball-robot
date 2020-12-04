@@ -17,11 +17,8 @@ int main()
     double power = -1;
     while (true)
     {
-        while (power < 1){
-        motorL.setPower(power);
-        motorR.setPower(power);
-        power += .01;
-        usleep(50000);
+        int c = getchar();
+        if (c == )
         }
         while (power > -1){
         motorL.setPower(power);

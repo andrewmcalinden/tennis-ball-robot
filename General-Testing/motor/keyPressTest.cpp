@@ -4,7 +4,7 @@
 
 int main()
 {
-    while(true){}
+    while(true){
     int c = getchar();
     if (c == 119){
         std::cout << "x";

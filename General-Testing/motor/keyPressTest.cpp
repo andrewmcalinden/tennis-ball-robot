@@ -7,7 +7,7 @@ int main()
     int c = 0;
     std::cout << "xpress";
     while(true){
-     c = getstring();
+     c = getline();
     if (c == "run"){
         std::cout << "x";
     }

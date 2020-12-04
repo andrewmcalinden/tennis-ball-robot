@@ -1,5 +1,6 @@
 #include "motor.h"
 #include <iostream>
+#include <string>
 #include <wiringPi.h>
 #include<unistd.h>
 
@@ -8,6 +9,8 @@
 #define DIRECTION_PIN_FORWARD_RIGHT 27
 #define POWER_PIN_RIGHT 26
 
+using namespace std;
+
 int main()
 {
     wiringPiSetup();
@@ -15,6 +18,7 @@ int main()
     Motor motorL(DIRECTION_PIN_FORWARD_LEFT, POWER_PIN_LEFT);
     Motor motorR(DIRECTION_PIN_FORWARD_RIGHT, POWER_PIN_RIGHT);
     double power = -1;
+    string c = "";
     while (true)
     {
         getline(cin, c);

@@ -7,12 +7,10 @@
 #define POWER_PIN_LEFT 23
 #define DIRECTION_PIN_FORWARD_RIGHT 16
 #define POWER_PIN_RIGHT 26
-#define BUTTON_IN 6
 
 int main()
 {
     wiringPiSetup();
-    pinMode(BUTTON_IN, INPUT);
 
     Motor motorL(DIRECTION_PIN_FORWARD_LEFT, POWER_PIN_LEFT);
     Motor motorR(DIRECTION_PIN_FORWARD_RIGHT, POWER_PIN_RIGHT);

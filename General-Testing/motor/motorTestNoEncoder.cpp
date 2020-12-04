@@ -17,14 +17,21 @@ int main()
     double power = -1;
     while (true)
     {
-        int c = getchar();
-        if (c == )
+        getline(cin, c);
+
+        if ((c=="run")){
+            motorL.setPower(1);
+            motorR.setPower(1);
         }
-        while (power > -1){
-        motorL.setPower(power);
-        motorR.setPower(power);
-        power -= .01;
-        usleep(50000);
+        if ((c=="stop")){
+            motorL.setPower(0);
+            motorR.setPower(0);
+        }
+        if ((c=="reverse")){
+            motorL.setPower(-1);
+            motorR.setPower(-1);
+        }
+        
     }
 }
-}
+

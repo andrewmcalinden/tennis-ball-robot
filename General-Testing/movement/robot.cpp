@@ -9,12 +9,30 @@
 Robot::Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin,
              double initialX, double initialY, double initialTheta,
              int lEncoderPin1, int lEncoderPin2, int rEncoderPin1, int rEncoderPin2)
-    : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin}, encoderL{lEncoderPin1, lEncoderPin2}, encoderR{rEncoderPin1, rEncoderPin2} //initialize motors and encoders
+    : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin}, encoderL{lEncoderPin1, lEncoderPin2}, encoderR{rEncoderPin1, rEncoderPin2}, startPos{initialX, initialY} //initialize motors and encoders
 {
     setPose(initialX, initialY, initialTheta);
+    numMovements = 0;
+    currentIndex = 0;
 }
 
 void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
+{
+    double initialX = getX();
+    double initialY = getY();
+    double initialHeadingRad = toRadians(getHeading() + 90); //add 90 because we want the right to be 0 but right now up is 0
+    startPos = Vector(initialX, initialY);
+
+    double additionalX = inches * cos(initialHeadingRad);
+    double additionalY = inches * sin(initialHeadingRad);
+
+    double finalX = initialX + additionalX;
+    double finalY = initialY + additionalY;
+    finalPos = Vector(finalX, finalY);
+
+}
+
+void Robot::goStraightPowerCalculations(Vector startPos, Vector currentPos, Vector finalPos, double power)
 {
     std::clock_t timer;
     timer = std::clock();
@@ -58,7 +76,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         double derivative = (error - pastError) / dt;
 
         double power = kp * proportional + ki * integral + kd * derivative;
-        std::cout << "  power: " << power << "\n"; 
+        std::cout << "  power: " << power << "\n";
         double angle = getHeading();
 
         if (power > 0)
@@ -97,7 +115,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
                 setMotorPowers(power - f, power - f);
             }
         }
-     }
+    }
     setMotorPowers(0, 0);
 }
 
@@ -106,4 +124,22 @@ void Robot::setMotorPowers(double lPower, double rPower)
     l.setPower(lPower);
     r.setPower(rPower);
     std::cout << "lPower: " << lPower << "  rPower: " << rPower << "\n";
+}
+
+void Robot::run()
+{
+    while (numMovements > 0)
+    {
+        Movement currentMovement = movements.at(currentIndex);
+
+        updatePos(encoderL.read(), encoderR.read());
+        Vector currentPos(getX(), getY());
+
+        switch (currentMovement)
+        {
+            case straight:
+                goStraightPowerCalculations(startPos, currentPos, finalPos, .1);
+                break;
+        }
+    }
 }

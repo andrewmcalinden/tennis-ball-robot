@@ -35,8 +35,8 @@ int main()
             motorR.setPower(0);
         }
         if ((c=="reverse")){
-            motorL.setPower(1);
-            motorR.setPower(1);
+            motorL.setPower(-1);
+            motorR.setPower(-1);
         }
         
     }

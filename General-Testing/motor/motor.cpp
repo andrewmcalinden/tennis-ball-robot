@@ -6,6 +6,8 @@ Motor::Motor(int dirForwardPinLoc, int powerPinLoc)
     wiringPiSetup();
     pinMode(dirForwardPin, OUTPUT);
     pinMode(powerPin, PWM_OUTPUT);
+    pwmSetClock(5000);
+    pwmSetRange(100);
 }
 
 void Motor::setPower(double power)
@@ -16,7 +18,7 @@ void Motor::setPower(double power)
         digitalWrite(dirForwardPin, LOW);
 
         //give power to motor adjusted (usually from 0 to 1024), negate as power was initially negative
-        double adjustedPower = -1 * power * 1023;
+        double adjustedPower = -1 * power * 99;
         pwmWrite(powerPin, adjustedPower);
     }
 
@@ -26,7 +28,7 @@ void Motor::setPower(double power)
         digitalWrite(dirForwardPin, HIGH);
 
         //give power to motor adjusted (usually from 0 to 1024)
-        double adjustedPower = power * 1023;
+        double adjustedPower = power * 99;
         pwmWrite(powerPin, adjustedPower);
     }
 }

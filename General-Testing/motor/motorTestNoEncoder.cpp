@@ -24,8 +24,8 @@ int main()
     string c = "";
     while (true)
     {
-        getline(cin, c);
-        power = (double)c;
+        //getline(cin, c);
+        getDouble(cin, power);
         motorL.setPower(power);
         motorR.setPower(power);
         /*if ((c=="run")){

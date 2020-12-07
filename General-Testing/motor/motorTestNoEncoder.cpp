@@ -27,16 +27,16 @@ int main()
         getline(cin, c);
 
         if ((c=="run")){
-            motorL.setPower(.5);
-            motorR.setPower(.5);
+            motorL.setPower(1);
+            motorR.setPower(1);
         }
         if ((c=="stop")){
             motorL.setPower(0);
             motorR.setPower(0);
         }
         if ((c=="reverse")){
-            motorL.setPower(-.5);
-            motorR.setPower(-.5);
+            motorL.setPower(1);
+            motorR.setPower(1);
         }
         
     }

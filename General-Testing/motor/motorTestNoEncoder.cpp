@@ -18,14 +18,14 @@ int main()
 
     Motor motorL(DIRECTION_PIN_FORWARD_LEFT, POWER_PIN_LEFT);
     Motor motorR(DIRECTION_PIN_FORWARD_RIGHT, POWER_PIN_RIGHT);
-    motorL.setPower(0);
-    motorR.setPower(0);
     double power = 0;
+    motorL.setPower(power);
+    motorR.setPower(power);
     string c = "";
     while (true)
     {
-        //getline(cin, c);
-        getDouble(cin, power);
+        getline(cin, c);
+        power = stod(c);
         motorL.setPower(power);
         motorR.setPower(power);
         /*if ((c=="run")){

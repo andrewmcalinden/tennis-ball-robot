@@ -23,7 +23,7 @@ int main()
         unsigned int timeGap = micros()-timeInit;
 
         double Lpower = 2*((timeGap/2041.0)-.5);
-        printf(Lpower, "\n");
+        printf("\nLEFT: %.2f", Lpower);
         while(digitalRead(LEFTPIN) == 1){}
         
     }

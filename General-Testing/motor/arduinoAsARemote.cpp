@@ -18,7 +18,7 @@ int main()
     while (true){
         unsigned int timeInit = micros();
 
-        while(digitalRead(LEFTPIN) == 0||(micros()-timeInit)<=2041){}
+        while(digitalRead(LEFTPIN) == 0/*||(micros()-timeInit)<=2041*/){}
 
         unsigned int timeGap = micros()-timeInit;
 

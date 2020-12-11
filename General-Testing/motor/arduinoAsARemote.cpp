@@ -24,7 +24,7 @@ int main()
 
         double Lpower = timeGap/2041.0;
         while(digitalRead(LEFTPIN) == 1){}
-        cout << Lpower;
+        printf("\r" + "%.2f" + Lpower);
     }
 }
 

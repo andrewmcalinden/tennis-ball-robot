@@ -17,9 +17,12 @@ int main()
 
     while (true){
         unsigned int timeInit = micros();
+
         while(digitalRead(LEFTPIN) == 0||(micros()-timeInit)<=2041){}
+
         unsigned int timeGap = micros()-timeInit;
-        double Lpower = timeGap/2041.0
+
+        double Lpower = timeGap/2041.0;
         while(digitalRead(LEFTPIN) == 1){}
         cout << Lpower;
     }

@@ -22,7 +22,7 @@ int main()
 
         unsigned int timeGap = micros()-timeInit;
 
-        double Lpower = timeGap/2041.0;
+        double Lpower = 2*((timeGap/2041.0)-.5);
         cout << Lpower << "\n";
         while(digitalRead(LEFTPIN) == 1){}
         

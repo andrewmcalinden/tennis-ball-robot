@@ -16,15 +16,15 @@ int main()
     pinMode(RIGHTPIN, INPUT);
 
     while (true){
-        unsigned int timeInit = micros();
+        // unsigned int timeInit = micros();
 
-        while(digitalRead(LEFTPIN) == 0||(micros()-timeInit)<=2041){}
+        // while(digitalRead(LEFTPIN) == 0||(micros()-timeInit)<=2041){}
 
-        unsigned int timeGap = micros()-timeInit;
+        // unsigned int timeGap = micros()-timeInit;
 
-        double Lpower = timeGap/2041.0;
+        // double Lpower = timeGap/2041.0;
         printf("\nLEFT: ",micros());
-        while(digitalRead(LEFTPIN) == 1){}
+        // while(digitalRead(LEFTPIN) == 1){}
         
     }
 }

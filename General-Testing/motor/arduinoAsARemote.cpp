@@ -59,7 +59,7 @@ int main()
         
         //delay(2000);
         cout << "\r" << Lpower;
-        delay(200);
+        delay(2);
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
         
         //printf("\nLEFT: %.2f", Lpower);

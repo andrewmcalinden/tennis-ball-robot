@@ -17,8 +17,9 @@ double superMap(double x, double in_min, double in_max, double out_min, double o
 }
 
 void rwmReaderL(/*unsigned int baseTime*/){
-    printf("\nTIME:", timeInit);
-    unsigned int baseTime = timeInit;
+    
+    unsigned int baseTime = ;
+    timeInit = 900;
     unsigned int timeGap = micros()-baseTime;
     Lpower = superMap(timeGap, 15, 2036, -1, 1);
 }
@@ -33,11 +34,12 @@ int main()
     while (true){
         timeInit = micros(); //gets a time baseline
 
-        wiringPiISR (LEFTPIN, INT_EDGE_RISING,  &rwmReaderL);
+        wiringPiISR (LEFTPIN, INT_EDGE_BOTH,  &rwmReaderL);
+        //wiringPiISR (LEFTPIN, INT_EDGE_FALLING,  &rwmReaderLStop);
 
         printf("\nLEFT: %.2f", Lpower);
         //while(digitalRead(LEFTPIN) == 1){}
-        
+        printf("\nTIME:", timeInit);
     }
 }
 

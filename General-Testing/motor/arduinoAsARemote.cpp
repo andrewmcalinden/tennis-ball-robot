@@ -23,6 +23,7 @@ double superMap(double x, double in_min, double in_max, double out_min, double o
 void rwmReaderLRise(){
     
     baseTime = micros();
+    printf("\r                                                                                                                      ");
     printf("\rcounter: "); \
     cout << count;
     printf(": ");

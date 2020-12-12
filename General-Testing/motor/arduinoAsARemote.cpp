@@ -37,6 +37,7 @@ void rwmReaderLFall(){
     Lpower = timeGap;
     //Lpower = superMap(timeGap, 15, 2041, -1, 1);
     //baseTime = micros();
+    baseTime = micros();
 }
 
 void counter(){
@@ -55,7 +56,7 @@ int main()
     while (true){
         //timeInit = micros(); //gets a time baseline
         //baseTime = micros();
-        baseTime = micros();
+        
         //delay(2000);
         cout << Lpower << "\n";
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);

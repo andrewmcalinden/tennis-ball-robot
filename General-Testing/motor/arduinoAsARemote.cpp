@@ -35,6 +35,7 @@ void rwmReaderLFall(){
     
     //printf("\nLEFT: %.2f", Lpower);
     Lpower = timeGap;
+    cout << Lpower
     //Lpower = superMap(timeGap, 15, 2041, -1, 1);
     //baseTime = micros();
     baseTime = micros();
@@ -58,8 +59,8 @@ int main()
         //baseTime = micros();
         
         //delay(2000);
-        cout << "\r" << Lpower;
-        delay(2);
+        //cout << "\r" << Lpower;
+        //delay(2);
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
         
         //printf("\nLEFT: %.2f", Lpower);

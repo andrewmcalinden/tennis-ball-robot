@@ -43,7 +43,7 @@ int main()
     while (true){
         //timeInit = micros(); //gets a time baseline
         //baseTime = micros();
-        cout << wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise));
+        cout << wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise);
         // printf("\nyour and idiot");
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
         

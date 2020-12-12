@@ -34,7 +34,7 @@ int main()
     while (true){
         timeInit = micros(); //gets a time baseline
 
-        wiringPiISR (LEFTPIN, INT_EDGE_BOTH,  &rwmReaderL);
+        wiringPiISR (LEFTPIN, INT_EDGE_RISING,  &rwmReaderL);
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING,  &rwmReaderLStop);
 
         printf("\nLEFT: %.2f", Lpower);

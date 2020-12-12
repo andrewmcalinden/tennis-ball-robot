@@ -7,9 +7,7 @@ using namespace std;
 #define LEFTPIN 5
 #define RIGHTPIN 6
 
-wiringPiSetup();
-pinMode(LEFTPIN, INPUT);
-pinMode(RIGHTPIN, INPUT);
+
 
 double Lpower = 0;
 double Rpower = 0;
@@ -44,14 +42,16 @@ void counter(){
 
 int main()
 {
-    
+    wiringPiSetup();
+    pinMode(LEFTPIN, INPUT);
+    pinMode(RIGHTPIN, INPUT);
 
     
 
     while (true){
         //timeInit = micros(); //gets a time baseline
         //baseTime = micros();
-        wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise);
+        wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLRise);
         //cout << count;
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
         

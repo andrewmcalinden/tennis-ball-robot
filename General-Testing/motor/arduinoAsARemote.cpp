@@ -15,6 +15,7 @@ double Rpower = 0;
 volatile int timeInit = 0;
 volatile int baseTime = 0;
 volatile int count = 1;
+volatile int countoo = 1;
 
 double superMap(double x, double in_min, double in_max, double out_min, double out_max) {
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
@@ -30,16 +31,16 @@ void rwmReaderLRise(){
     //count++;
 }
 void rwmReaderLFall(){
-    //printf("\nTHE TIME: %.2f", micros());
+
     unsigned int timeGap = micros()-baseTime;
     
     //printf("\nLEFT: %.2f", Lpower);
-    Lpower = timeGap;
+    //Lpower = timeGap;
     //cout << "\r" << Lpower;
-    //Lpower = superMap(timeGap, 15, 2041, -1, 1);
-    //baseTime = micros();
+    Lpower = superMap(timeGap, 15, 2041, -1, 1);
+
     baseTime = micros();
-    count++;
+    countoo++;
 }
 
 void counter(){
@@ -54,14 +55,15 @@ int main()
 
     
     //wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise);
-    //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &counter);
+    wiringPiISR (LEFTPIN, INT_EDGE_RISING, &counter);
     wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
     //while (true){
         //timeInit = micros(); //gets a time baseline
         //baseTime = micros();
         
         delay(20000);
-        cout << count << "\n";
+        cout << "count: " << count << "\n";
+        cout << "countoo: " << Lpower << "\n";
         //delay(2);
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
         

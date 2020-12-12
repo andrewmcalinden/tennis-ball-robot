@@ -48,7 +48,7 @@ int main()
         //timeInit = micros(); //gets a time baseline
         //baseTime = micros();
         wiringPiISR (LEFTPIN, INT_EDGE_RISING, &counter);
-        printf(count);
+        cout << count;
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
         
         //printf("\nLEFT: %.2f", Lpower);

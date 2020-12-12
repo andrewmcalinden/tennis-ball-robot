@@ -26,7 +26,7 @@ void rwmReaderLRise(){
     cout << count << ": " << baseTime << "\n";
     //Lpower = superMap(timeGap, 15, 2036, -1, 1);
     //baseTime = micros();
-    void delay(2);
+    delay(2);
     count++;
 }
 void rwmReaderLFall(){

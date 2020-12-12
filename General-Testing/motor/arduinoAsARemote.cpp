@@ -26,6 +26,7 @@ void rwmReaderLRise(){
     cout << count << ": " << baseTime << "\n";
     //Lpower = superMap(timeGap, 15, 2036, -1, 1);
     //baseTime = micros();
+    while(digitalRead(LEFTPIN) == 1){}
     count++;
 }
 void rwmReaderLFall(){
@@ -53,7 +54,7 @@ int main()
     while (true){
         //timeInit = micros(); //gets a time baseline
         //baseTime = micros();
-        wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLRise);
+        wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise);
         //cout << count;
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
         

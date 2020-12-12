@@ -63,7 +63,7 @@ int main()
         
         delay(20000);
         cout << "count: " << count << "\n";
-        cout << "countoo: " << Lpower << "\n";
+        cout << "countoo: " << countoo << "\n";
         //delay(2);
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
         

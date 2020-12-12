@@ -14,6 +14,7 @@ double Rpower = 0;
 
 volatile int timeInit = 0;
 volatile int baseTime = 0;
+volatile int count = 0;
 
 double superMap(double x, double in_min, double in_max, double out_min, double out_max) {
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
@@ -36,7 +37,7 @@ void rwmReaderLFall(){
     //Lpower = superMap(timeGap, 15, 2036, -1, 1);
     //baseTime = micros();
 }
-volatile int count = 0;
+
 void counter(){
     count++;
 }

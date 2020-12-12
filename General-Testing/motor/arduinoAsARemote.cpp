@@ -23,22 +23,19 @@ double superMap(double x, double in_min, double in_max, double out_min, double o
 void rwmReaderLRise(){
     
     baseTime = micros();
-    printf("\rcounter: "); \
-    cout << count;
-    printf(": ");
-    cout << baseTime;
+
     //Lpower = superMap(timeGap, 15, 2036, -1, 1);
     //baseTime = micros();
     //delay(2);
-    count++;
+    //count++;
 }
 void rwmReaderLFall(){
-    printf("\nTHE TIME: %.2f", micros());
+    //printf("\nTHE TIME: %.2f", micros());
     unsigned int timeGap = micros()-baseTime;
     
-    printf("\nLEFT: %.2f", Lpower);
     //printf("\nLEFT: %.2f", Lpower);
-    //Lpower = superMap(timeGap, 15, 2036, -1, 1);
+    //printf("\nLEFT: %.2f", Lpower);
+    Lpower = superMap(timeGap, 15, 2041, -1, 1);
     //baseTime = micros();
 }
 
@@ -54,12 +51,13 @@ int main()
 
     
     wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise);
+    wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLFall);
     while (true){
         //timeInit = micros(); //gets a time baseline
         //baseTime = micros();
         
         //delay(2000);
-        //cout << count;
+        cout << Lpower << "\n";
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
         
         //printf("\nLEFT: %.2f", Lpower);

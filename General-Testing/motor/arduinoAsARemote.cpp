@@ -53,16 +53,16 @@ int main()
     pinMode(LEFTPIN, INPUT);
     pinMode(RIGHTPIN, INPUT);
 
-    wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
+    wiringPiISR (LEFTPIN, INT_EDGE_BOTH, &rwmReaderLFall);
     //wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise);
-    wiringPiISR (LEFTPIN, INT_EDGE_RISING, &counter);
+    //wiringPiISR (LEFTPIN, INT_EDGE_RISING, &counter);
     
     //while (true){
         //timeInit = micros(); //gets a time baseline
         //baseTime = micros();
         
         delay(2000);
-        cout << "count: " << count << "\n";
+        //cout << "count: " << count << "\n";
         cout << "countoo: " << countoo << "\n";
         //delay(2);
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);

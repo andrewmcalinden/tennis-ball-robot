@@ -35,7 +35,7 @@ void rwmReaderLFall(){
     
     //printf("\nLEFT: %.2f", Lpower);
     Lpower = timeGap;
-    cout << "\r" << Lpower;
+    //cout << "\r" << Lpower;
     //Lpower = superMap(timeGap, 15, 2041, -1, 1);
     //baseTime = micros();
     baseTime = micros();

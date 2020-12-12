@@ -15,7 +15,7 @@ double superMap(double x, double in_min, double in_max, double out_min, double o
 }
 
 void rwmReaderL(/*unsigned int baseTime*/){
-    unsigned int baseTime = 30000;
+    unsigned int baseTime = timeInit;
     unsigned int timeGap = micros()-baseTime;
     Lpower = superMap(timeGap, 15, 2036, -1, 1);
 }

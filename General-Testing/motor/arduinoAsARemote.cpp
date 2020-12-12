@@ -53,13 +53,13 @@ int main()
 
     
     //wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise);
-    wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLFall);
+    wiringPiISR (LEFTPIN, INT_EDGE_RISING, &counter);
     while (true){
         //timeInit = micros(); //gets a time baseline
         //baseTime = micros();
         
-        //delay(2000);
-        //cout << "\r" << Lpower;
+        delay(2000);
+        cout << counter;
         //delay(2);
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
         

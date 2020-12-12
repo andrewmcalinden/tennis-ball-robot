@@ -29,7 +29,7 @@ int main()
     while (true){
         unsigned int timeInit = micros(); //gets a time baseline
 
-        wiringPiISR (LEFTPIN, INT_EDGE_RISING,  rwmReaderL(timeInit));
+        wiringPiISR (LEFTPIN, INT_EDGE_RISING,  &rwmReaderL(timeInit));
 
         printf("\nLEFT: %.2f", Lpower);
         //while(digitalRead(LEFTPIN) == 1){}

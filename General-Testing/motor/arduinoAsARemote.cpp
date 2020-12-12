@@ -58,7 +58,7 @@ int main()
         //baseTime = micros();
         
         //delay(2000);
-        cout << Lpower << "\n";
+        cout << "\r" << Lpower;
         delay(200);
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
         

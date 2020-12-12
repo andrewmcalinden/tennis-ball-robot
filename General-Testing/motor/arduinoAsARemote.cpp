@@ -26,7 +26,7 @@ void rwmReaderLRise(){
 void rwmReaderLFall(){
     
     unsigned int timeGap = micros()-baseTime;
-    printf("\nTHE TIME: %.2f", micros());
+    printf("\nTHE TIME: %.2f", timeGap);
     printf("\nLEFT: %.2f", Lpower);
     //printf("\nLEFT: %.2f", Lpower);
     Lpower = superMap(timeGap, 15, 2036, -1, 1);

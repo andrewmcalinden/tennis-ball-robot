@@ -23,7 +23,7 @@ double superMap(double x, double in_min, double in_max, double out_min, double o
 void rwmReaderLRise(){
     
     baseTime = micros();
-    printf("counter: ", count , ": " , baseTime , "\n");
+    printf("counter: ", (string)count , ": " , (string)baseTime , "\n");
     //Lpower = superMap(timeGap, 15, 2036, -1, 1);
     //baseTime = micros();
     delay(2);

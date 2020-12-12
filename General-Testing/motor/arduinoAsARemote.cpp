@@ -54,7 +54,7 @@ int main()
 
     
 
-    while (true){
+    //while (true){
         //timeInit = micros(); //gets a time baseline
         //baseTime = micros();
         wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise);
@@ -65,6 +65,6 @@ int main()
         //printf("\nLEFT: %.2f", Lpower);
         //while(digitalRead(LEFTPIN) == 1){}
         //printf("\nTIME:", timeInit);
-    }
+    //}
 }
 

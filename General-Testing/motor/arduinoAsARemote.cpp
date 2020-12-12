@@ -23,7 +23,6 @@ double superMap(double x, double in_min, double in_max, double out_min, double o
 void rwmReaderLRise(){
     
     baseTime = micros();
-    printf("\r                                                                                                                      ");
     printf("\rcounter: "); \
     cout << count;
     printf(": ");
@@ -55,17 +54,17 @@ int main()
 
     
 
-    while (true){
+    //while (true){
         //timeInit = micros(); //gets a time baseline
         //baseTime = micros();
         wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise);
-        printf("\r                                                                                                                      ");
+        //printf("\r                                                                                                                      ");
         //cout << count;
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
         
         //printf("\nLEFT: %.2f", Lpower);
         //while(digitalRead(LEFTPIN) == 1){}
         //printf("\nTIME:", timeInit);
-    }
+    //}
 }
 

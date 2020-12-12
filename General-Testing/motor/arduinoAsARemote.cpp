@@ -55,14 +55,14 @@ int main()
 
     
     //wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise);
-    wiringPiISR (LEFTPIN, INT_EDGE_RISING, &counter);
+    //wiringPiISR (LEFTPIN, INT_EDGE_RISING, &counter);
     wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
     //while (true){
         //timeInit = micros(); //gets a time baseline
         //baseTime = micros();
         
-        delay(20000);
-        cout << "count: " << count << "\n";
+        delay(2000);
+        //cout << "count: " << count << "\n";
         cout << "countoo: " << countoo << "\n";
         //delay(2);
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);

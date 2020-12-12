@@ -32,6 +32,10 @@ void rwmReaderLFall(){
     Lpower = superMap(timeGap, 15, 2036, -1, 1);
     //baseTime = micros();
 }
+volatile int count = 0;
+void counter(){
+    count++;
+}
 
 int main()
 {
@@ -43,8 +47,8 @@ int main()
     while (true){
         //timeInit = micros(); //gets a time baseline
         //baseTime = micros();
-        cout << wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise);
-        // printf("\nyour and idiot");
+        wiringPiISR (LEFTPIN, INT_EDGE_RISING, &counter);
+        /printf("\nyour and idiot: ", count);
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
         
         //printf("\nLEFT: %.2f", Lpower);

@@ -24,8 +24,7 @@ int main()
         while(digitalRead(LEFTPIN) == 0){} //waits until pin goes high
 
         unsigned int timeGap = micros()-timeInit; //measures time of cycle
-        double Lpower = timeGap; //sets power
-        //double Lpower = 2*((timeGap/2041.0)-.5); //sets power
+        double Lpower = superMap(timeGap, 15, 2020, -1, 1); //sets power
         printf("\nLEFT: %.2f", Lpower);
         while(digitalRead(LEFTPIN) == 1){}
         

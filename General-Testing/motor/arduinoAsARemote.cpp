@@ -32,7 +32,7 @@ int main()
         wiringPiISR (LEFTPIN, INT_EDGE_RISING,  rwmReaderL(timeInit));
 
         printf("\nLEFT: %.2f", Lpower);
-        while(digitalRead(LEFTPIN) == 1){}
+        //while(digitalRead(LEFTPIN) == 1){}
         
     }
 }

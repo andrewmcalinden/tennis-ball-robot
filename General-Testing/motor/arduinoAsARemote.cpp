@@ -9,6 +9,8 @@ using namespace std;
 
 double Lpower = 0;
 double Rpower = 0;
+unsigned int timeInit = 0;
+
 
 double superMap(double x, double in_min, double in_max, double out_min, double out_max) {
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
@@ -28,7 +30,7 @@ int main()
     pinMode(RIGHTPIN, INPUT);
 
     while (true){
-        unsigned int timeInit = micros(); //gets a time baseline
+        timeInit = micros(); //gets a time baseline
 
         wiringPiISR (LEFTPIN, INT_EDGE_RISING,  &rwmReaderL);
 

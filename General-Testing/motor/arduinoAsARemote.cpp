@@ -53,18 +53,18 @@ int main()
     pinMode(RIGHTPIN, INPUT);
 
     
-
-    //while (true){
+    wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise);
+    while (true){
         //timeInit = micros(); //gets a time baseline
         //baseTime = micros();
-        wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise);
-        delay(2000);
+        
+        //delay(2000);
         //cout << count;
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
         
         //printf("\nLEFT: %.2f", Lpower);
         //while(digitalRead(LEFTPIN) == 1){}
         //printf("\nTIME:", timeInit);
-    //}
+    }
 }
 

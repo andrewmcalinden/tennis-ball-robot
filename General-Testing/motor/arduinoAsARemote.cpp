@@ -7,11 +7,13 @@ using namespace std;
 #define LEFTPIN 5
 #define RIGHTPIN 6
 
+wiringPiSetup();
 pinMode(LEFTPIN, INPUT);
 pinMode(RIGHTPIN, INPUT);
 
 double Lpower = 0;
 double Rpower = 0;
+
 volatile int timeInit = 0;
 volatile int baseTime = 0;
 
@@ -42,7 +44,7 @@ void counter(){
 
 int main()
 {
-    wiringPiSetup();
+    
 
     
 

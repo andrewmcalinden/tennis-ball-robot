@@ -22,9 +22,10 @@ double superMap(double x, double in_min, double in_max, double out_min, double o
 void rwmReaderLRise(){
     
     baseTime = micros();
-    cout << baseTime << "\n";
+    cout << << count << ": " << baseTime << "\n";
     //Lpower = superMap(timeGap, 15, 2036, -1, 1);
     //baseTime = micros();
+    count++;
 }
 void rwmReaderLFall(){
     printf("\nTHE TIME: %.2f", micros());

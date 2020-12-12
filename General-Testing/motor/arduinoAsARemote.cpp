@@ -14,7 +14,7 @@ double Rpower = 0;
 
 volatile int timeInit = 0;
 volatile int baseTime = 0;
-volatile int count = 0;
+volatile int count = 1;
 
 double superMap(double x, double in_min, double in_max, double out_min, double out_max) {
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;

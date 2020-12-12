@@ -1,5 +1,5 @@
 #include <iostream>
-#include "motor.h"
+#include "../motor/motor.h"
 #include <wiringPi.h>
 
 using namespace std;

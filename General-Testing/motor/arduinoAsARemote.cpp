@@ -27,6 +27,7 @@ void rwmReaderLFall(){
     
     unsigned int timeGap = micros()-baseTime;
     printf("\nTHE TIME: %.2f", micros());
+    printf("\nLEFT: %.2f", Lpower);
     //printf("\nLEFT: %.2f", Lpower);
     Lpower = superMap(timeGap, 15, 2036, -1, 1);
     //baseTime = micros();
@@ -45,7 +46,7 @@ int main()
         wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise);
         wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
         
-        printf("\nLEFT: %.2f", Lpower);
+        //printf("\nLEFT: %.2f", Lpower);
         //while(digitalRead(LEFTPIN) == 1){}
         //printf("\nTIME:", timeInit);
     }

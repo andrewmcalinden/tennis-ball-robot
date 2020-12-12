@@ -53,10 +53,10 @@ int main()
     pinMode(LEFTPIN, INPUT);
     pinMode(RIGHTPIN, INPUT);
 
-    
+    wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
     //wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise);
     wiringPiISR (LEFTPIN, INT_EDGE_RISING, &counter);
-    wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
+    
     //while (true){
         //timeInit = micros(); //gets a time baseline
         //baseTime = micros();

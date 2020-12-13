@@ -10,11 +10,8 @@ using namespace std;
 double Lpower = 0;
 double Rpower = 0;
 
-volatile int timeInit = 0;
 volatile int baseTime = 0;
 
-volatile int count = 1;
-volatile int countoo = 1;
 bool lHigh = 1;
 
 double superMap(double x, double in_min, double in_max, double out_min, double out_max) {

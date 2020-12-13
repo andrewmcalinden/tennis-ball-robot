@@ -75,7 +75,7 @@ int main()
 
     while (true)
     {
-        //motorL.setPower(lPower);
+        motorL.setPower(lPower);
         //motorR.setPower(rPower);
 
         printf("\nLEFT:  ");

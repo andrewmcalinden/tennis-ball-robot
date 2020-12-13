@@ -31,7 +31,7 @@ void rwmReaderL()
     else
     {
         unsigned int timeGap = micros()-baseTimeL;
-        Lpower = superMap(timeGap, 95, 1940, -1, 1);
+        //Lpower = superMap(timeGap, 95, 1940, -1, 1);
         Lpower = timeGap;
         
     }
@@ -40,7 +40,6 @@ void rwmReaderL()
 
 void rwmReaderR()
 {
-    unsigned int timeGap = 0;
     if(digitalRead(RIGHTPIN) == 1)
     {
         baseTimeR = micros();
@@ -48,8 +47,8 @@ void rwmReaderR()
 
     else
     {
-        timeGap = micros()-baseTimeR;        
-        Rpower = superMap(timeGap, 95, 1940, -1, 1);
+        unsigned int timeGap = micros()-baseTimeR;        
+        //Rpower = superMap(timeGap, 95, 1940, -1, 1);
         Rpower = timeGap;
     }
 

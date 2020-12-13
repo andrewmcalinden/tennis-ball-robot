@@ -31,8 +31,9 @@ void rwmReaderL()
     else
     {
         unsigned int timeGap = micros()-baseTimeL;
-        Lpower = superMap(timeGap, 15, 2041, -1, 1);
         cout << timeGap << "\n";
+        Lpower = superMap(timeGap, 15, 2041, -1, 1);
+        
     }
 
     lHigh = !lHigh;
@@ -63,6 +64,7 @@ int main()
     pinMode(RIGHTPIN, INPUT);
 
     while(digitalRead(LEFTPIN) == 0){}
+    rwmReaderL();
     wiringPiISR (LEFTPIN, INT_EDGE_BOTH, &rwmReaderL);
 
     //while(digitalRead(RIGHTPIN) == 0){}

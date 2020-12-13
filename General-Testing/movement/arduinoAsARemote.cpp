@@ -49,8 +49,9 @@ void rwmReaderR()
     {
         timeGap = micros()-baseTimeR;
         Rpower = superMap(timeGap, 15, 2041, -1, 1);
+        cout << timeGap << "\n";
     }
-    cout << timeGap << "\n";
+    
     rHigh = !rHigh;
 }
 

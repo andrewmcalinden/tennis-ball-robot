@@ -68,7 +68,7 @@ int main()
         
         delay(20);
         //cout << "count: " << count << "\n";
-        cout << "power: " << Lpower << "\n";
+        cout << "power: %.2f" << Lpower << "\n";
         //delay(2);
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
         

@@ -39,6 +39,7 @@ void rwmReaderL()
 
 void rwmReaderR()
 {
+    unsigned int timeGap = 0;
     if(!rHigh)
     {
         baseTimeR = micros();
@@ -46,10 +47,10 @@ void rwmReaderR()
 
     else
     {
-        unsigned int timeGap = micros()-baseTimeR;
+        timeGap = micros()-baseTimeR;
         Rpower = superMap(timeGap, 15, 2041, -1, 1);
     }
-
+    printf("  Right Power: %.2f", timeGap);
     rHigh = !rHigh;
 }
 
@@ -67,8 +68,8 @@ int main()
 
     while (true)
     {
-        printf("\rLeft Power: %.2f", Lpower);
-        printf("  Right Power: %.2f", Rpower);
+        //printf("\rLeft Power: %.2f", Lpower);
+        //printf("  Right Power: %.2f", Rpower);
 
     }
 }

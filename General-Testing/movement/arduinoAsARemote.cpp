@@ -50,7 +50,7 @@ void rwmReaderR()
         timeGap = micros()-baseTimeR;
         Rpower = superMap(timeGap, 15, 2041, -1, 1);
     }
-    printf("  Right Power: %.2f", timeGap);
+    printf("\rRight Power: %.2f", timeGap);
     rHigh = !rHigh;
 }
 

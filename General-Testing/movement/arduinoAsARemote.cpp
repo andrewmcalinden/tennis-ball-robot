@@ -48,7 +48,7 @@ void rwmReaderR()
     else
     {
         timeGap = micros()-baseTimeR;
-        cout << timeGap << "\n";
+        //cout << timeGap << "\n";
         Rpower = superMap(timeGap, 95, 1940, 1, -1);
     }
 
@@ -60,13 +60,13 @@ int main()
     pinMode(LEFTPIN, INPUT);
     pinMode(RIGHTPIN, INPUT);
 
-    //wiringPiISR (LEFTPIN, INT_EDGE_BOTH, &rwmReaderL);
+    wiringPiISR (LEFTPIN, INT_EDGE_BOTH, &rwmReaderL);
     wiringPiISR (RIGHTPIN, INT_EDGE_BOTH, &rwmReaderR);
 
     while (true)
     {
-        //printf("\rLeft Power: %.2f", Lpower);
-        //printf("  Right Power: %.2f", Rpower);
+        printf("\nLeft Power: %.2f", Lpower);
+        printf("  Right Power: %.2f", Rpower);
 
     }
 }

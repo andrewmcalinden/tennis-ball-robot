@@ -23,7 +23,7 @@ double superMap(double x, double in_min, double in_max, double out_min, double o
 
 void rwmReaderL()
 {
-    if(!lHigh)
+    if(lHigh)
     {
         baseTimeL = micros();
     }

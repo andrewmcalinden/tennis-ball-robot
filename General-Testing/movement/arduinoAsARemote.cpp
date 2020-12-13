@@ -31,7 +31,7 @@ void rwmReaderL()
     else
     {
         unsigned int timeGap = micros()-baseTimeL;
-        Lpower = superMap(timeGap, 95, 1940, -1, 1);
+        Lpower = superMap(timeGap, 85, 1955, -1, 1);
         
     }
 
@@ -47,7 +47,7 @@ void rwmReaderR()
     else
     {
         unsigned int timeGap = micros()-baseTimeR;        
-        Rpower = superMap(timeGap, 95, 1940, -1, 1);
+        Rpower = superMap(timeGap, 85, 1955, -1, 1);
     }
 
 }

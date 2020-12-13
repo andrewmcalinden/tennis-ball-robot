@@ -60,7 +60,7 @@ int main()
     wiringPiISR (LEFTPIN, INT_EDGE_BOTH, &rwmReaderL);
 
     while(digitalRead(RIGHTPIN) == 0){}
-    wiringPiISR (RIGHTPIN, INT_EDGE_BOTH, &rwmReaderR);
+    wiringPiISR (RIGHTPIN, INT_EDGE_BOTH, &rwmReaderL);
 
     
     while (true){

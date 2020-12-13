@@ -4,11 +4,11 @@
 
 using namespace std;
 
-#define LEFTPIN 5
-#define RIGHTPIN 6
+#define LEFTINPUTPIN 5
+#define RIGHTINPUTPIN 6
 
-double Lpower = 0;
-double Rpower = 0;
+double lPower = 0;
+double rPower = 0;
 
 volatile int baseTimeR = 0;
 volatile int baseTimeL = 0;
@@ -23,7 +23,7 @@ double superMap(double x, double in_min, double in_max, double out_min, double o
 
 void rwmReaderL()
 {
-    if(digitalRead(LEFTPIN) == 1)
+    if(digitalRead(LEFTINPUTPIN) == 1)
     {
         baseTimeL = micros();
     }
@@ -31,16 +31,16 @@ void rwmReaderL()
     else
     {
         unsigned int timeGap = micros()-baseTimeL;
-        Lpower = superMap(timeGap, 85, 1955, -1, 1);
-        if(Lpower>-.03 && Lpower<.03)
-            Lpower = 0.0;
+        lPower = superMap(timeGap, 85, 1955, -1, 1);
+        if(lPower>-.03 && lPower<.03)
+            lPower = 0.0;
     }
 
 }
 
 void rwmReaderR()
 {
-    if(digitalRead(RIGHTPIN) == 1)
+    if(digitalRead(RIGHTINPUTPIN) == 1)
     {
         baseTimeR = micros();
     }
@@ -48,9 +48,9 @@ void rwmReaderR()
     else
     {
         unsigned int timeGap = micros()-baseTimeR;        
-        Rpower = superMap(timeGap, 85, 1955, -1, 1);
-        if(Rpower>-.03&&Rpower<.03)
-            Rpower = 0.0;
+        rPower = superMap(timeGap, 85, 1955, -1, 1);
+        if(rPower>-.03&&rPower<.03)
+            rPower = 0.0;
     }
 
 }
@@ -58,16 +58,16 @@ void rwmReaderR()
 int main()
 {
     wiringPiSetup();
-    pinMode(LEFTPIN, INPUT);
-    pinMode(RIGHTPIN, INPUT);
+    pinMode(LEFTINPUTPIN, INPUT);
+    pinMode(RIGHTINPUTPIN, INPUT);
 
-    wiringPiISR (LEFTPIN, INT_EDGE_BOTH, &rwmReaderL);
-    wiringPiISR (RIGHTPIN, INT_EDGE_BOTH, &rwmReaderR);
+    wiringPiISR (LEFTINPUTPIN, INT_EDGE_BOTH, &rwmReaderL);
+    wiringPiISR (RIGHTINPUTPIN, INT_EDGE_BOTH, &rwmReaderR);
 
     while (true)
     {
-        printf("\nLeft Power:  %.2f", Lpower);
-        printf("\nRight Power: %.2f", Rpower);
+        printf("\nLeft Power:  %.2f", lPower);
+        printf("\nRight Power: %.2f", rPower);
 
     }
 }

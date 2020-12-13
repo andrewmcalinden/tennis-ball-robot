@@ -31,8 +31,8 @@ void rwmReaderL()
     else
     {
         unsigned int timeGap = micros()-baseTimeL;
-        cout << timeGap << "\n";
-        Lpower = superMap(timeGap, 15, 2041, 1, -1);
+        //cout << timeGap << "\n";
+        Lpower = superMap(timeGap, 75, 1970, 1, -1);
         
     }
 
@@ -72,7 +72,7 @@ int main()
 
     while (true)
     {
-        //printf("\rLeft Power: %.2f", Lpower);
+        printf("\rLeft Power: %.2f", Lpower);
         //printf("  Right Power: %.2f", Rpower);
 
     }

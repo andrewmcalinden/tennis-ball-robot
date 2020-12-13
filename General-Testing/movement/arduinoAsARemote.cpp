@@ -7,13 +7,12 @@ using namespace std;
 #define LEFTPIN 5
 #define RIGHTPIN 6
 
-
-
 double Lpower = 0;
 double Rpower = 0;
 
 volatile int timeInit = 0;
 volatile int baseTime = 0;
+
 volatile int count = 1;
 volatile int countoo = 1;
 bool lHigh = 1;
@@ -26,10 +25,6 @@ void rwmReaderLRise(){
     
     baseTime = micros();
 
-    //Lpower = superMap(timeGap, 15, 2036, -1, 1);
-    //baseTime = micros();
-    //delay(2);
-    //count++;
 }
 void rwmReaderL(){
     if(!lHigh){
@@ -56,12 +51,10 @@ int main()
     wiringPiSetup();
     pinMode(LEFTPIN, INPUT);
     pinMode(RIGHTPIN, INPUT);
+
     while(digitalRead(LEFTPIN) == 0){}
     wiringPiISR (LEFTPIN, INT_EDGE_BOTH, &rwmReaderL);
 
-    //wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise);
-    //wiringPiISR (LEFTPIN, INT_EDGE_RISING, &counter);
-    
     while (true)
     {
         printf("\rpower: %.2f", Lpower);

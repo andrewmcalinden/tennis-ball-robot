@@ -3,7 +3,7 @@
 Motor::Motor(int dirForwardPinLoc, int powerPinLoc)
     : dirForwardPin{dirForwardPinLoc}, powerPin{powerPinLoc}
 {
-    
+    wiringPiSetup();
     pinMode(dirForwardPin, OUTPUT);
     pinMode(powerPin, PWM_OUTPUT);
     pwmSetClock(15000);

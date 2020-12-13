@@ -64,7 +64,7 @@ int main()
 {
     wiringPiSetup();
 
-    //Motor motorL(DIRECTION_PIN_FORWARD_LEFT, POWER_PIN_LEFT);
+    Motor motorL(DIRECTION_PIN_FORWARD_LEFT, POWER_PIN_LEFT);
     //Motor motorR(DIRECTION_PIN_FORWARD_RIGHT, POWER_PIN_RIGHT);
 
     pinMode(LEFT_INPUT_PIN, INPUT);
@@ -78,7 +78,7 @@ int main()
         //motorL.setPower(lPower);
         //motorR.setPower(rPower);
 
-        printf("\nLEFT: ");
+        printf("\nLEFT:  ");
         cout << lPower;
         printf("\nRIGHT: ");
         cout << rPower;

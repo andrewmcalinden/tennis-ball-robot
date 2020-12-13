@@ -66,7 +66,7 @@ int main()
     while (true)
     {
         printf("\nLeft Power: %.2f", Lpower);
-        printf("  Right Power: %.2f", Rpower);
+        printf("\nRight Power: %.2f", Rpower);
 
     }
 }

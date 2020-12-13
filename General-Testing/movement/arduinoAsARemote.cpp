@@ -39,10 +39,6 @@ void rwmReaderL(){
     lHigh = !lHigh;
 }
 
-void counter(){
-    count++;
-}
-
 int main()
 {
     wiringPiSetup();

@@ -68,7 +68,8 @@ int main()
         
         delay(20);
         //cout << "count: " << count << "\n";
-        printf("power: %.2f", Lpower, "\n");
+        printf("\rpower: %.2f", Lpower);
+
         //delay(2);
         //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
         

@@ -7,13 +7,12 @@ using namespace std;
 #define LEFTPIN 5
 #define RIGHTPIN 6
 
-
-
 double Lpower = 0;
 double Rpower = 0;
 
 volatile int baseTimeL = 0;
 volatile int baseTimeR = 0;
+
 bool lHigh = 1;
 bool rHigh = 1;
 

@@ -77,12 +77,6 @@ int main()
     {
         motorL.setPower(lPower);
         motorR.setPower(rPower);
-
-        printf("\nLEFT:  ");
-        cout << lPower;
-        printf("\nRIGHT: ");
-        cout << rPower;
-        
     }
 }
 

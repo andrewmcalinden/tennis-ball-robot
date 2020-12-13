@@ -53,6 +53,7 @@ void rwmReaderR()
 
 int main()
 {
+    cout << "BEGIN???";
     wiringPiSetup();
     pinMode(LEFTPIN, INPUT);
     pinMode(RIGHTPIN, INPUT);

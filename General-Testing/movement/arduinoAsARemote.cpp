@@ -56,7 +56,6 @@ int main()
     wiringPiSetup();
     pinMode(LEFTPIN, INPUT);
     pinMode(RIGHTPIN, INPUT);
-    cout << "stuck on Left";
     while(digitalRead(LEFTPIN) == 0){}
     wiringPiISR (LEFTPIN, INT_EDGE_BOTH, &rwmReaderL);
     cout << "stuck on Right";

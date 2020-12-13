@@ -66,7 +66,7 @@ int main()
         //timeInit = micros(); //gets a time baseline
         //baseTime = micros();
         
-        delay(20);
+        
         //cout << "count: " << count << "\n";
         printf("\rpower: %.2f", Lpower);
 

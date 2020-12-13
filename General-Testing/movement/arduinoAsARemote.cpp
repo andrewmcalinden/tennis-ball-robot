@@ -60,10 +60,10 @@ int main()
     pinMode(LEFTPIN, INPUT);
     pinMode(RIGHTPIN, INPUT);
 
-    while(digitalRead(LEFTPIN) == 0){}
-    wiringPiISR (LEFTPIN, INT_EDGE_BOTH, &rwmReaderL);
+    //while(digitalRead(LEFTPIN) == 0){}
+    //wiringPiISR (LEFTPIN, INT_EDGE_BOTH, &rwmReaderL);
 
-    //while(digitalRead(RIGHTPIN) == 0){}
+    while(digitalRead(RIGHTPIN) == 0){}
     wiringPiISR (RIGHTPIN, INT_EDGE_BOTH, &rwmReaderR);
 
     while (true)

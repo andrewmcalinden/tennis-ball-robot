@@ -14,23 +14,24 @@ volatile int baseTime = 0;
 
 bool lHigh = 1;
 
-double superMap(double x, double in_min, double in_max, double out_min, double out_max) {
-  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+double superMap(double x, double in_min, double in_max, double out_min, double out_max) 
+{
+    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
-void rwmReaderL(){
-    if(!lHigh){
-    baseTime = micros();
+void rwmReaderL()
+{
+    if(!lHigh)
+    {
+        baseTime = micros();
     }
-    else{
-    unsigned int timeGap = micros()-baseTime;
-    
-    //printf("\nLEFT: %.2f", Lpower);
-    //Lpower = timeGap;
-    //cout << "\r" << Lpower;
-    Lpower = superMap(timeGap, 15, 2041, -1, 1);
 
+    else
+    {
+        unsigned int timeGap = micros()-baseTime;
+        Lpower = superMap(timeGap, 15, 2041, -1, 1);
     }
+
     lHigh = !lHigh;
 }
 

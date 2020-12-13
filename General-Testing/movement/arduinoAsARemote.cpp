@@ -32,7 +32,7 @@ void rwmReaderL()
     {
         unsigned int timeGap = micros()-baseTimeL;
         //cout << timeGap << "\n";
-        Lpower = superMap(timeGap, 75, 1970, 1, -1);
+        Lpower = superMap(timeGap, 95, 1950, 1, -1);
         
     }
 

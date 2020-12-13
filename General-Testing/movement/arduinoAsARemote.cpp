@@ -4,8 +4,13 @@
 
 using namespace std;
 
-#define LEFTINPUTPIN 5
-#define RIGHTINPUTPIN 6
+#define LEFT_INPUT_PIN 5
+#define RIGHT_INPUT_PIN 6
+
+#define DIRECTION_PIN_FORWARD_LEFT 22
+#define POWER_PIN_LEFT 23
+#define DIRECTION_PIN_FORWARD_RIGHT 27
+#define POWER_PIN_RIGHT 26
 
 double lPower = 0;
 double rPower = 0;
@@ -23,7 +28,7 @@ double superMap(double x, double in_min, double in_max, double out_min, double o
 
 void rwmReaderL()
 {
-    if(digitalRead(LEFTINPUTPIN) == 1)
+    if(digitalRead(LEFT_INPUT_PIN) == 1)
     {
         baseTimeL = micros();
     }
@@ -40,7 +45,7 @@ void rwmReaderL()
 
 void rwmReaderR()
 {
-    if(digitalRead(RIGHTINPUTPIN) == 1)
+    if(digitalRead(RIGHT_INPUT_PIN) == 1)
     {
         baseTimeR = micros();
     }
@@ -58,17 +63,16 @@ void rwmReaderR()
 int main()
 {
     wiringPiSetup();
-    pinMode(LEFTINPUTPIN, INPUT);
-    pinMode(RIGHTINPUTPIN, INPUT);
+    pinMode(LEFT_INPUT_PIN, INPUT);
+    pinMode(RIGHT_INPUT_PIN, INPUT);
 
-    wiringPiISR (LEFTINPUTPIN, INT_EDGE_BOTH, &rwmReaderL);
-    wiringPiISR (RIGHTINPUTPIN, INT_EDGE_BOTH, &rwmReaderR);
+    wiringPiISR (LEFT_INPUT_PIN, INT_EDGE_BOTH, &rwmReaderL);
+    wiringPiISR (RIGHT_INPUT_PIN, INT_EDGE_BOTH, &rwmReaderR);
 
     while (true)
     {
-        printf("\nLeft Power:  %.2f", lPower);
-        printf("\nRight Power: %.2f", rPower);
-
+        motorL.setPower(lPower);
+        motorR.setPower(rPower); 
     }
 }
 

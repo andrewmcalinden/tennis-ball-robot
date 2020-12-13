@@ -50,7 +50,7 @@ void rwmReaderR()
         timeGap = micros()-baseTimeR;
         Rpower = superMap(timeGap, 15, 2041, -1, 1);
     }
-    printf("\rRight Power: ", timeGap);
+    cout << timeGap << "\n";
     rHigh = !rHigh;
 }
 

@@ -57,7 +57,7 @@ int main()
     pinMode(LEFTPIN, INPUT);
     pinMode(RIGHTPIN, INPUT);
     while(digitalRead(LEFTPIN) == 0){}
-    wiringPiISR (LEFTPIN, INT_EDGE_BOTH, &rwmReaderL;
+    wiringPiISR (LEFTPIN, INT_EDGE_BOTH, &rwmReaderL);
 
     //wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise);
     //wiringPiISR (LEFTPIN, INT_EDGE_RISING, &counter);

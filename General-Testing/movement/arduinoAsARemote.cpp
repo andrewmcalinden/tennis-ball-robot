@@ -12,43 +12,43 @@ using namespace std;
 double Lpower = 0;
 double Rpower = 0;
 
-volatile int baseTimeL = 0;
-volatile int baseTimeR = 0;
+volatile int timeInit = 0;
+volatile int baseTime = 0;
+volatile int count = 1;
+volatile int countoo = 1;
 bool lHigh = 1;
-bool rHigh = 1;
 
 double superMap(double x, double in_min, double in_max, double out_min, double out_max) {
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
-void rwmReaderL()
-{
-    if (!lHigh)
-    {
-        baseTimeL = micros();
-    }
-    else 
-    {
-        unsigned int timeGap = micros()-baseTimeL;
-        Lpower = superMap(timeGap, 15, 2041, -1, 1);
-    }
+void rwmReaderLRise(){
+    
+    baseTime = micros();
 
+    //Lpower = superMap(timeGap, 15, 2036, -1, 1);
+    //baseTime = micros();
+    //delay(2);
+    //count++;
+}
+void rwmReaderL(){
+    if(!lHigh){
+    baseTime = micros();
+    }
+    else{
+    unsigned int timeGap = micros()-baseTime;
+    
+    //printf("\nLEFT: %.2f", Lpower);
+    //Lpower = timeGap;
+    //cout << "\r" << Lpower;
+    Lpower = superMap(timeGap, 15, 2041, -1, 1);
+
+    }
     lHigh = !lHigh;
 }
 
-void rwmReaderR()
-{
-    if (!rHigh)
-    {
-        baseTimeR = micros();
-    }
-    else 
-    {
-        unsigned int timeGap = micros()-baseTimeR;
-        Rpower = superMap(timeGap, 15, 2041, -1, 1);
-    }
-
-    rHigh = !rHigh;
+void counter(){
+    count++;
 }
 
 int main()
@@ -59,14 +59,23 @@ int main()
     while(digitalRead(LEFTPIN) == 0){}
     wiringPiISR (LEFTPIN, INT_EDGE_BOTH, &rwmReaderL);
 
-    while(digitalRead(RIGHTPIN) == 0){}
-    wiringPiISR (RIGHTPIN, INT_EDGE_BOTH, &rwmReaderL);
-
+    //wiringPiISR (LEFTPIN, INT_EDGE_RISING, &rwmReaderLRise);
+    //wiringPiISR (LEFTPIN, INT_EDGE_RISING, &counter);
     
     while (true){
+        //timeInit = micros(); //gets a time baseline
+        //baseTime = micros();
+        
+        
+        //cout << "count: " << count << "\n";
+        printf("\rpower: %.2f", Lpower);
 
-        printf("\rLeft Power: %.2f", Lpower, "Right Power: %.2f", Rpower);
-
+        //delay(2);
+        //wiringPiISR (LEFTPIN, INT_EDGE_FALLING, &rwmReaderLFall);
+        
+        //printf("\nLEFT: %.2f", Lpower);
+        //while(digitalRead(LEFTPIN) == 1){}
+        //printf("\nTIME:", timeInit);
     }
 }
 

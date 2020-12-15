@@ -32,10 +32,8 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     double finalX = initialX + additionalX;
     double finalY = initialY + additionalY;
 
-    double xError = abs(getX() - finalX);
-    double yError = abs(getY() - finalY);
-    double error = hypot(xError, yError);
-    double pastError = inches;
+    double error = inches;
+    double pastError = error;
 
     double integral = 0;
     double initialAngle = getHeading();
@@ -45,7 +43,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         updatePos(encoderL.read(), encoderR.read());
         double xError = abs(getX() - finalX);
         double yError = abs(getY() - finalY);
-        double error = hypot(xError, yError);
+        error = hypot(xError, yError);
         std::cout << "  X: " << getX();
         std::cout << "  Y: " << getY();
         std::cout << "  error: " << error;
@@ -98,6 +96,50 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
             }
         }
      }
+    setMotorPowers(0, 0);
+}
+
+void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, double f)
+{
+    std::clock_t timer;
+    timer = std::clock();
+
+    double pastTime = 0;
+    double currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
+
+    double initialHeading = getHeading();
+
+    double initialAngleDiff = initialHeading - finalAngle;
+    double error = angleDiff(getHeading(), finalAngle);
+    double pastError = error;
+
+    double integral = 0;
+
+    while (abs(error) > 2)
+    {
+        updatePos(encoderL.read(), encoderR.read());
+        error = angleDiff(getHeading(), finalAngle);
+        std::cout << "  error: " << error;
+
+        currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
+        double dt = currentTime - pastTime;
+
+        double proportional = error / initialAngleDiff;
+        integral += dt * ((error + pastError) / 2.0);
+        double derivative = (error - pastError) / dt;
+
+        double power = kp * proportional + ki * integral + kd * derivative;
+        std::cout << "  power: " << power << "\n";
+
+        if (power > 0)
+        {
+            setMotorPowers(power + f, -power - f);
+        }
+        else
+        {
+            setMotorPowers(-power - f, power + f);
+        }
+    }
     setMotorPowers(0, 0);
 }
 

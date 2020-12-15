@@ -6,6 +6,8 @@ using namespace std;
 
 #define LEFT_INPUT_PIN 5
 #define RIGHT_INPUT_PIN 6
+#define SWITCH_INPUT_PIN 11
+#define COLLECTOR_PIN 4
 
 #define DIRECTION_PIN_FORWARD_LEFT 22
 #define POWER_PIN_LEFT 23
@@ -20,6 +22,8 @@ volatile int baseTimeL = 0;
 
 bool lHigh = 1;
 bool rHigh = 1;
+
+bool collectorOn = false;
 
 double superMap(double x, double in_min, double in_max, double out_min, double out_max) 
 {
@@ -60,6 +64,14 @@ void rwmReaderR()
 
 }
 
+void collectorToggle(){
+    if (collectorOn)
+        digitalWrite(COLLECTOR_PIN), LOW);
+    else
+        digitalWrite(COLLECTOR_PIN), HIGH);
+    collectorOn = !collectorOn;
+}
+
 int main()
 {
     wiringPiSetup();
@@ -72,6 +84,7 @@ int main()
 
     wiringPiISR (LEFT_INPUT_PIN, INT_EDGE_BOTH, &rwmReaderL);
     wiringPiISR (RIGHT_INPUT_PIN, INT_EDGE_BOTH, &rwmReaderR);
+    wiringPiISR (SWITCH_INPUT_PIN, INT_EDGE_RISING, &collectorToggle);
 
     while (true)
     {

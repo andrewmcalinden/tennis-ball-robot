@@ -30,13 +30,12 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     double finalY = initialY + additionalY;
     finalPos = Vector(finalX, finalY);
 
+    Movement m = straight;
+    movements.push_back(m);
 }
 
 void Robot::goStraightPowerCalculations(Vector startPos, Vector currentPos, Vector finalPos, double power)
 {
-    std::clock_t timer;
-    timer = std::clock();
-
     double pastTime = 0;
     double currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
 
@@ -132,6 +131,9 @@ void Robot::run()
     {
         Movement currentMovement = movements.at(currentIndex);
 
+        std::clock_t timer;
+        timer = std::clock();
+
         updatePos(encoderL.read(), encoderR.read());
         Vector currentPos(getX(), getY());
 
@@ -143,3 +145,20 @@ void Robot::run()
         }
     }
 }
+
+//update()
+//updatePos()
+//setPower()
+
+//movement class with type, desired final position, powers, pid constants
+//list of movements
+//loop through movements, say setPower(movement.getPower), movement.setPosition(getPos()), movement.settime(getTime)
+//movement knows initial and final position because it is passed in when we create it
+//know movement is done because it will set a boolean to true in Movement class, always check for this
+//for Movement : movements
+//set initial stuff
+//while (!movement.getFinished()){
+//  setPower(movement.getPower), movement.setPosition(getPos()), movement.settime(getTime)
+//}
+//probably dont need final pos
+//probably only need inches or degrees: overload constructor? turn/straight extends movement? movement is interface?

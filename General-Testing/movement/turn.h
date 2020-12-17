@@ -1,5 +1,5 @@
-#include "../math/vector.cpp"
-#include "../motor/motorPowers.cpp"
+#include "../math/vector.h"
+#include "../motor/motorPowers.h"
 #include <ctime>
 class Turn
 {

@@ -49,4 +49,5 @@ void Robot::run()
 void Robot::addMovement(Turn t)
 {
     turns.push_back(t);
+    numMovements++;
 }

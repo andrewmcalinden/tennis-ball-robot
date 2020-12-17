@@ -39,7 +39,7 @@ void Robot::run()
             currentMovement.updatePower(fakeHeading);
             motorPowers m = currentMovement.getPowers();
             setMotorPowers(m.lPower, m.rPower);
-            fakeHeading += (.001 * m.rPower);
+            fakeHeading += (.0001 * m.rPower);
         }
         numMovements--;
         currentIndex--;

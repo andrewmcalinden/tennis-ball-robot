@@ -95,6 +95,8 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
                 setMotorPowers(power - f, power - f);
             }
         }
+        pastTime = currentTime;
+        pastError = error;
      }
     setMotorPowers(0, 0);
 }
@@ -139,6 +141,8 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         {
             setMotorPowers(-power - f, power + f);
         }
+        pastTime = currentTime;
+        pastError = error;
     }
     setMotorPowers(0, 0);
 }

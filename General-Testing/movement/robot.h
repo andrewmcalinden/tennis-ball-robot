@@ -13,6 +13,8 @@ class Robot
 
     std::vector<Turn> turns;
 
+    Vector startPos;
+
     unsigned char numMovements;
     unsigned char currentIndex;
 

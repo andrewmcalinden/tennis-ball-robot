@@ -23,9 +23,9 @@ void Robot::setMotorPowers(double lPower, double rPower)
 
 void Robot::run()
 {
-    
     while (numMovements > 0)
     {
+        unsigned char count = 0;
         double fakeHeading = 0;
         updatePos(encoderL.read(), encoderR.read());
 
@@ -40,6 +40,7 @@ void Robot::run()
             motorPowers m = currentMovement.getPowers();
             setMotorPowers(m.lPower, m.rPower);
             fakeHeading += (.0001 * m.rPower);
+            count++;
         }
         numMovements--;
         currentIndex--;

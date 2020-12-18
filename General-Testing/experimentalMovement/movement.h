@@ -34,6 +34,6 @@ class Movement
 
     virtual void beginMovement(pose startPose);
 
-    virtual ~Movement();
+    virtual ~Movement(){};
 };
 #endif

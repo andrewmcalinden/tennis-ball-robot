@@ -1,3 +1,6 @@
+#ifndef MOVEMENT_H
+#define MOVEMENT_H
+
 #include "../motor/motorPowers.h"
 #include "../math/pose.h"
 #include <ctime>
@@ -31,3 +34,4 @@ class Movement
 
     virtual void beginMovement(pose startPose);
 };
+#endif

@@ -30,7 +30,7 @@ void Turn::beginMovement(double startHeading) //pass in getHeading()
 void Turn::updatePower(double heading) //pass in getHeading()
 {
     error = -angleDiff(heading, finalHeading);
-    //std::cout << "  error: " << error;
+    std::cout << "  error: " << error;
 
     currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
     double dt = currentTime - pastTime;

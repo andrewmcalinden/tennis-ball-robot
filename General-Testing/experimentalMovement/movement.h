@@ -30,9 +30,9 @@ class Movement
     motorPowers getPowers();
     bool finished();
     
-    virtual void updatePower(pose currentPose);
+    virtual void updatePower(pose currentPose){};
 
-    virtual void beginMovement(pose startPose);
+    virtual void beginMovement(pose startPose){};
 
     virtual ~Movement(){};
 };

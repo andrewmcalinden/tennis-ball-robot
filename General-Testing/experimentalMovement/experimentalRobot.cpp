@@ -1,7 +1,6 @@
 #include "experimentalRobot.h"
 #include "../odometry/odometry.h"
 #include "../math/mathUtil.h"
-#include "../math/pose.h"
 #include <cmath>
 #include <iostream>
 

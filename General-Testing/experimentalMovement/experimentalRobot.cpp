@@ -7,7 +7,7 @@
 ExperimentalRobot::ExperimentalRobot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin,
                                      double initialX, double initialY, double initialTheta,
                                      int lEncoderPin1, int lEncoderPin2, int rEncoderPin1, int rEncoderPin2)
-    : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin}, encoderL{lEncoderPin1, lEncoderPin2}, encoderR{rEncoderPin1, rEncoderPin2}, startPos{initialX, initialY} //initialize motors and encoders
+    : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin}, encoderL{lEncoderPin1, lEncoderPin2}, encoderR{rEncoderPin1, rEncoderPin2}//initialize motors and encoders
 {
     setPose(initialX, initialY, initialTheta);
     numMovements = 0;

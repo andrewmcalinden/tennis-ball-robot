@@ -1,5 +1,4 @@
 #include "experimentalLine.h"
-#include "../math/pose.h"
 #include "../math/mathUtil.h"
 #include <cmath>
 #include <iostream>

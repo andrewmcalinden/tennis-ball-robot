@@ -1,4 +1,5 @@
 #include "../motor/motorPowers.h"
+#include "../math/pose.h"
 #include <ctime>
 class Movement
 {

@@ -25,4 +25,8 @@ class Movement
     public:
     motorPowers getPowers();
     bool finished();
+    
+    virtual void updatePower(pose currentPose);
+
+    virtual void beginMovement(pose startPose);
 };

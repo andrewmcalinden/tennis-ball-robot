@@ -26,7 +26,6 @@ void Robot::run()
     while (numMovements > 0)
     {
         unsigned char count = 0;
-        double fakeHeading = 0;
         updatePos(encoderL.read(), encoderR.read());
 
         Turn currentMovement = turns.at(currentIndex);
@@ -36,11 +35,9 @@ void Robot::run()
         {
             updatePos(encoderL.read(), encoderR.read());
 
-            currentMovement.updatePower(fakeHeading);
+            currentMovement.updatePower(getHeading());
             motorPowers m = currentMovement.getPowers();
             setMotorPowers(m.lPower, m.rPower);
-            fakeHeading += .01;
-            count++;
         }
         numMovements--;
         currentIndex--;
@@ -52,3 +49,8 @@ void Robot::addMovement(Turn t)
     turns.push_back(t);
     numMovements++;
 }
+
+//make vector of movements, turn and straight both extend movement class
+//both updatePower methods take in pose
+//only use the part of it that they need
+//override updatepower method in main class

@@ -1,11 +1,8 @@
 #include "../motor/motorPowers.h"
 #include <ctime>
-class Turn
+class Movement
 {
-    private:
-    double finalHeading;
-    double initialAngleDiff;
-
+    protected:
     double leftPower;
     double rightPower;
 
@@ -26,12 +23,6 @@ class Turn
     bool done;
 
     public:
-    Turn(double endHeading, double p, double i, double d, double specificF);
-
     motorPowers getPowers();
-    void updatePower(double heading);
-
-    void beginMovement(double startHeading);
-
     bool finished();
 };

@@ -1,7 +1,7 @@
-#include "turn.h"
+#include "experimentalTurn.h"
 #include "../math/mathUtil.h"
 #include <iostream>
-Turn::Turn(double endHeading, double p, double i, double d, double specificF)
+ExperimentalTurn::ExperimentalTurn(double endHeading, double p, double i, double d, double specificF)
 {
     finalHeading = endHeading;
 
@@ -13,23 +13,9 @@ Turn::Turn(double endHeading, double p, double i, double d, double specificF)
     done = false;
 }
 
-void Turn::beginMovement(double startHeading) //pass in getHeading()
+void ExperimentalTurn::updatePower(pose currentPose)
 {
-    initialAngleDiff = startHeading - finalHeading;
-
-    error = angleDiff(startHeading, startHeading);
-    pastError = error;
-
-    integral = 0;
-
-    timer = std::clock();
-    pastTime = 0;
-    currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
-}
-
-void Turn::updatePower(double heading)
-{
-    error = -angleDiff(heading, finalHeading);
+    error = -angleDiff(currentPose.heading, finalHeading);
     std::cout << "  error: " << error;
 
     currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
@@ -64,15 +50,17 @@ void Turn::updatePower(double heading)
     }
 }
 
-motorPowers Turn::getPowers()
+void ExperimentalTurn::beginMovement(pose startPose)
 {
-    motorPowers m;
-    m.lPower = leftPower;
-    m.rPower = rightPower;
-    return m;
-}
+    initialHeading = startPose.heading;
+    initialAngleDiff = initialHeading - finalHeading;
 
-bool Turn::finished()
-{
-    return done;
+    error = angleDiff(startPose.heading, initialHeading);
+    pastError = error;
+
+    integral = 0;
+
+    timer = std::clock();
+    pastTime = 0;
+    currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
 }

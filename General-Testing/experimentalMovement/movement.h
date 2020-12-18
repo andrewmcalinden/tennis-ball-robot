@@ -33,5 +33,7 @@ class Movement
     virtual void updatePower(pose currentPose);
 
     virtual void beginMovement(pose startPose);
+
+    virtual ~Movement();
 };
 #endif

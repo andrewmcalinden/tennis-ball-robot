@@ -1,5 +1,4 @@
 #include "movement.h"
-#include "../math/pose.h"
 class ExperimentalLine : public Movement
 {
     private:

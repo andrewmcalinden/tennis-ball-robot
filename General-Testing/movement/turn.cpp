@@ -30,17 +30,20 @@ void Turn::beginMovement(double startHeading) //pass in getHeading()
 void Turn::updatePower(double heading) //pass in getHeading()
 {
     error = -angleDiff(heading, finalHeading);
-    std::cout << "  error: " << error;
+    //std::cout << "  error: " << error;
 
     currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
     double dt = currentTime - pastTime;
 
     double proportional = error / initialAngleDiff;
+    std::cout << "  p: " << proportional << "\n";
     integral += dt * ((error + pastError) / 2.0);
+    std::cout << "  i: " << integral << "\n";
     double derivative = (error - pastError) / dt;
+    std::cout << "  d: " << derivative << "\n";
 
     double power = kp * proportional + ki * integral + kd * derivative;
-    std::cout << "  power: " << power << "\n";
+    //std::cout << "  power: " << power << "\n";
 
     if (power > 0)
     {

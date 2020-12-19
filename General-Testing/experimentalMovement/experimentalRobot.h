@@ -13,9 +13,6 @@ class ExperimentalRobot
 
     std::vector<Movement> movements;
 
-    unsigned char numMovements;
-    unsigned char currentIndex;
-
     public:
     ExperimentalRobot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin,
                         double initialX, double initialY, double initialTheta,

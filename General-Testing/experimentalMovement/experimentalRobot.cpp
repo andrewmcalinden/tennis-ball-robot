@@ -10,8 +10,6 @@ ExperimentalRobot::ExperimentalRobot(int lMotorDirPin, int lMotorPowerPin, int r
     : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin}, encoderL{lEncoderPin1, lEncoderPin2}, encoderR{rEncoderPin1, rEncoderPin2}//initialize motors and encoders
 {
     setPose(initialX, initialY, initialTheta);
-    numMovements = 0;
-    currentIndex = 0;
 }
 
 void ExperimentalRobot::setMotorPowers(double lPower, double rPower)
@@ -23,7 +21,7 @@ void ExperimentalRobot::setMotorPowers(double lPower, double rPower)
 
 void ExperimentalRobot::run()
 {
-    while (numMovements > 0)
+    for (auto it = movements.begin(); it != movements.end(); ++it)
     {
         updatePos(encoderL.read(), encoderR.read());
         pose currentPose;
@@ -31,24 +29,20 @@ void ExperimentalRobot::run()
         currentPose.y = getY();
         currentPose.heading = getHeading();
 
-        Movement* currentMovement = &(movements.at(currentIndex));
-        currentMovement->beginMovement(currentPose);
+        it->beginMovement(currentPose);
 
-        while (!currentMovement->finished())
+        while (!it->finished())
         {
             updatePos(encoderL.read(), encoderR.read());
 
-            currentMovement->updatePower(currentPose);
-            motorPowers m = currentMovement->getPowers();
+            it->updatePower(currentPose);
+            motorPowers m = it->getPowers();
             setMotorPowers(m.lPower, m.rPower);
         }
-        numMovements--;
-        currentIndex--;
     }
 }
 
 void ExperimentalRobot::addMovement(Movement t)
 {
     movements.push_back(t);
-    numMovements++;
 }

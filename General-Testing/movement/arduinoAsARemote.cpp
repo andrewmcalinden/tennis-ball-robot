@@ -91,8 +91,9 @@ int main()
 
     pinMode(LEFT_INPUT_PIN, INPUT);
     pinMode(RIGHT_INPUT_PIN, INPUT);
-    pinMode(RIGHT_INPUT_PIN, INPUT);
-    pinMode(RIGHT_INPUT_PIN, INPUT);
+    pinMode(JOYSWITCH_INPUT_PIN, INPUT);
+    pinMode(COLLECTOR_PIN, OUTPUT);
+    pinMode(COUNT_INPUT_PIN, INPUT);
 
     wiringPiISR (LEFT_INPUT_PIN, INT_EDGE_BOTH, &rwmReaderL);
     wiringPiISR (RIGHT_INPUT_PIN, INT_EDGE_BOTH, &rwmReaderR);

@@ -35,6 +35,7 @@ double superMap(double x, double in_min, double in_max, double out_min, double o
 
 void rwmReaderL()
 {
+    piHiPri (99);
     if(digitalRead(LEFT_INPUT_PIN) == 1)
     {
         baseTimeL = micros();
@@ -53,6 +54,7 @@ void rwmReaderL()
 
 void rwmReaderR()
 {
+    piHiPri (99);
     if(digitalRead(RIGHT_INPUT_PIN) == 1)
     {
         baseTimeR = micros();

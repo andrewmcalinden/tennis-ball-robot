@@ -62,6 +62,7 @@ void updatePowers(){
   leftPower = ((leftPower+1)/2)*255;
 }
 void collectorTrigger(){
+  noInterrupts();
   if (collectOn){
     digitalWrite(collector, LOW);
     Serial.print("LOW");
@@ -72,6 +73,7 @@ void collectorTrigger(){
     Serial.print("HIGH");
     collectOn = true;
   }
+  interrupts();
 }
 
 void loop() {

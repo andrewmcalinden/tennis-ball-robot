@@ -66,9 +66,9 @@ void rwmReaderR()
 
 void collectorToggle(){
     if (collectorOn)
-        digitalWrite(COLLECTOR_PIN), LOW);
+        digitalWrite(COLLECTOR_PIN, LOW);
     else
-        digitalWrite(COLLECTOR_PIN), HIGH);
+        digitalWrite(COLLECTOR_PIN, HIGH);
     collectorOn = !collectorOn;
 }
 

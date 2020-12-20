@@ -84,7 +84,7 @@ int main()
 
     wiringPiISR (LEFT_INPUT_PIN, INT_EDGE_BOTH, &rwmReaderL);
     wiringPiISR (RIGHT_INPUT_PIN, INT_EDGE_BOTH, &rwmReaderR);
-    wiringPiISR (SWITCH_INPUT_PIN, INT_EDGE_RISING, &collectorToggle);
+    //wiringPiISR (SWITCH_INPUT_PIN, INT_EDGE_RISING, &collectorToggle);
 
     while (true)
     {

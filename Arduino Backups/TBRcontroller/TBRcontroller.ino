@@ -17,7 +17,7 @@ pinMode(collectPin, INPUT);
 pinMode(left, OUTPUT);
 pinMode(right, OUTPUT);
 attachInterrupt(digitalPinToInterrupt(collectPin), collectorTrigger, RISING);
-//Serial.begin(9600);
+Serial.begin(9600);
 
 }
 
@@ -64,9 +64,13 @@ void updatePowers(){
 void collectorTrigger(){
   if (collectOn){
     digitalWrite(collector, LOW);
+    Serial.print("LOW");
+    collectOn = false;
   }
   else{
     digitalWrite(collector, HIGH);
+    Serial.print("HIGH");
+    collectOn = true;
   }
 }
 

@@ -47,6 +47,7 @@ void rwmReaderL()
         if(lPower>-.03 && lPower<.03)
             lPower = 0.0;
     }
+    motorL.setPower(lPower);
 
 }
 
@@ -64,6 +65,7 @@ void rwmReaderR()
         if(rPower>-.03&&rPower<.03)
             rPower = 0.0;
     }
+    motorR.setPower(rPower);
 
 }
 
@@ -77,6 +79,7 @@ void collectorToggle(){
 
 void countBalls(){
     ballCount++;
+    cout << "Balls: " << ballCount << endl;
 }
 
 int main()
@@ -88,6 +91,8 @@ int main()
 
     pinMode(LEFT_INPUT_PIN, INPUT);
     pinMode(RIGHT_INPUT_PIN, INPUT);
+    pinMode(RIGHT_INPUT_PIN, INPUT);
+    pinMode(RIGHT_INPUT_PIN, INPUT);
 
     wiringPiISR (LEFT_INPUT_PIN, INT_EDGE_BOTH, &rwmReaderL);
     wiringPiISR (RIGHT_INPUT_PIN, INT_EDGE_BOTH, &rwmReaderR);
@@ -96,9 +101,6 @@ int main()
 
     while (true)
     {
-        motorL.setPower(lPower);
-        motorR.setPower(rPower);
-        cout << "Balls: " << ballCount << endl;
     }
 }
 

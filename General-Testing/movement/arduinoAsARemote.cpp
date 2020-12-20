@@ -99,6 +99,7 @@ int main()
         motorL.setPower(lPower);
         motorR.setPower(rPower);
         cout << "Balls: " << ballCount;
+        prinf("\n");
     }
 }
 

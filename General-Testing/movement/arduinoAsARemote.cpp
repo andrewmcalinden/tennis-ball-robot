@@ -26,7 +26,7 @@ bool rHigh = 1;
 
 bool collectorOn = false;
 
-int ballCount = 0;
+volatile int ballCount = 0;
 
 double superMap(double x, double in_min, double in_max, double out_min, double out_max) 
 {
@@ -48,7 +48,7 @@ void rwmReaderL()
         if(lPower>-.03 && lPower<.03)
             lPower = 0.0;
     }
-    motorL.setPower(lPower);
+    
 
 }
 
@@ -67,7 +67,7 @@ void rwmReaderR()
         if(rPower>-.03&&rPower<.03)
             rPower = 0.0;
     }
-    motorR.setPower(rPower);
+    
 
 }
 
@@ -81,7 +81,7 @@ void collectorToggle(){
 
 void countBalls(){
     ballCount++;
-    cout << "Balls: " << ballCount << endl;
+    
 }
 
 int main()
@@ -104,6 +104,9 @@ int main()
 
     while (true)
     {
+        motorL.setPower(lPower);
+        motorR.setPower(rPower);
+        cout << "Balls: " << ballCount << endl;
     }
 }
 

@@ -7,16 +7,15 @@ const int collector = 5;
 
 double leftPower = 0;
 double rightPower = 0;
-bool collectOn = false;
+volatile bool collectOn = false;
 
 void setup() {
   // put your setup code here, to run once:
 pinMode(xPin, INPUT);
 pinMode(yPin, INPUT);
-pinMode(collectPin, INPUT);
 pinMode(left, OUTPUT);
 pinMode(right, OUTPUT);
-attachInterrupt(digitalPinToInterrupt(collectPin), collectorTrigger, RISING);
+attachInterrupt(digitalPinToInterrupt(collectPin), &printer, RISING);
 Serial.begin(9600);
 
 }
@@ -74,6 +73,9 @@ void collectorTrigger(){
     collectOn = true;
   }
   interrupts();
+}
+void printer(){
+  Serial.print("PRINTER");
 }
 
 void loop() {

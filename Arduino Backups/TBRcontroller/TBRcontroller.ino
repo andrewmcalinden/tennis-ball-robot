@@ -1,6 +1,6 @@
 const int xPin = A0;
 const int yPin = A1;
-const int collectPin = 2;
+const byte switchPin = 2;
 const int right = 9;
 const int left = 3;
 const int collector = 5;
@@ -9,16 +9,7 @@ double leftPower = 0;
 double rightPower = 0;
 volatile bool collectOn = false;
 
-void setup() {
-  // put your setup code here, to run once:
-pinMode(xPin, INPUT);
-pinMode(yPin, INPUT);
-pinMode(left, OUTPUT);
-pinMode(right, OUTPUT);
-attachInterrupt(digitalPinToInterrupt(collectPin), &printer, RISING);
-Serial.begin(9600);
-
-}
+volatile int counter = 0;
 
 double superMap(double x, double in_min, double in_max, double out_min, double out_max) {
   return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
@@ -61,26 +52,38 @@ void updatePowers(){
   leftPower = ((leftPower+1)/2)*255;
 }
 void collectorTrigger(){
-  noInterrupts();
-  if (collectOn){
+  if (digitalRead(switchPin) == 1 && collectOn){
     digitalWrite(collector, LOW);
-    Serial.print("LOW");
     collectOn = false;
+    //Serial.print("WORKSON");
   }
-  else{
+  else if(digitalRead(switchPin) == 1){
     digitalWrite(collector, HIGH);
-    Serial.print("HIGH");
     collectOn = true;
+    //Serial.print("WORKSOFF");
   }
-  interrupts();
+  
+  while(digitalRead(switchPin) == 1){}
 }
-void printer(){
-  Serial.print("PRINTER");
+
+void setup() {
+  // put your setup code here, to run once:
+pinMode(xPin, INPUT);
+pinMode(yPin, INPUT);
+pinMode(switchPin, INPUT_PULLUP);
+pinMode(left, OUTPUT);
+pinMode(right, OUTPUT);
+attachInterrupt(0,&collectorTrigger, RISING);
+
+//Serial.begin(115200);
+
 }
 
 void loop() {
   updatePowers();
-  delay(10);
+  
   analogWrite(right, (int)rightPower);
   analogWrite(left, (int)leftPower);
+  
+  
 }

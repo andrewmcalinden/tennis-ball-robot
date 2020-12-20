@@ -8,7 +8,7 @@ using namespace std;
 #define RIGHT_INPUT_PIN 6
 #define JOYSWITCH_INPUT_PIN 11
 #define COLLECTOR_PIN 4
-#define COUNT_INPUT_PIN 11
+#define COUNT_INPUT_PIN 12
 
 #define DIRECTION_PIN_FORWARD_LEFT 22
 #define POWER_PIN_LEFT 23

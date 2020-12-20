@@ -6,8 +6,9 @@ using namespace std;
 
 #define LEFT_INPUT_PIN 5
 #define RIGHT_INPUT_PIN 6
-#define SWITCH_INPUT_PIN 11
+#define JOYSWITCH_INPUT_PIN 11
 #define COLLECTOR_PIN 4
+#define COUNT_INPUT_PIN 11
 
 #define DIRECTION_PIN_FORWARD_LEFT 22
 #define POWER_PIN_LEFT 23
@@ -24,6 +25,8 @@ bool lHigh = 1;
 bool rHigh = 1;
 
 bool collectorOn = false;
+
+int ballCount = 0;
 
 double superMap(double x, double in_min, double in_max, double out_min, double out_max) 
 {
@@ -72,6 +75,10 @@ void collectorToggle(){
     collectorOn = !collectorOn;
 }
 
+void countBalls(){
+    ballCount++;
+}
+
 int main()
 {
     wiringPiSetup();
@@ -84,12 +91,14 @@ int main()
 
     wiringPiISR (LEFT_INPUT_PIN, INT_EDGE_BOTH, &rwmReaderL);
     wiringPiISR (RIGHT_INPUT_PIN, INT_EDGE_BOTH, &rwmReaderR);
-    //wiringPiISR (SWITCH_INPUT_PIN, INT_EDGE_RISING, &collectorToggle);
+    wiringPiISR (JOYSWITCH_INPUT_PIN, INT_EDGE_BOTH, &collectorToggle);
+    wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_RISING, &countBalls);
 
     while (true)
     {
         motorL.setPower(lPower);
         motorR.setPower(rPower);
+        cout << "Balls: " << ballCount;
     }
 }
 

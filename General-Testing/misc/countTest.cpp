@@ -28,7 +28,7 @@ int main()
     {
         if (count > oldCount)
         {
-            printf("\r",count);
+            cout << count;
             oldCount = count;
         }
     }

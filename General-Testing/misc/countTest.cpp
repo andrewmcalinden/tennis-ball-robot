@@ -1,5 +1,6 @@
 #include "wiringPi.h"
 #include <cstdio>
+#include <iostream>
 #include<unistd.h>
 
 #define COLLECTOR_PIN 4

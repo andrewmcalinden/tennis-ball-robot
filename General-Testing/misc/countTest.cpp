@@ -14,7 +14,7 @@ volatile int oldCount = 0;
 void countUp()
 {
     count++;
-    delay(100);
+    delay(10);
 }
 
 int main()

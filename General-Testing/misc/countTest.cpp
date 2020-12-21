@@ -13,7 +13,8 @@ volatile int oldCount = 0;
 
 void countUp()
 {
-    count++; 
+    count++;
+    sleep(10);
 }
 
 int main()

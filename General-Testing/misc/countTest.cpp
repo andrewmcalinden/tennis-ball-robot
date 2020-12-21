@@ -17,6 +17,7 @@ void countUp(){
 
 int main()
 {   wiringPiSetup();
+    pinMode(COLLECTOR_PIN, OUTPUT);
     digitalWrite(COLLECTOR_PIN, HIGH);
     //wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_FALLING, &countUp);
     
@@ -28,5 +29,6 @@ int main()
     }
     digitalWrite(COLLECTOR_PIN, LOW);
     */
-    usleep(3 * 1000000);//sleeps for 3 second
+    usleep(1 * 500000);//sleeps for 3 second
+    digitalWrite(COLLECTOR_PIN, LOW);
 }

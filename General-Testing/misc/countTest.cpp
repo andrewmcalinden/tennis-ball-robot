@@ -13,7 +13,6 @@ volatile int oldCount = 0;
 
 void countUp()
 {
-    oldCount = count;
     count++; 
 }
 
@@ -27,11 +26,11 @@ int main()
     
     while(millis()<10000)
     {
-        if (count > oldCount)
-        {
+        
+        
             cout << count;
-            oldCount = count;
-        }
+            
+        
     }
     digitalWrite(COLLECTOR_PIN, LOW);
     

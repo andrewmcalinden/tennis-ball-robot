@@ -96,8 +96,7 @@ void collectorToggle(){
 
 void countBalls(){
     oldCount = count;
-    ballCount++;
-    
+    count++;
 }
 
 int main()

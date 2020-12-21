@@ -18,17 +18,17 @@ void countUp(){
 int main()
 {   wiringPiSetup();
     pinMode(COLLECTOR_PIN, OUTPUT);
+    pinMode(COUNT_INPUT_PIN, INPUT);
     digitalWrite(COLLECTOR_PIN, HIGH);
-    //wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_FALLING, &countUp);
     
-    /*while(millis()<10000){
-        /*if (count > oldCount){
+    wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_FALLING, &countUp);
+    
+    while(millis()<10000){
+        if (count > oldCount){
             printf("\r",count);
             oldCount = count;
             }
     }
     digitalWrite(COLLECTOR_PIN, LOW);
-    */
-    usleep(1 * 500000);//sleeps for 3 second
-    digitalWrite(COLLECTOR_PIN, LOW);
+    
 }

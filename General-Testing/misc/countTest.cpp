@@ -25,7 +25,7 @@ int main()
     
     wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_FALLING, &countUp);
     
-    while(millis()<60000)
+    while(millis()<10000)
     {
         if (count > oldCount)
         {

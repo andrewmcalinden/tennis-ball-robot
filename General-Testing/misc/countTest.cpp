@@ -1,12 +1,26 @@
 #include "wiringPi.h"
 
-#define L_ENCODER_PIN1 0
-#define L_ENCODER_PIN2 7
-#define R_ENCODER_PIN1 2
-#define R_ENCODER_PIN2 3
+#define COLLECTOR_PIN 4
+#define COUNT_INPUT_PIN 12
+
+using namespace std;
+
+volatile int count = 0;
+volatile int oldCount = 0;
+
+void countUp(){
+    oldCount = count;
+    count++;    
+}
 
 int main()
-{
-    Robot r(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA, L_ENCODER_PIN1, L_ENCODER_PIN2, R_ENCODER_PIN1, R_ENCODER_PIN2);
-    r.goStraight(10, .1, 0, .1, .1);
+{   digitalWrite(COLLECTOR_PIN, HIGH);
+    wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_FALLING, &countUp);
+    
+    while(true){
+        if (count > oldCount){
+            printf("\r",count);
+            oldCount = count;
+            }
+    }
 }

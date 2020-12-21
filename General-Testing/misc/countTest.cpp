@@ -15,13 +15,15 @@ void countUp(){
 }
 
 int main()
-{   digitalWrite(COLLECTOR_PIN, HIGH);
+{   wiringPiSetup();
+    digitalWrite(COLLECTOR_PIN, HIGH);
     wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_FALLING, &countUp);
     
-    while(true){
+    while(milis()<10000){
         if (count > oldCount){
             printf("\r",count);
             oldCount = count;
             }
     }
+    digitalWrite(COLLECTOR_PIN, LOW);
 }

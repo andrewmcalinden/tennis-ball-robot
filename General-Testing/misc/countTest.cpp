@@ -1,4 +1,5 @@
 #include "wiringPi.h"
+#include <cstdio>
 
 #define COLLECTOR_PIN 4
 #define COUNT_INPUT_PIN 12

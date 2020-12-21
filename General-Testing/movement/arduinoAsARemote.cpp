@@ -50,7 +50,7 @@ void rwmReaderL()
 
         if (abs(oldPower - lPower) > .5)
         {
-            exit();
+            exit(EXIT_FAILURE);
         }
 
         if(lPower>-.05 && lPower<.05)
@@ -76,7 +76,7 @@ void rwmReaderR()
 
         if (abs(oldPower - lPower) > .5)
         {
-            exit();
+            exit(EXIT_FAILURE);
         }
 
         if(rPower>-.05&&rPower<.05)

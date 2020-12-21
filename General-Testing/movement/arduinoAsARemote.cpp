@@ -26,7 +26,8 @@ bool rHigh = 1;
 
 bool collectorOn = false;
 
-volatile int ballCount = 0;
+volatile int count = 0;
+volatile int oldCount = 0;
 
 double superMap(double x, double in_min, double in_max, double out_min, double out_max) 
 {
@@ -80,6 +81,7 @@ void collectorToggle(){
 }
 
 void countBalls(){
+    oldCount = count;
     ballCount++;
     
 }
@@ -100,13 +102,18 @@ int main()
     wiringPiISR (LEFT_INPUT_PIN, INT_EDGE_BOTH, &rwmReaderL);
     wiringPiISR (RIGHT_INPUT_PIN, INT_EDGE_BOTH, &rwmReaderR);
     wiringPiISR (JOYSWITCH_INPUT_PIN, INT_EDGE_BOTH, &collectorToggle);
-    wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_RISING, &countBalls);
+    wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_FALLING, &countBalls);
 
     while (true)
     {
         motorL.setPower(lPower);
         motorR.setPower(rPower);
-        cout << "Balls: " << ballCount << endl;
+        
+        if (count > oldCount){
+            printf("\r",count);
+            oldCount = count;
+            }
+    
     }
 }
 

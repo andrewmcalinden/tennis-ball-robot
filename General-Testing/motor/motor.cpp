@@ -17,7 +17,7 @@ void Motor::setPower(double power)
         //make motor spin backwards
         digitalWrite(dirForwardPin, LOW);
 
-        //give power to motor adjusted (usually from 0 to 1024), negate as power was initially negative
+        //give power to motor adjusted (usually from 0 to 99), negate as power was initially negative
         double adjustedPower = -1 * power * 99;
         pwmWrite(powerPin, adjustedPower);
     }
@@ -27,7 +27,7 @@ void Motor::setPower(double power)
         //make motor spin forwards
         digitalWrite(dirForwardPin, HIGH);
 
-        //give power to motor adjusted (usually from 0 to 1024)
+        //give power to motor adjusted (usually from 0 to 99)
         double adjustedPower = power * 99;
         pwmWrite(powerPin, adjustedPower);
     }

@@ -1,5 +1,6 @@
 #include "wiringPi.h"
 #include <cstdio>
+#include<unistd.h>
 
 #define COLLECTOR_PIN 4
 #define COUNT_INPUT_PIN 12
@@ -27,4 +28,5 @@ int main()
     }
     digitalWrite(COLLECTOR_PIN, LOW);
     */
+    usleep(3 * 1000000);//sleeps for 3 second
 }

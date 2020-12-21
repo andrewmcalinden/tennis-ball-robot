@@ -19,11 +19,12 @@ int main()
     digitalWrite(COLLECTOR_PIN, HIGH);
     //wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_FALLING, &countUp);
     
-    while(millis()<10000){
+    /*while(millis()<10000){
         /*if (count > oldCount){
             printf("\r",count);
             oldCount = count;
-            }*/
+            }
     }
     digitalWrite(COLLECTOR_PIN, LOW);
+    */
 }

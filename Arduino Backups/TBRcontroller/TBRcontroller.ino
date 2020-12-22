@@ -52,18 +52,18 @@ void updatePowers(){
   leftPower = ((leftPower+1)/2)*255;
 }
 void collectorTrigger(){
-  if (digitalRead(switchPin) == 1 && collectOn){
+  if (collectOn){
     digitalWrite(collector, LOW);
     collectOn = false;
     //Serial.print("WORKSON");
   }
-  else if(digitalRead(switchPin) == 1){
+  else{
     digitalWrite(collector, HIGH);
     collectOn = true;
     //Serial.print("WORKSOFF");
   }
   
-  while(digitalRead(switchPin) == 1){}
+  //while(digitalRead(switchPin) == 1){}
 }
 
 void setup() {

@@ -97,6 +97,7 @@ void collectorToggle(){
 void countBalls(){
     oldCount = count;
     count++;
+    //delay(10);
 }
 
 int main()

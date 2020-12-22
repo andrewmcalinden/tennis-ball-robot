@@ -114,8 +114,8 @@ int main()
 
     wiringPiISR (LEFT_INPUT_PIN, INT_EDGE_BOTH, &rwmReaderL);
     wiringPiISR (RIGHT_INPUT_PIN, INT_EDGE_BOTH, &rwmReaderR);
-    wiringPiISR (JOYSWITCH_INPUT_PIN, INT_EDGE_BOTH, &collectorToggle);
-    wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_FALLING, &countBalls);
+    //wiringPiISR (JOYSWITCH_INPUT_PIN, INT_EDGE_BOTH, &collectorToggle);
+    //wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_FALLING, &countBalls);
 
     while (true)
     {

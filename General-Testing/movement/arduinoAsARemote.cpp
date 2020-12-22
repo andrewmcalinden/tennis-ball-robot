@@ -122,10 +122,10 @@ int main()
         motorL.setPower(lPower);
         motorR.setPower(rPower);
         
-        if (count > oldCount){
+        /*if (count > oldCount){
             printf("\r",count);
             oldCount = count;
-            }
+            }*/
     
     }
 }

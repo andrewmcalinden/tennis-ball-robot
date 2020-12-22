@@ -48,10 +48,10 @@ void rwmReaderL()
         double oldPower = lPower;
         lPower = superMap(timeGap, 85, 1955, -1, 1);
 
-        if (abs(oldPower - lPower) > .5)
+        /*if (abs(oldPower - lPower) > .5)
         {
             exit(EXIT_FAILURE);
-        }
+        }*/
 
         if(lPower>-.05 && lPower<.05)
             lPower = 0.0;
@@ -74,10 +74,10 @@ void rwmReaderR()
         double oldPower = rPower;
         rPower = superMap(timeGap, 85, 1955, -1, 1);
 
-        if (abs(oldPower - lPower) > .5)
+        /*if (abs(oldPower - rPower) > .5)
         {
             exit(EXIT_FAILURE);
-        }
+        }*/
 
         if(rPower>-.05&&rPower<.05)
             rPower = 0.0;
@@ -115,14 +115,14 @@ int main()
 
     wiringPiISR (LEFT_INPUT_PIN, INT_EDGE_BOTH, &rwmReaderL);
     wiringPiISR (RIGHT_INPUT_PIN, INT_EDGE_BOTH, &rwmReaderR);
-    wiringPiISR (JOYSWITCH_INPUT_PIN, INT_EDGE_BOTH, &collectorToggle);
+    //wiringPiISR (JOYSWITCH_INPUT_PIN, INT_EDGE_BOTH, &collectorToggle);
     wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_FALLING, &countBalls);
 
     while (true)
     {
         motorL.setPower(lPower);
         motorR.setPower(rPower);
-        
+        digitalWrite(COLLECTOR_PIN, digitalRead(JOYSWITCH_INPUT_PIN));
         if (count > oldCount){
             printf("\r",count);
             oldCount = count;

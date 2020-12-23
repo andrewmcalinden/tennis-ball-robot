@@ -3,7 +3,7 @@ const int yPin = A1;
 const byte switchPin = 2;
 const int right = 9;
 const int left = 3;
-const int collector = 5;
+const int collector = 7;
 
 double leftPower = 0;
 double rightPower = 0;
@@ -63,7 +63,7 @@ void collectorTrigger(){
     //Serial.print("WORKSOFF");
   }
   
-  //while(digitalRead(switchPin) == 1){}
+  while(digitalRead(switchPin) == LOW){}
 }
 
 void setup() {
@@ -73,7 +73,8 @@ pinMode(yPin, INPUT);
 pinMode(switchPin, INPUT_PULLUP);
 pinMode(left, OUTPUT);
 pinMode(right, OUTPUT);
-attachInterrupt(0,&collectorTrigger, RISING);
+pinMode(collector, OUTPUT);
+attachInterrupt(digitalPinToInterrupt(2),&collectorTrigger,FALLING);
 
 //Serial.begin(115200);
 
@@ -81,7 +82,6 @@ attachInterrupt(0,&collectorTrigger, RISING);
 
 void loop() {
   updatePowers();
-  
   analogWrite(right, (int)rightPower);
   analogWrite(left, (int)leftPower);
   

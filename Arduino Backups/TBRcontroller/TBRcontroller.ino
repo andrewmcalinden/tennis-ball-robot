@@ -20,7 +20,7 @@ double updateJoy(int pin){
     return 0.0;
   }
   else{
-    return superMap(analogRead(pin),0,1024,-.9,.9);
+    return superMap(analogRead(pin),0,1024,-.4,.4);
   }
 }
 void updatePowers(){

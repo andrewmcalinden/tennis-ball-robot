@@ -1,10 +1,7 @@
 #include "movement.h"
 motorPowers Movement::getPowers()
 {
-    motorPowers m;
-    m.lPower = leftPower;
-    m.rPower = rightPower;
-    return m;
+    return motorPowers{leftPower, rightPower};
 }
 
 bool Movement::finished()

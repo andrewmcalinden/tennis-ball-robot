@@ -1,3 +1,6 @@
+#ifndef ROBOT_H
+#define ROBOT_H
+
 #include "../motor/motor.h"
 #include "../encoder/encoder.h"
 class Robot
@@ -19,3 +22,4 @@ class Robot
 
     void setMotorPowers(double lPower, double rPower);
 };
+#endif

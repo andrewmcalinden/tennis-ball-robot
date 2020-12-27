@@ -1,3 +1,5 @@
+#ifndef ENCODER_H
+#define ENCODER_H
 class Encoder
 {
     public:
@@ -12,3 +14,4 @@ class Encoder
 
     void registerCallback();
 };
+#endif

@@ -1,3 +1,5 @@
+#ifndef VECTOR_H
+#define VECTOR_H
 class Vector
 {
     private:
@@ -16,3 +18,4 @@ class Vector
     
     Vector rotated(double angle);
 };
+#endif

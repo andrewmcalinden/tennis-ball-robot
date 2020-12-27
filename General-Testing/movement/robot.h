@@ -10,9 +10,9 @@ class Robot
     Encoder encoderR;
 
     public:
-    Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin,
+    Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned char rMotorDirPin, unsigned char rMotorPowerPin,
             double initialX, double initialY, double initialTheta,
-            int lEncoderPin1, int lEncoderPin2, int rEncoderPin1, int rEncoderPin2);
+            unsigned char lEncoderPin1, unsigned char lEncoderPin2, unsigned char rEncoderPin1, unsigned char rEncoderPin2);
 
     void goStraight(double inches, double kp, double ki, double kd, double f);
     void turnHeading(double finalAngle, double kp, double ki, double kd, double f); //in degrees, turns to that heading (field centric)

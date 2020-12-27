@@ -6,9 +6,9 @@
 #include <ctime>
 #include <iostream>
 
-Robot::Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin,
+Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned char rMotorDirPin, unsigned char rMotorPowerPin,
              double initialX, double initialY, double initialTheta,
-             int lEncoderPin1, int lEncoderPin2, int rEncoderPin1, int rEncoderPin2)
+             unsigned char lEncoderPin1, unsigned char lEncoderPin2, unsigned char rEncoderPin1, unsigned char rEncoderPin2)
     : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin}, encoderL{lEncoderPin1, lEncoderPin2}, encoderR{rEncoderPin1, rEncoderPin2} //initialize motors and encoders
 {
     setPose(initialX, initialY, initialTheta);

@@ -34,18 +34,18 @@ bool epsilonEquals(double value1, double value2)
 
 void updateLeftEncoder(double reading)
 {
-    double currentPulses = reading; //actual encoder reading
-    double currentRotations = currentPulses / PULSES_PER_REV;
-    double currentInches = currentRotations * LEFT_WHEEL__DIAMETER * M_PI;
+    const double currentPulses = reading; //actual encoder reading
+    const double currentRotations = currentPulses / PULSES_PER_REV;
+    const double currentInches = currentRotations * LEFT_WHEEL__DIAMETER * M_PI;
     leftChange = currentInches - prevLeft;
     prevLeft = currentInches;
 }
 
 void updateRightEncoder(double reading)
 {
-    double currentPulses = reading; //actual encoder reading
-    double currentRotations = currentPulses / PULSES_PER_REV;
-    double currentInches = currentRotations * RIGHT_WHEEL_DIAMETER * M_PI;
+    const double currentPulses = reading; //actual encoder reading
+    const double currentRotations = currentPulses / PULSES_PER_REV;
+    const double currentInches = currentRotations * RIGHT_WHEEL_DIAMETER * M_PI;
     rightChange = currentInches - prevRight;
     prevRight = currentInches;
 }
@@ -57,18 +57,18 @@ void updatePos(double leftReading, double rightReading)
     updateRightEncoder(rightReading);
 
     //store initialHeading for later
-    double initialHeading = globalHeading;
-    double initialHeadingRad = toRadians(initialHeading);
+    const double initialHeading = globalHeading;
+    const double initialHeadingRad = toRadians(initialHeading);
 
-    double angleChangeRad = (rightChange - leftChange) / TRACKWIDTH;
-    double angleChangeDeg = toDegrees(angleChangeRad);
+    const double angleChangeRad = (rightChange - leftChange) / TRACKWIDTH;
+    const double angleChangeDeg = toDegrees(angleChangeRad);
     globalHeading = angleWrapDeg(globalHeading + angleChangeDeg);
 
-    double movement = (leftChange + rightChange) / 2.0; // total change in movement by robot (dx)
-    double dTheta = angleChangeRad;
+    const double movement = (leftChange + rightChange) / 2.0; // total change in movement by robot (dx)
+    const double dTheta = angleChangeRad;
 
-    double sinTheta = sin(dTheta);
-    double cosTheta = cos(dTheta);
+    const double sinTheta = sin(dTheta);
+    const double cosTheta = cos(dTheta);
 
     double sineTerm;
     double cosTerm;

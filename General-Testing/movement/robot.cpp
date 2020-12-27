@@ -22,42 +22,42 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     double pastTime = 0;
     double currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
 
-    double initialX = getX();
-    double initialY = getY();
-    double initialHeadingRad = toRadians(getHeading() + 90); //add 90 because we want the right to be 0 but right now up is 0
+    const double initialX = getX();
+    const double initialY = getY();
+    const double initialHeadingRad = toRadians(getHeading() + 90); //add 90 because we want the right to be 0 but right now up is 0
 
-    double additionalX = inches * cos(initialHeadingRad);
-    double additionalY = inches * sin(initialHeadingRad);
+    const double additionalX = inches * cos(initialHeadingRad);
+    const double additionalY = inches * sin(initialHeadingRad);
 
-    double finalX = initialX + additionalX;
-    double finalY = initialY + additionalY;
+    const double finalX = initialX + additionalX;
+    const double finalY = initialY + additionalY;
 
     double error = inches;
     double pastError = error;
 
     double integral = 0;
-    double initialAngle = getHeading();
+    const double initialAngle = getHeading();
 
     while (abs(error) > 2)
     {
         updatePos(encoderL.read(), encoderR.read());
-        double xError = abs(getX() - finalX);
-        double yError = abs(getY() - finalY);
+        const double xError = abs(getX() - finalX);
+        const double yError = abs(getY() - finalY);
         error = hypot(xError, yError);
         std::cout << "  X: " << getX();
         std::cout << "  Y: " << getY();
         std::cout << "  error: " << error;
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
-        double dt = currentTime - pastTime;
+        const double dt = currentTime - pastTime;
 
-        double proportional = error / inches;
+        const double proportional = error / inches;
         integral += dt * ((error + pastError) / 2.0);
-        double derivative = (error - pastError) / dt;
+        const double derivative = (error - pastError) / dt;
 
-        double power = kp * proportional + ki * integral + kd * derivative;
-        std::cout << "  power: " << power << "\n"; 
-        double angle = getHeading();
+        const double power = kp * proportional + ki * integral + kd * derivative;
+        std::cout << "  power: " << power << "\n";
+        const double angle = getHeading();
 
         if (power > 0)
         {
@@ -109,9 +109,9 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     double pastTime = 0;
     double currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
 
-    double initialHeading = getHeading();
+    const double initialHeading = getHeading();
 
-    double initialAngleDiff = initialHeading - finalAngle;
+    const double initialAngleDiff = initialHeading - finalAngle;
     double error = angleDiff(getHeading(), finalAngle);
     double pastError = error;
 
@@ -124,13 +124,13 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         std::cout << "  error: " << error;
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
-        double dt = currentTime - pastTime;
+        const double dt = currentTime - pastTime;
 
-        double proportional = error / initialAngleDiff;
+        const double proportional = error / initialAngleDiff;
         integral += dt * ((error + pastError) / 2.0);
-        double derivative = (error - pastError) / dt;
+        const double derivative = (error - pastError) / dt;
 
-        double power = kp * proportional + ki * integral + kd * derivative;
+        const double power = kp * proportional + ki * integral + kd * derivative;
         std::cout << "  power: " << power << "\n";
 
         if (power > 0)

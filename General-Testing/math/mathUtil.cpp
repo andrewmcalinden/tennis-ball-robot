@@ -1,6 +1,7 @@
 #include "mathUtil.h"
 #include <cmath>
 
+//make while loop for angles like 800 degrees
 double angleWrapDeg(double angle)
 {
     double correctAngle = angle;

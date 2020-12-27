@@ -1,8 +1,8 @@
 class Motor
 {
 private:
-    int dirForwardPin;
-    int powerPin;
+    unsigned char dirForwardPin;
+    unsigned char powerPin;
 
 public:
     Motor(int dirForwardPinLoc, int powerPinLoc);

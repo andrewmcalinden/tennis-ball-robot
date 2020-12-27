@@ -5,6 +5,6 @@ private:
     unsigned char powerPin;
 
 public:
-    Motor(int dirForwardPinLoc, int powerPinLoc);
+    Motor(unsigned char dirForwardPinLoc, unsigned char powerPinLoc);
     void setPower(double power);
 };

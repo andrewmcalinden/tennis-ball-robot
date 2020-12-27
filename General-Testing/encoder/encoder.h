@@ -6,7 +6,7 @@ class Encoder
     int position;
     unsigned char state;
 
-    Encoder(int pinALoc, int pinBLoc);
+    Encoder(unsigned char pinALoc, unsigned char pinBLoc);
 
     int read();
 

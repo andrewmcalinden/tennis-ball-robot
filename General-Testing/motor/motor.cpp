@@ -1,6 +1,6 @@
 #include "motor.h"
 #include <wiringPi.h>
-Motor::Motor(int dirForwardPinLoc, int powerPinLoc)
+Motor::Motor(unsigned char dirForwardPinLoc, unsigned char powerPinLoc)
     : dirForwardPin{dirForwardPinLoc}, powerPin{powerPinLoc}
 {
     wiringPiSetup();

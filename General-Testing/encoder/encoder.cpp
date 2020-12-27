@@ -3,7 +3,7 @@
 #include <vector>
 #include <iostream>
 
-Encoder::Encoder(int pinALoc, int pinBLoc)
+Encoder::Encoder(unsigned char pinALoc, unsigned char pinBLoc)
     : pinA{pinALoc}, pinB{pinBLoc}
 {
     wiringPiSetup();

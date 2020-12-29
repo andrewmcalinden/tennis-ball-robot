@@ -11,6 +11,7 @@
 #define LEFT_WHEEL__DIAMETER 2.061
 #define RIGHT_WHEEL_DIAMETER 2.032
 
+//defenitions, just like we define functions below
 double globalXPos = 0;
 double globalYPos = 0;
 double globalHeading = 0; //in degrees, from -180 to 180

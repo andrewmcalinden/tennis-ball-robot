@@ -12,6 +12,7 @@ double getX();
 double getY();
 double getHeading(); //in degrees
 
+//forward declarations, just like the functions above
 extern double globalXPos;
 extern double globalYPos;
 extern double globalHeading; //in degrees, from -180 to 180

@@ -9,8 +9,8 @@ int main()
     while (true)
     {
         updatePos(encoderL.read(), encoderR.read());
-        printf("\rX: %.2f",getX());
-        printf("   Y: %.2f",getY());
-        printf("   Heading: %.2f",getHeading());
+        printf("\rX: %.2f", globalXPos);
+        printf("   Y: %.2f", globalYPos);
+        printf("   Heading: %.2f", globalHeading);
     }
 }

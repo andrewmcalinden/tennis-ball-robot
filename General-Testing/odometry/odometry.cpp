@@ -94,18 +94,3 @@ void updatePos(double leftReading, double rightReading)
     globalXPos += deltaVector.getY();
     globalYPos -= deltaVector.getX();
 }
-
-double getX()
-{
-    return globalXPos;
-}
-
-double getY()
-{
-    return globalYPos;
-}
-
-double getHeading()
-{
-    return globalHeading;
-}

@@ -8,10 +8,6 @@ void updatePos(double leftReading, double rightReading);
 
 bool epsilonEquals();
 
-double getX();
-double getY();
-double getHeading(); //in degrees
-
 //forward declarations, just like the functions above
 extern double globalXPos;
 extern double globalYPos;

@@ -22,9 +22,9 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     double pastTime = 0;
     double currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
 
-    const double initialX = getX();
-    const double initialY = getY();
-    const double initialHeadingRad = toRadians(getHeading() + 90); //add 90 because we want the right to be 0 but right now up is 0
+    const double initialX = globalXPos;
+    const double initialY = globalYPos;
+    const double initialHeadingRad = toRadians(globalHeading + 90); //add 90 because we want the right to be 0 but right now up is 0
 
     const double additionalX = inches * cos(initialHeadingRad);
     const double additionalY = inches * sin(initialHeadingRad);
@@ -36,16 +36,16 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     double pastError = error;
 
     double integral = 0;
-    const double initialAngle = getHeading();
+    const double initialAngle = globalHeading;
 
     while (abs(error) > 2)
     {
         updatePos(encoderL.read(), encoderR.read());
-        const double xError = abs(getX() - finalX);
-        const double yError = abs(getY() - finalY);
+        const double xError = abs(globalXPos - finalX);
+        const double yError = abs(globalYPos - finalY);
         error = hypot(xError, yError);
-        std::cout << "  X: " << getX();
-        std::cout << "  Y: " << getY();
+        std::cout << "  X: " << globalXPos;
+        std::cout << "  Y: " << globalYPos;
         std::cout << "  error: " << error;
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
@@ -57,7 +57,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
 
         const double power = kp * proportional + ki * integral + kd * derivative;
         std::cout << "  power: " << power << "\n";
-        const double angle = getHeading();
+        const double angle = globalHeading;
 
         if (power > 0)
         {
@@ -109,10 +109,10 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     double pastTime = 0;
     double currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
 
-    const double initialHeading = getHeading();
+    const double initialHeading = globalHeading;
 
     const double initialAngleDiff = initialHeading - finalAngle;
-    double error = angleDiff(getHeading(), finalAngle);
+    double error = angleDiff(globalHeading, finalAngle);
     double pastError = error;
 
     double integral = 0;
@@ -120,7 +120,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     while (abs(error) > 2)
     {
         updatePos(encoderL.read(), encoderR.read());
-        error = angleDiff(getHeading(), finalAngle);
+        error = angleDiff(globalHeading, finalAngle);
         std::cout << "  error: " << error;
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);

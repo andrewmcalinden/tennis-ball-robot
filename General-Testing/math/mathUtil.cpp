@@ -1,15 +1,16 @@
 #include "mathUtil.h"
 #include <cmath>
+#include <iostream>
 
 //make while loop for angles like 800 degrees
 double angleWrapDeg(double angle)
 {
     double correctAngle = angle;
-    if (correctAngle > 180)
+    while (correctAngle > 180)
     {
         correctAngle -= 360;
     }
-    else if (correctAngle < -180)
+    while (correctAngle < -180)
     {
         correctAngle += 360;
     }
@@ -19,11 +20,11 @@ double angleWrapDeg(double angle)
 double angleWrapRad(double angle)
 {
     double correctAngle = angle;
-    if (correctAngle > M_PI)
+    while (correctAngle > M_PI)
     {
         correctAngle -= (2 * M_PI);
     }
-    else if (correctAngle < (-1 * M_PI))
+    while (correctAngle < (-1 * M_PI))
     {
         correctAngle += (2 * M_PI);
     }

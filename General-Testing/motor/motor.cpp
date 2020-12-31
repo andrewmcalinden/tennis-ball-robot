@@ -6,7 +6,7 @@ Motor::Motor(unsigned char dirForwardPinLoc, unsigned char powerPinLoc)
     wiringPiSetup();
     pinMode(dirForwardPin, OUTPUT);
     pinMode(powerPin, PWM_OUTPUT);
-    pwmSetClock(500);
+    pwmSetClock(1000);
     pwmSetRange(100);
 }
 

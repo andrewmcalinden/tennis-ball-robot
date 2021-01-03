@@ -121,7 +121,8 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
 
         pastTime = currentTime;
         pastError = error;
-     }
+    }
+    std::cout << "\nWE ARE STOPPING MOTORS!!!!!!!!!!!!!!!!!!" << std::endl << "abs error: " << fabs(error) << std::endl;
     setMotorPowers(0, 0);
 }
 
@@ -211,5 +212,5 @@ void Robot::setMotorPowers(double lPower, double rPower)
     l.setPower(lPower);
     r.setPower(rPower);
     printf( "\tlPower: %.3f", lPower);
-    printf("\rPower: %.3f", rPower);
+    printf("\trPower: %.3f", rPower);
 }

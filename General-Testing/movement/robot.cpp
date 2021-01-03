@@ -154,5 +154,5 @@ void Robot::setMotorPowers(double lPower, double rPower)
 {
     l.setPower(lPower);
     r.setPower(rPower);
-    std::cout << "lPower: " << lPower << "  rPower: " << rPower << "\n";
+    //std::cout << "lPower: " << lPower << "  rPower: " << rPower << "\n";
 }

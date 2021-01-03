@@ -154,11 +154,11 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         error = angleDiff(globalHeading, finalAngle);
         //printf( "\rglobalHeading: %.2f", globalHeading);
         //printf("\tfinalAngle: %.2f", finalAngle);
-        printf( "\rerror: %.2f", error);
+        printf( "error: %.2f", error);
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         const double dt = currentTime - pastTime;
-        std::cout << "dt: " << std::scientific << dt; 
+        std::cout << "\tdt: " << std::scientific << dt; 
 
         //we negate error because 
         const double proportional = error / abs(initialAngleDiff);
@@ -209,5 +209,5 @@ void Robot::setMotorPowers(double lPower, double rPower)
     l.setPower(lPower);
     r.setPower(rPower);
     printf( "\t left: %.3f", lPower);
-    printf("\tright: %.3f", rPower);
+    printf("\tright: %.3f \n", rPower);
 }

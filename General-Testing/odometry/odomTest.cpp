@@ -8,6 +8,7 @@ int main()
     Encoder encoderR(2, 3);
     while (true)
     {
+        std::cout << "\rleft: %d" << encoderL.read() << "right: %d" << encoderR.read();
         updatePos(encoderL.read(), encoderR.read());
         printf("\rX: %.2f", globalXPos);
         printf("   Y: %.2f", globalYPos);

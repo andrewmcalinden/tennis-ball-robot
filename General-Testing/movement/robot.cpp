@@ -161,9 +161,10 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
 
         //we negate error because 
         const double proportional = error / abs(initialAngleDiff);
-        printf("\tp: %.3f", proportional);
         integral += dt * ((error + pastError) / 2.0);
         const double derivative = (error - pastError) / dt;
+        printf("\td: %.3f", derivative);
+
 
         const double power = kp * proportional + ki * integral + kd * derivative;
         if (power > 0)

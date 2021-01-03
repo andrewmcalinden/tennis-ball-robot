@@ -20,14 +20,14 @@ int main()
     Motor motorR(DIRECTION_PIN_FORWARD_RIGHT, POWER_PIN_RIGHT);
     double power = 0;
     motorL.setPower(power);
-    motorR.setPower(power);
+    motorR.setPower(-power);
     string c = "";
     while (true)
     {
         getline(cin, c);
         power = stod(c);
         motorL.setPower(power);
-        motorR.setPower(power);
+        motorR.setPower(-power);
         /*if ((c=="run")){
             motorL.setPower(1);
             motorR.setPower(1);

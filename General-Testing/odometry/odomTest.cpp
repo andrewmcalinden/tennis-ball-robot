@@ -5,10 +5,10 @@
 int main()
 { 
     Encoder encoderL(0, 7);
-    Encoder encoderR(2, 3);
+    Encoder encoderR(3, 2);
     while (true)
     {
-        std::cout << "\rleft: " << encoderL.read() << "right: " << encoderR.read();
+        std::cout << "\rleft: " << encoderL.read() << "\tright: " << encoderR.read();
         updatePos(encoderL.read(), encoderR.read());
         // printf("\rX: %.2f", globalXPos);
         // printf("   Y: %.2f", globalYPos);

@@ -23,5 +23,5 @@ int main()
     // r.turnHeading(90, .17, 0, .0001, .04);
     // r.turnHeading(0, .17, 0, .0001, .04);
 
-    r.goStraight(20, 0, 0, 0, .04);
+    r.goStraight(20, .05, 0, 0, .04);
 }

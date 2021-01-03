@@ -121,7 +121,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     {
         updatePos(encoderL.read(), encoderR.read());
         error = angleDiff(globalHeading, finalAngle);
-        std::cout << "\r\terror: " << error;
+        printf( "\rerror: %.2f", error);
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         const double dt = currentTime - pastTime;
@@ -131,18 +131,20 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         const double derivative = (error - pastError) / dt;
 
         const double power = kp * proportional + ki * integral + kd * derivative;
-        std::cout << "\r\t\tpower: " << power;
+        printf("\tpower: %.2f", power);
 
         if (power > 0)
         {
             setMotorPowers(power + f, -power - f);
-            std::cout << "\r left: " << power + f << "\tright: " << -power - f;
+            printf( "\t left: %.2f", power + f);
+            printf("\tright: %.2f", -power - f);
 
-        }
+        },
         else
         {
             setMotorPowers(-power - f, power + f);
-            std::cout << "\r left: " << -power - f << "\tright: " << power + f;
+            printf( "\t left: %.2f", -power - f);
+            printf("\tright: %.2f", power + f);
         }
         pastTime = currentTime;
         pastError = error;

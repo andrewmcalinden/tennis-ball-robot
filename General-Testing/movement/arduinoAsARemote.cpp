@@ -133,7 +133,8 @@ int main()
             oldCount = count;
             }
 
-              updatePos(encoderL.read(), encoderR.read());
+        updatePos(encoderL.read(), encoderR.read());
+        printf("lol");
         printf("\rX: %.2f", globalXPos);
         printf("   Y: %.2f", globalYPos);
         printf("   Heading: %.2f", globalHeading);

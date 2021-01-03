@@ -136,10 +136,13 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         if (power > 0)
         {
             setMotorPowers(power + f, -power - f);
+            std::cout << "\r left: " << power + f << "\tright: " << -power - f;
+
         }
         else
         {
             setMotorPowers(-power - f, power + f);
+            std::cout << "\r left: " << -power - f << "\tright: " << power + f;
         }
         pastTime = currentTime;
         pastError = error;

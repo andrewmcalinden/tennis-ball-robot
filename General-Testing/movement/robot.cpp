@@ -144,7 +144,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         }
         else
         {
-            setMotorPowers(-power - f, power + f);
+            setMotorPowers(power - f, -power + f);
         }
         pastTime = currentTime;
         pastError = error;

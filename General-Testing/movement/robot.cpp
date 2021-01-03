@@ -121,7 +121,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     {
         updatePos(encoderL.read(), encoderR.read());
         error = angleDiff(globalHeading, finalAngle);
-        std::cout << "\rerror: " << error;
+        std::cout << "\r\terror: " << error;
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         const double dt = currentTime - pastTime;
@@ -131,7 +131,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         const double derivative = (error - pastError) / dt;
 
         const double power = kp * proportional + ki * integral + kd * derivative;
-        std::cout << "\r\tpower: " << power;
+        std::cout << "\r\t\tpower: " << power;
 
         if (power > 0)
         {

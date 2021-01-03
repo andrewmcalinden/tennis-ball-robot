@@ -9,8 +9,8 @@
 #define INITIAL_Y 0
 #define INITIAL_THETA 0
 
-#define L_ENCODER_PIN1 0
-#define L_ENCODER_PIN2 7
+#define L_ENCODER_PIN1 7
+#define L_ENCODER_PIN2 0
 #define R_ENCODER_PIN1 2
 #define R_ENCODER_PIN2 3
 

@@ -165,7 +165,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         integral += dt * ((error + pastError) / 2.0);
         const double derivative = (error - pastError) / dt;
         printf("\terror change: %.2f", error - pastError);
-        printf("\td: %.3f", derivative);
+        printf("\td: %.3f", derivative * kd);
 
 
         const double power = kp * proportional + ki * integral + kd * derivative;

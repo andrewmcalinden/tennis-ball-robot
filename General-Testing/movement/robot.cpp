@@ -133,7 +133,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         const double derivative = (error - pastError) / dt;
 
         const double power = kp * proportional + ki * integral + kd * derivative;
-        if (error > 0)
+        if (power > 0)
         {
             setMotorPowers(power + f, -power - f);
 

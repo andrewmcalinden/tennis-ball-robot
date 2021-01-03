@@ -50,9 +50,9 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         const double xError = abs(globalXPos - finalX);
         const double yError = abs(globalYPos - finalY);
         error = hypot(xError, yError);
-        std::cout << "  X: " << globalXPos;
-        std::cout << "  Y: " << globalYPos;
-        std::cout << "  error: " << error;
+        std::cout << "\rX: " << globalXPos;
+        std::cout << "\tY: " << globalYPos;
+        std::cout << "\terror: " << error;
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         const double dt = currentTime - pastTime;

@@ -5,11 +5,11 @@
 #include <iostream>
 #include <cstdlib>
 
-#define TRACKWIDTH 16.5
+#define TRACKWIDTH 9.875
 #define PULSES_PER_REV 1440.0
 #define EPSILON 1.0e-6
-#define LEFT_WHEEL__DIAMETER 2.061
-#define RIGHT_WHEEL_DIAMETER 2.032
+#define LEFT_WHEEL__DIAMETER 2.5
+#define RIGHT_WHEEL_DIAMETER 2.5
 
 //defenitions, just like we define functions below
 double globalXPos = 0;

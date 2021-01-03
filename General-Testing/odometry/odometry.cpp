@@ -61,7 +61,7 @@ void updatePos(double leftReading, double rightReading)
     const double initialHeading = globalHeading;
     const double initialHeadingRad = toRadians(initialHeading);
 
-    const double angleChangeRad = (rightChange - leftChange) / TRACKWIDTH;
+    const double angleChangeRad = (leftChange - rightChange) / TRACKWIDTH;
     const double angleChangeDeg = toDegrees(angleChangeRad);
     globalHeading = angleWrapDeg(globalHeading + angleChangeDeg);
 

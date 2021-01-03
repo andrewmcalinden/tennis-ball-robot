@@ -4,12 +4,15 @@
 
 int main()
 { 
-    Encoder encoderL(0, 7);
-    Encoder encoderR(3, 2);
+    Encoder encoderL(7, 0);
+    Encoder encoderR(2, 3);
     while (true)
     {
-        //std::cout << "\rleft: " << encoderL.read() << "\tright: " << encoderR.read();
-        updatePos(encoderL.read(), encoderR.read());
+/*
+-y
+-x  +x
++y
+*/        updatePos(encoderL.read(), encoderR.read());
         printf("\rX: %.2f", globalXPos);
         printf("   Y: %.2f", globalYPos);
         printf("   Heading: %.2f", globalHeading);

@@ -5,7 +5,7 @@
 #include <iostream>
 #include <cstdlib>
 
-#define TRACKWIDTH 10.0 
+#define TRACKWIDTH 9.96372222222
 #define PULSES_PER_REV 1440.0
 #define EPSILON 1.0e-6
 #define LEFT_WHEEL__DIAMETER 2.5

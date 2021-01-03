@@ -158,11 +158,13 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         const double dt = currentTime - pastTime;
+        printf("\tdt: %.2f", dt);
 
         //we negate error because 
         const double proportional = error / abs(initialAngleDiff);
         integral += dt * ((error + pastError) / 2.0);
         const double derivative = (error - pastError) / dt;
+        printf("\terror change: %.2f", error - pastError);
         printf("\td: %.3f", derivative);
 
 

@@ -1,6 +1,6 @@
 #include <iostream>
 #include "../motor/motor.h"
-#include "odometry.h"
+#include "../odometry/odometry.h"
 #include "../encoder/encoder.h"
 #include <wiringPi.h>
 

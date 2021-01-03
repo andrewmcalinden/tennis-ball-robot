@@ -8,8 +8,8 @@
 #define TRACKWIDTH 9.98330666439
 #define PULSES_PER_REV 1440.0
 #define EPSILON 1.0e-6
-#define LEFT_WHEEL__DIAMETER 2.5
-#define RIGHT_WHEEL_DIAMETER 2.5
+#define LEFT_WHEEL__DIAMETER 2.505
+#define RIGHT_WHEEL_DIAMETER 2.4955
 
 //defenitions, just like we define functions below
 double globalXPos = 0;

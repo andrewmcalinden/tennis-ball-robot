@@ -117,7 +117,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
 
     double integral = 0;
 
-//for some reason, error threshold is 1 greater than what is typed in
+    //for some reason, error threshold is 1 greater than what is typed in
     while (abs(error) > 1)
     {
         updatePos(encoderL.read(), encoderR.read());
@@ -129,7 +129,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         const double dt = currentTime - pastTime;
 
-        const double proportional = abs(error) / initialAngleDiff;
+        const double proportional = error / abs(initialAngleDiff);
         printf("\tp: %.3f", proportional);
         integral += dt * ((error + pastError) / 2.0);
         const double derivative = (error - pastError) / dt;

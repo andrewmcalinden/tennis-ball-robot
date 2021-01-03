@@ -41,6 +41,9 @@ double toDegrees(double radians)
     return (radians * 180) / M_PI;
 }
 
+//returns how many degrees angle 1 is from 2
+//degrees needed to turn from angle1 to angle 2
+//ex: angleDiff(30, 90) returns 60
 double angleDiff(double angle1, double angle2)
 {
     if (angle1 >= 0 && angle2 >= 0 || angle1 <= 0 && angle2 <= 0)

@@ -131,6 +131,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         const double dt = currentTime - pastTime;
 
+        //we negate error because 
         const double proportional = error / abs(initialAngleDiff);
         printf("\tp: %.3f", proportional);
         integral += dt * ((error + pastError) / 2.0);
@@ -139,12 +140,12 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         const double power = kp * proportional + ki * integral + kd * derivative;
         if (power > 0)
         {
-            setMotorPowers(power + f, -power - f);
+            setMotorPowers(-power - f, power + f,);
 
         }
         else
         {
-            setMotorPowers(power - f, -power + f);
+            setMotorPowers(-power + f, power - f);
         }
         pastTime = currentTime;
         pastError = error;

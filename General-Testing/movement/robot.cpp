@@ -139,7 +139,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
             printf( "\t left: %.2f", power + f);
             printf("\tright: %.2f", -power - f);
 
-        },
+        }
         else
         {
             setMotorPowers(-power - f, power + f);

@@ -121,7 +121,9 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     {
         updatePos(encoderL.read(), encoderR.read());
         error = angleDiff(globalHeading, finalAngle);
-        printf( "\rerror: %.2f", error);
+        printf( "\rglobalHeading: %.2f", globalHeading);
+        printf("\tfinalAngle: %.2f", finalAngle);
+        printf( "error: %.2f", error);
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         const double dt = currentTime - pastTime;

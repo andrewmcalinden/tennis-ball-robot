@@ -120,7 +120,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     double integral = 0;
 
     //for some reason, error threshold is 1 greater than what is typed in
-    while (/*fabs(error) > .5*/ true)
+    while (fabs(error) > .05)
     {
         updatePos(encoderL.read(), encoderR.read());
         error = angleDiff(globalHeading, finalAngle);
@@ -149,6 +149,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         }
         pastTime = currentTime;
         pastError = error;
+        delay(5);
     }
     std::cout << "\nWE ARE STOPPING MOTORS!!!!!!!!!!!!!!!!!!" << std::endl << "abs error: " << fabs(error) << std::endl;
     //setMotorPowers(0, 0);

@@ -1,7 +1,4 @@
 #include "robot.h"
-#include "../odometry/odometry.h"
-#include "../math/mathUtil.h"
-#include <iostream>
 #include "wiringPi.h"
 
 #define LEFT_MOTOR_DIR_PIN 22
@@ -21,9 +18,5 @@
 int main()
 {
     Robot r(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA, L_ENCODER_PIN1, L_ENCODER_PIN2, R_ENCODER_PIN1, R_ENCODER_PIN2);
-    // r.turnHeading(90, .01, 0, 0, .065);
-    while (true)
-    {
-        std::cout << "\r diffFrom90: " << angleDiff(globalHeading, 90);
-    }
+    r.turnHeading(90, .01, 0, 0, .065);
 }

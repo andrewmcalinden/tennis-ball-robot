@@ -1,5 +1,6 @@
 #include<iostream>
 #include "odometry.h"
+#include "../math/mathUtil.h"
 #include "../encoder/encoder.h"
 
 int main()
@@ -8,13 +9,12 @@ int main()
     Encoder encoderR(2, 3);
     while (true)
     {
-/*
--y
--x  +x
-+y
-*/        updatePos(encoderL.read(), encoderR.read());
-        printf("\rX: %.2f", globalXPos);
-        printf("   Y: %.2f", globalYPos);
-        printf("   Heading: %.2f", globalHeading);
+        updatePos(encoderL.read(), encoderR.read());
+        std::cout << "\r diffFrom90: " << angleDiff(globalHeading, 90);
+
+        // printf("\rX: %.2f", globalXPos);
+        // printf("   Y: %.2f", globalYPos);
+        // printf("   Heading: %.2f", globalHeading);
+
     }
 }

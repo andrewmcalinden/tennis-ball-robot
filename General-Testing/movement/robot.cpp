@@ -62,7 +62,6 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         const double derivative = (error - pastError) / dt;
 
         const double power = kp * proportional + ki * integral + kd * derivative;
-        std::cout << "  power: " << power << "\n";
         const double angle = globalHeading;
 
         if (power > 0)
@@ -211,6 +210,6 @@ void Robot::setMotorPowers(double lPower, double rPower)
 {
     l.setPower(lPower);
     r.setPower(rPower);
-    printf( "\t left: %.3f", lPower);
-    printf("\tright: %.3f", rPower);
+    printf( "\tlPower: %.3f", lPower);
+    printf("\rPower: %.3f", rPower);
 }

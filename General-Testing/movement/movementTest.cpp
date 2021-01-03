@@ -17,6 +17,9 @@
 int main()
 {
     Robot r(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA, L_ENCODER_PIN1, L_ENCODER_PIN2, R_ENCODER_PIN1, R_ENCODER_PIN2);
-    r.turnHeading(90, 0, 0, 0, .065);
+    // r.turnHeading(90, 0, 0, 0, .065);
+
+    r.setMotorPowers(.065, -.065);
+    delay(5000);
     r.setMotorPowers(0, 0);
 }

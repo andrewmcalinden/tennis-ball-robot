@@ -1,8 +1,8 @@
 #include "robot.h"
 
-#define LEFT_MOTOR_DIR_PIN 0
+#define LEFT_MOTOR_DIR_PIN 22
 #define LEFT_MOTOR_POWER_PIN 23
-#define RIGHT_MOTOR_DIR_PIN 2
+#define RIGHT_MOTOR_DIR_PIN 27
 #define RIGHT_MOTOR_POWER_PIN 26
 
 #define INITIAL_X 0

@@ -6,6 +6,7 @@
 #include <cmath>
 #include <ctime>
 #include <iostream>
+#include <fstream>
 
 Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned char rMotorDirPin, unsigned char rMotorPowerPin,
              double initialX, double initialY, double initialTheta,
@@ -127,6 +128,8 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
 
 void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, double f)
 {
+    ofstream outputFile("program3data.txt");
+
     std::clock_t timer;
     timer = std::clock();
 
@@ -166,6 +169,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         const double derivative = (error - pastError) / dt;
         printf("\terror change: %.2f", error - pastError);
         printf("\td: %.3f", derivative * kd);
+        outputFile << derivative * kd;
 
 
         const double power = kp * proportional + ki * integral + kd * derivative;

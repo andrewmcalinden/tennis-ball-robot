@@ -3,6 +3,8 @@
 
 #include "../motor/motor.h"
 #include "../encoder/encoder.h"
+#include "turn.h"
+#include <vector>
 class Robot
 {
     private:
@@ -12,14 +14,19 @@ class Robot
     Encoder encoderL;
     Encoder encoderR;
 
-    public:
-    Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned char rMotorDirPin, unsigned char rMotorPowerPin,
-            double initialX, double initialY, double initialTheta,
-            unsigned char lEncoderPin1, unsigned char lEncoderPin2, unsigned char rEncoderPin1, unsigned char rEncoderPin2);
+    std::vector<Turn> turns;
 
-    void goStraight(double inches, double kp, double ki, double kd, double f);
-    void turnHeading(double finalAngle, double kp, double ki, double kd, double f); //in degrees, turns to that heading (field centric)
+    unsigned char numMovements;
+    unsigned char currentIndex;
+
+    public:
+
+    Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin,
+            double initialX, double initialY, double initialTheta,
+            int lEncoderPin1, int lEncoderPin2, int rEncoderPin1, int rEncoderPin2);
 
     void setMotorPowers(double lPower, double rPower);
+    void run();
+
+    void addMovement(Turn t);
 };
-#endif

@@ -41,6 +41,8 @@ double toDegrees(double radians)
     return (radians * 180) / M_PI;
 }
 
+//might want to negate because right now:
+//returns positive if angle 2 is right of angle 1 and negative if angle 2 is left of angle 1
 double angleDiff(double angle1, double angle2)
 {
     if (angle1 >= 0 && angle2 >= 0 || angle1 <= 0 && angle2 <= 0)

@@ -17,5 +17,7 @@
 int main()
 {
     Robot r(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA, L_ENCODER_PIN1, L_ENCODER_PIN2, R_ENCODER_PIN1, R_ENCODER_PIN2);
-    r.goStraight(10, .1, 0, .1, .1);
+    Turn turnRight(5, .1, 0, 0, 0);
+    r.addMovement(turnRight);
+    r.run();
 }

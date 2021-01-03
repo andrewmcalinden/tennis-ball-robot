@@ -1,4 +1,5 @@
 #include "robot.h"
+#include "wiringPi.h"
 
 #define LEFT_MOTOR_DIR_PIN 22
 #define LEFT_MOTOR_POWER_PIN 23

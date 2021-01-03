@@ -145,6 +145,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         pastTime = currentTime;
         pastError = error;
     }
+    std::cout << "WE ARE STOPPING MOTORS!!!!!!!!!!!!!!!!!!" << std::endl;
     setMotorPowers(0, 0);
 }
 

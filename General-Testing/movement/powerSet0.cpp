@@ -18,7 +18,7 @@ int main()
     motorL.setPower(.065);
     motorR.setPower(-.065);
     delay(5000);
-    std::cout << "stopping motors" << endl;
+    std::cout << "stopping motors" << std::endl;
     motorL.setPower(0);
     motorR.setPower(0);
 }

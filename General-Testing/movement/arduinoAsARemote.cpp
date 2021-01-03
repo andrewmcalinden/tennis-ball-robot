@@ -1,5 +1,7 @@
 #include <iostream>
 #include "../motor/motor.h"
+#include "odometry.h"
+#include "../encoder/encoder.h"
 #include <wiringPi.h>
 
 using namespace std;
@@ -107,6 +109,9 @@ int main()
     Motor motorL(DIRECTION_PIN_FORWARD_LEFT, POWER_PIN_LEFT);
     Motor motorR(DIRECTION_PIN_FORWARD_RIGHT, POWER_PIN_RIGHT);
 
+    Encoder encoderL(7, 0);
+    Encoder encoderR(2, 3);
+
     pinMode(LEFT_INPUT_PIN, INPUT);
     pinMode(RIGHT_INPUT_PIN, INPUT);
     pinMode(JOYSWITCH_INPUT_PIN, INPUT);
@@ -127,6 +132,11 @@ int main()
             printf("\r",count);
             oldCount = count;
             }
+
+              updatePos(encoderL.read(), encoderR.read());
+        printf("\rX: %.2f", globalXPos);
+        printf("   Y: %.2f", globalYPos);
+        printf("   Heading: %.2f", globalHeading);
     
     }
 }

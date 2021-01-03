@@ -90,7 +90,7 @@ void updatePos(double leftReading, double rightReading)
     deltaVector = deltaVector.rotated(initialHeadingRad);
 
     //switch x, y because thats then +y is forward
-    //-y because then +x is forwards
-    globalXPos += deltaVector.getY();
+    //have to do testing to figure out signs and which is which
+    globalXPos -= deltaVector.getY();
     globalYPos -= deltaVector.getX();
 }

@@ -128,7 +128,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
 
 void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, double f)
 {
-    ofstream outputFile("program3data.txt");
+    std::ofstream outputFile("program3data.txt");
 
     std::clock_t timer;
     timer = std::clock();

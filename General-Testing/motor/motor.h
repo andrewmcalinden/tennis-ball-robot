@@ -1,10 +1,13 @@
+#ifndef MOTOR_H
+#define MOTOR_H
 class Motor
 {
-private:
-    int dirForwardPin;
-    int powerPin;
+    private:
+    unsigned char dirForwardPin;
+    unsigned char powerPin;
 
-public:
-    Motor(int dirForwardPinLoc, int powerPinLoc);
+    public:
+    Motor(unsigned char dirForwardPinLoc, unsigned char powerPinLoc);
     void setPower(double power);
 };
+#endif

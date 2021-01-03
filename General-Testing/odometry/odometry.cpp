@@ -5,12 +5,13 @@
 #include <iostream>
 #include <cstdlib>
 
-#define TRACKWIDTH 16.5
+#define TRACKWIDTH 9.98330666439
 #define PULSES_PER_REV 1440.0
 #define EPSILON 1.0e-6
-#define LEFT_WHEEL__DIAMETER 2.061
-#define RIGHT_WHEEL_DIAMETER 2.032
+#define LEFT_WHEEL__DIAMETER 2.505
+#define RIGHT_WHEEL_DIAMETER 2.4955
 
+//defenitions, just like we define functions below
 double globalXPos = 0;
 double globalYPos = 0;
 double globalHeading = 0; //in degrees, from -180 to 180
@@ -34,18 +35,18 @@ bool epsilonEquals(double value1, double value2)
 
 void updateLeftEncoder(double reading)
 {
-    double currentPulses = reading; //actual encoder reading
-    double currentRotations = currentPulses / PULSES_PER_REV;
-    double currentInches = currentRotations * LEFT_WHEEL__DIAMETER * M_PI;
+    const double currentPulses = reading; //actual encoder reading
+    const double currentRotations = currentPulses / PULSES_PER_REV;
+    const double currentInches = currentRotations * LEFT_WHEEL__DIAMETER * M_PI;
     leftChange = currentInches - prevLeft;
     prevLeft = currentInches;
 }
 
 void updateRightEncoder(double reading)
 {
-    double currentPulses = reading; //actual encoder reading
-    double currentRotations = currentPulses / PULSES_PER_REV;
-    double currentInches = currentRotations * RIGHT_WHEEL_DIAMETER * M_PI;
+    const double currentPulses = reading; //actual encoder reading
+    const double currentRotations = currentPulses / PULSES_PER_REV;
+    const double currentInches = currentRotations * RIGHT_WHEEL_DIAMETER * M_PI;
     rightChange = currentInches - prevRight;
     prevRight = currentInches;
 }
@@ -57,18 +58,18 @@ void updatePos(double leftReading, double rightReading)
     updateRightEncoder(rightReading);
 
     //store initialHeading for later
-    double initialHeading = globalHeading;
-    double initialHeadingRad = toRadians(initialHeading);
+    const double initialHeading = globalHeading;
+    const double initialHeadingRad = toRadians(initialHeading);
 
-    double angleChangeRad = (rightChange - leftChange) / TRACKWIDTH;
-    double angleChangeDeg = toDegrees(angleChangeRad);
+    const double angleChangeRad = (rightChange - leftChange) / TRACKWIDTH;
+    const double angleChangeDeg = toDegrees(angleChangeRad);
     globalHeading = angleWrapDeg(globalHeading + angleChangeDeg);
 
-    double movement = (leftChange + rightChange) / 2.0; // total change in movement by robot (dx)
-    double dTheta = angleChangeRad;
+    const double movement = (leftChange + rightChange) / 2.0; // total change in movement by robot (dx)
+    const double dTheta = angleChangeRad;
 
-    double sinTheta = sin(dTheta);
-    double cosTheta = cos(dTheta);
+    const double sinTheta = sin(dTheta);
+    const double cosTheta = cos(dTheta);
 
     double sineTerm;
     double cosTerm;
@@ -89,22 +90,7 @@ void updatePos(double leftReading, double rightReading)
     deltaVector = deltaVector.rotated(initialHeadingRad);
 
     //switch x, y because thats then +y is forward
-    //-y because then +x is forwards
-    globalXPos += deltaVector.getY();
+    //have to do testing to figure out signs and which is which
+    globalXPos -= deltaVector.getY();
     globalYPos -= deltaVector.getX();
-}
-
-double getX()
-{
-    return globalXPos;
-}
-
-double getY()
-{
-    return globalYPos;
-}
-
-double getHeading()
-{
-    return globalHeading;
 }

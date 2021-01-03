@@ -4,10 +4,12 @@
 #include <cmath>
 #include <iostream>
 
-Robot::Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin,
+Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned char rMotorDirPin, unsigned char rMotorPowerPin,
              double initialX, double initialY, double initialTheta,
+
              int lEncoderPin1, int lEncoderPin2, int rEncoderPin1, int rEncoderPin2)
     : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin}, encoderL{lEncoderPin1, lEncoderPin2}, encoderR{rEncoderPin1, rEncoderPin2}, startPos{initialX, initialY} //initialize motors and encoders
+
 {
     setPose(initialX, initialY, initialTheta);
     numMovements = 0;
@@ -16,6 +18,7 @@ Robot::Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorP
 
 void Robot::setMotorPowers(double lPower, double rPower)
 {
+
     l.setPower(lPower);
     r.setPower(rPower);
     std::cout << "lPower: " << lPower << "  rPower: " << rPower << "\n";
@@ -28,6 +31,7 @@ void Robot::run()
         unsigned char count = 0;
         updatePos(encoderL.read(), encoderR.read());
 
+
         Turn currentMovement = turns.at(currentIndex);
         currentMovement.beginMovement(getHeading());
 
@@ -39,6 +43,7 @@ void Robot::run()
             motorPowers m = currentMovement.getPowers();
             setMotorPowers(m.lPower, m.rPower);
         }
+
         numMovements--;
         currentIndex--;
     }

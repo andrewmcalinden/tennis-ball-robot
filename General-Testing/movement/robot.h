@@ -1,3 +1,6 @@
+#ifndef ROBOT_H
+#define ROBOT_H
+
 #include "../motor/motor.h"
 #include "../encoder/encoder.h"
 #include "turn.h"
@@ -17,6 +20,7 @@ class Robot
     unsigned char currentIndex;
 
     public:
+
     Robot(int lMotorDirPin, int lMotorPowerPin, int rMotorDirPin, int rMotorPowerPin,
             double initialX, double initialY, double initialTheta,
             int lEncoderPin1, int lEncoderPin2, int rEncoderPin1, int rEncoderPin2);

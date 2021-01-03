@@ -1,14 +1,17 @@
+#ifndef ENCODER_H
+#define ENCODER_H
 class Encoder
 {
     public:
-    int pinA;
-    int pinB;
+    unsigned char pinA;
+    unsigned char pinB;
     int position;
     unsigned char state;
 
-    Encoder(int pinALoc, int pinBLoc);
-    
+    Encoder(unsigned char pinALoc, unsigned char pinBLoc);
+
     int read();
 
     void registerCallback();
 };
+#endif

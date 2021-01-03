@@ -11,19 +11,24 @@
 
 using namespace std;
 
+
 int main()
 {
     wiringPiSetup();
 
     Motor motorL(DIRECTION_PIN_FORWARD_LEFT, POWER_PIN_LEFT);
     Motor motorR(DIRECTION_PIN_FORWARD_RIGHT, POWER_PIN_RIGHT);
-    double power = -1;
+    double power = 0;
+    motorL.setPower(power);
+    motorR.setPower(power);
     string c = "";
     while (true)
     {
         getline(cin, c);
-
-        if ((c=="run")){
+        power = stod(c);
+        motorL.setPower(power);
+        motorR.setPower(power);
+        /*if ((c=="run")){
             motorL.setPower(1);
             motorR.setPower(1);
         }
@@ -34,7 +39,7 @@ int main()
         if ((c=="reverse")){
             motorL.setPower(-1);
             motorR.setPower(-1);
-        }
+        }*/
         
     }
 }

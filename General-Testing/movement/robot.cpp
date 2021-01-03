@@ -120,7 +120,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     double integral = 0;
 
     //for some reason, error threshold is 1 greater than what is typed in
-    while (fabs(error) > .5)
+    while (/*fabs(error) > .5*/ true)
     {
         updatePos(encoderL.read(), encoderR.read());
         error = angleDiff(globalHeading, finalAngle);

@@ -39,7 +39,11 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     double integral = 0;
     const double initialAngle = globalHeading;
 
-    while (abs(error) > 2)
+    double firstTimeAtSetpoint = 0;
+    double timeAtSetPoint = 0;
+    bool atSetpoint = false;
+
+    while (timeAtSetPoint < .1)
     {
         updatePos(encoderL.read(), encoderR.read());
         const double xError = abs(globalXPos - finalX);
@@ -96,6 +100,25 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
                 setMotorPowers(power - f, power - f);
             }
         }
+
+        if (fabs(error) < 2)
+        {
+            if(!atSetpoint)
+            {
+                atSetpoint = true;
+                firstTimeAtSetpoint = currentTime;
+            }
+            else //at setpoint
+            {
+                timeAtSetPoint = currentTime - firstTimeAtSetpoint;
+            }
+        }
+        else //no longer at setpoint
+        {
+            atSetpoint = false;
+            timeAtSetPoint = 0;
+        }
+        
         pastTime = currentTime;
         pastError = error;
      }

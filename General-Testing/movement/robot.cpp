@@ -80,11 +80,11 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
             {
                 if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
                 {
-                    setMotorPowers(power + f, (power + f) * .2);
+                    setMotorPowers(power + f, (power + f) * .7);
                 }
                 else
                 {
-                    setMotorPowers((power + f) * .2, power + f);
+                    setMotorPowers((power + f) * .7, power + f);
                 }
             }
             else
@@ -98,11 +98,11 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
             {
                 if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
                 {
-                    setMotorPowers(-power - f, (-power - f) * .2);
+                    setMotorPowers(-power - f, (-power - f) * .7);
                 }
                 else
                 {
-                    setMotorPowers((-power - f) * .2, -power - f);
+                    setMotorPowers((-power - f) * .7, -power - f);
                 }
             }
             else

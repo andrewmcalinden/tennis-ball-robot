@@ -71,39 +71,39 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
 
         if (direction > 80 && direction < 100) //90 is perfectly forwards
         {
-            if (abs(angle - initialAngle) > 2)
-            {
-                if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
-                {
-                    setMotorPowers(power + f, (power + f) * .8);
-                }
-                else
-                {
-                    setMotorPowers((power + f) * .8, power + f);
-                }
-            }
-            else
-            {
+            // if (abs(angle - initialAngle) > 2)
+            // {
+            //     if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
+            //     {
+            //         setMotorPowers(power + f, (power + f) * .8);
+            //     }
+            //     else
+            //     {
+            //         setMotorPowers((power + f) * .8, power + f);
+            //     }
+            // }
+            // else
+            // {
                 setMotorPowers(power + f, power + f);
-            }
+            //}
         }
         else //direction -90
         {
-            if (abs(angle - initialAngle) > 2)
-            {
-                if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
-                {
-                    setMotorPowers(-power - f, (-power - f) * .8);
-                }
-                else
-                {
-                    setMotorPowers((-power - f) * .8, -power - f);
-                }
-            }
-            else
-            {
+            // if (abs(angle - initialAngle) > 2)
+            // {
+            //     if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
+            //     {
+            //         setMotorPowers(-power - f, (-power - f) * .8);
+            //     }
+            //     else
+            //     {
+            //         setMotorPowers((-power - f) * .8, -power - f);
+            //     }
+            // }
+            // else
+            // {
                 setMotorPowers(-power - f, -power - f);
-            }
+            //}
         }
 
         if (fabs(error) < .5)

@@ -102,7 +102,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
             }
         }
 
-        if (fabs(error) < .1)
+        if (fabs(error) < .5)
         {
             if(!atSetpoint)
             {
@@ -212,6 +212,6 @@ void Robot::setMotorPowers(double lPower, double rPower)
 {
     l.setPower(lPower);
     r.setPower(rPower);
-    printf( "\tlPower: %.3f", lPower);
-    printf("\trPower: %.3f", rPower);
+    // printf( "\tlPower: %.3f", lPower);
+    // printf("\trPower: %.3f", rPower);
 }

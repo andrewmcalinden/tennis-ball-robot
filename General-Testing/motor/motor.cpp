@@ -12,7 +12,7 @@ Motor::Motor(unsigned char dirForwardPinLoc, unsigned char powerPinLoc)
 
 void Motor::setPower(double power)
 {
-    if (power < 0)
+    if (power < 0 && power >= -0.5) //if power less than -0.5, dont do anything
     {
         //make motor spin backwards
         digitalWrite(dirForwardPin, LOW);
@@ -22,8 +22,8 @@ void Motor::setPower(double power)
         pwmWrite(powerPin, adjustedPower);
     }
 
-    else
-    { //power >= 0
+    else if (power <= .5)
+    { //power >= 0 but <= .5
         //make motor spin forwards
         digitalWrite(dirForwardPin, HIGH);
 

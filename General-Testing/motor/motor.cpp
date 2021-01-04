@@ -13,7 +13,11 @@ Motor::Motor(unsigned char dirForwardPinLoc, unsigned char powerPinLoc)
 
 void Motor::setPower(double power)
 {
-    if (fabs(power) > 1) return;
+    if (fabs(power) > 1) 
+    {
+        std::cout << "ERROR: CANNOT SET POWER GREATER THAN 1!!" << std::endl;
+        return;
+    }
 
     power /= 2.0;
     if (power < 0) //if power less than -0.5, dont do anything

@@ -51,7 +51,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         const double xError = abs(globalXPos - finalX);
         const double yError = abs(globalYPos - finalY);
         error = hypot(xError, yError);
-        printf("\rX: %.2f", globalXPos);
+        printf("X: %.2f", globalXPos);
         printf("\tY: %.2f", globalYPos);
         printf("\terror: %.2f", error);
 

@@ -53,7 +53,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         error = hypot(xError, yError);
         printf("X: %.2f", globalXPos);
         printf("\tY: %.2f", globalYPos);
-        printf("\terror: %.2f", error);
+        printf("\terror: %.2f\n", error);
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         const double dt = currentTime - pastTime;

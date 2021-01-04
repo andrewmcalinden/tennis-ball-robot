@@ -51,7 +51,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         const double xError = finalX - globalXPos;
         const double yError = finalY - globalYPos;
 
-        double direction = toDegrees(atan2(yError, xError)); //if 90, forward, if -90, backward
+        double direction = toDegrees(atan2(yError, xError)) - globalHeading; //if 90, forward, if -90, backward
         printf("\t dir: %.2f", direction);
 
         error = hypot(xError, yError); //really abs(error)

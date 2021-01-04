@@ -92,9 +92,9 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
                 setMotorPowers(power + f, power + f);
             }
         }
-        else //direction -90
+        else //direction = -90
         {
-            if (abs(angle - initialAngle) > 2)
+            if (abs(angle - initialAngle) > .25)
             {
                 if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
                 {

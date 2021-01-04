@@ -19,7 +19,7 @@ int main()
 {
     Robot r(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA, L_ENCODER_PIN1, L_ENCODER_PIN2, R_ENCODER_PIN1, R_ENCODER_PIN2);
     //r.turnHeading(190, .37, 0, .0002, .04); WORKS GOOD, NO OVERSHOOT
-    r.turnHeading(190, .85, 0, .00002, .04);
+    r.turnHeading(190, .85, 0, .00009, .04);
     // r.turnHeading(-30, .17, 0, .0001, .04);
     // r.turnHeading(90, .17, 0, .0001, .04);
     // r.turnHeading(0, .17, 0, .0001, .04);

@@ -16,7 +16,7 @@ void Motor::setPower(double power)
 {
     if (fabs(power) > 1) 
     {
-        //std::cout << "\tTRIED TO SET POWER GREATER THAN 1" << std::endl;
+        std::cout << "\tTRIED TO SET POWER GREATER THAN 1" << std::endl;
         if (power > 0)
         {
             power = 1;

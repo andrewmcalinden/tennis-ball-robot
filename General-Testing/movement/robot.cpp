@@ -16,6 +16,7 @@ Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned 
     setPose(initialX, initialY, initialTheta);
 }
 
+//note: negative power moves forwards
 void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
 {
     std::clock_t timer;
@@ -50,9 +51,9 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         const double xError = abs(globalXPos - finalX);
         const double yError = abs(globalYPos - finalY);
         error = hypot(xError, yError);
-        std::cout << "\rX: " << globalXPos;
-        std::cout << "\tY: " << globalYPos;
-        std::cout << "\terror: " << error;
+        printf("\rX: %.2f", globalXPos);
+        printf("\tY: %.2f", globalYPos);
+        printf("\terror: %.2f", error);
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         const double dt = currentTime - pastTime;

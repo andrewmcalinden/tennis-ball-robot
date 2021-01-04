@@ -76,7 +76,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
 
         if (direction > 0 && direction < 180) //90 is perfectly forwards
         {
-            if (abs(angle - initialAngle) > 2)
+            if (abs(angle - initialAngle) > 1)
             {
                 if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
                 {

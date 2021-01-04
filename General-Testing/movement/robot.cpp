@@ -61,7 +61,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         const double dt = currentTime - pastTime;
 
-        const double proportional = error / inches;
+        const double proportional = error / abs(inches);
         integral += dt * ((error + pastError) / 2.0);
         const double derivative = (error - pastError) / dt;
 

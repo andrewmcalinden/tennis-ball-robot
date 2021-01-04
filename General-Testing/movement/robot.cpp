@@ -216,6 +216,6 @@ void Robot::setMotorPowers(double lPower, double rPower)
 {
     l.setPower(lPower);
     r.setPower(rPower);
-    printf( "lPower: %.3f", lPower);
-    printf("\trPower: %.3f\t", rPower);
+    printf( "\t lPower: %.3f", lPower);
+    printf("\trPower: %.3f", rPower);
 }

@@ -12,8 +12,8 @@ Motor::Motor(unsigned char dirForwardPinLoc, unsigned char powerPinLoc)
 
 void Motor::setPower(double power)
 {
-    if (power > 1)break;
-    
+    if (power > 1) return;
+
     power /= 2.0;
     if (power < 0) //if power less than -0.5, dont do anything
     {

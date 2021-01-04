@@ -27,7 +27,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
 
     const double initialX = globalXPos;
     const double initialY = globalYPos;
-    const double initialHeadingRad = toRadians(globalHeading + 90); //add 90 because we want the right to be 0 but right now up is 0
+    const double initialHeadingRad = toRadians(globalHeading + 90); //add 90 because we want the right to be 0 but right now up is -90
 
     const double additionalX = inches * cos(initialHeadingRad);
     const double additionalY = inches * sin(initialHeadingRad);
@@ -48,9 +48,12 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     while (timeAtSetPoint < .1)
     {
         updatePos(encoderL.read(), encoderR.read());
-        const double xError = abs(globalXPos - finalX);
-        const double yError = abs(globalYPos - finalY);
-        error = hypot(xError, yError);
+        const double xError = finalX - globalXPos;
+        const double yError = finalY - globalYPos;
+
+        double direction = toDegrees(atan2(yError, xError)); //if 90, forward, if -90, backward
+
+        error = hypot(xError, yError); //really abs(error)
         printf("X: %.2f", globalXPos);
         printf("\tY: %.2f", globalYPos);
         printf("\terror: %.2f\n", error);
@@ -62,10 +65,11 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         integral += dt * ((error + pastError) / 2.0);
         const double derivative = (error - pastError) / dt;
 
+        //power will always be positive due to hypot always being positive
         const double power = kp * proportional + ki * integral + kd * derivative;
         const double angle = globalHeading;
 
-        if (power > 0)
+        if (direction == 90) //forwards
         {
             if (abs(angle - initialAngle) > 2)
             {
@@ -83,22 +87,22 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
                 setMotorPowers(power + f, power + f);
             }
         }
-        else
+        else //direction -90
         {
             if (abs(angle - initialAngle) > 2)
             {
                 if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
                 {
-                    setMotorPowers(power - f, (power - f) * .8);
+                    setMotorPowers(-power - f, (-power - f) * .8);
                 }
                 else
                 {
-                    setMotorPowers((power - f) * .8, power - f);
+                    setMotorPowers((-power - f) * .8, -power - f);
                 }
             }
             else
             {
-                setMotorPowers(power - f, power - f);
+                setMotorPowers(-power - f, -power - f);
             }
         }
 

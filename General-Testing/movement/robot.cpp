@@ -45,7 +45,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     double timeAtSetPoint = 0;
     bool atSetpoint = false;
 
-    while (timeAtSetPoint < .1)
+    while (timeAtSetPoint < .3)
     {
         updatePos(encoderL.read(), encoderR.read());
         const double xError = finalX - globalXPos;

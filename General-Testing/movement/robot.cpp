@@ -74,7 +74,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         const double power = kp * proportional + ki * integral + kd * derivative;
         const double angle = globalHeading;
 
-        if (direction > 80 && direction < 100) //90 is perfectly forwards
+        if (direction > 50 && direction < 130) //90 is perfectly forwards
         {
             // if (abs(angle - initialAngle) > 2)
             // {

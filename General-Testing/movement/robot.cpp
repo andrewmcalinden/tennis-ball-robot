@@ -159,19 +159,19 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     {
         updatePos(encoderL.read(), encoderR.read());
         error = angleDiff(globalHeading, finalAngle);
-        //printf( "\rglobalHeading: %.2f", globalHeading);
-        //printf("\tfinalAngle: %.2f", finalAngle);
         printf( "\rerror: %.2f", error);
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         const double dt = currentTime - pastTime;
-        std::cout << "\tdt: " << std::scientific << dt; 
+        //std::cout << "\tdt: " << std::scientific << dt; 
 
         //we negate error because 
         const double proportional = error / abs(initialAngleDiff);
         integral += dt * ((error + pastError) / 2.0);
         const double derivative = (error - pastError) / dt;
         printf("\terror change: %.2f", error - pastError);
+        printf("\tp: %.3f", proportional * kp);
+        printf("\ti: %.3f", integral * ki);
         printf("\td: %.3f", derivative * kd);
         outputFile << derivative * kd << "\n";
 

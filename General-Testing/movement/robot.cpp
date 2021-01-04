@@ -187,7 +187,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
             setMotorPowers(-power + f, power - f);
         }
 
-        if (fabs(error) < 2)
+        if (fabs(error) < 1)
         {
             if(!atSetpoint)
             {

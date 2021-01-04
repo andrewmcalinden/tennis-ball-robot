@@ -55,7 +55,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         printf("\t dir: %.2f", direction);
 
         error = hypot(xError, yError); //really abs(error)
-        printf("X: %.2f", globalXPos);
+        printf("\tX: %.2f", globalXPos);
         printf("\tY: %.2f", globalYPos);
         printf("\terror: %.2f\n", error);
         
@@ -80,11 +80,11 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
             {
                 if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
                 {
-                    setMotorPowers(power + f, (power + f) * .5);
+                    setMotorPowers(power + f, (power + f) * .2);
                 }
                 else
                 {
-                    setMotorPowers((power + f) * .5, power + f);
+                    setMotorPowers((power + f) * .2, power + f);
                 }
             }
             else
@@ -98,11 +98,11 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
             {
                 if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
                 {
-                    setMotorPowers(-power - f, (-power - f) * .5);
+                    setMotorPowers(-power - f, (-power - f) * .2);
                 }
                 else
                 {
-                    setMotorPowers((-power - f) * .5, -power - f);
+                    setMotorPowers((-power - f) * .2, -power - f);
                 }
             }
             else

@@ -155,7 +155,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
 
     double integral = 0;
 
-    while (timeAtSetPoint < .1)
+    while (timeAtSetPoint < .05)
     {
         updatePos(encoderL.read(), encoderR.read());
         error = angleDiff(globalHeading, finalAngle);
@@ -187,7 +187,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
             setMotorPowers(-power + f, power - f);
         }
 
-        if (fabs(error) < 1)
+        if (fabs(error) < .25)
         {
             if(!atSetpoint)
             {

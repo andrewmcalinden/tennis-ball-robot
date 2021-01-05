@@ -63,7 +63,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         printf("\tY: %.2f", globalYPos);
         printf("\terror: %.2f\n", error);
 
-        outputFile << "\tX: " << globalXPos << "\tY: " << globalYPos;
+        outputFile << "\tX: " << globalXPos << "\tY: " << globalYPos << std::endl;
         
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         const double dt = currentTime - pastTime;

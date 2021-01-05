@@ -56,14 +56,14 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         double direction = toDegrees(atan2(yError, xError)) - globalHeading; //if 90, forward, if -90, backward
         printf("\t dir: %.2f", direction);
 
-        outputFile << direction << std::endl;
+        outputFile << direction;
 
         error = hypot(xError, yError); //really abs(error)
         printf("\tX: %.2f", globalXPos);
         printf("\tY: %.2f", globalYPos);
         printf("\terror: %.2f\n", error);
 
-
+        outputFile << "\tX: " << globalXPos << "\tY: " << globalYPos;
         
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         const double dt = currentTime - pastTime;

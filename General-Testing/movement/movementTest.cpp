@@ -27,7 +27,7 @@ int main()
     //     start += 90;
     // }
 
-    r.turnHeading(90, .37, .003, 700, .12);
+    r.turnHeading(90, .37, .003, 7000000, .12);
 
     
 

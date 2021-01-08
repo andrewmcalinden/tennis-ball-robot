@@ -170,6 +170,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     bool atSetpoint = false;
 
     double integral = 0;
+    double derivative = 0;
 
     while (timeAtSetPoint < .05)
     {
@@ -184,7 +185,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         //we negate error because 
         const double proportional = error / abs(initialAngleDiff);
         integral += dt * ((error + pastError) / 2.0);
-        double derivative = (error - pastError) / dt;
+        derivative = (error - pastError) / dt;
         //printf("\terror change: %.2f", error - pastError);
         printf("\tp: %.3f", proportional * kp);
         printf("\ti: %f", integral * ki);

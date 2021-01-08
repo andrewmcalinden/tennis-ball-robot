@@ -56,14 +56,14 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
 
         //90
         double direction = angleWrapDeg(toDegrees(atan2(yError, xError)) - globalHeading); //if 90, forward, if -90, backward
-        printf("\t dir: %.2f", direction);
+        //printf("\t dir: %.2f", direction);
 
         //outputFile << "dir: " << direction;
 
         //40
         error = hypot(xError, yError); //really abs(error)
-        printf("\tX: %.2f", globalXPos);
-        printf("\tY: %.2f", globalYPos);
+        // printf("\tX: %.2f", globalXPos);
+        // printf("\tY: %.2f", globalYPos);
         printf("\terror: %.2f\n", error);
 
         //outputFile << "\tX: " << globalXPos << "\tY: " << globalYPos << std::endl;
@@ -77,7 +77,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
 
         printf("\tp: %.3f", proportional * kp);
         outputFile << "Error: " << error << "\tP: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << std::endl;
-        printf("\ti: %.3f", integral * ki);
+        printf("\ti: %f", integral * ki);
         printf("\td: %.3f", derivative * kd);
 
         //power will always be positive due to hypot always being positive

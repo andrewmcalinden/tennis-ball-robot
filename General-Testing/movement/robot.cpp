@@ -233,8 +233,8 @@ void Robot::setMotorPowers(double lPower, double rPower)
 {
     l.setPower(lPower);
     r.setPower(rPower);
-    printf( "lPower: %.3f", lPower);
-    printf("\trPower: %.3f\t", rPower);
+    printf( "\tlPower: %.3f", lPower);
+    printf("\trPower: %.3f", rPower);
     if (fabs(lPower) > 1 && fabs(rPower) > 1)
     {
        printf("\tTRIED TO SET POWER GREATER THAN 1\n"); 

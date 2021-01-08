@@ -185,9 +185,9 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         const double proportional = error / abs(initialAngleDiff);
         integral += dt * ((error + pastError) / 2.0);
         const double derivative = (error - pastError) / dt;
-        printf("\terror change: %.2f", error - pastError);
+        //printf("\terror change: %.2f", error - pastError);
         printf("\tp: %.3f", proportional * kp);
-        printf("\ti: %.3f", integral * ki);
+        printf("\ti: %f", integral * ki);
         printf("\td: %.3f", derivative * kd);
         outputFile << derivative * kd << "\n";
 

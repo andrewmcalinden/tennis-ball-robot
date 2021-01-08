@@ -27,21 +27,22 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     double pastTime = 0;
     double currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
 
-    const double initialX = globalXPos;
-    const double initialY = globalYPos;
+    const double initialX = globalXPos; //0
+    const double initialY = globalYPos; //40
+    //pi
     const double initialHeadingRad = toRadians(globalHeading + 90); //add 90 because we want the right to be 0 but right now up is -90
 
-    const double additionalX = inches * cos(initialHeadingRad);
-    const double additionalY = inches * sin(initialHeadingRad);
+    const double additionalX = inches * cos(initialHeadingRad); //-40 
+    const double additionalY = inches * sin(initialHeadingRad); //0
 
-    const double finalX = initialX + additionalX;
-    const double finalY = initialY + additionalY;
+    const double finalX = initialX + additionalX; //-40
+    const double finalY = initialY + additionalY; // 40
 
-    double error = inches;
-    double pastError = error;
+    double error = inches; //40
+    double pastError = error; //40
 
     double integral = 0;
-    const double initialAngle = globalHeading;
+    const double initialAngle = globalHeading; //90
 
     double firstTimeAtSetpoint = 0;
     double timeAtSetPoint = 0;
@@ -50,14 +51,16 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     while (timeAtSetPoint < .3)
     {
         updatePos(encoderL.read(), encoderR.read());
-        const double xError = finalX - globalXPos;
-        const double yError = finalY - globalYPos;
+        const double xError = finalX - globalXPos; //-40
+        const double yError = finalY - globalYPos; //0
 
+        //90
         double direction = toDegrees(atan2(yError, xError)) - globalHeading; //if 90, forward, if -90, backward
         printf("\t dir: %.2f", direction);
 
         outputFile << direction;
 
+        //40
         error = hypot(xError, yError); //really abs(error)
         printf("\tX: %.2f", globalXPos);
         printf("\tY: %.2f", globalYPos);
@@ -104,11 +107,11 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
             {
                 if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
                 {
-                    setMotorPowers(-power - f, (-power - f) * .7);
+                    setMotorPowers((-power - f) * .7, -power - f);
                 }
                 else
                 {
-                    setMotorPowers((-power - f) * .7, -power - f);
+                    setMotorPowers(-power - f, (-power - f) * .7);
                 }
             }
             else

@@ -191,7 +191,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         printf("\td: %f", derivative * kd);
         outputFile << derivative * kd << "\n";
 
-        if (derivative * kd > .2)
+        if ((derivative * kd) > .2)
         {
             derivative = 0;
         }

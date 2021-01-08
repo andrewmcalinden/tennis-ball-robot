@@ -91,6 +91,6 @@ void updatePos(double leftReading, double rightReading)
 
     //switch x, y because thats then +y is forward
     //have to do testing to figure out signs and which is which
-    globalXPos -= deltaVector.getY();
+    globalXPos += deltaVector.getY();
     globalYPos -= deltaVector.getX();
 }

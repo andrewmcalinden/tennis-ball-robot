@@ -58,7 +58,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         double direction = toDegrees(atan2(yError, xError)) - globalHeading; //if 90, forward, if -90, backward
         printf("\t dir: %.2f", direction);
 
-        outputFile << direction;
+        outputFile << "dir: " << direction;
 
         //40
         error = hypot(xError, yError); //really abs(error)
@@ -76,6 +76,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         const double derivative = (error - pastError) / dt;
 
         printf("\tp: %.3f", proportional * kp);
+        outputFile << "Error: " << error << "P: " << proportional << std::endl;
         printf("\ti: %.3f", integral * ki);
         printf("\td: %.3f", derivative * kd);
 
@@ -143,7 +144,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     }
     std::cout << "\nWE ARE STOPPING MOTORS!!!!!!!!!!!!!!!!!!" << std::endl << "abs error: " << fabs(error) << std::endl;
     setMotorPowers(0, 0);
-    outputFile << "END OF STRAIGHT" << std::endl;
+    //outputFile << "END OF STRAIGHT" << std::endl;
 }
 
 void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, double f)

@@ -58,7 +58,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         double direction = angleWrapDeg(toDegrees(atan2(yError, xError)) - globalHeading); //if 90, forward, if -90, backward
         printf("\t dir: %.2f", direction);
 
-        outputFile << "dir: " << direction;
+        //outputFile << "dir: " << direction;
 
         //40
         error = hypot(xError, yError); //really abs(error)
@@ -66,7 +66,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         printf("\tY: %.2f", globalYPos);
         printf("\terror: %.2f\n", error);
 
-        outputFile << "\tX: " << globalXPos << "\tY: " << globalYPos << std::endl;
+        //outputFile << "\tX: " << globalXPos << "\tY: " << globalYPos << std::endl;
         
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         const double dt = currentTime - pastTime;
@@ -76,7 +76,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         const double derivative = (error - pastError) / dt;
 
         printf("\tp: %.3f", proportional * kp);
-        outputFile << "Error: " << error << "P: " << proportional << std::endl;
+        outputFile << "Error: " << error << "\tP: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << std::endl;
         printf("\ti: %.3f", integral * ki);
         printf("\td: %.3f", derivative * kd);
 

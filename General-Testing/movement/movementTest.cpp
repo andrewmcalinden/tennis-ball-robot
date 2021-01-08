@@ -18,12 +18,13 @@
 int main()
 {
     Robot r(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA, L_ENCODER_PIN1, L_ENCODER_PIN2, R_ENCODER_PIN1, R_ENCODER_PIN2);
-    int i = 4;
-    int start = 90;
-    while (i--)
-    {
-        r.goStraight(40, .36, 0, .00004, .08);
-        r.turnHeading(start, .37, 0, .00002, .08);
-        start += 90;
-    }
+    // int i = 4;
+    // int start = 90;
+    // while (i--)
+    // {
+    //     r.goStraight(40, .36, 0, .00004, .08);
+    //     r.turnHeading(start, .37, 0, .00002, .08);
+    //     start += 90;
+    // }
+    r.goStraight(-40, .36, 0, .00004, .08);
 }

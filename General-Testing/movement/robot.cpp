@@ -188,7 +188,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         //printf("\terror change: %.2f", error - pastError);
         printf("\tp: %.3f", proportional * kp);
         printf("\ti: %f", integral * ki);
-        printf("\td: %.3f", derivative * kd);
+        printf("\td: %f", derivative * kd);
         outputFile << derivative * kd << "\n";
 
 

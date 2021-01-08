@@ -55,7 +55,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         const double yError = finalY - globalYPos; //0
 
         //90
-        double direction = toDegrees(atan2(yError, xError)) - globalHeading; //if 90, forward, if -90, backward
+        double direction = angleWrapDeg(toDegrees(atan2(yError, xError)) - globalHeading); //if 90, forward, if -90, backward
         printf("\t dir: %.2f", direction);
 
         outputFile << "dir: " << direction;

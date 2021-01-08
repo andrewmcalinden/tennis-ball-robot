@@ -26,5 +26,7 @@ int main()
     //     r.turnHeading(start, .37, 0, .00002, .08);
     //     start += 90;
     // }
+    r.turnHeading(90, .37, 0, .00002, .08);
+    delay(500);
     r.goStraight(-40, .4, 0, .00004, .08);
 }

@@ -194,7 +194,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
 
         //if we have an unusual value of d such as 0 or a very high value, ignore it and use the last normal value
         //if we have a normal value, save it for future reference
-        if(epsilonEquals(derivative, 0) || fabs(derivative * kd) > .15)
+        if(epsilonEquals(derivative, 0) || fabs(derivative * kd) > .3)
         {
             derivative = lastNonZeroD;
         }

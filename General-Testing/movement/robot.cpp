@@ -239,7 +239,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
 
         pastTime = currentTime;
         pastError = error;
-        delay(25);
+        millis(25);
     }
     std::cout << "\nWE ARE STOPPING MOTORS!!!!!!!!!!!!!!!!!!" << std::endl << "abs error: " << fabs(error) << std::endl;
     setMotorPowers(0, 0);

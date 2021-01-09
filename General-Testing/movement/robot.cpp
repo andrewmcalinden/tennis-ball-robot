@@ -71,7 +71,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         const double dt = currentTime - pastTime;
 
-        const double proportional = error / abs(inches);
+        const double proportional = error / fabs(inches);
         integral += dt * ((error + pastError) / 2.0);
         const double derivative = (error - pastError) / dt;
 
@@ -86,7 +86,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
 
         if (direction > 0 && direction < 180) //90 is perfectly forwards
         {
-            if (abs(angle - initialAngle) > .25)
+            if (fabs(angle - initialAngle) > .25)
             {
                 if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
                 {
@@ -104,7 +104,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         }
         else //direction = -90
         {
-            if (abs(angle - initialAngle) > .25)
+            if (fabs(angle - initialAngle) > .25)
             {
                 if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
                 {
@@ -184,7 +184,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         //std::cout << "\tdt: " << std::scientific << dt; 
 
         //we negate error because 
-        const double proportional = error / abs(initialAngleDiff);
+        const double proportional = error / fabs(initialAngleDiff);
         integral += dt * ((error + pastError) / 2.0);
         derivative = (error - pastError) / dt;
         //printf("\terror change: %.2f", error - pastError);

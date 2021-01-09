@@ -190,7 +190,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         printf("\tp: %.3f", proportional * kp);
         printf("\ti: %f", integral * ki);
         printf("\td: %f", derivative * kd);
-        outputFile << derivative * kd << "\n";
+        outputFile << "P: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << "\n";
 
         if (fabs(derivative * kd) > .2)
         {

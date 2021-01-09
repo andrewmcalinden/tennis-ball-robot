@@ -197,7 +197,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         //if we have a normal value, save it for future reference
         if(epsilonEquals(derivative, 0) || fabs(derivative * kd) > .2)
         {
-            derivative = lastNonZeroD
+            derivative = lastNonZeroD;
         }
         else
         {

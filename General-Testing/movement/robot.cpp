@@ -188,9 +188,9 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         integral += dt * ((error + pastError) / 2.0);
         derivative = (error - pastError) / dt;
         //printf("\terror change: %.2f", error - pastError);
-        printf("\tp: %.3f", proportional * kp);
-        printf("\ti: %f", integral * ki);
-        printf("\td: %f", derivative * kd);
+        // printf("\tp: %.3f", proportional * kp);
+        // printf("\ti: %f", integral * ki);
+        // printf("\td: %f", derivative * kd);
 
         //if we have an unusual value of d such as 0 or a very high value, ignore it and use the last normal value
         //if we have a normal value, save it for future reference
@@ -234,7 +234,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
             timeAtSetPoint = 0;
         }
 
-        //std::cout << timeAtSetPoint << std::endl;
+        std::cout << timeAtSetPoint << std::endl;
 
         pastTime = currentTime;
         pastError = error;

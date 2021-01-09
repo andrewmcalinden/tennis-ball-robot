@@ -151,11 +151,11 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
 {
     std::ofstream outputFile("turnData.txt");
 
-    std::clock_t timer;
-    timer = std::clock();
-
+    // std::clock_t timer;
+    // timer = std::clock();
+    double startTime = millis();
     double pastTime = 0;
-    double currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
+    double currentTime = 0;
 
     const double initialHeading = globalHeading;
 
@@ -173,13 +173,16 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     double derivative = 0;
     double lastNonZeroD = 0;
 
+    
+
     while (timeAtSetPoint < .05)
     {
         updatePos(encoderL.read(), encoderR.read());
         error = angleDiff(globalHeading, finalAngle);
         printf( "\rerror: %.2f", error);
 
-        currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
+        //currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
+        currentTime = millis() - startTime;
         const double dt = currentTime - pastTime;
         //std::cout << "\tdt: " << std::scientific << dt; 
 

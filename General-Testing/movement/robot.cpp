@@ -177,7 +177,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     {
         updatePos(encoderL.read(), encoderR.read());
         error = angleDiff(globalHeading, finalAngle);
-        printf( "\rerror: %.2f", error);
+        //printf( "\rerror: %.2f", error);
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         const double dt = currentTime - pastTime;
@@ -234,7 +234,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
             timeAtSetPoint = 0;
         }
 
-        std::cout << timeAtSetPoint << std::endl;
+        std::cout << "TAS: " << timeAtSetPoint << std::endl;
 
         pastTime = currentTime;
         pastError = error;
@@ -249,8 +249,8 @@ void Robot::setMotorPowers(double lPower, double rPower)
 {
     l.setPower(lPower);
     r.setPower(rPower);
-    printf( "\tlPower: %.3f", lPower);
-    printf("\trPower: %.3f", rPower);
+    // printf( "\tlPower: %.3f", lPower);
+    // printf("\trPower: %.3f", rPower);
     if (fabs(lPower) > 1 && fabs(rPower) > 1)
     {
        printf("\tTRIED TO SET POWER GREATER THAN 1\n"); 

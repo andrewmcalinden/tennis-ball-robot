@@ -215,15 +215,15 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         const double power = kp * proportional + ki * integral + kd * derivative;
         outputFile << "P: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << "\tpower: " << power << "\n";
 
-        // if (power > 0)
-        // {
-        //     setMotorPowers(-power - f, power + f);
+        if (power > 0)
+        {
+            setMotorPowers(-power - f, power + f);
 
-        // }
-        // else
-        // {
-        //     setMotorPowers(-power + f, power - f);
-        // }
+        }
+        else
+        {
+            setMotorPowers(-power + f, power - f);
+        }
 
         if (fabs(error) < 2)
         {

@@ -173,7 +173,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     double derivative = 0;
     double lastNonZeroD = 0;
 
-    while (timeAtSetPoint < .05)
+    while (timeAtSetPoint < .005)
     {
         updatePos(encoderL.read(), encoderR.read());
         error = angleDiff(globalHeading, finalAngle);

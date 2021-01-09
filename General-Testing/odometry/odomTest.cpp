@@ -10,11 +10,9 @@ int main()
     while (true)
     {
         updatePos(encoderL.read(), encoderR.read());
-        //std::cout << "\r diffFrom90: " << angleDiff(globalHeading, 90);
-
-        printf("\rX: %.2f", globalXPos);
-        printf("   Y: %.2f", globalYPos);
-        printf("   Heading: %.2f", globalHeading);
+        printf("\rX: %.2f", getX());
+        printf("   Y: %.2f", getY());
+        printf("   Heading: %.2f", getHeading());
 
     }
 }

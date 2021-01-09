@@ -26,10 +26,10 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     double pastTime = 0;
     double currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
 
-    double initialX = globalXPos;
-    double initialY = globalYPos;
+    double initialX = getX();
+    double initialY = getY();
  
-    const double initialHeadingRad = toRadians(globalHeading + 90); //add 90 because we want the right to be 0 but right now up is -90
+    const double initialHeadingRad = toRadians(getHeading() + 90); //add 90 because we want the right to be 0 but right now up is -90
 
     double additionalX = inches * cos(initialHeadingRad);
     double additionalY = inches * sin(initialHeadingRad);
@@ -41,7 +41,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     double pastError = error;
 
     double integral = 0;
-    const double initialAngle = globalHeading;
+    const double initialAngle = getHeading();
 
     double firstTimeAtSetpoint = 0;
     double timeAtSetPoint = 0;
@@ -50,10 +50,10 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     while (timeAtSetPoint < .3)
     {
         updatePos(encoderL.read(), encoderR.read());
-        double xError = finalX - globalXPos;
-        double yError = finalY - globalYPos;
+        double xError = finalX - getX();
+        double yError = finalY - getY();
 
-        double direction = angleWrapDeg(toDegrees(atan2(yError, xError)) - globalHeading); //if 90, forward, if -90, backward
+        double direction = angleWrapDeg(toDegrees(atan2(yError, xError)) - getHeading()); //if 90, forward, if -90, backward
 
         error = hypot(xError, yError); //really abs(error)
         
@@ -69,7 +69,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
 
         //power will always be positive due to hypot always being positive
         double power = kp * proportional + ki * integral + kd * derivative;
-        double angle = globalHeading;
+        double angle = getHeading();
 
         if (direction > 0 && direction < 180) //90 is perfectly forwards
         {
@@ -143,11 +143,11 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     double pastTime = 0;
     double currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
 
-    const double initialHeading = globalHeading;
+    const double initialHeading = getHeading();
     finalAngle = angleWrapDeg(finalAngle);
 
     const double initialAngleDiff = initialHeading - finalAngle;
-    double error = angleDiff(globalHeading, finalAngle);
+    double error = angleDiff(getHeading(), finalAngle);
     double pastError = error;
 
     double firstTimeAtSetpoint = 0;
@@ -159,7 +159,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     while (timeAtSetPoint < .0025)
     {
         updatePos(encoderL.read(), encoderR.read());
-        error = angleDiff(globalHeading, finalAngle);
+        error = angleDiff(getHeading(), finalAngle);
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         double dt = currentTime - pastTime;

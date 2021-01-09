@@ -13,7 +13,7 @@
 //defenitions, just like we define functions below
 double globalXPos = 0;
 double globalYPos = 0;
-double globalHeading = 0; //in degrees, from -180 to 180
+double globalHeading = 0; //in degrees, from -180 to 180, 0 is forwards, positive angle to the left
 
 double prevLeft = 0;
 double prevRight = 0;
@@ -88,3 +88,7 @@ void updatePos(double leftReading, double rightReading)
     globalXPos += deltaVector.getY();
     globalYPos -= deltaVector.getX();
 }
+
+double getX() {return globalXPos;}
+double getY() {return globalYPos;}
+double getHeading() {return globalHeading;}

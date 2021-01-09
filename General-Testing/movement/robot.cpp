@@ -173,7 +173,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     double derivative = 0;
     double lastNonZeroD = 0;
 
-    while (timeAtSetPoint < .05)
+    while(fabs(error) > .5)//while (timeAtSetPoint < .05)
     {
         updatePos(encoderL.read(), encoderR.read());
         error = angleDiff(globalHeading, finalAngle);
@@ -216,23 +216,23 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
             setMotorPowers(-power + f, power - f);
         }
 
-        if (fabs(error) < .5)
-        {
-            if(!atSetpoint)
-            {
-                atSetpoint = true;
-                firstTimeAtSetpoint = currentTime;
-            }
-            else //at setpoint
-            {
-                timeAtSetPoint = currentTime - firstTimeAtSetpoint;
-            }
-        }
-        else //no longer at setpoint
-        {
-            atSetpoint = false;
-            timeAtSetPoint = 0;
-        }
+        // if (fabs(error) < .5)
+        // {
+        //     if(!atSetpoint)
+        //     {
+        //         atSetpoint = true;
+        //         firstTimeAtSetpoint = currentTime;
+        //     }
+        //     else //at setpoint
+        //     {
+        //         timeAtSetPoint = currentTime - firstTimeAtSetpoint;
+        //     }
+        // }
+        // else //no longer at setpoint
+        // {
+        //     atSetpoint = false;
+        //     timeAtSetPoint = 0;
+        // }
 
         pastTime = currentTime;
         pastError = error;

@@ -234,6 +234,8 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
             timeAtSetPoint = 0;
         }
 
+        std::cout << timeAtSetPoint << std::endl;
+
         pastTime = currentTime;
         pastError = error;
         delay(25);

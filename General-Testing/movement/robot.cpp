@@ -184,7 +184,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         //std::cout << "\tdt: " << std::scientific << dt; 
 
         //we negate error because 
-        const double proportional = pow(-100, (-error / abs(initialAngleDiff))) + 1;
+        const double proportional = error / abs(initialAngleDiff);
         integral += dt * ((error + pastError) / 2.0);
         derivative = (error - pastError) / dt;
         //printf("\terror change: %.2f", error - pastError);
@@ -206,15 +206,15 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         const double power = kp * proportional + ki * integral + kd * derivative;
         outputFile << "P: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << "\tpower: " << power << "\n";
 
-        // if (power > 0)
-        // {
-        //     setMotorPowers(-power - f, power + f);
+        if (power > 0)
+        {
+            setMotorPowers(-power - f, power + f);
 
-        // }
-        // else
-        // {
-        //     setMotorPowers(-power + f, power - f);
-        // }
+        }
+        else
+        {
+            setMotorPowers(-power + f, power - f);
+        }
 
         if (fabs(error) < 2)
         {

@@ -16,7 +16,6 @@ Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned 
     setPose(initialX, initialY, initialTheta);
 }
 
-//note: negative power moves forwards
 void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
 {
     std::ofstream outputFile("straightData.txt");
@@ -27,22 +26,22 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     double pastTime = 0;
     double currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
 
-    const double initialX = globalXPos; //0
-    const double initialY = globalYPos; //40
-    //pi
+    double initialX = globalXPos;
+    double initialY = globalYPos;
+ 
     const double initialHeadingRad = toRadians(globalHeading + 90); //add 90 because we want the right to be 0 but right now up is -90
 
-    const double additionalX = inches * cos(initialHeadingRad); //-40 
-    const double additionalY = inches * sin(initialHeadingRad); //0
+    double additionalX = inches * cos(initialHeadingRad);
+    double additionalY = inches * sin(initialHeadingRad);
 
-    const double finalX = initialX + additionalX; //-40
-    const double finalY = initialY + additionalY; // 40
+    const double finalX = initialX + additionalX;
+    const double finalY = initialY + additionalY;
 
-    double error = inches; //40
-    double pastError = error; //40
+    double error = inches;
+    double pastError = error;
 
     double integral = 0;
-    const double initialAngle = globalHeading; //90
+    const double initialAngle = globalHeading;
 
     double firstTimeAtSetpoint = 0;
     double timeAtSetPoint = 0;
@@ -51,38 +50,26 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     while (timeAtSetPoint < .3)
     {
         updatePos(encoderL.read(), encoderR.read());
-        const double xError = finalX - globalXPos; //-40
-        const double yError = finalY - globalYPos; //0
+        double xError = finalX - globalXPos;
+        double yError = finalY - globalYPos;
 
-        //90
         double direction = angleWrapDeg(toDegrees(atan2(yError, xError)) - globalHeading); //if 90, forward, if -90, backward
-        //printf("\t dir: %.2f", direction);
 
-        //outputFile << "dir: " << direction;
-
-        //40
         error = hypot(xError, yError); //really abs(error)
-        // printf("\tX: %.2f", globalXPos);
-        // printf("\tY: %.2f", globalYPos);
-        printf("\terror: %.2f\n", error);
-
-        //outputFile << "\tX: " << globalXPos << "\tY: " << globalYPos << std::endl;
         
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
-        const double dt = currentTime - pastTime;
+        double dt = currentTime - pastTime;
 
-        const double proportional = error / fabs(inches);
+        double proportional = error / fabs(inches);
         integral += dt * ((error + pastError) / 2.0);
-        const double derivative = (error - pastError) / dt;
+        double derivative = (error - pastError) / dt;
 
-        printf("\tp: %.3f", proportional * kp);
         outputFile << "Error: " << error << "\tP: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << std::endl;
-        printf("\ti: %f", integral * ki);
-        printf("\td: %.3f", derivative * kd);
+        std::cout << "\r" << error;
 
         //power will always be positive due to hypot always being positive
-        const double power = kp * proportional + ki * integral + kd * derivative;
-        const double angle = globalHeading;
+        double power = kp * proportional + ki * integral + kd * derivative;
+        double angle = globalHeading;
 
         if (direction > 0 && direction < 180) //90 is perfectly forwards
         {
@@ -138,14 +125,12 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
             atSetpoint = false;
             timeAtSetPoint = 0;
         }
-
         pastTime = currentTime;
         pastError = error;
         delay(12);
     }
-    std::cout << "\nWE ARE STOPPING MOTORS!!!!!!!!!!!!!!!!!!" << std::endl << "abs error: " << fabs(error) << std::endl;
+    std::cout << "\nabs error: " << fabs(error) << std::endl;
     setMotorPowers(0, 0);
-    //outputFile << "END OF STRAIGHT" << std::endl;
 }
 
 void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, double f)
@@ -159,7 +144,6 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     double currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
 
     const double initialHeading = globalHeading;
-
     finalAngle = angleWrapDeg(finalAngle);
 
     const double initialAngleDiff = initialHeading - finalAngle;
@@ -171,46 +155,25 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     bool atSetpoint = false;
 
     double integral = 0;
-    double derivative = 0;
-    double lastNonZeroD = 0;
 
     while (timeAtSetPoint < .0025)
     {
         updatePos(encoderL.read(), encoderR.read());
         error = angleDiff(globalHeading, finalAngle);
-        //printf( "\rerror: %.2f", error);
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
-        const double dt = currentTime - pastTime;
-        //std::cout << "\tdt: " << std::scientific << dt; 
-
-        //we negate error because 
-        const double proportional = error / fabs(initialAngleDiff);
+        double dt = currentTime - pastTime;
+        
+        double proportional = error / fabs(initialAngleDiff);
         integral += dt * ((error + pastError) / 2.0);
-        derivative = (error - pastError) / dt;
-        //printf("\terror change: %.2f", error - pastError);
-        // printf("\tp: %.3f", proportional * kp);
-        // printf("\ti: %f", integral * ki);
-        // printf("\td: %f", derivative * kd);
+        double derivative = (error - pastError) / dt;
 
-        //if we have an unusual value of d such as 0 or a very high value, ignore it and use the last normal value
-        //if we have a normal value, save it for future reference
-        // if(epsilonEquals(derivative, 0) || fabs(derivative * kd) > .3)
-        // {
-        //     derivative = lastNonZeroD;
-        // }
-        // else
-        // {
-        //     lastNonZeroD = derivative;
-        // }
-
-        const double power = kp * proportional + ki * integral + kd * derivative;
+        double power = kp * proportional + ki * integral + kd * derivative;
         outputFile << "P: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << "\tpower: " << power << "\n";
 
         if (power > 0)
         {
             setMotorPowers(-power - f, power + f);
-
         }
         else
         {
@@ -235,15 +198,14 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
             timeAtSetPoint = 0;
         }
 
-        std::cout << "TAS: " << timeAtSetPoint << std::endl;
+        std::cout << "Error: " << error << "\tTAS: " << timeAtSetPoint << std::endl;
 
         pastTime = currentTime;
         pastError = error;
         delay(12);
     }
-    std::cout << "\nWE ARE STOPPING MOTORS!!!!!!!!!!!!!!!!!!" << std::endl << "abs error: " << fabs(error) << std::endl;
+    std::cout << "abs error: " << fabs(error) << std::endl;
     setMotorPowers(0, 0);
-    outputFile << "END OF TURN" << std::endl;
 }
 
 void Robot::setMotorPowers(double lPower, double rPower)

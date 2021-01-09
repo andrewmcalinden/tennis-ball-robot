@@ -205,7 +205,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
 
         const double power = kp * proportional + ki * integral + kd * derivative;
         outputFile << "P: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << "\tpower: " << power << "\n";
-        
+
         if (power > 0)
         {
             setMotorPowers(-power - f, power + f);
@@ -236,6 +236,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
 
         pastTime = currentTime;
         pastError = error;
+        delay(10);
     }
     std::cout << "\nWE ARE STOPPING MOTORS!!!!!!!!!!!!!!!!!!" << std::endl << "abs error: " << fabs(error) << std::endl;
     setMotorPowers(0, 0);

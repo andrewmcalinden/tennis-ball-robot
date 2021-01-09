@@ -7,7 +7,6 @@
 
 #define TRACKWIDTH 9.98330666439
 #define PULSES_PER_REV 1440.0
-#define EPSILON 1.0e-6
 #define LEFT_WHEEL__DIAMETER 2.505
 #define RIGHT_WHEEL_DIAMETER 2.4955
 
@@ -26,11 +25,6 @@ void setPose(double x, double y, double theta)
     globalXPos = x;
     globalYPos = y;
     globalHeading = theta;
-}
-
-bool epsilonEquals(double value1, double value2)
-{
-    return (abs(value1 - value2) < EPSILON);
 }
 
 void updateLeftEncoder(double reading)

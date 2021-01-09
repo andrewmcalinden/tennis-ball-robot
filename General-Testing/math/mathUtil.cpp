@@ -63,3 +63,8 @@ double angleDiff(double angle1, double angle2)
         return -(360 + (angle1 - angle2));
     }
 }
+
+bool epsilonEquals(double value1, double value2)
+{
+    return (abs(value1 - value2) < 1.0e-6);
+}

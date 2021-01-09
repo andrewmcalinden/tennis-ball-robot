@@ -171,6 +171,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
 
     double integral = 0;
     double derivative = 0;
+    double lastNonZeroD = 0;
 
     while (timeAtSetPoint < .05)
     {
@@ -192,10 +193,17 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         printf("\td: %f", derivative * kd);
         outputFile << "P: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << "\n";
 
-        if (fabs(derivative * kd) > .2)
+        //if we have an unusual value of d such as 0 or a very high value, ignore it and use the last normal value
+        //if we have a normal value, save it for future reference
+        if(epsilonEquals(derivative, 0) || fabs(derivative * kd) > .2)
         {
-            derivative = 0;
+            derivative = lastNonZeroD
         }
+        else
+        {
+            lastNonZeroD = derivative;
+        }
+        
 
         const double power = kp * proportional + ki * integral + kd * derivative;
         if (power > 0)

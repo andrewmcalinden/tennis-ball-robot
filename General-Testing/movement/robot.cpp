@@ -47,7 +47,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     double timeAtSetPoint = 0;
     bool atSetpoint = false;
 
-    while (timeAtSetPoint < .01)
+    while (timeAtSetPoint < .02)
     {
         updatePos(encoderL.read(), encoderR.read());
         double xError = finalX - getX();

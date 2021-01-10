@@ -28,7 +28,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
 
     double initialX = getX();
     double initialY = getY();
- 
+
     const double initialHeadingRad = toRadians(getHeading() + 90); //add 90 because we want the right to be 0 but right now up is -90
 
     double additionalX = inches * cos(initialHeadingRad);
@@ -56,7 +56,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         double direction = angleWrapDeg(toDegrees(atan2(yError, xError)) - getHeading()); //if 90, forward, if -90, backward
 
         error = hypot(xError, yError); //really abs(error)
-        
+
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         double dt = currentTime - pastTime;
 
@@ -110,7 +110,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
 
         if (fabs(error) < 1)
         {
-            if(!atSetpoint)
+            if (!atSetpoint)
             {
                 atSetpoint = true;
                 firstTimeAtSetpoint = currentTime;
@@ -163,7 +163,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
 
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
         double dt = currentTime - pastTime;
-        
+
         double proportional = error / fabs(initialAngleDiff);
         integral += dt * ((error + pastError) / 2.0);
         double derivative = (error - pastError) / dt;
@@ -182,7 +182,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
 
         if (fabs(error) < 2)
         {
-            if(!atSetpoint)
+            if (!atSetpoint)
             {
                 atSetpoint = true;
                 firstTimeAtSetpoint = currentTime;
@@ -216,7 +216,6 @@ void Robot::setMotorPowers(double lPower, double rPower)
     // printf("\trPower: %.3f", rPower);
     if (fabs(lPower) > 1 && fabs(rPower) > 1)
     {
-       printf("\tTRIED TO SET POWER GREATER THAN 1\n"); 
+        printf("\tTRIED TO SET POWER GREATER THAN 1\n");
     }
-    
 }

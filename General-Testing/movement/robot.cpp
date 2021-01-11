@@ -156,7 +156,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
 
     double integral = 0;
 
-    while (timeAtSetPoint < .05)
+    while (fabs(error) > .5)
     {
         updatePos(encoderL.read(), encoderR.read());
         error = angleDiff(getHeading(), finalAngle);
@@ -180,29 +180,29 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
             setMotorPowers(-power + f, power - f);
         }
 
-        if (fabs(error) < .5)
-        {
-            if (!atSetpoint)
-            {
-                atSetpoint = true;
-                firstTimeAtSetpoint = currentTime;
-            }
-            else //at setpoint
-            {
-                timeAtSetPoint = currentTime - firstTimeAtSetpoint;
-            }
-        }
-        else //no longer at setpoint
-        {
-            atSetpoint = false;
-            timeAtSetPoint = 0;
-        }
+        // if (fabs(error) < .5)
+        // {
+        //     if (!atSetpoint)
+        //     {
+        //         atSetpoint = true;
+        //         firstTimeAtSetpoint = currentTime;
+        //     }
+        //     else //at setpoint
+        //     {
+        //         timeAtSetPoint = currentTime - firstTimeAtSetpoint;
+        //     }
+        // }
+        // else //no longer at setpoint
+        // {
+        //     atSetpoint = false;
+        //     timeAtSetPoint = 0;
+        // }
 
-        std::cout << "Error: " << error << "\tTAS: " << timeAtSetPoint << std::endl;
+        std::cout << "Error: " << error << std::endl;
 
         pastTime = currentTime;
         pastError = error;
-        delay(12);
+        //delay(12);
     }
     std::cout << "abs error: " << fabs(error) << std::endl;
     setMotorPowers(0, 0);

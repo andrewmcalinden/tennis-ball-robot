@@ -30,7 +30,7 @@ int main()
 
     r.turnHeading(90, .37, .00003, .00004, .12);
     //r.goStraight(25, .45, .00026, .0005, .08);
-    std::cout << getX() << "\t" << getY() << std::endl();
+    std::cout << getX() << "\t" << getY() << std::endl;
     
 
 }

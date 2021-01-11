@@ -2,6 +2,7 @@
 #include "odometry.h"
 #include "../math/mathUtil.h"
 #include "../encoder/encoder.h"
+#include <wiringPi.h>
 
 int main()
 { 

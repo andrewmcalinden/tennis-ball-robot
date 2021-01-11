@@ -154,6 +154,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     double timeAtSetPoint = 0;
     bool atSetpoint = false;
     const unsigned char delayAmount = 12;
+    int numDelays = 0;
 
     double integral = 0;
 
@@ -162,7 +163,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         updatePos(encoderL.read(), encoderR.read());
         error = angleDiff(getHeading(), finalAngle);
 
-        currentTime += ((std::clock() - timer) / (double)CLOCKS_PER_SEC) + (delayAmount / 1000.0);
+        currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC) + ((delayAmount / 1000.0) * numDelays);        
         double dt = currentTime - pastTime;
 
         double proportional = error / fabs(initialAngleDiff);
@@ -204,6 +205,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         pastTime = currentTime;
         pastError = error;
         delay(delayAmount);
+        ++numDelays;
     }
     std::cout << "abs error: " << fabs(error) << std::endl;
     setMotorPowers(0, 0);

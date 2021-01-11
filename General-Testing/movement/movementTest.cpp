@@ -32,7 +32,7 @@ int main()
     //r.turnHeading(90, .37, .00003, .00004, .12);
     //r.goStraight(25, .45, .00026, .0005, .08);
 
-    r.turnHeading(90, .8, 0, 0, .08);
+    r.turnHeading(90, 1, 0, 0, .08);
     
 
 }

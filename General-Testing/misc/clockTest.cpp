@@ -1,5 +1,6 @@
 #include <ctime>
 #include <iostream>
+#include <wiringPi.h>
 int main()
 {
     std::clock_t timer;

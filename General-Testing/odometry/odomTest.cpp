@@ -13,6 +13,6 @@ int main()
         printf("\rX: %.2f", getX());
         printf("   Y: %.2f", getY());
         printf("   Heading: %.2f", getHeading());
-
+        delay(5000);
     }
 }

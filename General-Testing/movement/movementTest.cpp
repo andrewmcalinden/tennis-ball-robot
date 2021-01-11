@@ -23,7 +23,7 @@ int main()
     int start = 90;
     while (i--)
     {
-        r.goStraight(25, .37, .00003, .00004, .12);
+        r.goStraight(25, .45, .00026, .0005, .08);
         r.turnHeading(90, .37, 0, .0006, .12);
         start += 90;
     }

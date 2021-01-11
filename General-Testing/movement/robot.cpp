@@ -202,7 +202,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
 
         pastTime = currentTime;
         pastError = error;
-        delay(5);
+        delay(7);
     }
     std::cout << "abs error: " << fabs(error) << std::endl;
     setMotorPowers(0, 0);

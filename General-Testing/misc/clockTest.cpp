@@ -7,5 +7,6 @@ int main()
     while(true)
     {
         std::cout << ((std::clock() - timer) / (double)CLOCKS_PER_SEC) << "\n";
+        delay(1000);
     }
 }

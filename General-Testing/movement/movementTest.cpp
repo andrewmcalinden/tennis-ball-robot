@@ -29,10 +29,9 @@ int main()
     }*/
 
     //these constants work pretty well: fast but some oscilation/overshoot
-    //r.turnHeading(90, .37, .00003, .00004, .12);
+    r.turnHeading(90, .37, .00003, .00004, .12);
     //r.goStraight(25, .45, .00026, .0005, .08);
 
-    r.turnHeading(90, 1, 0, 0, .08);
     
 
 }

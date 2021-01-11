@@ -8,9 +8,13 @@ int main()
 
     const unsigned int delayAmount = 1000;
 
+    double time = 0;
+
     while(true)
     {
-        std::cout << ((std::clock() - timer) / (double)CLOCKS_PER_SEC) + (delayAmount / 1000.0) << "\n";
+        time = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
+        time += (delayAmount / 1000.0);
+        std::cout << time << "\n";
         delay(delayAmount);
     }
 }

@@ -130,7 +130,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         pastTime = currentTime;
         pastError = error;
         delay(delayAmount);
-        ++delayAmount;
+        ++numDelays;
     }
     std::cout << "\nabs error: " << fabs(error) << std::endl;
     setMotorPowers(0, 0);

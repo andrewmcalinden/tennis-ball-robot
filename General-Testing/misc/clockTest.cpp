@@ -12,8 +12,8 @@ int main()
 
     while(true)
     {
-        time = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
-        time += (delayAmount / 1000.0);
+        time +=  ((std::clock() - timer) / (double)CLOCKS_PER_SEC) + (delayAmount / 1000.0);
+        //time += (delayAmount / 1000.0);
         std::cout << time << "\n";
         delay(delayAmount);
     }

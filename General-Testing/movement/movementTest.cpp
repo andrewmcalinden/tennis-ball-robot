@@ -1,4 +1,5 @@
 #include "robot.h"
+#include "odometry.h"
 #include <iostream>
 
 #define LEFT_MOTOR_DIR_PIN 22

@@ -19,20 +19,21 @@
 int main()
 {
     Robot r(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA, L_ENCODER_PIN1, L_ENCODER_PIN2, R_ENCODER_PIN1, R_ENCODER_PIN2);
-    // int i = 4;
-    // int start = 90;
-    /*while (i--)
+    int i = 4;
+    int start = 90;
+    while (i--)
     {
         r.goStraight(25, .37, .00003, .00004, .12);
-        r.turnHeading(start, .37, .00003, .00004, .12);
+        r.turnHeading(90, .37, 0, .0006, .12);
         start += 90;
-    }*/
+    }
 
-    //these constants work pretty well: fast but some oscilation/overshoot
+    //these constants work pretty well: fast but some oscilation/overshoot USING OLD BAD TIME
     //r.turnHeading(90, .37, .00003, .00004, .12);
     //r.goStraight(25, .45, .00026, .0005, .08);
 
-    r.turnHeading(90, .37, 0, .0006, .12);
+    //BEST CONSTANTS SO FAR WITH NEW METHOD
+    //r.turnHeading(90, .37, 0, .0006, .12);
 
     
 

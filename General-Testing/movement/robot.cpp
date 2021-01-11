@@ -46,8 +46,10 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     double firstTimeAtSetpoint = 0;
     double timeAtSetPoint = 0;
     bool atSetpoint = false;
+    const unsigned char delayAmount = 12;
+    int numDelays = 0;
 
-    while (timeAtSetPoint < .03)
+    while (timeAtSetPoint < .05)
     {
         updatePos(encoderL.read(), encoderR.read());
         double xError = finalX - getX();
@@ -57,7 +59,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
 
         error = hypot(xError, yError); //really abs(error)
 
-        currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
+        currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC) + ((delayAmount / 1000.0) * numDelays);        
         double dt = currentTime - pastTime;
 
         double proportional = error / fabs(inches);
@@ -127,7 +129,8 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         }
         pastTime = currentTime;
         pastError = error;
-        delay(12);
+        delay(delayAmount);
+        ++delayAmount;
     }
     std::cout << "\nabs error: " << fabs(error) << std::endl;
     setMotorPowers(0, 0);

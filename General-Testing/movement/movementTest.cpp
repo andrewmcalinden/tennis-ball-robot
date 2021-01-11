@@ -19,8 +19,8 @@
 int main()
 {
     Robot r(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA, L_ENCODER_PIN1, L_ENCODER_PIN2, R_ENCODER_PIN1, R_ENCODER_PIN2);
-    int i = 4;
-    int start = 90;
+    // int i = 4;
+    // int start = 90;
     /*while (i--)
     {
         r.goStraight(25, .37, .00003, .00004, .12);
@@ -28,9 +28,11 @@ int main()
         start += 90;
     }*/
 
-    r.turnHeading(90, .37, .00003, .00004, .12);
+    //these constants work pretty well: fast but some oscilation/overshoot
+    //r.turnHeading(90, .37, .00003, .00004, .12);
     //r.goStraight(25, .45, .00026, .0005, .08);
-    std::cout << getX() << "\t" << getY() << std::endl;
+
+    r.turnHeading(90, .6, 0, 0, 0);
     
 
 }

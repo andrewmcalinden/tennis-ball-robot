@@ -36,8 +36,4 @@ int main()
     //r.turnHeading(90, .37, 0, .0006, .12);
 
     r.goStraight(25, .45, 0, 0, .12);
-
-
-    
-
 }

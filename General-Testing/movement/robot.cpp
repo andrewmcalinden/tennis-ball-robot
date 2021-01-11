@@ -49,7 +49,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     const unsigned char delayAmount = 12;
     int numDelays = 0;
 
-    while (timeAtSetPoint < .05)
+    while (timeAtSetPoint < .2)
     {
         updatePos(encoderL.read(), encoderR.read());
         double xError = finalX - getX();
@@ -67,7 +67,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         double derivative = (error - pastError) / dt;
 
         outputFile << "Error: " << error << "\tP: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << std::endl;
-        std::cout << "\r" << error;
+        std::cout << "\n" << error;
 
         //power will always be positive due to hypot always being positive
         double power = kp * proportional + ki * integral + kd * derivative;

@@ -62,18 +62,22 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC) + ((delayAmount / 1000.0) * numDelays);        
         double dt = currentTime - pastTime;
 
+        if (!(direction > 0 && direction < 180)) //90 is perfectly forwards, -90 is backwards
+        {
+            error *= -1;
+        }
         double proportional = error / fabs(inches);
         integral += dt * ((error + pastError) / 2.0);
         double derivative = (error - pastError) / dt;
 
-        outputFile << "Error: " << error << "\tP: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << std::endl;
         std::cout << "\n" << error;
 
-        //power will always be positive due to hypot always being positive
         double power = kp * proportional + ki * integral + kd * derivative;
+        outputFile << "Error: " << error << "\tP: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << power << std::endl;
+
         double angle = getHeading();
 
-        if (direction > 0 && direction < 180) //90 is perfectly forwards
+        if (power > 0)
         {
             if (fabs(angle - initialAngle) > .25)
             {
@@ -91,7 +95,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
                 setMotorPowers(power + f, power + f);
             }
         }
-        else //direction = -90
+        else
         {
             if (fabs(angle - initialAngle) > .25)
             {

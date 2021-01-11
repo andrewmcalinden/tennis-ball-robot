@@ -1,5 +1,5 @@
 #include "robot.h"
-#include "wiringPi.h"
+#include <iostream>
 
 #define LEFT_MOTOR_DIR_PIN 22
 #define LEFT_MOTOR_POWER_PIN 23
@@ -29,6 +29,7 @@ int main()
 
     r.turnHeading(90, .37, .00003, .00004, .12);
     //r.goStraight(25, .45, .00026, .0005, .08);
+    std::cout << getX() << "\t" << getY() << std::endl();
     
 
 }

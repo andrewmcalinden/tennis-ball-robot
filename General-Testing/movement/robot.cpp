@@ -162,7 +162,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         updatePos(encoderL.read(), encoderR.read());
         error = angleDiff(getHeading(), finalAngle);
 
-        currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC) + (delayAmount / 1000.0);
+        currentTime += ((std::clock() - timer) / (double)CLOCKS_PER_SEC) + (delayAmount / 1000.0);
         double dt = currentTime - pastTime;
 
         double proportional = error / fabs(initialAngleDiff);

@@ -73,7 +73,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         std::cout << "\n" << error;
 
         double power = kp * proportional + ki * integral + kd * derivative;
-        outputFile << "Error: " << error << "\tP: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << power << std::endl;
+        outputFile << "Error: " << error << "\tP: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << "\tpower: " << power << std::endl;
 
         double angle = getHeading();
 

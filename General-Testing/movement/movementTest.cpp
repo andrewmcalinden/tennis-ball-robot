@@ -24,7 +24,7 @@ int main()
     while (i--)
     {
         r.turnHeading(90, .37, 0, .0006, .12);
-        r.goStraight(775, .37, 0, .002, .12, .7);
+        r.goStraight(75, .37, 0, .002, .12, .7);
         start += 90;
     }
 

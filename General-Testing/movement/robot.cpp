@@ -261,7 +261,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         double derivative = (error - pastError) / dt;
 
         double power = kp * proportional + ki * integral + kd * derivative;
-        outputFile << "P: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << "\tpower: " << power << "\n";
+        outputFile << "Error: " << error << "\tP: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << "\tpower: " << power << "\n";
 
         if (power > 0)
         {

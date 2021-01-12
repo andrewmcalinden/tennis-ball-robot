@@ -55,7 +55,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     }
 
     //first, go max power until we are 2 feet away
-    while (fabs(error) > 24)`
+    while (fabs(error) > 24)
     {
         updatePos(encoderL.read(), encoderR.read());
         xError = finalX - getX();

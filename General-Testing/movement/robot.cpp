@@ -72,7 +72,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         double angle = getHeading();
         if (error > 0)
         {
-            if (fabs(angle - initialAngle) > .25)
+            if (fabs(angle - initialAngle) > .125)
             {
                 if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
                 {
@@ -90,7 +90,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         }
         else
         {
-            if (fabs(angle - initialAngle) > .25)
+            if (fabs(angle - initialAngle) > .125)
             {
                 if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
                 {

@@ -16,7 +16,7 @@ Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned 
     setPose(initialX, initialY, initialTheta);
 }
 
-void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
+void Robot::goStraight(double inches, double kp, double ki, double kd, double f, double maxSpeed)
 {
     double initialX = getX();
     double initialY = getY();
@@ -41,7 +41,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     //scale powers up slowly
     if (direction > 0 && direction < 180)
     {
-        for (double i = 0; i <= 1; i += .01)
+        for (double i = 0; i <= maxSpeed; i += .01)
         {
             setMotorPowers(i, i);
             delay(5);
@@ -49,7 +49,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     }
     else
     {
-        for (double i = 0; i >= -1; i -= .01)
+        for (double i = 0; i >= -maxSpeed; i -= .01)
         {
             setMotorPowers(i, i);
             delay(5);
@@ -78,16 +78,16 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
             {
                 if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
                 {
-                    setMotorPowers(1, .7);
+                    setMotorPowers(maxSpeed, maxSpeed * .7);
                 }
                 else
                 {
-                    setMotorPowers(.7, 1);
+                    setMotorPowers(maxSpeed * .7, maxSpeed);
                 }
             }
             else
             {
-                setMotorPowers(1, 1);
+                setMotorPowers(maxSpeed, maxSpeed);
             }
         }
         else
@@ -96,16 +96,16 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
             {
                 if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
                 {
-                    setMotorPowers(-.7, -1);
+                    setMotorPowers(-maxSpeed * .7, -maxSpeed);
                 }
                 else
                 {
-                    setMotorPowers(-1, -.7);
+                    setMotorPowers(-maxSpeed, -maxSpeed * .7);
                 }
             }
             else
             {
-                setMotorPowers(-1, -1);
+                setMotorPowers(-maxSpeed, -maxSpeed);
             }
         }
     }

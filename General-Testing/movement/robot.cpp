@@ -57,7 +57,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     }
 
     //first, go max power until we are 2 feet away
-    while (fabs(error) > 24)
+    while (fabs(error) > 36)
     {
         updatePos(encoderL.read(), encoderR.read());
         xError = finalX - getX();
@@ -118,7 +118,9 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     double pastTime = 0;
     double currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
 
-    error = 24;
+    xError = finalX - getX();
+    yError = finalY - getY();
+    error = hypot(xError, yError);
     double pastError = error;
 
     double integral = 0;
@@ -133,10 +135,10 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     while (timeAtSetPoint < .2)
     {
         updatePos(encoderL.read(), encoderR.read());
-        double xError = finalX - getX();
-        double yError = finalY - getY();
+        xError = finalX - getX();
+        yError = finalY - getY();
 
-        double direction = angleWrapDeg(toDegrees(atan2(yError, xError)) - getHeading()); //if 90, forward, if -90, backward
+        direction = angleWrapDeg(toDegrees(atan2(yError, xError)) - getHeading()); //if 90, forward, if -90, backward
 
         error = hypot(xError, yError); //really abs(error)
 
@@ -154,7 +156,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
         std::cout << "\n" << error;
 
         double power = kp * proportional + ki * integral + kd * derivative;
-        outputFile << "Error: " << error << "\tP: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << "\tpower: " << power << std::endl;
+        outputFile << "Error: " << error << "\tP: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << "\tpower: " << power << "\tX: " << getX() << "\tY: " << getY() << std::endl;
 
         double angle = getHeading();
 

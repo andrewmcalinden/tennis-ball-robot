@@ -32,14 +32,36 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     double error = inches;
 
     const double initialAngle = getHeading();
+
+    double xError = finalX - getX();
+    double yError = finalY - getY();
+
+    double direction = angleWrapDeg(toDegrees(atan2(yError, xError)) - getHeading()); //if 90, forward, if -90, backward
+
+    //scale powers up slowly
+    if (direction > 0 && direction < 180)
+    {
+        for (double i = 0; i <= 1; i += .01)
+        {
+            setMotorPowers(i, i);
+        }
+    }
+    else
+    {
+        for (double i = 0; i >= -1; i -= .01)
+        {
+            setMotorPowers(i, i);
+        }
+    }
+
     //first, go max power until we are 2 feet away
-    while (fabs(error) > 24)
+    while (fabs(error) > 24)`
     {
         updatePos(encoderL.read(), encoderR.read());
-        double xError = finalX - getX();
-        double yError = finalY - getY();
+        xError = finalX - getX();
+        yError = finalY - getY();
 
-        double direction = angleWrapDeg(toDegrees(atan2(yError, xError)) - getHeading()); //if 90, forward, if -90, backward
+        direction = angleWrapDeg(toDegrees(atan2(yError, xError)) - getHeading()); //if 90, forward, if -90, backward
 
         error = hypot(xError, yError); //really abs(error)
         if (!(direction > 0 && direction < 180)) //90 is perfectly forwards, -90 is backwards

@@ -236,7 +236,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     const double initialHeading = getHeading();
     finalAngle = angleWrapDeg(finalAngle);
 
-    const double initialAngleDiff = initialHeading - finalAngle;
+    const double initialAngleDiff = angleWrapDeg(initialHeading - finalAngle);
     outputFile << initialAngleDiff << std::endl;
     double error = angleDiff(getHeading(), finalAngle);
     double pastError = error;

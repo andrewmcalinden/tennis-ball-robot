@@ -18,14 +18,6 @@ Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned 
 
 void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
 {
-    std::ofstream outputFile("straightData.txt");
-
-    std::clock_t timer;
-    timer = std::clock();
-
-    double pastTime = 0;
-    double currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
-
     double initialX = getX();
     double initialY = getY();
 
@@ -38,10 +30,74 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     const double finalY = initialY + additionalY;
 
     double error = inches;
+
+    const double initialAngle = getHeading();
+    //first, go max power until we are 2 feet away
+    while (fabs(error) > 24)
+    {
+        updatePos(encoderL.read(), encoderR.read());
+        double xError = finalX - getX();
+        double yError = finalY - getY();
+
+        double direction = angleWrapDeg(toDegrees(atan2(yError, xError)) - getHeading()); //if 90, forward, if -90, backward
+
+        error = hypot(xError, yError); //really abs(error)
+        if (!(direction > 0 && direction < 180)) //90 is perfectly forwards, -90 is backwards
+        {
+            error *= -1;
+        }
+
+        double angle = getHeading();
+        if (error > 0)
+        {
+            if (fabs(angle - initialAngle) > .25)
+            {
+                if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
+                {
+                    setMotorPowers(1, .7);
+                }
+                else
+                {
+                    setMotorPowers(.7, 1);
+                }
+            }
+            else
+            {
+                setMotorPowers(1, 1);
+            }
+        }
+        else
+        {
+            if (fabs(angle - initialAngle) > .25)
+            {
+                if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
+                {
+                    setMotorPowers(-.7, -1);
+                }
+                else
+                {
+                    setMotorPowers(-1, -.7);
+                }
+            }
+            else
+            {
+                setMotorPowers(-1, -1);
+            }
+        }
+    }
+
+    std::ofstream outputFile("straightData.txt");
+
+    std::clock_t timer;
+    timer = std::clock();
+
+    double pastTime = 0;
+    double currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC);
+
+    error = 24;
     double pastError = error;
 
     double integral = 0;
-    const double initialAngle = getHeading();
 
     double firstTimeAtSetpoint = 0;
     double timeAtSetPoint = 0;
@@ -49,6 +105,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f)
     const unsigned char delayAmount = 12;
     int numDelays = 0;
 
+    //once we are 2 feet away, use pid
     while (timeAtSetPoint < .2)
     {
         updatePos(encoderL.read(), encoderR.read());

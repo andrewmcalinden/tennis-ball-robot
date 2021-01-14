@@ -44,7 +44,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
         for (double i = 0; i <= maxSpeed; i += .01)
         {
             setMotorPowers(i, i);
-            delay(5);
+            delay(15);
         }
     }
     else
@@ -52,7 +52,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
         for (double i = 0; i >= -maxSpeed; i -= .01)
         {
             setMotorPowers(i, i);
-            delay(5);
+            delay(15);
         }
     }
 

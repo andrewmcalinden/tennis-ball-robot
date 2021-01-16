@@ -25,7 +25,7 @@ double kp_turn, double ki_turn, double kd_turn, double f_turn)
 {
     double xError = x - getX();
     double yError = y - getY();
-    double angleToPoint = angleWrapDeg(toDegrees(atan2(yError, xError)) - 90; //subtract 90 becaue unit circle vs our angle system thing
+    double angleToPoint = angleWrapDeg(toDegrees(atan2(yError, xError))) - 90; //subtract 90 becaue unit circle vs our angle system thing
     std::cout << "Angle: " << angleToPoint << std::endl;
     turnHeading(angleToPoint, kp_turn, ki_turn, kd_turn, f_turn);
 

@@ -11,9 +11,27 @@
 Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned char rMotorDirPin, unsigned char rMotorPowerPin,
              double initialX, double initialY, double initialTheta,
              unsigned char lEncoderPin1, unsigned char lEncoderPin2, unsigned char rEncoderPin1, unsigned char rEncoderPin2)
-    : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin}, encoderL{lEncoderPin1, lEncoderPin2}, encoderR{rEncoderPin1, rEncoderPin2} //initialize motors and encoders
+    //initialize motors and encoders
+    : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin},
+      encoderL{lEncoderPin1, lEncoderPin2}, encoderR{rEncoderPin1, rEncoderPin2}
 {
     setPose(initialX, initialY, initialTheta);
+}
+
+void Robot::goToPos
+(double x, double y,
+double kp_straight, double ki_straight, double kd_straight, double f_straight, double maxSpeed_straight,
+double kp_turn, double ki_turn, double kd_turn, double f_turn)
+{
+    double xError = x - getX();
+    double yError = y - getY();
+    double angleToPoint = angleWrapDeg(toDegrees(atan2(yError, xError)) - 90; //subtract 90 becaue unit circle vs our angle system thing
+    std::cout << "Angle: " << angleToPoint << std::endl;
+    turnHeading(angleToPoint, kp_turn, ki_turn, kd_turn, f_turn);
+
+    double distanceToPoint = hypot(xError, yError);
+    std::cout << "Distance: " << distanceToPoint << std::endl;
+    goStraight(distanceToPoint, kp_straight, ki_straight, kd_straight, f_straight, maxSpeed_straight);
 }
 
 void Robot::goStraight(double inches, double kp, double ki, double kd, double f, double maxSpeed)

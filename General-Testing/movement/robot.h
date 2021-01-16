@@ -17,8 +17,11 @@ class Robot
             double initialX, double initialY, double initialTheta,
             unsigned char lEncoderPin1, unsigned char lEncoderPin2, unsigned char rEncoderPin1, unsigned char rEncoderPin2);
 
-    void goStraight(double inches, double kp, double ki, double kd, double f, double maxPower);
+    void goStraight(double inches, double kp, double ki, double kd, double f, double maxSpeed);
     void turnHeading(double finalAngle, double kp, double ki, double kd, double f); //in degrees, turns to that heading (field centric)
+    void goToPos(double x, double y,
+                 double kp_straight, double ki_straight, double kd_straight, double f_straight, double maxSpeed_straight,
+                 double kp_turn, double ki_turn, double kd_turn, double f_turn);
 
     void setMotorPowers(double lPower, double rPower);
 };

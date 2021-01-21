@@ -20,7 +20,7 @@ int main()
     Motor motorR(DIRECTION_PIN_FORWARD_RIGHT, POWER_PIN_RIGHT);
     double power = 0;
     motorL.setPower(power);
-    motorR.setPower(-power);
+    motorR.setPower(power);
     string c = "";
     while (true)
     {
@@ -28,18 +28,6 @@ int main()
         power = stod(c);
         motorL.setPower(power);
         motorR.setPower(-power);
-        /*if ((c=="run")){
-            motorL.setPower(1);
-            motorR.setPower(1);
-        }
-        if ((c=="stop")){
-            motorL.setPower(0);
-            motorR.setPower(0);
-        }
-        if ((c=="reverse")){
-            motorL.setPower(-1);
-            motorR.setPower(-1);
-        }*/
         
     }
 }

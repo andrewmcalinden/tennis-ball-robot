@@ -1,0 +1,3 @@
+git pull
+g++ movementTest.cpp robot.cpp ../odometry/odometry.cpp -lwiringPi -o movementTestRun
+sudo ./movementTestRun

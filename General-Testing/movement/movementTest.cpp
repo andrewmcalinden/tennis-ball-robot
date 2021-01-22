@@ -19,15 +19,15 @@
 int main()
 {
     Robot r(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA, L_ENCODER_PIN1, L_ENCODER_PIN2, R_ENCODER_PIN1, R_ENCODER_PIN2);
-    r.goToPos(0, 240,
+    r.goToPos(0, 60,
               .37, 0, .002, .12, .7,
               .37, 0, .0006, .12);
 
-    r.goToPos(-240, 240,
+    r.goToPos(-60, 60,
               .37, 0, .002, .12, .7,
               .37, 0, .0006, .12);
 
-    r.goToPos(-240, 0,
+    r.goToPos(-60, 0,
               .37, 0, .002, .12, .7,
               .37, 0, .0006, .12);
 

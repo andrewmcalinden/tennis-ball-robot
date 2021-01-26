@@ -239,6 +239,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
     }
     std::cout << "\nabs error: " << fabs(error) << std::endl;
     setMotorPowers(0, 0);
+    outputFile.close();
 }
 
 void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, double f)
@@ -318,6 +319,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     }
     std::cout << "abs error: " << fabs(error) << std::endl;
     setMotorPowers(0, 0);
+    outputFile.close();
 }
 
 void Robot::setMotorPowers(double lPower, double rPower)

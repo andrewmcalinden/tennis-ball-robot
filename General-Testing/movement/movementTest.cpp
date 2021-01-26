@@ -35,6 +35,8 @@ int main()
               .37, 0, .002, .12, .5,
               .37, 0, .0006, .12);
 
+    r.turnHeading(0, .37, 0, .0006, .12);
+
     //BEST CONSTANTS SO FAR WITH NEW METHOD
     //r.turnHeading(90, .37, 0, .0006, .12);
     //r.goStraight(-75, .37, 0, .002, .12, .7);

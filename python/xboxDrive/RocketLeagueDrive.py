@@ -4,6 +4,7 @@ import xbox
 
 GPIO.setmode(GPIO.BCM)
 
+GPIO.setup(17, GPIO.OUT)
 
 p = GPIO.PWM(17, 3000)
 p.start(0)

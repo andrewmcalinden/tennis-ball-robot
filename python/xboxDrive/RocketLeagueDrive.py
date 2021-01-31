@@ -4,8 +4,9 @@ import xbox
 
 GPIO.setmode(GPIO.BCM)
 
-GPIO.setup(17, GPIO.OUT)
 
+p = GPIO.PWM(17, 3000)
+p.start(0)
 
 
 
@@ -31,10 +32,8 @@ while not joy.Back():
     # A/B/X/Y buttons
     #show("  LeftTrg:", fmtFloat(joy.leftTrigger()))
     #show("  Buttons:")
-    if joy.A():
-        GPIO.output(17, 1)
-    else:
-        GPIO.output(17, 0)
+    
+        p.ChangeDutyCycle(100*joy.leftY())
     
 # Close out when done
 joy.close()

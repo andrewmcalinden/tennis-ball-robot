@@ -30,20 +30,12 @@ while not joy.Back():
     # Left analog stick
     show("  Left X/Y:", fmtFloat(joy.leftX()), "/", fmtFloat(joy.leftY()))
     # Right trigger
+    
     show("  RightTrg:", fmtFloat(joy.rightTrigger()))
     # A/B/X/Y buttons
+    show("  LeftTrg:", fmtFloat(joy.leftTrigger()))
     show("  Buttons:")
     showIf(joy.A(), "A")
-    showIf(joy.B(), "B")
-    showIf(joy.X(), "X")
-    showIf(joy.Y(), "Y")
-    # Dpad U/D/L/R
-    show("  Dpad:")
-    showIf(joy.dpadUp(),    "U")
-    showIf(joy.dpadDown(),  "D")
-    showIf(joy.dpadLeft(),  "L")
-    showIf(joy.dpadRight(), "R")
-    # Move cursor back to start of line
     show(chr(13))
 # Close out when done
 joy.close()

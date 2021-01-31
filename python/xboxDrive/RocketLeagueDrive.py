@@ -34,7 +34,7 @@ while not joy.Back():
     #show("  LeftTrg:", fmtFloat(joy.leftTrigger()))
     #show("  Buttons:")
     
-        p.ChangeDutyCycle(100*joy.leftY())
+        p.ChangeDutyCycle(100*abs(joy.leftY()))
     
 # Close out when done
 joy.close()

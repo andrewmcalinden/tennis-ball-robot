@@ -56,8 +56,20 @@ print("Xbox controller sample: Press Back button to exit")
 while not joy.Back():
 
     power = fmtFloat(joy.rightTrigger()-fmtFloat(joy.leftTrigger()))
-    rightPower = -1*fmtFloat(joy.leftX())*power
-    leftPower = fmtFloat(joy.leftX())*power
+    #if (joy.leftX()>0 and joy.leftX()<.75):
+        
+
+    if ((1-fmtFloat(joy.leftX()))*power)>1:
+        rightPower = 1
+    else:
+        rightPower = (1-fmtFloat(joy.leftX()))*power
+    
+    if ((1+fmtFloat(joy.leftX()))*power)>1:
+        lefttPower = 1
+    else:
+        leftPower = (1+fmtFloat(joy.leftX()))*power
+    
+    
 
     setRightPower(rightPower)
     setLeftPower(leftPower)

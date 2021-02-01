@@ -90,7 +90,7 @@ while not joy.Back():
     #if GPIO.event_detected(countPin):
         #ballCount+=1
 
-    print(ballCount)
+    print("right: " + rightPower)
 
 
     # Show connection status

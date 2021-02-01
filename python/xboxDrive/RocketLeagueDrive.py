@@ -61,11 +61,15 @@ while not joy.Back():
 
     if ((1-joy.leftX())*power)>1:
         rightPower = 1
+    elif ((1-joy.leftX())*power)<-1:
+        rightPower = -1
     else:
         rightPower = (1-(joy.leftX())*power)
     
     if ((1+joy.leftX())*power)>1:
         leftPower = 1
+    elif ((1+joy.leftX())*power)<-1:
+        leftPower = -1
     else:
         leftPower = (1+joy.leftX())*power
     

@@ -17,7 +17,7 @@ GPIO.setup(rDirPin, GPIO.OUT)
 GPIO.setup(lPowerPin, GPIO.OUT)
 GPIO.setup(lDirPin, GPIO.OUT)
 GPIO.setup(collectPin, GPIO.OUT)
-GPIO.setup(countPin, GPIO.IN)
+#GPIO.setup(countPin, GPIO.IN)
 
 rightPwn = GPIO.PWM(rPowerPin, 5000)
 leftPwn = GPIO.PWM(lPowerPin, 5000)

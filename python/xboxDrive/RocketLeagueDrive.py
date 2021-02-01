@@ -83,14 +83,14 @@ while not joy.Back():
             collectOn = True
         
         while joy.A():
-            time.sleep(.01)
+            time.sleep(.0001)
 
     #GPIO.add_event_detect(countPin, GPIO.RISING)
 
     #if GPIO.event_detected(countPin):
         #ballCount+=1
 
-    print("right: " + fmtFloat(joy.leftX()))
+    print("right: " + fmtFloat(leftPower))
 
 
     # Show connection status

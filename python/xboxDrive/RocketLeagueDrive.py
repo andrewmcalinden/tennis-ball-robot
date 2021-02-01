@@ -31,14 +31,14 @@ def fmtFloat(n):
     return '{:6.3f}'.format(n)
 
 def setRightPower(power):
-    rightPwn.ChangeDutyCycle(100*abs(power))
+    rightPwn.ChangeDutyCycle(99*abs(power))
     if power >= 0:
        GPIO.output(rDirPin, GPIO.HIGH)
     else:
         GPIO.output(rDirPin,GPIO.LOW)
 
 def setLeftPower(power):
-    leftPwn.ChangeDutyCycle(100*abs(power))
+    leftPwn.ChangeDutyCycle(99*abs(power))
     if power >= 0:
        GPIO.output(lDirPin, GPIO.HIGH)
     else:

@@ -1,13 +1,28 @@
 from __future__ import print_function
 import RPi.GPIO as GPIO
 import xbox
+import time
+
+rPowerPin = 26
+rDirPin = 27
+lPowerPin = 23
+lDirPin = 22
+collectPin = 4
+countPin = 12
 
 GPIO.setmode(GPIO.BCM)
 
-GPIO.setup(17, GPIO.OUT)
+GPIO.setup(rPowerPin, GPIO.OUT)
+GPIO.setup(rDirPin, GPIO.OUT)
+GPIO.setup(lPowerPin, GPIO.OUT)
+GPIO.setup(lDirPin, GPIO.OUT)
+GPIO.setup(collectPin, GPIO.OUT)
+GPIO.setup(countPin, GPIO.IN)
 
-p = GPIO.PWM(17, 3000)
-p.start(0)
+rightPwn = GPIO.PWM(rPowerPin, 5000)
+leftPwn = GPIO.PWM(lPowerPin, 5000)
+rightPwn.start(0)
+leftPwn.start(0)
 
 
 
@@ -15,6 +30,23 @@ p.start(0)
 def fmtFloat(n):
     return '{:6.3f}'.format(n)
 
+def setRightPower(power):
+    rightPwn.ChangeDutyCycle(100*abs(power))
+    if power >= 0:
+       GPIO.output(rDirPin, GPIO.HIGH)
+    else:
+        GPIO.output(rDirPin,GPIO.LOW)
+
+def setLeftPower(power):
+    leftPwn.ChangeDutyCycle(100*abs(power))
+    if power >= 0:
+       GPIO.output(lDirPin, GPIO.HIGH)
+    else:
+        GPIO.output(lDirPin,GPIO.LOW)
+
+
+collectOn = False
+ballCount = 0
 
 # Instantiate the controller
 joy = xbox.Joystick()
@@ -22,6 +54,33 @@ joy = xbox.Joystick()
 # Show various axis and button states until Back button is pressed
 print("Xbox controller sample: Press Back button to exit")
 while not joy.Back():
+
+    power = fmtFloat(joy.rightTrigger()-fmtFloat(joy.leftTrigger()))
+    rightPower = -1*fmtFloat(joy.leftX())*power
+    leftPower = fmtFloat(joy.leftX())*power
+
+    setRightPower(rightPower)
+    setLeftPower(leftPower)
+
+    if joy.A():
+        if collectOn:
+            GPIO.output(collectPin, GPIO.LOW)
+            collectOn = False
+        else:
+            GPIO.output(collectPin, GPIO.HIGH)
+            collectOn = True
+        
+        while joy.A():
+            time.sleep(.001)
+
+    GPIO.add_event_detect(countPin, GPIO.RISING)
+
+    if GPIO.event_detected(countPin):
+        ballCount+=1
+
+    print(ballCount)
+
+
     # Show connection status
     
     #showIf(joy.connected(), "Y", "N")
@@ -34,7 +93,8 @@ while not joy.Back():
     #show("  LeftTrg:", fmtFloat(joy.leftTrigger()))
     #show("  Buttons:")
     
-        p.ChangeDutyCycle(100*abs(joy.leftX()))
+      
     
 # Close out when done
+GPIO.cleanup()
 joy.close()

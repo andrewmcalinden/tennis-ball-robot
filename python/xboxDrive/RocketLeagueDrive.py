@@ -3,12 +3,12 @@ import RPi.GPIO as GPIO
 import xbox
 import time
 
-rPowerPin = 26
-rDirPin = 27
-lPowerPin = 23
-lDirPin = 22
-collectPin = 4
-countPin = 12
+rPowerPin = 12
+rDirPin = 16
+lPowerPin = 13
+lDirPin = 6
+collectPin = 23
+countPin = 10
 
 GPIO.setmode(GPIO.BCM)
 

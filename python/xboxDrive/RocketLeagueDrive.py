@@ -58,20 +58,17 @@ while not joy.Back():
     power = joy.rightTrigger()-joy.leftTrigger()
     #if (joy.leftX()>0 and joy.leftX()<.75):
         
-
-    if ((1-joy.leftX())*power)>1:
+    rightPower = (1-joy.leftX())*power
+    if rightPower>1:
         rightPower = 1
-    elif ((1-joy.leftX())*power)<-1:
+    elif rightPower<-1:
         rightPower = -1
-    else:
-        rightPower = (1-(joy.leftX())*power)
     
-    if ((1+joy.leftX())*power)>1:
+    leftPower = (1+joy.leftX())*power
+    if leftPower>1:
         leftPower = 1
-    elif ((1+joy.leftX())*power)<-1:
+    elif leftPower<-1:
         leftPower = -1
-    else:
-        leftPower = (1+joy.leftX())*power
     
     
 

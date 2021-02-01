@@ -85,10 +85,10 @@ while not joy.Back():
         while joy.A():
             time.sleep(.001)
 
-    GPIO.add_event_detect(countPin, GPIO.RISING)
+    #GPIO.add_event_detect(countPin, GPIO.RISING)
 
-    if GPIO.event_detected(countPin):
-        ballCount+=1
+    #if GPIO.event_detected(countPin):
+        #ballCount+=1
 
     print(ballCount)
 

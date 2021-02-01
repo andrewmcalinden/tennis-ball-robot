@@ -71,8 +71,8 @@ while not joy.Back():
     
     
 
-    setRightPower(power)
-    setLeftPower(power)
+    setRightPower(rightPower)
+    setLeftPower(leftPower)
 
     if joy.A():
         if collectOn:

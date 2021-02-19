@@ -38,7 +38,7 @@ int main()
 
         resize(img, imgResize, Size(), .25, .25);
 
-        cvtColor(img, imgHSV, COLOR_BGR2HSV);
+        cvtColor(imgResize, imgHSV, COLOR_BGR2HSV);
 
         Scalar lower(hmin, smin, vmin);
         Scalar upper(hmax, smax, vmax);
@@ -51,7 +51,7 @@ int main()
         vector<vector<Point>> contours;
         vector<Vec4i> hierarchy;
         findContours(imgDilate, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
-        drawContours(img, contours, -1, Scalar(255, 0, 255), 1);
+        drawContours(imgResize, contours, -1, Scalar(255, 0, 255), 1);
 
         for (vector<Point> &contour : contours)
         {
@@ -63,13 +63,13 @@ int main()
             point << "(" << xCenter << ", " << yCenter << ")";
             string text = point.str();
 
-            putText(img, text, Point((int)xCenter, (int)yCenter), FONT_HERSHEY_DUPLEX, .3, Scalar(255, 255, 255), .2);
+            putText(imgResize, text, Point((int)xCenter, (int)yCenter), FONT_HERSHEY_DUPLEX, .3, Scalar(255, 255, 255), .2);
             cout << xCenter << ", " << yCenter << endl;
         }
 
         imshow("mask", imgMask);
         imshow("dilated masked", imgDilate);
-        imshow("original", img);
+        imshow("original", imgResize);
         waitKey(20);
     }
 }

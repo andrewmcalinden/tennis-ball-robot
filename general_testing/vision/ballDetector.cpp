@@ -15,11 +15,11 @@ int main()
     //VideoCapture cap(0);
     Mat img = imread("images/view1")
 
-    if (!cap.isOpened())
-    {
-        cout << "Could not initialize capturing..." << endl;
-        return 0;
-    }
+    // if (!cap.isOpened())
+    // {
+    //     cout << "Could not initialize capturing..." << endl;
+    //     return 0;
+    // }
 
     Mat imgHSV, imgMask, imgResize, imgDilate;
 

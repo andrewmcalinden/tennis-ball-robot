@@ -36,7 +36,7 @@ int main()
 
         inRange(imgHSV, lower, upper, imgMask);
 
-        Mat kernel = getStructuringElement(MORPH_RECT, Size(3, 3));
+        Mat kernel = getStructuringElement(MORPH_ELLIPSE, Size(7, 7));
         dilate(imgMask, imgDilate, kernel);
 
         vector<vector<Point>> contours;

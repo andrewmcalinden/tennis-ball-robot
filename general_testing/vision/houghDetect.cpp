@@ -20,8 +20,8 @@ namespace
     const std::string accumulatorThresholdTrackbarName = "Accumulator Threshold";
 
     // initial and max values of the parameters of interests.
-    const int cannyThresholdInitialValue = 20;
-    const int accumulatorThresholdInitialValue = 20;
+    const int cannyThresholdInitialValue = 10;
+    const int accumulatorThresholdInitialValue = 5;
     const int maxAccumulatorThreshold = 200;
     const int maxCannyThreshold = 255;
 

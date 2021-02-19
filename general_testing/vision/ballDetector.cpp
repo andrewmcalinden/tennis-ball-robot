@@ -22,14 +22,14 @@ int main()
     }
 
     Mat imgHSV, imgMask, imgResize, imgDilate;
-    while(1)
+    while (1)
     {
         cap.grab();
         cap.retrieve(img);
-        
-        resize(img, imgResize, Size(), .25, .25);
 
-        cvtColor(imgResize, imgHSV, COLOR_BGR2HSV);
+        //resize(img, imgResize, Size(), .25, .25);
+
+        cvtColor(img, imgHSV, COLOR_BGR2HSV);
 
         Scalar lower(hmin, smin, vmin);
         Scalar upper(hmax, smax, vmax);
@@ -60,7 +60,7 @@ int main()
 
         imshow("mask", imgMask);
         imshow("dilated masked", imgDilate);
-        imshow("original", imgResize);
+        imshow("original", img);
         waitKey(20);
     }
 }

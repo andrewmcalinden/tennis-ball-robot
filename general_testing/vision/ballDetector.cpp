@@ -10,7 +10,7 @@ using namespace std;
 int hmin = 37, smin = 106, vmin = 123;
 int hmax = 53, smax = 208, vmax = 255;
 
-void main()
+int main()
 {
     Mat img = imread("Images/view1.jpg");
     Mat imgHSV, imgMask, imgResize, imgDilate;

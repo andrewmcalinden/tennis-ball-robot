@@ -12,7 +12,8 @@ int hmax = 53, smax = 208, vmax = 255;
 
 int main()
 {
-    VideoCapture cap(0);
+    //VideoCapture cap(0);
+    Mat img = imread("images/view1")
     Mat img;
 
     if (!cap.isOpened())

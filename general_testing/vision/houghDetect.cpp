@@ -20,8 +20,8 @@ namespace
     const std::string accumulatorThresholdTrackbarName = "Accumulator Threshold";
 
     // initial and max values of the parameters of interests.
-    const int cannyThresholdInitialValue = 100;
-    const int accumulatorThresholdInitialValue = 50;
+    const int cannyThresholdInitialValue = 20;
+    const int accumulatorThresholdInitialValue = 20;
     const int maxAccumulatorThreshold = 200;
     const int maxCannyThreshold = 255;
 
@@ -30,7 +30,7 @@ namespace
         // will hold the results of the detection
         std::vector<Vec3f> circles;
         // runs the actual detection
-        HoughCircles( src_gray, circles, HOUGH_GRADIENT, 1, src_gray.rows/8, cannyThreshold, accumulatorThreshold, 0, 0 );
+        HoughCircles( src_gray, circles, HOUGH_GRADIENT, 1, src_gray.rows/8, cannyThreshold, accumulatorThreshold, 2, 50 );
 
         // clone the colour, input image for displaying purposes
         Mat display = src_display.clone();

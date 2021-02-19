@@ -42,7 +42,7 @@ int main()
         vector<vector<Point>> contours;
         vector<Vec4i> hierarchy;
         findContours(imgDilate, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
-        drawContours(imgResize, contours, -1, Scalar(255, 0, 255), 1);
+        drawContours(img, contours, -1, Scalar(255, 0, 255), 1);
 
         for (vector<Point> &contour : contours)
         {
@@ -54,7 +54,7 @@ int main()
             point << "(" << xCenter << ", " << yCenter << ")";
             string text = point.str();
 
-            putText(imgResize, text, Point((int)xCenter, (int)yCenter), FONT_HERSHEY_DUPLEX, .3, Scalar(255, 255, 255), .2);
+            putText(img, text, Point((int)xCenter, (int)yCenter), FONT_HERSHEY_DUPLEX, .3, Scalar(255, 255, 255), .2);
             cout << xCenter << ", " << yCenter << endl;
         }
 

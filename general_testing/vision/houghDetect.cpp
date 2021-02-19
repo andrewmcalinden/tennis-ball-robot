@@ -10,9 +10,10 @@ int main(int argc, char** argv)
 
     while(1){
         Mat src;
-        cap.grab();
-         cap.retrieve(src);
+        //cap.grab();
+        //cap.retrieve(src);
   
+    src = imread("images/view1.jpg");
     Mat gray;
     cvtColor(src, gray, COLOR_BGR2GRAY);
     medianBlur(gray, gray, 5);

@@ -36,9 +36,11 @@ int main()
          cap.grab();
          cap.retrieve(img);
 
-        resize(img, imgHSV, Size(), .75, .75);
+        resize(img, imgResize, Size(), .75, .75);
 
         //cvtColor(imgResize, imgHSV, COLOR_BGR2YCrCb);
+
+        imgHSV = imgResize.clone();
 
         imshow("HSV", imgHSV);
         medianBlur(imgHSV, imgHSV, 5);

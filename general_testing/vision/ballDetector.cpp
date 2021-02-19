@@ -40,6 +40,8 @@ int main()
 
         cvtColor(imgResize, imgHSV, COLOR_BGR2HSV);
 
+        medianBlur(imgResize,imgResize,5);
+
         Scalar lower(hmin, smin, vmin);
         Scalar upper(hmax, smax, vmax);
 

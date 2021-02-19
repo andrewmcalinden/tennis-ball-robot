@@ -12,14 +12,14 @@ int hmax = 53, smax = 208, vmax = 255;
 
 int main()
 {
-    //VideoCapture cap(0);
+    VideoCapture cap(0);
     Mat img = imread("images/view1.jpg");
 
-    // if (!cap.isOpened())
-    // {
-    //     cout << "Could not initialize capturing..." << endl;
-    //     return 0;
-    // }
+    if (!cap.isOpened())
+    {
+        cout << "Could not initialize capturing..." << endl;
+        return 0;
+    }
 
     Mat imgHSV, imgMask, imgResize, imgDilate;
 
@@ -33,14 +33,14 @@ int main()
 
     while (1)
     {
-        // cap.grab();
-        // cap.retrieve(img);
+         cap.grab();
+         cap.retrieve(img);
 
-        resize(img, imgResize, Size(), .25, .25);
+        resize(img, imgResize, Size(), .75, .75);
 
         cvtColor(imgResize, imgHSV, COLOR_BGR2HSV);
 
-        medianBlur(imgResize,imgResize,5);
+        medianBlur(imgResize,imgResize,9);
 
         Scalar lower(hmin, smin, vmin);
         Scalar upper(hmax, smax, vmax);

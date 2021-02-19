@@ -34,8 +34,8 @@ int main()
 
     while (1)
     {
-        cap.grab();
-        cap.retrieve(img);
+        //cap.grab();
+        //cap.retrieve(img);
 
         //resize(img, imgResize, Size(), .25, .25);
 

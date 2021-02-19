@@ -21,7 +21,7 @@ namespace
 
     // initial and max values of the parameters of interests.
     const int cannyThresholdInitialValue = 10;
-    const int accumulatorThresholdInitialValue = 10;
+    const int accumulatorThresholdInitialValue = 20;
     const int maxAccumulatorThreshold = 200;
     const int maxCannyThreshold = 255;
 
@@ -100,7 +100,7 @@ int main(int argc, char** argv)
         HoughDetection(src_gray, src, cannyThreshold, accumulatorThreshold);
 
         // get user key
-        key = (char)waitKey(10);
+        key = (char)waitKey(100);
     }
 
     return 0;

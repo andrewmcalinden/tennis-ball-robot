@@ -61,6 +61,6 @@ int main()
         imshow("mask", imgMask);
         imshow("dilated masked", imgDilate);
         imshow("original", imgResize);
-        waitKey(2000);
+        waitKey(200);
     }
 }

@@ -17,11 +17,12 @@ int main(int argc, char** argv)
     }
     Mat gray;
     cvtColor(src, gray, COLOR_BGR2GRAY);
+    imshow("gray",gray);
     medianBlur(gray, gray, 5);
     vector<Vec3f> circles;
-    HoughCircles(gray, circles, HOUGH_GRADIENT_ALT, 1,
+    HoughCircles(gray, circles, HOUGH_GRADIENT, 1,
                  gray.rows/64,  // change this value to detect circles with different distances to each other
-                 300, .88, 1, 30 // change the last two parameters
+                 60, 20, 1, 30 // change the last two parameters
             // (min_radius & max_radius) to detect larger circles
     );
     for( size_t i = 0; i < circles.size(); i++ )
@@ -34,6 +35,7 @@ int main(int argc, char** argv)
         int radius = c[2];
         circle( src, center, radius, Scalar(255,0,255), 3, LINE_AA);
     }
+    resize(src,src,Size(),.25,.25);
     imshow("detected circles", src);
     waitKey();
     return EXIT_SUCCESS;

@@ -16,8 +16,7 @@ int main(int argc, char** argv)
         return EXIT_FAILURE;
     }
     Mat gray;
-    cvtColor(src, gray, COLOR_BGR2GRAY);
-    imshow("gray",gray);
+    cvtColor(src, gray, COLOR_GRAY2BGR);
     medianBlur(gray, gray, 5);
     vector<Vec3f> circles;
     HoughCircles(gray, circles, HOUGH_GRADIENT, 1,

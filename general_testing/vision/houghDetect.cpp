@@ -45,7 +45,7 @@ namespace
         }
 
         // shows the results
-        resize(display, display, dysize(), .25, .25);
+        resize(display, display, cv::Size(), .25, .25);
         imshow( windowName, display);
     }
 }

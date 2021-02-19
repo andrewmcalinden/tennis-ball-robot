@@ -18,8 +18,8 @@ int main(int argc, char** argv)
     medianBlur(gray, gray, 3);
     vector<Vec3f> circles;
     HoughCircles(gray, circles, HOUGH_GRADIENT, .5,
-                 gray.rows/64,  // change this value to detect circles with different distances to each other
-                 130, 50, 5, 50 // change the last two parameters
+                 gray.rows/32,  // change this value to detect circles with different distances to each other
+                 180, 25, 5, 50 // change the last two parameters
             // (min_radius & max_radius) to detect larger circles
     );
     for( size_t i = 0; i < circles.size(); i++ )

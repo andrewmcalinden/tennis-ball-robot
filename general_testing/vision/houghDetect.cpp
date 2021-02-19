@@ -32,9 +32,9 @@ int main(int argc, char** argv)
         int radius = c[2];
         circle( src, center, radius, Scalar(255,0,255), 3, LINE_AA);
     }
-    resize(src,src,Size(),.25,.25);
+    //resize(src,src,Size(),.25,.25);
     imshow("detected circles", src);
-    waitKey(500);
+    waitKey(50);
     
 }
 }

@@ -45,6 +45,7 @@ namespace
         }
 
         // shows the results
+        resize(display, display, size(), .25, .25);
         imshow( windowName, display);
     }
 }

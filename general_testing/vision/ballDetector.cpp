@@ -38,7 +38,7 @@ int main()
 
         resize(img, imgResize, Size(), .75, .75);
 
-        cvtColor(imgResize, imgHSV, COLOR_BGR2HSV);
+        cvtColor(imgResize, imgHSV, COLOR_BGR2LAB);
         imshow("HSV", imgHSV);
         
         

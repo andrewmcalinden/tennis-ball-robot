@@ -33,14 +33,14 @@ int main()
 
     while (1)
     {
-         cap.grab();
-         cap.retrieve(img);
+        cap.grab();
+        cap.retrieve(img);
 
         resize(img, imgResize, Size(), .75, .75);
 
-        //cvtColor(imgResize, imgHSV, COLOR_BGR2YCrCb);
+        cvtColor(imgResize, imgHSV, COLOR_BGR2Luv);
 
-        imgHSV = imgResize.clone();
+        //imgHSV = imgResize.clone();
 
         imshow("HSV", imgHSV);
         medianBlur(imgHSV, imgHSV, 5);

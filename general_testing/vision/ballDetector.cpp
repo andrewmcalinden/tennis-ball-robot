@@ -36,7 +36,7 @@ int main()
         // cap.grab();
         // cap.retrieve(img);
 
-        //resize(img, imgResize, Size(), .25, .25);
+        resize(img, imgResize, Size(), .25, .25);
 
         cvtColor(img, imgHSV, COLOR_BGR2HSV);
 

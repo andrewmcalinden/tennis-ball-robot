@@ -11,6 +11,8 @@ int main()
     VideoCapture cap(0);
     Mat img;
 
+    
+
     if (!cap.isOpened())
     {
         cout << "Could not initialize capturing..." << endl;

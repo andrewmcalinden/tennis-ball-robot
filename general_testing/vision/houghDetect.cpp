@@ -21,7 +21,7 @@ namespace
 
     // initial and max values of the parameters of interests.
     const int cannyThresholdInitialValue = 10;
-    const int accumulatorThresholdInitialValue = 5;
+    const int accumulatorThresholdInitialValue = 10;
     const int maxAccumulatorThreshold = 200;
     const int maxCannyThreshold = 255;
 

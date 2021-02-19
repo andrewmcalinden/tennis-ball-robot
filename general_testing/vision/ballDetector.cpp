@@ -24,12 +24,12 @@ int main()
     Mat imgHSV, imgMask, imgResize, imgDilate;
 
     namedWindow("Trackbars", (640, 200));
-    createTrackbar("hue min", "Trackbars", &hmin, 179);
-    createTrackbar("hue max", "Trackbars", &hmax, 179);
-    createTrackbar("sat min", "Trackbars", &smin, 255);
-    createTrackbar("sat max", "Trackbars", &smax, 255);
-    createTrackbar("val min", "Trackbars", &vmin, 255);
-    createTrackbar("val max", "Trackbars", &vmax, 255);
+    createTrackbar("hue min", "Trackbars", &hmin, 500);
+    createTrackbar("hue max", "Trackbars", &hmax, 500);
+    createTrackbar("sat min", "Trackbars", &smin, 500);
+    createTrackbar("sat max", "Trackbars", &smax, 500);
+    createTrackbar("val min", "Trackbars", &vmin, 500);
+    createTrackbar("val max", "Trackbars", &vmax, 500);
 
     while (1)
     {

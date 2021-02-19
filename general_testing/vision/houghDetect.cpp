@@ -13,7 +13,7 @@ int main(int argc, char** argv)
         //cap.grab();
         //cap.retrieve(src);
   
-    src = imread("images/view2.jpg");
+    src = imread("images/view3.jpg");
     Mat gray;
     cvtColor(src, gray, COLOR_BGR2GRAY);
     medianBlur(gray, gray, 5);

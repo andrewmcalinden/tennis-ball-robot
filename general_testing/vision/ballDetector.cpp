@@ -14,7 +14,6 @@ int main()
 {
     //VideoCapture cap(0);
     Mat img = imread("images/view1")
-    Mat img;
 
     if (!cap.isOpened())
     {
@@ -34,8 +33,8 @@ int main()
 
     while (1)
     {
-        cap.grab();
-        cap.retrieve(img);
+        // cap.grab();
+        // cap.retrieve(img);
 
         //resize(img, imgResize, Size(), .25, .25);
 

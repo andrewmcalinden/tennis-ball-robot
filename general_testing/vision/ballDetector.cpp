@@ -40,7 +40,9 @@ int main()
 
         cvtColor(imgResize, imgHSV, COLOR_BGR2HSV);
 
-        medianBlur(imgResize,imgResize,9);
+        GaussianBlur(imgHSV, imgHSV, (11, 11), 0, 0, BORDER_DEFAULT )
+        
+        erode(imgHSV, imgHSV, )
 
         Scalar lower(hmin, smin, vmin);
         Scalar upper(hmax, smax, vmax);

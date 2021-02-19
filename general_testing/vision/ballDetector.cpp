@@ -12,7 +12,7 @@ int hmax = 53, smax = 208, vmax = 255;
 
 int main()
 {
-    Mat img = imread("Images/view1.jpg");
+    Mat img = imread("images/view1.jpg");
     Mat imgHSV, imgMask, imgResize, imgDilate;
 
     resize(img, imgResize, Size(), .25, .25);

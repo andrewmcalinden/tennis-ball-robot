@@ -27,7 +27,9 @@ namespace
 
     void HoughDetection(const Mat& src_gray, const Mat& src_display, int cannyThreshold, int accumulatorThreshold)
     {
-        imshow( "gray", src_gray);
+        Mat displayGray;
+        resize(src_gray, displayGray, cv::Size(), .25, .25);
+        imshow( "gray", displayGray);
         // will hold the results of the detection
         std::vector<Vec3f> circles;
         // runs the actual detection

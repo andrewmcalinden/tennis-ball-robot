@@ -38,7 +38,7 @@ int main()
 
         resize(img, imgResize, Size(), .75, .75);
 
-        cvtColor(imgResize, imgHSV, COLOR_BGR2Luv);
+        cvtColor(imgResize, imgHSV, COLOR_BGR2YCrCb);
 
         //imgHSV = imgResize.clone();
 

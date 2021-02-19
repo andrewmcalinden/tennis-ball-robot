@@ -9,7 +9,7 @@ using namespace std;
 
 int main()
 {
-    raspicam::RaspiCam_Cv cap;
+    VideoCapture cap(0);
     Mat img;
 
     if (!cap.isOpened())

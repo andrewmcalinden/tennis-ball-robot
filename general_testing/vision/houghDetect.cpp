@@ -27,6 +27,7 @@ namespace
 
     void HoughDetection(const Mat& src_gray, const Mat& src_display, int cannyThreshold, int accumulatorThreshold)
     {
+        imshow( "gray", src_gray);
         // will hold the results of the detection
         std::vector<Vec3f> circles;
         // runs the actual detection
@@ -100,7 +101,7 @@ int main(int argc, char** argv)
         HoughDetection(src_gray, src, cannyThreshold, accumulatorThreshold);
 
         // get user key
-        key = (char)waitKey(100);
+        key = (char)waitKey(500);
     }
 
     return 0;

@@ -6,15 +6,13 @@ using namespace cv;
 using namespace std;
 int main(int argc, char** argv)
 {
-    const char* filename = argc >=2 ? argv[1] : "images/view1.jpg";
-    // Loads an image
-    Mat src = imread( samples::findFile( filename ), IMREAD_COLOR );
-    // Check if image is loaded fine
-    if(src.empty()){
-        printf(" Error opening image\n");
-        printf(" Program Arguments: [image_name -- default %s] \n", filename);
-        return EXIT_FAILURE;
-    }
+    VideoCapture cap(0);
+
+    while(1){
+        Mat src
+        cap.grab();
+         cap.retrieve(src);
+  
     Mat gray;
     cvtColor(src, gray, COLOR_BGR2GRAY);
     medianBlur(gray, gray, 7);
@@ -36,6 +34,7 @@ int main(int argc, char** argv)
     }
     resize(src,src,Size(),.25,.25);
     imshow("detected circles", src);
-    waitKey();
-    return EXIT_SUCCESS;
+    waitKey(500);
+    
+}
 }

@@ -9,7 +9,7 @@ int main(int argc, char** argv)
     VideoCapture cap(0);
 
     while(1){
-        Mat src
+        Mat src;
         cap.grab();
          cap.retrieve(src);
   

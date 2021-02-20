@@ -20,14 +20,14 @@ int main(int argc, char** argv)
 
     
 
-    Mat kernel = getStructuringElement(MORPH_RECT, Size(9, 9));
+    Mat kernel = getStructuringElement(MORPH_RECT, Size(11, 11));
 
     dilate(gray, gray, kernel);
 
     kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
     erode(gray, gray, kernel);
     //Canny(gray, gray, 1, 3, 3);
-    medianBlur(gray, gray, 9);
+    medianBlur(gray, gray, 7);
     
     vector<Vec3f> circles;
     imshow("img view", gray);

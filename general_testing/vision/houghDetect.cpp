@@ -18,11 +18,11 @@ int main(int argc, char** argv)
     cvtColor(src, gray, COLOR_BGR2GRAY);
     medianBlur(gray, gray, 3);
 
-    Mat kernel = getStructuringElement(MORPH_RECT, Size(3, 3));
+    Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
 
     dilate(gray, gray, kernel);
 
-    kernel = getStructuringElement(MORPH_RECT, Size(7, 7));
+    kernel = getStructuringElement(MORPH_RECT, Size(9, 9));
     erode(gray, gray, kernel);
     //Canny(gray, gray, 1, 3, 3);
     medianBlur(gray, gray, 15);

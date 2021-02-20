@@ -1,6 +1,9 @@
 #include "robot.h"
 #include "../odometry/odometry.h"
 #include "../vision/ballDetector.h"
+#include "opencv2/imgcodecs.hpp"
+#include "opencv2/highgui.hpp"
+#include "opencv2/imgproc.hpp"
 #include <iostream>
 
 #define LEFT_MOTOR_DIR_PIN 22

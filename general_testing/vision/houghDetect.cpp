@@ -18,7 +18,7 @@ int main(int argc, char** argv)
     cvtColor(src, gray, COLOR_BGR2GRAY);
     medianBlur(gray, gray, 3);
 
-    Laplacian(gray, gray, CV_16S, 5);
+    
 
     Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
 
@@ -27,7 +27,7 @@ int main(int argc, char** argv)
     kernel = getStructuringElement(MORPH_RECT, Size(9, 9));
     erode(gray, gray, kernel);
     //Canny(gray, gray, 1, 3, 3);
-    medianBlur(gray, gray, 15);
+    medianBlur(gray, gray, 9);
     
     vector<Vec3f> circles;
     imshow("img view", gray);

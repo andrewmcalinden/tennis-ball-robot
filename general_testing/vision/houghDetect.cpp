@@ -26,9 +26,9 @@ int main(int argc, char** argv)
 
     kernel = getStructuringElement(MORPH_RECT, Size(7, 7));
     erode(gray, gray, kernel);
-    Canny(gray, gray, 2, 6, 3);
-    blur(gray, gray, Size(9,9));
     
+    blur(gray, gray, Size(9,9));
+    Canny(gray, gray, 10, 30, 3);
     vector<Vec3f> circles;
     imshow("img view", gray);
     HoughCircles(gray, circles, HOUGH_GRADIENT, .75,

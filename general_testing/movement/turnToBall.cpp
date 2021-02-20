@@ -26,6 +26,6 @@ int main()
     while(getCenters().size() == 0) //while we don't see any balls
     {
         r.setMotorPowers(.2, -.2);
-        waitKey(20);
+        cv::waitKey(20);
     }
 }

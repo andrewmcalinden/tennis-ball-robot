@@ -65,9 +65,9 @@ vector<Point> getCenters()
         putText(img, text, p, FONT_HERSHEY_DUPLEX, .3, Scalar(255, 255, 255), .2);
     }
     
-    imshow("crop", imgCrop);
-    imshow("mask", imgMask);
-    imshow("dilated", imgDilate);
-    imshow("orig", img);
+    // imshow("crop", imgCrop);
+    // imshow("mask", imgMask);
+    // imshow("dilated", imgDilate);
+    // imshow("orig", img);
     return centers;
 }

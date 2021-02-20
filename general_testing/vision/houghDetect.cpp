@@ -20,11 +20,11 @@ int main(int argc, char** argv)
 
     
 
-    Mat kernel = getStructuringElement(MORPH_RECT, Size(11, 11));
+    Mat kernel = getStructuringElement(MORPH_RECT, Size(13, 13));
 
     dilate(gray, gray, kernel);
 
-    kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
+    kernel = getStructuringElement(MORPH_RECT, Size(7, 7));
     erode(gray, gray, kernel);
     //Canny(gray, gray, 1, 3, 3);
     medianBlur(gray, gray, 7);

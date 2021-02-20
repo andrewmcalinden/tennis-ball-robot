@@ -19,12 +19,12 @@ int main(int argc, char** argv)
     blur(gray, gray, Size(5,5));
 
     
-
-    Mat kernel = getStructuringElement(MORPH_RECT, Size(9, 9));
     Canny(gray, gray, 15, 45, 3);
+    Mat kernel = getStructuringElement(MORPH_RECT, Size(3, 3));
+    
     dilate(gray, gray, kernel);
 
-    kernel = getStructuringElement(MORPH_RECT, Size(7, 7));
+    kernel = getStructuringElement(MORPH_RECT, Size(9, 9));
     erode(gray, gray, kernel);
     
     blur(gray, gray, Size(9,9));

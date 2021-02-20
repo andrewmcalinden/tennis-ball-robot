@@ -20,7 +20,7 @@ int main(int argc, char** argv)
 
     
     Canny(gray, gray, 150, 450, 3);
-    Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
+    Mat kernel = getStructuringElement(MORPH_RECT, Size(9, 9));
     
     dilate(gray, gray, kernel);
 

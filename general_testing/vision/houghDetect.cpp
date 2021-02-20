@@ -18,6 +18,8 @@ int main(int argc, char** argv)
     cvtColor(src, gray, COLOR_BGR2GRAY);
     medianBlur(gray, gray, 3);
 
+    Laplacian(gray, gray, CV_16S, 5);
+
     Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
 
     dilate(gray, gray, kernel);

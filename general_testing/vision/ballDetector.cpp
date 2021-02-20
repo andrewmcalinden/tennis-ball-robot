@@ -13,7 +13,7 @@ void startCamera()
     cap.open(0);
     if (!cap.isOpened())
     {
-        cout << "Could not initialize capturing..." << endl;
+        std::cout << "Could not initialize capturing..." << endl;
     }
 }
 
@@ -61,7 +61,7 @@ vector<Point> getCenters()
         Point p((int)xCenter, (int)yCenter);
         centers.push_back(p);
 
-        putText(imgResize, text, p, FONT_HERSHEY_DUPLEX, .3, Scalar(255, 255, 255), .2);
+        putText(img, text, p, FONT_HERSHEY_DUPLEX, .3, Scalar(255, 255, 255), .2);
     }
     
     imshow("crop", imgCrop);

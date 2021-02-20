@@ -37,7 +37,7 @@ int main()
         cap.retrieve(img);
 
         resize(img, imgResize, Size(), .75, .75);
-        Size size = imgResize.size();
+        Size s = imgResize.size();
         cout << s.width << " " << s.height << endl;
 
         cvtColor(imgResize, imgHSV, COLOR_BGR2HSV);

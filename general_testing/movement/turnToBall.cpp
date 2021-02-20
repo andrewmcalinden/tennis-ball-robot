@@ -4,6 +4,7 @@
 #include "opencv2/imgcodecs.hpp"
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
+#include <wiringPi.h>
 #include <iostream>
 
 #define LEFT_MOTOR_DIR_PIN 22

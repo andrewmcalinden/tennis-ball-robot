@@ -16,7 +16,7 @@ int main(int argc, char** argv)
     //src = imread("images/view3.jpg");
     Mat gray;
     cvtColor(src, gray, COLOR_BGR2GRAY);
-    medianBlur(gray, gray, 3);
+    gaussianBlur(gray, gray, 5);
 
     
 
@@ -26,8 +26,8 @@ int main(int argc, char** argv)
 
     kernel = getStructuringElement(MORPH_RECT, Size(7, 7));
     erode(gray, gray, kernel);
-    Canny(gray, gray, 5, 70, 3);
-    medianBlur(gray, gray, 7);
+    Canny(gray, gray, 0, 0, 3);
+    gaussianBlur(gray, gray, 7);
     
     vector<Vec3f> circles;
     imshow("img view", gray);

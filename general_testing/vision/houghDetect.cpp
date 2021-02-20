@@ -24,7 +24,7 @@ int main(int argc, char** argv)
 
     kernel = getStructuringElement(MORPH_RECT, Size(7, 7));
     erode(gray, gray, kernel);
-    Canny(gray, gray, 1, 3, 3);
+    //Canny(gray, gray, 1, 3, 3);
     medianBlur(gray, gray, 15);
     
     vector<Vec3f> circles;

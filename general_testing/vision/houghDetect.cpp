@@ -33,7 +33,7 @@ int main(int argc, char** argv)
     imshow("img view", gray);
     HoughCircles(gray, circles, HOUGH_GRADIENT, .75,
                  gray.rows/20,  // change this value to detect circles with different distances to each other
-                 110, 30, 3, 40 // change the last two parameters
+                 110, 25, 3, 40 // change the last two parameters
             // (min_radius & max_radius) to detect larger circles
     );
     for( size_t i = 0; i < circles.size(); i++ )

@@ -31,5 +31,6 @@ int main()
         r.setMotorPowers(.2, -.2);
         delay(20);
     }
-    r.setMotorPowers(0,0);
+    r.setMotorPowers(0, 0);
+    std::cout << "I SAW THE BALL AND STOPPED" << std::endl;
 }

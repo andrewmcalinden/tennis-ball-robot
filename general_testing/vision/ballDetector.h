@@ -3,4 +3,4 @@
 #include <opencv2/imgproc.hpp>
 
 void startCamera();
-std::vector<Point> getCenters();
+std::vector<cv::Point> getCenters();

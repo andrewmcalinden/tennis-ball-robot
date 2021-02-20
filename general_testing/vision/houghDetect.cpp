@@ -20,7 +20,7 @@ int main(int argc, char** argv)
 
     
     Canny(gray, gray, 60, 180, 3);
-    Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
+    Mat kernel = getStructuringElement(MORPH_RECT, Size(7, 7));
     
     dilate(gray, gray, kernel);
 
@@ -33,7 +33,7 @@ int main(int argc, char** argv)
     imshow("img view", gray);
     HoughCircles(gray, circles, HOUGH_GRADIENT, .75,
                  gray.rows/20,  // change this value to detect circles with different distances to each other
-                 110, 30, 3, 40 // change the last two parameters
+                 90, 30, 3, 40 // change the last two parameters
             // (min_radius & max_radius) to detect larger circles
     );
     for( size_t i = 0; i < circles.size(); i++ )

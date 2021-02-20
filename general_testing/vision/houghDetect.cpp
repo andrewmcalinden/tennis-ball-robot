@@ -16,7 +16,7 @@ int main(int argc, char** argv)
     //src = imread("images/view3.jpg");
     Mat gray;
     cvtColor(src, gray, COLOR_BGR2GRAY);
-    blur(gray, gray, Size(5,5));
+    blur(gray, gray, Size(3,3));
 
     
     Canny(gray, gray, 60, 180, 3);

@@ -46,7 +46,7 @@ vector<Point> getCenters()
     vector<vector<Point>> contours;
     vector<Vec4i> hierarchy;
     findContours(imgDilate, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
-    drawContours(img, contours, -1, Scalar(255, 0, 255), 1);
+    //drawContours(img, contours, -1, Scalar(255, 0, 255), 1);
 
     vector<Point> centers;
     for (vector<Point> &contour : contours)
@@ -55,14 +55,14 @@ vector<Point> getCenters()
         double xCenter = m.m10 / m.m00;
         double yCenter = m.m01 / m.m00;
 
-        stringstream point;
-        point << "(" << xCenter << ", " << yCenter << ")";
-        string text = point.str();
+        // stringstream point;
+        // point << "(" << xCenter << ", " << yCenter << ")";
+        // string text = point.str();
 
         Point p((int)xCenter, (int)yCenter);
         centers.push_back(p);
 
-        putText(img, text, p, FONT_HERSHEY_DUPLEX, .3, Scalar(255, 255, 255), .2);
+        //putText(img, text, p, FONT_HERSHEY_DUPLEX, .3, Scalar(255, 255, 255), .2);
     }
     
     // imshow("crop", imgCrop);

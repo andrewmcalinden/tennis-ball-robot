@@ -10,17 +10,30 @@ int main(int argc, char** argv)
 
     while(1){
         Mat src;
-        //cap.grab();
-        //cap.retrieve(src);
+        cap.grab();
+        cap.retrieve(src);
   
-    src = imread("images/view3.jpg");
+    //src = imread("images/view3.jpg");
     Mat gray;
     cvtColor(src, gray, COLOR_BGR2GRAY);
-    medianBlur(gray, gray, 5);
+    blur(gray, gray, Size(3,3));
+
+    
+    Canny(gray, gray, 120, 360, 3);
+    Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
+    
+    dilate(gray, gray, kernel);
+
+    kernel = getStructuringElement(MORPH_RECT, Size(3, 3));
+    erode(gray, gray, kernel);
+    
+    blur(gray, gray, Size(3,3));
+    
     vector<Vec3f> circles;
-    HoughCircles(gray, circles, HOUGH_GRADIENT, .8,
-                 gray.rows/128,  // change this value to detect circles with different distances to each other
-                 80, 30, 10, 40 // change the last two parameters
+    imshow("img view", gray);
+    HoughCircles(gray, circles, HOUGH_GRADIENT, 1,
+                 gray.rows/20,  // change this value to detect circles with different distances to each other
+                 110, 26, 1, 40 // change the last two parameters
             // (min_radius & max_radius) to detect larger circles
     );
     for( size_t i = 0; i < circles.size(); i++ )
@@ -33,7 +46,7 @@ int main(int argc, char** argv)
         int radius = c[2];
         circle( src, center, radius, Scalar(255,0,255), 3, LINE_AA);
     }
-    resize(src,src,Size(),.25,.25);
+    //resize(src,src,Size(),.25,.25);
     imshow("detected circles", src);
     waitKey(17);
     

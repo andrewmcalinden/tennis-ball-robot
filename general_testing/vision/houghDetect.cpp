@@ -30,8 +30,8 @@ int main(int argc, char** argv)
     vector<Vec3f> circles;
     imshow("img view", gray);
     HoughCircles(gray, circles, HOUGH_GRADIENT, .8,
-                 gray.rows/128,  // change this value to detect circles with different distances to each other
-                 80, 30, 10, 40 // change the last two parameters
+                 gray.rows/32,  // change this value to detect circles with different distances to each other
+                 60, 30, 10, 40 // change the last two parameters
             // (min_radius & max_radius) to detect larger circles
     );
     for( size_t i = 0; i < circles.size(); i++ )

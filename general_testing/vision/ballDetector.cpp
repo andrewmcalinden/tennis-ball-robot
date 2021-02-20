@@ -13,16 +13,15 @@ int hmax = 53, smax = 208, vmax = 255;
 int main()
 {
     VideoCapture cap(0);
-    Mat img = imread("images/view1.jpg");
+    Mat img, imgHSV, imgMask, imgResize, imgDilate;
 
     if (!cap.isOpened())
     {
         cout << "Could not initialize capturing..." << endl;
         return 0;
     }
-
-    Mat imgHSV, imgMask, imgResize, imgDilate;
-
+    
+    /*
     namedWindow("Trackbars", (640, 200));
     createTrackbar("hue min", "Trackbars", &hmin, 500);
     createTrackbar("hue max", "Trackbars", &hmax, 500);
@@ -30,6 +29,7 @@ int main()
     createTrackbar("sat max", "Trackbars", &smax, 500);
     createTrackbar("val min", "Trackbars", &vmin, 500);
     createTrackbar("val max", "Trackbars", &vmax, 500);
+    */
 
     while (1)
     {
@@ -40,19 +40,11 @@ int main()
 
         cvtColor(imgResize, imgHSV, COLOR_BGR2HSV);
 
-        //imgHSV = imgResize.clone();
-
-        imshow("HSV", imgHSV);
-        medianBlur(imgHSV, imgHSV, 5);
-        
-        
-
         Scalar lower(hmin, smin, vmin);
         Scalar upper(hmax, smax, vmax);
-
         inRange(imgHSV, lower, upper, imgMask);
 
-        Mat kernel = getStructuringElement(MORPH_ELLIPSE, Size(7, 7));
+        Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
         dilate(imgMask, imgDilate, kernel);
 
         vector<vector<Point>> contours;

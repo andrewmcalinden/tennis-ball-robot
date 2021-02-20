@@ -10,14 +10,21 @@ int main(int argc, char** argv)
 
     while(1){
         Mat src;
-        //cap.grab();
-        //cap.retrieve(src);
+        cap.grab();
+        cap.retrieve(src);
   
-    src = imread("images/view3.jpg");
+    //src = imread("images/view3.jpg");
     Mat gray;
     cvtColor(src, gray, COLOR_BGR2GRAY);
-    medianBlur(gray, gray, 5);
+    medianBlur(gray, gray, 3);
+
+    Dialate(gray, gray, Mat(), Point(-1,-1), 3);
+    Erode(gray, gray, Mat(), Point(-1,-1), 6);
+    Canny(gray, gray, 1, 3, 3);
+    medianBlur(gray, gray, 15);
+    
     vector<Vec3f> circles;
+    imshow("detected circles", src);
     HoughCircles(gray, circles, HOUGH_GRADIENT, .8,
                  gray.rows/128,  // change this value to detect circles with different distances to each other
                  80, 30, 10, 40 // change the last two parameters

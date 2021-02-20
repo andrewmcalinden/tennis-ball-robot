@@ -21,14 +21,14 @@ int main(int argc, char** argv)
     
 
     Mat kernel = getStructuringElement(MORPH_RECT, Size(9, 9));
-
+    Canny(gray, gray, 10, 30, 3);
     dilate(gray, gray, kernel);
 
     kernel = getStructuringElement(MORPH_RECT, Size(7, 7));
     erode(gray, gray, kernel);
     
     blur(gray, gray, Size(9,9));
-    Canny(gray, gray, 10, 30, 3);
+    
     vector<Vec3f> circles;
     imshow("img view", gray);
     HoughCircles(gray, circles, HOUGH_GRADIENT, .75,

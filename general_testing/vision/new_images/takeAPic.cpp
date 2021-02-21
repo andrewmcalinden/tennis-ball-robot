@@ -37,7 +37,7 @@ int main(int argc, char** argv)
     
     
     
-    resize(src,previewPic,Size(),.75,.75);
+    resize(src,previewPic,Size(),1.5,1.5);
     
     imshow("Preview", previewPic);
     int d = waitKey(1);

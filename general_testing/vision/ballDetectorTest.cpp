@@ -68,9 +68,10 @@ int main()
             cout << xCenter << ", " << yCenter << endl;
         }
 
-        imshow("mask", imgMask);
-        imshow("dilated masked", imgDilate);
+        // imshow("mask", imgMask);
+        // imshow("dilated masked", imgDilate);
         imshow("original", imgResize);
-        waitKey(20);
+        char c=(char)waitKey(1);
+        if(c==27) break;
     }
 }

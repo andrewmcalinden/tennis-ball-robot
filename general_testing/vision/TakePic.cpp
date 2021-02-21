@@ -24,7 +24,7 @@ int main(int argc, char** argv)
     std::stringstream ss;
     std::string name;
     Mat src, previewPic;
-    ss << "image_"<< to_string(count) << ".png";
+
     name = ss.str();
     while(1){
         
@@ -46,9 +46,9 @@ int main(int argc, char** argv)
 
     
     if(d==' ') {
-        imwrite(name, src);
         ss << "image_"<< to_string(count) << ".png";
         name = ss.str();
+        imwrite(name, src);
         ss.str("");
         ++count;
       

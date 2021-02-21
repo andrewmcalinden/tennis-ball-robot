@@ -30,15 +30,15 @@ int main(int argc, char** argv)
     blur(gray, gray, Size(3,3));
 
     
-    Canny(gray, gray, 90, 270, 3);
-    Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
+    Canny(gray, gray, 110, 330, 3);
+    Mat kernel = getStructuringElement(MORPH_RECT, Size(7, 7));
     
     dilate(gray, gray, kernel);
 
     kernel = getStructuringElement(MORPH_RECT, Size(3, 3));
     erode(gray, gray, kernel);
     
-    blur(gray, gray, Size(3,3));
+    blur(gray, gray, Size(5,5));
     
     vector<Vec3f> circles;
     

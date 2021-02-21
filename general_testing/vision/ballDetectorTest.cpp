@@ -33,8 +33,9 @@ int main()
 
     while (1)
     {
-        cap.grab();
-        cap.retrieve(img);
+        //cap.grab();
+        //cap.retrieve(img);
+        img = imread("TakenImages/image_1.png");
 
         resize(img, imgResize, Size(), .75, .75);
         Size s = imgResize.size();
@@ -68,8 +69,8 @@ int main()
             cout << xCenter << ", " << yCenter << endl;
         }
 
-        // imshow("mask", imgMask);
-        // imshow("dilated masked", imgDilate);
+        imshow("mask", imgMask);
+        imshow("dilated masked", imgDilate);
         imshow("original", imgResize);
         char c=(char)waitKey(1);
         if(c==27) break;

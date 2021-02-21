@@ -44,7 +44,7 @@ int main(int argc, char** argv)
 
     
     if(d==' ') {
-        imwrite("name.png", src);
+        imwrite(name, src);
         ss << "image_"<< to_string(count) << ".png";
         name = ss.str();
         ++count;

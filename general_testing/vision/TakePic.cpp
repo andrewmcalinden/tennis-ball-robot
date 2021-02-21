@@ -23,9 +23,9 @@ int main(int argc, char** argv)
     int count = 1;
     std::stringstream ss;
     std::string name;
-
+    Mat src;
     while(1){
-        Mat src;
+        
         cap.grab();
         cap.retrieve(src);
   
@@ -51,6 +51,7 @@ int main(int argc, char** argv)
       
   }
     }
+    imwrite("name.png", src);
 }
 
     

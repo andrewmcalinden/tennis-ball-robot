@@ -32,7 +32,7 @@ int main(int argc, char** argv)
     //src = imread("images/view3.jpg");
     
     
-    ss << "image_"<< to_string(count);
+    ss << "image_"<< to_string(count) << ".png";
     name = ss.str();
     
     resize(src,previewPic,Size(),.25,.25);
@@ -42,16 +42,15 @@ int main(int argc, char** argv)
     char c=(char)waitKey(1);
     if(c==27) break;
 
-    char d=(char)waitKey(1);
-    if(d==32) {
+    int d = waitKey(0);
+    if(d==' ') {
         imwrite("name.png", src);
-        ss << "image_"<< to_string(count);
+        ss << "image_"<< to_string(count) << ".png";
         name = ss.str();
         ++count;
       
-  }
+        }
     }
-    imwrite("name.png", src);
 }
 
     

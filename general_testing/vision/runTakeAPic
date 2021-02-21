@@ -1,3 +1,3 @@
 git pull
-g++ TakePic.cpp -o takePic `pkg-config --cflags --libs opencv`
-./takePic
+g++ TakenImages/TakePic.cpp -o TakenImages/takePic `pkg-config --cflags --libs opencv`
+./TakenImages/takePic

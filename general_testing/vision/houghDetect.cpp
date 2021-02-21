@@ -8,6 +8,10 @@ int main(int argc, char** argv)
 {
     VideoCapture cap(0);
 
+
+    cap.set(CV_CAP_PROP_FRAME_WIDTH,1920);
+    cap.set(CV_CAP_PROP_FRAME_HEIGHT,1080);
+
     while(1){
         Mat src;
         cap.grab();

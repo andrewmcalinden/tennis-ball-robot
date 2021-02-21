@@ -48,7 +48,7 @@ int main(int argc, char** argv)
         imwrite(name, src);
         ss << "image_"<< to_string(count) << ".png";
         name = ss.str();
-        ss.str(std::string());
+        ss.str("");
         ++count;
       
         }

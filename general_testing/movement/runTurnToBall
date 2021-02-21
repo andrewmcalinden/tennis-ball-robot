@@ -1,3 +1,4 @@
 git pull
-g++ turnToBall.cpp robot.cpp ../motor/motor.cpp ../encoder/encoder.cpp ../math/mathUtil.cpp ../odometry/odometry.cpp ../math/vector.cpp ../vision/ballDetector.cpp -o turnToBall -lwiringPi `pkg-config --cflags --libs opencv`
+g++ turnToBall.cpp robot.cpp ../motor/motor.cpp ../encoder/encoder.cpp ../math/mathUtil.cpp ../odometry/odometry.cpp ../math/vector.cpp ../vision/ballDetector.cpp -DWITH_FFMPEG:BOOL='0'
+-o turnToBall -lwiringPi `pkg-config --cflags --libs opencv`
 sudo ./turnToBall

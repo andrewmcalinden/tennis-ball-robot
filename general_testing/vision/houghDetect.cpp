@@ -30,7 +30,7 @@ int main(int argc, char** argv)
     blur(gray, gray, Size(3,3));
 
     
-    Canny(gray, gray, 120, 360, 3);
+    Canny(gray, gray, 50, 150, 3);
     Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
     
     dilate(gray, gray, kernel);
@@ -57,7 +57,7 @@ int main(int argc, char** argv)
         int radius = c[2];
         circle( src, center, radius, Scalar(255,0,255), 3, LINE_AA);
     }
-    //resize(src,src,Size(),.25,.25);
+    resize(src,src,Size(),.25,.25);
     imshow("detected circles", src);
     char c=(char)waitKey(1);
     if(c==27) break;

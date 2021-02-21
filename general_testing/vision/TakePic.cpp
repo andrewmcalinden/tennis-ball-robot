@@ -23,7 +23,7 @@ int main(int argc, char** argv)
     int count = 1;
     std::stringstream ss;
     std::string name;
-    Mat src;
+    Mat src, previewPic;
     while(1){
         
         cap.grab();
@@ -35,9 +35,9 @@ int main(int argc, char** argv)
     ss << "image_"<< to_string(count);
     name = ss.str();
     
-    resize(src,src,Size(),.25,.25);
+    resize(src,previewPic,Size(),.25,.25);
     
-    imshow("Preview", src);
+    imshow("Preview", previewPic);
 
     char c=(char)waitKey(1);
     if(c==27) break;

@@ -18,7 +18,7 @@ int main(int argc, char** argv)
     cap.set(cv::CAP_PROP_FRAME_HEIGHT, height);
     cap.set(cv::CAP_PROP_FRAME_WIDTH, width);
     //cap.set(cv::CAP_PROP_FOURCC, 0x21);
-    cap.set(cv::CAP_PROP_FPS, 60);
+    //cap.set(cv::CAP_PROP_FPS, 60);
 
     int count = 1;
     std::stringstream ss;

@@ -38,11 +38,11 @@ int main(int argc, char** argv)
     resize(src,previewPic,Size(),.25,.25);
     
     imshow("Preview", previewPic);
+    int d = waitKey(1);
+    
+    if(d==27) break;
 
-    char c=(char)waitKey(1);
-    if(c==27) break;
-
-    int d = waitKey(0);
+    
     if(d==' ') {
         imwrite("name.png", src);
         ss << "image_"<< to_string(count) << ".png";

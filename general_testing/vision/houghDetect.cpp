@@ -59,7 +59,7 @@ int main(int argc, char** argv)
     }
     //resize(src,src,Size(),.25,.25);
     imshow("detected circles", src);
-    waitKey(17);
+    waitKey(1);
     
 }
 }

@@ -30,7 +30,7 @@ int main(int argc, char** argv)
     blur(gray, gray, Size(3,3));
 
     
-    Canny(gray, gray, 100, 300, 3);
+    Canny(gray, gray, 120, 360, 3);
     Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
     
     dilate(gray, gray, kernel);
@@ -43,7 +43,7 @@ int main(int argc, char** argv)
     vector<Vec3f> circles;
     
     HoughCircles(gray, circles, HOUGH_GRADIENT, 1,
-                 gray.rows/20,  // change this value to detect circles with different distances to each other
+                 gray.rows/4,  // change this value to detect circles with different distances to each other
                  110, 26, 10, 120 // change the last two parameters
             // (min_radius & max_radius) to detect larger circles
     );

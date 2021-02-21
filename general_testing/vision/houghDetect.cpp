@@ -9,8 +9,14 @@ int main(int argc, char** argv)
     VideoCapture cap(0);
 
 
-   cvSetCaptureProperty( cap, CV_CAP_PROP_FRAME_WIDTH, 1920 );
-   cvSetCaptureProperty( cap, CV_CAP_PROP_FRAME_HEIGHT, 1080 );
+    int height(1080);
+    int width(1920);
+
+    
+    cap.set(CV_CAP_PROP_FRAME_HEIGHT, height);
+    cap.set(CV_CAP_PROP_FRAME_WIDTH, width);
+    cap.set(cv::CAP_PROP_FOURCC, 0x21);
+    cap.set(cv::CAP_PROP_FPS, 30);
 
 
     while(1){

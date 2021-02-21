@@ -41,7 +41,7 @@ int main(int argc, char** argv)
     blur(gray, gray, Size(3,3));
     
     vector<Vec3f> circles;
-    imshow("img view", gray);
+    
     HoughCircles(gray, circles, HOUGH_GRADIENT, 1,
                  gray.rows/20,  // change this value to detect circles with different distances to each other
                  110, 26, 10, 120 // change the last two parameters
@@ -58,7 +58,9 @@ int main(int argc, char** argv)
         circle( src, center, radius, Scalar(255,0,255), 3, LINE_AA);
     }
     resize(src,src,Size(),.25,.25);
+    resize(gray,gray,Size(),.25,.25);
     imshow("detected circles", src);
+    imshow("img view", gray);
     char c=(char)waitKey(1);
     if(c==27) break;
       

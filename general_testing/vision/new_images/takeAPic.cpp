@@ -11,8 +11,8 @@ int main(int argc, char** argv)
     VideoCapture cap(0);
 
 
-    int height(720);
-    int width(1280);
+    int height(1080);
+    int width(1920);
 
     
     cap.set(cv::CAP_PROP_FRAME_HEIGHT, height);

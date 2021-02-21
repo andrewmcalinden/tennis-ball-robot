@@ -24,6 +24,7 @@ int main(int argc, char** argv)
     std::stringstream ss;
     std::string name;
     Mat src, previewPic;
+    ss << "image_"<< to_string(count) << ".png";
     while(1){
         
         cap.grab();
@@ -32,7 +33,7 @@ int main(int argc, char** argv)
     //src = imread("images/view3.jpg");
     
     
-    ss << "image_"<< to_string(count) << ".png";
+    
     name = ss.str();
     
     resize(src,previewPic,Size(),.25,.25);
@@ -47,6 +48,7 @@ int main(int argc, char** argv)
         imwrite(name, src);
         ss << "image_"<< to_string(count) << ".png";
         name = ss.str();
+        ss.str(std::string());
         ++count;
       
         }

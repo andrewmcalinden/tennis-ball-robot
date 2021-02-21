@@ -59,7 +59,11 @@ int main(int argc, char** argv)
     }
     //resize(src,src,Size(),.25,.25);
     imshow("detected circles", src);
-    waitKey(1);
+    char c=(char)waitKey(1);
+    if(c==27) break;
+      
+  }
+
     
 }
 }

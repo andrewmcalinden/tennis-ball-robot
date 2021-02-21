@@ -25,6 +25,7 @@ int main(int argc, char** argv)
     std::string name;
     Mat src, previewPic;
     ss << "image_"<< to_string(count) << ".png";
+    name = ss.str();
     while(1){
         
         cap.grab();
@@ -34,7 +35,7 @@ int main(int argc, char** argv)
     
     
     
-    name = ss.str();
+    
     
     resize(src,previewPic,Size(),.25,.25);
     

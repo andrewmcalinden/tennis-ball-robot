@@ -71,6 +71,10 @@ int main()
             cout << xCenter << ", " << yCenter << endl;
         }
 
+        line(imgResize, Point(62, 707), Point(716, 219), Scalar(0, 0, 255), 2);
+        line(imgResize, Point(1218, 707), Point(564, 219), Scalar(0, 0, 255), 2);
+
+
         imshow("mask", imgMask);
         imshow("dilated masked", imgDilate);
         imshow("original", imgResize);

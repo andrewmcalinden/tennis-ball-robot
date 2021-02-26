@@ -12,16 +12,16 @@ int hmax = 53, smax = 208, vmax = 255;
 
 int main()
 {
-    VideoCapture cap(0);
+    //VideoCapture cap(0);
     Mat img, imgHSV, imgMask, imgResize, imgDilate;
 
-    if (!cap.isOpened())
-    {
-        cout << "Could not initialize capturing..." << endl;
-        return 0;
-    }
+    // if (!cap.isOpened())
+    // {
+    //     cout << "Could not initialize capturing..." << endl;
+    //     return 0;
+    // }
     
-    
+    /*
     namedWindow("Trackbars", (640, 200));
     createTrackbar("hue min", "Trackbars", &hmin, 500);
     createTrackbar("hue max", "Trackbars", &hmax, 500);
@@ -29,13 +29,13 @@ int main()
     createTrackbar("sat max", "Trackbars", &smax, 500);
     createTrackbar("val min", "Trackbars", &vmin, 500);
     createTrackbar("val max", "Trackbars", &vmax, 500);
-    
+    */
 
     while (1)
     {
         //cap.grab();
         //cap.retrieve(img);
-        img = imread("TakenImages/image_1.png");
+        img = imread("new_images/image_1.png");
 
         resize(img, imgResize, Size(), .75, .75);
         Size s = imgResize.size();

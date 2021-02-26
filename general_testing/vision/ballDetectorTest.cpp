@@ -31,11 +31,13 @@ int main()
     createTrackbar("val max", "Trackbars", &vmax, 500);
     */
 
-    while (1)
+    for (int i = 1; i < 59; i++)
     {
         //cap.grab();
         //cap.retrieve(img);
-        img = imread("new_images/image_1.png");
+        stringstream path;
+        path << "new_images/image_" << i << ".png";
+        img = imread(path.str());
 
         resize(img, imgResize, Size(), .75, .75);
         Size s = imgResize.size();
@@ -73,6 +75,6 @@ int main()
         imshow("dilated masked", imgDilate);
         imshow("original", imgResize);
         char c=(char)waitKey(1);
-        if(c==27) break;
+        if(c==32) continue;
     }
 }

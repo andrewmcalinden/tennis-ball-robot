@@ -75,6 +75,6 @@ int main()
         imshow("dilated masked", imgDilate);
         imshow("original", imgResize);
         char c=(char)waitKey(1);
-        while(c!=32){} // do nothing
+        while(c!=32){ c=(char)waitKey(1);} // do nothing
     }
 }

@@ -1,0 +1,3 @@
+git pull
+g++ trackBallTest.cpp ballDetector.cpp -o trackBallTest `pkg-config --cflags --libs opencv`
+./trackBallTest

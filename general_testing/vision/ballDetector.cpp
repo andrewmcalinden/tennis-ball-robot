@@ -7,6 +7,8 @@ using namespace std;
 int hmin = 37, smin = 106, vmin = 123;
 int hmax = 53, smax = 208, vmax = 255;
 
+bool cameraStarted = 0;
+
 VideoCapture cap;
 
 void startCamera()
@@ -16,23 +18,101 @@ void startCamera()
     {
         std::cout << "Could not initialize capturing..." << endl;
     }
+    cameraStarted = 1;
 }
 
-vector<Point> getCenters()
+void trackBall(Rect2d initialBBox)
 {
+    if (!cameraStarted)
+    {
+        startCamera();
+    }
+
+    Ptr<Tracker> tracker = TrackerCSRT::create();
+    Mat frame;
+    video.read(frame);
+
+    Rect2d currentBBox = initialBBox;
+    rectangle(frame, initialBBox, Scalar(255, 0, 0), 2, 1);
+
+    imshow("Tracking", frame);
+    tracker->init(frame, currentBBox);
+
+    while(((char)waitKey(1)) != 32)
+    {
+        double timer = (double)getTickCount();
+        float fps = getTickFrequency() / ((double)getTickCount() - timer);
+
+        bool ok = tracker->update(frame, currentBBox);
+        if (ok)
+        {
+            rectangle(frame, currentBBox, Scalar(255, 0, 0), 2, 1);
+        }
+        else
+        {
+            putText(frame, "Tracking failure detected", Point(100, 80), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(0, 0, 255), 2);
+        }
+
+        putText(frame, "FPS : " + SSTR(int(fps)), Point(100, 50), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50, 170, 50), 2);
+        imshow("Tracking", frame);
+    }
+}
+
+vector<Rect2d> getBoundingBoxes()
+{
+    if (!cameraStarted)
+    {
+        startCamera();
+    }
+
     Mat img, imgCrop, imgHSV, imgMask, imgDilate;
 
     cap.grab();
     cap.retrieve(img);
 
-    Size s = img.size();
-    int w = s.width;
-    int h = s.height;
+    cvtColor(imgCrop, imgHSV, COLOR_BGR2HSV);
 
-    int leftSide = w * .45;
-    Rect r(leftSide, 0, w * .1, h);
+    Scalar lower(hmin, smin, vmin);
+    Scalar upper(hmax, smax, vmax);
+    inRange(imgHSV, lower, upper, imgMask);
 
-    imgCrop = img(r);
+    Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
+    dilate(imgMask, imgDilate, kernel);
+
+    vector<vector<Point>> contours;
+    vector<Vec4i> hierarchy;
+    findContours(imgDilate, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
+
+    vector<vector<Point>> conPoly(contours.size());
+    vector<Rect2d> boundRect(contours.size());
+
+    for (int i = 0; i < contours.size(); i++)
+    {
+        float peri = arcLength(contours[i], true);
+        approxPolyDP(contours[i], conPoly[i], 0.02 * peri, true);
+        boundRect[i] = boundingRect(conPoly[i]);
+
+        rectangle(img, boundRect[i].tl(), boundRect[i].br(), Scalar(0, 255, 0), 5);
+    }
+
+    imshow("crop", imgCrop);
+    imshow("mask", imgMask);
+    imshow("dilated", imgDilate);
+    imshow("orig", img);
+    return boundRect;
+}
+
+vector<Ball> getBalls()
+{
+    if (!cameraStarted)
+    {
+        startCamera();
+    }
+
+    Mat img, imgCrop, imgHSV, imgMask, imgDilate;
+
+    cap.grab();
+    cap.retrieve(img);
 
     cvtColor(imgCrop, imgHSV, COLOR_BGR2HSV);
 
@@ -48,20 +128,25 @@ vector<Point> getCenters()
     findContours(imgDilate, contours, hierarchy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE);
     drawContours(img, contours, -1, Scalar(255, 0, 255), 1);
 
-    vector<Point> centers;
+    vector<Ball> balls;
     for (vector<Point> &contour : contours)
     {
         Moments m = moments(contour);
         double xCenter = m.m10 / m.m00;
         double yCenter = m.m01 / m.m00;
 
-        stringstream point;
-        point << "(" << xCenter << ", " << yCenter << ")";
-        string text = point.str();
+        stringstream stream;
+        stream << "(" << xCenter << ", " << yCenter << ")";
 
         Point p((int)xCenter, (int)yCenter);
-        centers.push_back(p);
 
+        double area = contourArea(contour);
+        stream << " " << area;
+
+        Ball b{area, p};
+        balls.push_back(b);
+
+        string text = point.str();
         putText(img, text, p, FONT_HERSHEY_DUPLEX, .3, Scalar(255, 255, 255), .2);
     }
     
@@ -69,5 +154,5 @@ vector<Point> getCenters()
     imshow("mask", imgMask);
     imshow("dilated", imgDilate);
     imshow("orig", img);
-    return centers;
+    return balls;
 }

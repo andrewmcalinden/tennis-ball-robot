@@ -1,9 +1,5 @@
 #include "robot.h"
 #include "../odometry/odometry.h"
-#include "../vision/ballDetector.h"
-#include "opencv2/imgcodecs.hpp"
-#include "opencv2/highgui.hpp"
-#include "opencv2/imgproc.hpp"
 #include <wiringPi.h>
 #include <iostream>
 
@@ -23,14 +19,13 @@
 
 int main()
 {
-    Robot r(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA, L_ENCODER_PIN1, L_ENCODER_PIN2, R_ENCODER_PIN1, R_ENCODER_PIN2);
-
     startCamera();
-    while(getBalls().size() == 0) //while we don't see any balls
+    while (getBalls().size() == 0) //turn until we see a single ball
     {
         r.setMotorPowers(.2, -.2);
         delay(20);
     }
-    r.setMotorPowers(0, 0);
-    std::cout << "I SAW THE BALL AND STOPPED" << std::endl;
+
+    //turn until this ball is at the left of the screen since we initially saw it at the right
+    turnPixel(0, .37, 0, .0006, .12);
 }

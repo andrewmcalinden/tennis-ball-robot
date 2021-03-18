@@ -30,7 +30,8 @@ void trackBall(Rect2d initialBBox)
 
     Ptr<Tracker> tracker = TrackerCSRT::create();
     Mat frame;
-    cap.read(frame);
+    cap.grab();
+    cap.retrieve(frame);
 
     Rect2d currentBBox = initialBBox;
     rectangle(frame, initialBBox, Scalar(255, 0, 0), 2, 1);
@@ -40,6 +41,8 @@ void trackBall(Rect2d initialBBox)
 
     while(((char)waitKey(1)) != 32)
     {
+        cap.grab();
+        cap.retrieve(frame);
         double timer = (double)getTickCount();
         float fps = getTickFrequency() / ((double)getTickCount() - timer);
 

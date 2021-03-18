@@ -1,5 +1,6 @@
 #include "../vision/ballDetector.h"
 #include <iostream>
+#include <thread>
 
 int main()
 {
@@ -8,5 +9,9 @@ int main()
     {
         boundingBoxes = getBoundingBoxes();
     }
-    trackBall(boundingBoxes.at(0));
+    std::thread th(trackBall, boundingBoxes.at(0));
+    while(1)
+    {
+        std::cout << getBallX() << endl;
+    }
 }

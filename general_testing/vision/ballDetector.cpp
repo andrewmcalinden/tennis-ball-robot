@@ -7,9 +7,16 @@ using namespace std;
 int hmin = 37, smin = 106, vmin = 123;
 int hmax = 53, smax = 208, vmax = 255;
 
+double currentBallX;
+
 bool cameraStarted = 0;
 
 VideoCapture cap;
+
+double getBallX()
+{
+    return currentBallX;
+}
 
 void startCamera()
 {
@@ -55,6 +62,8 @@ void trackBall(Rect2d initialBBox)
         {
             putText(frame, "Tracking failure detected", Point(100, 80), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(0, 0, 255), 2);
         }
+
+        currentBallX = currentBBox.x + currentBBox.width / 2;
 
         stringstream stream;
         stream << "FPS: " << (int)fps;

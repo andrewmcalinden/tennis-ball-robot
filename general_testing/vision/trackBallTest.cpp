@@ -10,11 +10,9 @@ int main()
         boundingBoxes = getBoundingBoxes();
     }
     std::thread th(trackBall, boundingBoxes.at(0));
-    th.detach();
-
     while(cv::waitKey(1) != 32)
     {
         std::cout << getBallX() << std::endl;
     }
-    stopTracking();
+    th.join();
 }

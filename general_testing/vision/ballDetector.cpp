@@ -30,7 +30,7 @@ void trackBall(Rect2d initialBBox)
 
     Ptr<Tracker> tracker = TrackerCSRT::create();
     Mat frame;
-    video.read(frame);
+    cap.read(frame);
 
     Rect2d currentBBox = initialBBox;
     rectangle(frame, initialBBox, Scalar(255, 0, 0), 2, 1);

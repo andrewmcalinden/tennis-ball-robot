@@ -86,6 +86,7 @@ void trackBall(Rect2d initialBBox)
         stream << "FPS: " << (int)fps;
         putText(frame, stream.str(), Point(100, 50), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50, 170, 50), 2);
         imshow("Tracking", frame);
+        cout << "yoyoyo" << endl;
     }
 }
 

@@ -54,7 +54,7 @@ void trackBall(Rect2d initialBBox)
     imshow("Tracking", frame);
     tracker->init(frame, currentBBox);
 
-    while(track)
+    for (int i = 0; i < 10000; i++)
     {
         cap.grab();
         cap.retrieve(frame);

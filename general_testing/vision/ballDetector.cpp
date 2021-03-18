@@ -75,7 +75,7 @@ vector<Rect2d> getBoundingBoxes()
     cap.grab();
     cap.retrieve(img);
 
-    cvtColor(imgCrop, imgHSV, COLOR_BGR2HSV);
+    cvtColor(img, imgHSV, COLOR_BGR2HSV);
 
     Scalar lower(hmin, smin, vmin);
     Scalar upper(hmax, smax, vmax);
@@ -119,7 +119,7 @@ vector<Ball> getBalls()
     cap.grab();
     cap.retrieve(img);
 
-    cvtColor(imgCrop, imgHSV, COLOR_BGR2HSV);
+    cvtColor(img, imgHSV, COLOR_BGR2HSV);
 
     Scalar lower(hmin, smin, vmin);
     Scalar upper(hmax, smax, vmax);

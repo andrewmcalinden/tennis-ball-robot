@@ -10,12 +10,18 @@ int hmax = 53, smax = 208, vmax = 255;
 double currentBallX;
 
 bool cameraStarted = 0;
+bool track = 0;
 
 VideoCapture cap;
 
 double getBallX()
 {
     return currentBallX;
+}
+
+void stopTracking()
+{
+    track = 0;
 }
 
 void startCamera()
@@ -30,6 +36,8 @@ void startCamera()
 
 void trackBall(Rect2d initialBBox)
 {
+    track = 1;
+
     if (!cameraStarted)
     {
         startCamera();
@@ -46,7 +54,7 @@ void trackBall(Rect2d initialBBox)
     imshow("Tracking", frame);
     tracker->init(frame, currentBBox);
 
-    while(((char)waitKey(1)) != 32)
+    while(track)
     {
         cap.grab();
         cap.retrieve(frame);

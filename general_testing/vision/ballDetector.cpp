@@ -1,5 +1,6 @@
 #include "ballDetector.h"
 #include <iostream>
+#include <thread>
 
 using namespace cv;
 using namespace std;

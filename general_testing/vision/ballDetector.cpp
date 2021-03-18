@@ -100,7 +100,6 @@ vector<Rect2d> getBoundingBoxes()
         rectangle(img, boundRect[i].tl(), boundRect[i].br(), Scalar(0, 255, 0), 5);
     }
 
-    imshow("crop", imgCrop);
     imshow("mask", imgMask);
     imshow("dilated", imgDilate);
     imshow("orig", img);
@@ -155,7 +154,6 @@ vector<Ball> getBalls()
         putText(img, text, p, FONT_HERSHEY_DUPLEX, .3, Scalar(255, 255, 255), .2);
     }
     
-    imshow("crop", imgCrop);
     imshow("mask", imgMask);
     imshow("dilated", imgDilate);
     imshow("orig", img);

@@ -12,7 +12,7 @@ int hmax = 53, smax = 208, vmax = 255;
 double currentBallX;
 
 bool cameraStarted = 0;
-std::atomic<bool> track(false);
+std::atomic<bool> track;
 
 VideoCapture cap;
 
@@ -25,6 +25,7 @@ double getBallX()
 
 void startTracking(Rect2d initialBB)
 {
+    track = true;
     th = std::thread(trackBall, initialBB);
 }
 
@@ -46,8 +47,6 @@ void startCamera()
 
 void trackBall(Rect2d initialBBox)
 {
-    track = true;
-
     if (!cameraStarted)
     {
         startCamera();
@@ -64,7 +63,7 @@ void trackBall(Rect2d initialBBox)
     imshow("Tracking", frame);
     tracker->init(frame, currentBBox);
 
-    for (int i = 0; i < 10000; i++)
+    while(track.load())
     {
         cap.grab();
         cap.retrieve(frame);

@@ -8,7 +8,7 @@ int main()
     {
         boundingBoxes = getBoundingBoxes();
     }
-    startTracking();
+    startTracking(boundingBoxes.at(0));
     while(cv::waitKey(1) != 32)
     {
         std::cout << getBallX() << std::endl;

@@ -22,9 +22,9 @@ double getBallX()
     return currentBallX;
 }
 
-void startTracking()
+void startTracking(Rect2d initialBB)
 {
-    th = std::thread(trackBall, boundingBoxes.at(0));
+    th = std::thread(trackBall, initialBB);
 }
 
 void stopTracking()

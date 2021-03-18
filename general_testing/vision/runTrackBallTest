@@ -1,3 +1,3 @@
 git pull
-g++ trackBallTest.cpp ballDetector.cpp -o trackBallTest `pkg-config --cflags -Wno-psabi --libs opencv`
+g++ trackBallTest.cpp ballDetector.cpp -o trackBallTest -Wno-psabi `pkg-config --cflags --libs opencv`
 ./trackBallTest

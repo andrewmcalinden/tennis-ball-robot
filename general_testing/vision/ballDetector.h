@@ -22,4 +22,4 @@ double getBallX();
 
 void trackBall(cv::Rect2d initialBBox); //draws bounding box around the ball initially passed as a parameter
 void stopTracking();
-void startTracking();
+void startTracking(cv::Rect2d initialBB)

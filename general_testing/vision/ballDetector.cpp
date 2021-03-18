@@ -10,7 +10,7 @@ int hmax = 53, smax = 208, vmax = 255;
 double currentBallX;
 
 bool cameraStarted = 0;
-atomic<bool> track{false};
+std::atomic<bool> track(false);
 
 VideoCapture cap;
 

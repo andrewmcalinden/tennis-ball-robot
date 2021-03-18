@@ -146,7 +146,7 @@ vector<Ball> getBalls()
         Ball b{area, p};
         balls.push_back(b);
 
-        string text = point.str();
+        string text = stream.str();
         putText(img, text, p, FONT_HERSHEY_DUPLEX, .3, Scalar(255, 255, 255), .2);
     }
     

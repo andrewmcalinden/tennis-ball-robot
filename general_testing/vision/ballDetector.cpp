@@ -1,7 +1,7 @@
 #include "ballDetector.h"
 #include <iostream>
 #include <thread>
-#include <stdatomic.h>
+#include <atomic>
 
 using namespace cv;
 using namespace std;

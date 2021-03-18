@@ -12,6 +12,6 @@ int main()
     std::thread th(trackBall, boundingBoxes.at(0));
     while(1)
     {
-        std::cout << getBallX() << endl;
+        std::cout << getBallX() << std::endl;
     }
 }

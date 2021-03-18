@@ -7,6 +7,7 @@ int main()
     while (boundingBoxes.size() == 0) //while we don't see any balls
     {
         boundingBoxes = getBoundingBoxes();
+        waitKey(1);
     }
-    trackBall(boundingBoxes.at(0));
+    //trackBall(boundingBoxes.at(0));
 }

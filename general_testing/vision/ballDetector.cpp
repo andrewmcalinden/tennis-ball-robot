@@ -81,7 +81,7 @@ vector<Rect2d> getBoundingBoxes()
     Scalar upper(hmax, smax, vmax);
     inRange(imgHSV, lower, upper, imgMask);
 
-    Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
+    Mat kernel = getStructuringElement(MORPH_RECT, Size(7, 7));
     dilate(imgMask, imgDilate, kernel);
 
     vector<vector<Point>> contours;
@@ -124,7 +124,7 @@ vector<Ball> getBalls()
     Scalar upper(hmax, smax, vmax);
     inRange(imgHSV, lower, upper, imgMask);
 
-    Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
+    Mat kernel = getStructuringElement(MORPH_RECT, Size(7, 7));
     dilate(imgMask, imgDilate, kernel);
 
     vector<vector<Point>> contours;

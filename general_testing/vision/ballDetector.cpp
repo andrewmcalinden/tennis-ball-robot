@@ -63,7 +63,7 @@ void trackBall(Rect2d initialBBox)
     imshow("Tracking", frame);
     tracker->init(frame, currentBBox);
 
-    while(track.load())
+    while (track.load())
     {
         cap.grab();
         cap.retrieve(frame);
@@ -180,7 +180,7 @@ vector<Ball> getBalls()
         string text = stream.str();
         putText(img, text, p, FONT_HERSHEY_DUPLEX, .3, Scalar(255, 255, 255), .2);
     }
-    
+
     imshow("mask", imgMask);
     imshow("dilated", imgDilate);
     imshow("orig", img);

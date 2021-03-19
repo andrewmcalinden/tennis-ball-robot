@@ -62,7 +62,7 @@ void trackBall(Rect2d initialBBox)
 
     //imshow("Tracking", frame);
     tracker->init(frame, currentBBox);
-
+    ofstream output("ballx.txt");
     while (track.load())
     {
         double timer = (double)getTickCount();
@@ -79,6 +79,7 @@ void trackBall(Rect2d initialBBox)
         //     putText(frame, "Tracking failure detected", Point(100, 80), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(0, 0, 255), 2);
         // }
         currentBallX = currentBBox.x + currentBBox.width / 2;
+        output << currentBallX << endl;
 
         //stringstream stream;
         //stream << "FPS: " << (int)fps;
@@ -88,6 +89,7 @@ void trackBall(Rect2d initialBBox)
         //imshow("Tracking", frame);
         //waitKey(1);
     }
+    output.close();
 }
 
 vector<Rect2d> getBoundingBoxes()

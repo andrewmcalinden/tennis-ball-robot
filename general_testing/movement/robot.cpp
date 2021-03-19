@@ -3,6 +3,7 @@
 #include "../math/mathUtil.h"
 #include "../math/vector.h"
 #include <wiringPi.h>
+#include "../vision/ballDetector.h"
 #include <cmath>
 #include <ctime>
 #include <iostream>
@@ -322,9 +323,31 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     outputFile.close();
 }
 
-void Robot::turnPixel(double finalPixel, double kp, double ki, double kd, double f)
+void Robot::turnPixel(double finalPixel, double power, double f, cv::Rect2d initialBB)
 {
-    
+    startTracking(initialBB);
+
+    const double initialPixel = initialBB.x + initialBB.w / 2;
+    const double initialPixelDiff = initialPixel - finalPixel;
+    double error = initialPixelDiff;
+
+    while (fabs(error) > 20)
+    {
+        updatePos(encoderL.read(), encoderR.read());
+        error = getBallX() - finalPixel;
+
+        double proportional = error / fabs(initialPixelDiff);
+        if (proportional > 0)
+        {
+            setMotorPowers(-proportional - f, proportional + f);
+        }
+        else
+        {
+            setMotorPowers(-proportional + f, proportional - f);
+        }
+    }
+    setMotorPowers(0, 0);
+    stopTracking();
 }
 
 void Robot::setMotorPowers(double lPower, double rPower)

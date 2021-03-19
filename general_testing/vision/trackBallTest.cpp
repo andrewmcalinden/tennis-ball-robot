@@ -11,7 +11,7 @@ int main()
     startTracking(boundingBoxes.at(0));
     while(getBallX() < 500)
     {
-        std::cout << getBallX() << std::endl;
+        //std::cout << getBallX() << std::endl;
     }
     stopTracking();
 }

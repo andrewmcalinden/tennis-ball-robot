@@ -336,15 +336,42 @@ void Robot::turnPixel(double finalPixel, double power, double f, cv::Rect2d init
         updatePos(encoderL.read(), encoderR.read());
         error = getBallX() - finalPixel;
 
+        double y = getBallY();
         double proportional = error / fabs(initialPixelDiff);
-        if (proportional > 0)
+        double power = proportional * (y / 1000.0);
+
+        if (power > 0)
         {
-            setMotorPowers(-proportional - f, proportional + f);
+            setMotorPowers(-power - f, power + f);
         }
         else
         {
-            setMotorPowers(-proportional + f, proportional - f);
+            setMotorPowers(-power + f, power - f);
         }
+    }
+    setMotorPowers(0, 0);
+    stopTracking();
+}
+
+void Robot::lineToBall(cv::Rect2d initialBB, double power, double f) 
+{
+    startTracking(initialBB);
+
+    double y = getBallY();
+    while (y < 700)
+    {
+        updatePos(encoderL.read(), encoderR.read());
+        double currentX = initialBB.x + initialBB.w / 2;
+
+        double leftProportion = currentX / getImageWidth();
+        double rightProportion = 1 - leftProportion;
+
+        y = getBallY();
+
+        double lPower = leftProportion / (y / 1000.0);
+        double rPower = rightProportion / (y / 1000.0);
+
+        setMotorPowers(lPower + f, rPower + f);
     }
     setMotorPowers(0, 0);
     stopTracking();

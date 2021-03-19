@@ -10,6 +10,10 @@ int hmin = 37, smin = 106, vmin = 123;
 int hmax = 53, smax = 208, vmax = 255;
 
 double currentBallX;
+double currentBallY;
+
+double imageWidth;
+double imageHeight;
 
 bool cameraStarted = 0;
 std::atomic<bool> track;
@@ -21,6 +25,21 @@ std::thread th;
 double getBallX()
 {
     return currentBallX;
+}
+
+double getBallY()
+{
+    return currentBallY;
+}
+
+double getImageWidth()
+{
+    return imageWidth;
+}
+
+double getImageHeight()
+{
+    return imageHeight;
 }
 
 void startTracking(Rect2d initialBB)
@@ -43,6 +62,13 @@ void startCamera()
         std::cout << "Could not initialize capturing..." << endl;
     }
     cameraStarted = 1;
+
+    Mat test;
+    cap.grab();
+    cap.retrieve(frame);
+
+    imageWidth = cap.cols;
+    imageHeight = cap.height;
 }
 
 void trackBall(Rect2d initialBBox)
@@ -79,6 +105,7 @@ void trackBall(Rect2d initialBBox)
         //     putText(frame, "Tracking failure detected", Point(100, 80), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(0, 0, 255), 2);
         // }
         currentBallX = currentBBox.x + currentBBox.width / 2;
+        currentBallY = currentBBox.y + currentBBox.heigh / 2;
         output << currentBallX << endl;
 
         //stringstream stream;

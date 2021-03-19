@@ -26,5 +26,8 @@ class Robot
                  double kp_turn, double ki_turn, double kd_turn, double f_turn);
 
     void setMotorPowers(double lPower, double rPower);
+
+    void turnPixel(double finalPixel, double power, double f, cv::Rect2d initialBB);
+    void lineToBall(cv::Rect2d initialBB, double power, double f);
 };
 #endif

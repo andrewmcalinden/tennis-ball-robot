@@ -79,14 +79,13 @@ void trackBall(Rect2d initialBBox)
         {
             putText(frame, "Tracking failure detected", Point(100, 80), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(0, 0, 255), 2);
         }
-
         currentBallX = currentBBox.x + currentBBox.width / 2;
 
         stringstream stream;
         stream << "FPS: " << (int)fps;
         putText(frame, stream.str(), Point(100, 50), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50, 170, 50), 2);
         imshow("Tracking", frame);
-        cout << "yoyoyo" << endl;
+        waitKey(1);
     }
 }
 

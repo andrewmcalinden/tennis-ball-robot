@@ -65,10 +65,9 @@ void trackBall(Rect2d initialBBox)
 
     while (track.load())
     {
+        double timer = (double)getTickCount();
         cap.grab();
         cap.retrieve(frame);
-        double timer = (double)getTickCount();
-        float fps = getTickFrequency() / ((double)getTickCount() - timer);
 
         bool ok = tracker->update(frame, currentBBox);
         // if (ok)
@@ -81,8 +80,10 @@ void trackBall(Rect2d initialBBox)
         // }
         currentBallX = currentBBox.x + currentBBox.width / 2;
 
-        stringstream stream;
-        stream << "FPS: " << (int)fps;
+        //stringstream stream;
+        //stream << "FPS: " << (int)fps;
+        float fps = getTickFrequency() / ((double)getTickCount() - timer);
+        cout << "FPS: " << (int)fps << endl;
         //putText(frame, stream.str(), Point(100, 50), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50, 170, 50), 2);
         //imshow("Tracking", frame);
         //waitKey(1);

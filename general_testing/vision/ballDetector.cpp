@@ -67,10 +67,10 @@ void startCamera()
 
     Mat test;
     cap.grab();
-    cap.retrieve(frame);
+    cap.retrieve(test);
 
-    imageWidth = cap.cols;
-    imageHeight = cap.height;
+    imageWidth = test.cols;
+    imageHeight = test.height;
 }
 
 void trackBall(Rect2d initialBBox)
@@ -107,7 +107,7 @@ void trackBall(Rect2d initialBBox)
         //     putText(frame, "Tracking failure detected", Point(100, 80), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(0, 0, 255), 2);
         // }
         currentBallX = currentBBox.x + currentBBox.width / 2;
-        currentBallY = currentBBox.y + currentBBox.heigh / 2;
+        currentBallY = currentBBox.y + currentBBox.height / 2;
         output << currentBallX << endl;
 
         //stringstream stream;

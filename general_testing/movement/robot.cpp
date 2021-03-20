@@ -326,7 +326,7 @@ void Robot::turnPixel(double finalPixel, double power, double f, cv::Rect2d init
 {
     startTracking(initialBB);
 
-    const double initialPixel = initialBB.x + initialBB.w / 2;
+    const double initialPixel = initialBB.x + initialBB.width / 2;
     const double initialPixelDiff = initialPixel - finalPixel;
     double error = initialPixelDiff;
 
@@ -360,7 +360,7 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
     while (y < 700)
     {
         updatePos(encoderL.read(), encoderR.read());
-        double currentX = initialBB.x + initialBB.w / 2;
+        double currentX = initialBB.x + initialBB.width / 2;
 
         double leftProportion = currentX / getImageWidth();
         double rightProportion = 1 - leftProportion;
@@ -405,7 +405,7 @@ void Robot::goToBall()
     }
 
     turnPixel(500, .5, .14, minBox); //turn until it is dead center
-    curveToBall(minBox);
+    curveToBall(minBox, .5, .14);
 }
 
 void Robot::setMotorPowers(double lPower, double rPower)

@@ -10,15 +10,23 @@
 
 volatile int ballCount = 0;
 
+void countBalls()
+{
+    ballCount++;
+}
+
 Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned char rMotorDirPin, unsigned char rMotorPowerPin,
              double initialX, double initialY, double initialTheta,
-             unsigned char lEncoderPin1, unsigned char lEncoderPin2, unsigned char rEncoderPin1, unsigned char rEncoderPin2)
+             unsigned char lEncoderPin1, unsigned char lEncoderPin2, unsigned char rEncoderPin1, unsigned char rEncoderPin2,
+             unsigned char counterPin)
     //initialize motors and encoders
     : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin},
-      encoderL{lEncoderPin1, lEncoderPin2}, encoderR{rEncoderPin1, rEncoderPin2}
+      encoderL{lEncoderPin1, lEncoderPin2}, encoderR{rEncoderPin1, rEncoderPin2},
+      ballCounterPin{counterPin};
+
 {
     setPose(initialX, initialY, initialTheta);
-    wiringPiISR(COUNT_INPUT_PIN, INT_EDGE_FALLING, &countBalls);
+    wiringPiISR(ballCounterPin, INT_EDGE_FALLING, &countBalls);
 }
 
 void Robot::goToPos
@@ -323,11 +331,6 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     std::cout << "abs error: " << fabs(error) << std::endl;
     setMotorPowers(0, 0);
     outputFile.close();
-}
-
-void countBalls()
-{
-    ballCount++;
 }
 
 void Robot::turnPixel(double finalPixel, double power, double f, cv::Rect2d initialBB)

@@ -14,6 +14,8 @@ class Robot
     Encoder encoderL;
     Encoder encoderR;
 
+    unsigned char ballCounterPin;
+
     public:
     Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned char rMotorDirPin, unsigned char rMotorPowerPin,
             double initialX, double initialY, double initialTheta,
@@ -30,7 +32,5 @@ class Robot
     void turnPixel(double finalPixel, double power, double f, cv::Rect2d initialBB);
     void curveToBall(cv::Rect2d initialBB, double power, double f);
     void goToBall();
-
-    void countBalls();
 };
 #endif

@@ -22,7 +22,7 @@ Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned 
     //initialize motors and encoders
     : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin},
       encoderL{lEncoderPin1, lEncoderPin2}, encoderR{rEncoderPin1, rEncoderPin2},
-      ballCounterPin{counterPin};
+      ballCounterPin{counterPin}
 
 {
     setPose(initialX, initialY, initialTheta);

@@ -96,10 +96,10 @@ void collectorToggle(){
     collectorOn = !collectorOn;
 }
 
-void countBalls(){
+void countBalls()
+{
     oldCount = count;
     count++;
-    //delay(10);
 }
 
 int main()

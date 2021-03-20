@@ -8,6 +8,8 @@
 #include <iostream>
 #include <fstream>
 
+volatile int ballCount = 0;
+
 Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned char rMotorDirPin, unsigned char rMotorPowerPin,
              double initialX, double initialY, double initialTheta,
              unsigned char lEncoderPin1, unsigned char lEncoderPin2, unsigned char rEncoderPin1, unsigned char rEncoderPin2)
@@ -16,6 +18,7 @@ Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned 
       encoderL{lEncoderPin1, lEncoderPin2}, encoderR{rEncoderPin1, rEncoderPin2}
 {
     setPose(initialX, initialY, initialTheta);
+    wiringPiISR(COUNT_INPUT_PIN, INT_EDGE_FALLING, &countBalls);
 }
 
 void Robot::goToPos
@@ -322,6 +325,11 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     outputFile.close();
 }
 
+void countBalls()
+{
+    ballCount++;
+}
+
 void Robot::turnPixel(double finalPixel, double power, double f, cv::Rect2d initialBB)
 {
     startTracking(initialBB);
@@ -356,8 +364,9 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
 {
     startTracking(initialBB);
 
+    int initialBallCount = ballCount;
     double y = getBallY();
-    while (y < 700)
+    while (initialBallCount == ballCount)
     {
         updatePos(encoderL.read(), encoderR.read());
         double currentX = initialBB.x + initialBB.width / 2;
@@ -372,8 +381,10 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
 
         setMotorPowers(lPower + f, rPower + f);
     }
-    setMotorPowers(0, 0);
     stopTracking();
+
+    delay(1000); //keep driving for 1 second in case there is a cluster
+    setMotorPowers(0, 0);
 }
 
 void Robot::goToBall()

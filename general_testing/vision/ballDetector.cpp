@@ -70,7 +70,7 @@ void startCamera()
     cap.retrieve(test);
 
     imageWidth = test.cols;
-    imageHeight = test.height;
+    imageHeight = test.rows;
 }
 
 void trackBall(Rect2d initialBBox)

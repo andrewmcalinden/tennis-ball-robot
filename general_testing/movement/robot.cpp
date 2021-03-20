@@ -3,7 +3,6 @@
 #include "../math/mathUtil.h"
 #include "../math/vector.h"
 #include <wiringPi.h>
-#include "../vision/ballDetector.h"
 #include <cmath>
 #include <ctime>
 #include <iostream>
@@ -353,7 +352,7 @@ void Robot::turnPixel(double finalPixel, double power, double f, cv::Rect2d init
     stopTracking();
 }
 
-void Robot::lineToBall(cv::Rect2d initialBB, double power, double f) 
+void Robot::curveToBall(cv::Rect2d initialBB, double power, double f) 
 {
     startTracking(initialBB);
 
@@ -375,6 +374,38 @@ void Robot::lineToBall(cv::Rect2d initialBB, double power, double f)
     }
     setMotorPowers(0, 0);
     stopTracking();
+}
+
+void Robot::goToBall()
+{
+    startCamera();
+    std::vector<cv::Rect2d> boxes = getBoundingBoxes();
+    while (boxes.size() == 0) //while we don't see any balls
+    {
+        setMotorPowers(.2, -.2);
+        boxes = getBoundingBoxes();
+        delay(20);
+    }
+    setMotorPowers(0, 0);
+
+    //now that we see a ball on the right of the screen, turn until it is at the left of the screen
+    turnPixel(100, .5, .14, boxes.at(0));
+    boxes = getBoundingBoxes();
+
+    //find closest ball
+    int minY = boxes.at(0).y;
+    cv::Rect2d minBox = boxes.at(0);
+    for (cv::Rect2d &box: boxes)
+    {
+        if (box.y < minY)
+        {
+            minY = box.y;
+            minBox = box;
+        }
+    }
+
+    turnPixel(500, .5, .14, minBox); //turn until it is dead center
+    curveToBall(minBox);
 }
 
 void Robot::setMotorPowers(double lPower, double rPower)

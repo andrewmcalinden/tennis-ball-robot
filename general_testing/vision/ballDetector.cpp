@@ -56,6 +56,8 @@ void stopTracking()
 
 void startCamera()
 {
+    if (cameraStarted) return;
+    
     cap.open(0);
     if (!cap.isOpened())
     {

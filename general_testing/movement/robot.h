@@ -28,6 +28,8 @@ class Robot
     void setMotorPowers(double lPower, double rPower);
 
     void turnPixel(double finalPixel, double power, double f, cv::Rect2d initialBB);
-    void lineToBall(cv::Rect2d initialBB, double power, double f);
+    void curveToBall(cv::Rect2d initialBB, double power, double f);
+
+    void goToBall();
 };
 #endif

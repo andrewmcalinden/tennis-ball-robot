@@ -29,7 +29,8 @@ class Robot
 
     void turnPixel(double finalPixel, double power, double f, cv::Rect2d initialBB);
     void curveToBall(cv::Rect2d initialBB, double power, double f);
-
     void goToBall();
+
+    void countBalls();
 };
 #endif

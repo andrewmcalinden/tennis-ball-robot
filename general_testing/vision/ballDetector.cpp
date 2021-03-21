@@ -110,8 +110,8 @@ void trackBall(Rect2d initialBBox)
         currentBallY = currentBBox.y + currentBBox.height / 2;
         output << currentBallX << endl;
 
-        //stringstream stream;
-        //stream << "FPS: " << (int)fps;
+        stringstream stream;
+        stream << "FPS: " << (int)fps;
         float fps = getTickFrequency() / ((double)getTickCount() - timer);
         cout << "FPS: " << (int)fps << endl;
         putText(frame, stream.str(), Point(100, 50), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50, 170, 50), 2);

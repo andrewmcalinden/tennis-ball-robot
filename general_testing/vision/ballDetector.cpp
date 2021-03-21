@@ -86,9 +86,9 @@ void trackBall(Rect2d initialBBox)
     cap.retrieve(frame);
 
     Rect2d currentBBox = initialBBox;
-    //rectangle(frame, initialBBox, Scalar(255, 0, 0), 2, 1);
+    rectangle(frame, initialBBox, Scalar(255, 0, 0), 2, 1);
 
-    //imshow("Tracking", frame);
+    imshow("Tracking", frame);
     tracker->init(frame, currentBBox);
     ofstream output("ballx.txt");
     while (track.load())
@@ -98,14 +98,14 @@ void trackBall(Rect2d initialBBox)
         cap.retrieve(frame);
 
         bool ok = tracker->update(frame, currentBBox);
-        // if (ok)
-        // {
-        //     rectangle(frame, currentBBox, Scalar(255, 0, 0), 2, 1);
-        // }
-        // else
-        // {
-        //     putText(frame, "Tracking failure detected", Point(100, 80), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(0, 0, 255), 2);
-        // }
+        if (ok)
+        {
+            rectangle(frame, currentBBox, Scalar(255, 0, 0), 2, 1);
+        }
+        else
+        {
+            putText(frame, "Tracking failure detected", Point(100, 80), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(0, 0, 255), 2);
+        }
         currentBallX = currentBBox.x + currentBBox.width / 2;
         currentBallY = currentBBox.y + currentBBox.height / 2;
         output << currentBallX << endl;
@@ -114,9 +114,9 @@ void trackBall(Rect2d initialBBox)
         //stream << "FPS: " << (int)fps;
         float fps = getTickFrequency() / ((double)getTickCount() - timer);
         cout << "FPS: " << (int)fps << endl;
-        //putText(frame, stream.str(), Point(100, 50), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50, 170, 50), 2);
-        //imshow("Tracking", frame);
-        //waitKey(1);
+        putText(frame, stream.str(), Point(100, 50), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50, 170, 50), 2);
+        imshow("Tracking", frame);
+        waitKey(1);
     }
     output.close();
 }

@@ -28,6 +28,8 @@ int main()
         r.setMotorPowers(.2, -.2);
         cv::waitKey(25);
     }
+    cv::waitKey(100);
+
     r.setMotorPowers(0, 0);
     cv::waitKey(100);
 

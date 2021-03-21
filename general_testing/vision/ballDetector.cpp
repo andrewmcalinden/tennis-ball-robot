@@ -52,8 +52,10 @@ void startTracking(Rect2d initialBB)
 
 void stopTracking()
 {
+    cout << "starrting method" << endl;
     track = false;
     th.join();
+    cout << "joined" << endl;
 }
 
 void startCamera()
@@ -102,8 +104,6 @@ void trackBall(Rect2d initialBBox)
     ofstream output("ballx.txt");
     while (track.load())
     {
-        mtx.lock();
-
         double timer = (double)getTickCount();
         cap.grab();
         cap.retrieve(frame);
@@ -126,9 +126,7 @@ void trackBall(Rect2d initialBBox)
         stream << "FPS: " << (int)fps;
         putText(frame, stream.str(), Point(100, 50), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50, 170, 50), 2);
         imshow("Tracking", frame);
-        //waitKey(1);
-
-        mtx.unlock();
+        waitKey(1);
     }
     output.close();
 }

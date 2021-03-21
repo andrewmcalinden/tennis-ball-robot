@@ -352,7 +352,7 @@ void Robot::turnPixel(double finalPixel, double kp, double f, cv::Rect2d initial
         double proportional = error / fabs(initialPixelDiff);
         double power = proportional * kp * (y / 320.0);
 
-        stod::cout << "\ty: " << y;
+        std::cout << "\ty: " << y;
         std::cout << "\tpower: " << power << std::endl;
 
         if (power > 0)

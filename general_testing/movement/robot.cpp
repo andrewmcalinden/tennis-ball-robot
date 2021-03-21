@@ -342,7 +342,7 @@ void Robot::turnPixel(double finalPixel, double kp, double f, cv::Rect2d initial
     const double initialPixelDiff = initialPixel - finalPixel;
     double error = initialPixelDiff;
 
-    while (fabs(error) > 80)
+    while (fabs(error) > 20)
     {
         updatePos(encoderL.read(), encoderR.read());
         error = getBallX() - finalPixel;

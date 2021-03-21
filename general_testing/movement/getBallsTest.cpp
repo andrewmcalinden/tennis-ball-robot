@@ -30,6 +30,7 @@ int main()
         boxes = getBoundingBoxes();
         //delay(20);
     }
+    delay(200);
     r.setMotorPowers(0, 0);
     delay(500);
     boxes = getBoundingBoxes();

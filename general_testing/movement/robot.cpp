@@ -346,17 +346,21 @@ void Robot::turnPixel(double finalPixel, double power, double f, cv::Rect2d init
         updatePos(encoderL.read(), encoderR.read());
         error = getBallX() - finalPixel;
 
+        std::cout << "error: " << error << std::endl;
+
         double y = getBallY();
         double proportional = error / fabs(initialPixelDiff);
         double power = proportional * (y / 320.0);
 
+        std::cout << "power: " << power << std::endl;
+
         if (power > 0)
         {
-            setMotorPowers(-power - f, power + f);
+            //setMotorPowers(-power - f, power + f);
         }
         else
         {
-            setMotorPowers(-power + f, power - f);
+            //setMotorPowers(-power + f, power - f);
         }
     }
     setMotorPowers(0, 0);

@@ -336,7 +336,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
 void Robot::turnPixel(double finalPixel, double kp, double f, cv::Rect2d initialBB)
 {
     startTracking(initialBB);
-    delay(50);
+    delay(300);
 
     const double initialPixel = initialBB.x + initialBB.width / 2;
     const double initialPixelDiff = initialPixel - finalPixel;

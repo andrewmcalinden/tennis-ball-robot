@@ -73,6 +73,12 @@ void startCamera()
     imageHeight = test.rows;
 }
 
+void stopCamera()
+{
+    cap.release();
+    cameraStarted = false;
+}
+
 void trackBall(Rect2d initialBBox)
 {
     if (!cameraStarted)

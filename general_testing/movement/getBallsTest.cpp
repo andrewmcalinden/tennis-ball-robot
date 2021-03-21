@@ -28,9 +28,10 @@ int main()
         r.setMotorPowers(.2, -.2);
         cv::waitKey(25);
     }
-    cv::waitKey(500);
     r.setMotorPowers(0, 0);
     cv::waitKey(500);
+
+    stopCamera();
 
     //now that we see a ball on the right of the screen, turn until it is at the left of the screen
     r.turnPixel(35, .05, .14, getBoundingBoxes().at(0));

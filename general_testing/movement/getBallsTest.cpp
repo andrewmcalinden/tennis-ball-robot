@@ -26,7 +26,6 @@ int main()
     while (getBoundingBoxes().size() == 0) //while we don't see any balls
     {
         r.setMotorPowers(.2, -.2);
-        cv::waitKey(25);
     }
     r.setMotorPowers(0, 0);
     cv::waitKey(100);

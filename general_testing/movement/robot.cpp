@@ -336,12 +336,13 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
 void Robot::turnPixel(double finalPixel, double kp, double f, cv::Rect2d initialBB)
 {
     startTracking(initialBB);
+    delay(50);
 
     const double initialPixel = initialBB.x + initialBB.width / 2;
     const double initialPixelDiff = initialPixel - finalPixel;
     double error = initialPixelDiff;
 
-    while (fabs(error) > 20)
+    while (fabs(error) > 80)
     {
         updatePos(encoderL.read(), encoderR.read());
         error = getBallX() - finalPixel;

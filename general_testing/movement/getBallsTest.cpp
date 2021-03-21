@@ -30,9 +30,9 @@ int main()
         boxes = getBoundingBoxes();
         //delay(20);
     }
-    delay(2000);
-    boxes = getBoundingBoxes();
     r.setMotorPowers(0, 0);
+    delay(500);
+    boxes = getBoundingBoxes();
 
     //now that we see a ball on the right of the screen, turn until it is at the left of the screen
     r.turnPixel(35, .05, .14, boxes.at(0));

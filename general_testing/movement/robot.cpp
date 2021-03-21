@@ -355,13 +355,13 @@ void Robot::turnPixel(double finalPixel, double kp, double f, cv::Rect2d initial
         std::cout << "\ty: " << y;
         std::cout << "\tpower: " << power << std::endl;
 
-        if (power < 0)
+        if (power > 0)
         {
-            setMotorPowers(-power - f, power + f);
+            setMotorPowers(power + f, -power - f);
         }
         else
         {
-            setMotorPowers(-power + f, power - f);
+            setMotorPowers(power - f, -power + f);
         }
     }
     setMotorPowers(0, 0);

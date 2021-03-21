@@ -80,7 +80,7 @@ void trackBall(Rect2d initialBBox)
         startCamera();
     }
 
-    Ptr<Tracker> tracker = TrackerKCF::create();
+    Ptr<Tracker> tracker = TrackerBOOSTING::create();
     Mat frame;
     cap.grab();
     cap.retrieve(frame);

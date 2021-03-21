@@ -30,6 +30,8 @@ int main()
         boxes = getBoundingBoxes();
         //delay(20);
     }
+    delay(200);
+    boxes = getBoundingBoxes();
     r.setMotorPowers(0, 0);
 
     //now that we see a ball on the right of the screen, turn until it is at the left of the screen

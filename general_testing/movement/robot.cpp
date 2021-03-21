@@ -365,6 +365,7 @@ void Robot::turnPixel(double finalPixel, double kp, double f, cv::Rect2d initial
             setMotorPowers(power - f, -power + f);
         }
     }
+    std::cout << "EXITED LOOP" << std::endl;
     setMotorPowers(0, 0);
     stopTracking();
 }

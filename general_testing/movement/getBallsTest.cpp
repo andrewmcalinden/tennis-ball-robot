@@ -33,5 +33,5 @@ int main()
     stopCamera();
 
     //now that we see a ball on the right of the screen, turn until it is at the left of the screen
-    r.turnPixel(35, .5, .14, getBoundingBoxes().at(0));
+    r.turnPixel(35, .25, .14, getBoundingBoxes().at(0));
 }

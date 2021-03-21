@@ -348,7 +348,7 @@ void Robot::turnPixel(double finalPixel, double power, double f, cv::Rect2d init
 
         double y = getBallY();
         double proportional = error / fabs(initialPixelDiff);
-        double power = proportional * (y / 1000.0);
+        double power = proportional * (y / 320.0);
 
         if (power > 0)
         {

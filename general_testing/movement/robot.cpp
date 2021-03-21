@@ -356,11 +356,11 @@ void Robot::turnPixel(double finalPixel, double power, double f, cv::Rect2d init
 
         if (power > 0)
         {
-            //setMotorPowers(-power - f, power + f);
+            setMotorPowers(-power - f, power + f);
         }
         else
         {
-            //setMotorPowers(-power + f, power - f);
+            setMotorPowers(-power + f, power - f);
         }
     }
     setMotorPowers(0, 0);

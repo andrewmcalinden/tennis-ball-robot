@@ -29,7 +29,7 @@ int main()
         cv::waitKey(25);
     }
     r.setMotorPowers(0, 0);
-    cv::waitKey(500);
+    cv::waitKey(100);
 
     stopCamera();
 

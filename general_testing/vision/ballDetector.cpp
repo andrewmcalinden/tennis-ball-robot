@@ -18,6 +18,8 @@ double imageHeight;
 bool cameraStarted = 0;
 std::atomic<bool> track;
 
+std::mutex mtx;
+
 VideoCapture cap;
 
 std::thread th;
@@ -86,6 +88,7 @@ void trackBall(Rect2d initialBBox)
         startCamera();
     }
 
+
     Ptr<Tracker> tracker = TrackerMedianFlow::create();
     Mat frame;
     cap.grab();
@@ -99,6 +102,8 @@ void trackBall(Rect2d initialBBox)
     ofstream output("ballx.txt");
     while (track.load())
     {
+        mtx.lock();
+
         double timer = (double)getTickCount();
         cap.grab();
         cap.retrieve(frame);
@@ -121,7 +126,9 @@ void trackBall(Rect2d initialBBox)
         stream << "FPS: " << (int)fps;
         putText(frame, stream.str(), Point(100, 50), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50, 170, 50), 2);
         imshow("Tracking", frame);
-        waitKey(1);
+        //waitKey(1);
+
+        mtx.unlock();
     }
     output.close();
 }

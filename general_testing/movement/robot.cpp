@@ -333,7 +333,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     outputFile.close();
 }
 
-void Robot::turnPixel(double finalPixel, double power, double f, cv::Rect2d initialBB)
+void Robot::turnPixel(double finalPixel, double kp, double f, cv::Rect2d initialBB)
 {
     startTracking(initialBB);
 
@@ -346,13 +346,14 @@ void Robot::turnPixel(double finalPixel, double power, double f, cv::Rect2d init
         updatePos(encoderL.read(), encoderR.read());
         error = getBallX() - finalPixel;
 
-        std::cout << "error: " << error << std::endl;
+        std::cout << "error: " << error;
 
         double y = getBallY();
         double proportional = error / fabs(initialPixelDiff);
-        double power = proportional * (y / 320.0);
+        double power = proportional * kp * (y / 320.0);
 
-        std::cout << "power: " << power << std::endl;
+        stod::cout << "\ty: " << y;
+        std::cout << "\tpower: " << power << std::endl;
 
         if (power > 0)
         {

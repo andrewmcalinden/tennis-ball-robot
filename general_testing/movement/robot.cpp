@@ -179,8 +179,8 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
             error *= -1;
         }
         double proportional = error / fabs(inches);
-        integral += dt * ((error + pastError) / 2.0);
-        double derivative = (error - pastError) / dt;
+        integral += ((error + pastError) / 2.0);// * dt;
+        double derivative = (error - pastError);// / dt;
 
         std::cout << "\n" << error;
 

@@ -103,7 +103,7 @@ void trackBall(Rect2d initialBBox)
 
     imshow("Tracking", frame);
     tracker->init(frame, currentBBox);
-    ofstream output("ballx.txt");
+    //ofstream output("ballx.txt");
     while (track.load())
     {
         double timer = (double)getTickCount();
@@ -132,7 +132,7 @@ void trackBall(Rect2d initialBBox)
         imshow("Tracking", frame);
         waitKey(1);
     }
-    output.close();
+   // output.close();
 }
 
 vector<Rect2d> getBoundingBoxes()

@@ -29,7 +29,6 @@ int main()
     {
         boxes = getBoundingBoxes();
         r.setMotorPowers(.2, -.2);
-        updatePos();
     }
     r.setMotorPowers(0, 0);
     cv::waitKey(100);

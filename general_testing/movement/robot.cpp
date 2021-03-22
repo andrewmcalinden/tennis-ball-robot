@@ -157,7 +157,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
     double firstTimeAtSetpoint = 0;
     double timeAtSetPoint = 0;
     bool atSetpoint = false;
-    const unsigned char delayAmount = 10;
+    const unsigned char delayAmount = 100;
     int numDelays = 0;
 
     //once we are 3 feet away, use pid
@@ -179,8 +179,8 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
             error *= -1;
         }
         double proportional = error / fabs(inches);
-        integral += ((error + pastError) / 2.0);// * dt;
-        double derivative = (error - pastError);// / dt;
+        integral += ((error + pastError) / 2.0)* dt;
+        double derivative = (error - pastError) / dt;
 
         std::cout << "\n" << error;
 
@@ -245,8 +245,8 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
         }
         pastTime = currentTime;
         pastError = error;
-        //delay(delayAmount);
-        //++numDelays;
+        delay(delayAmount);
+        ++numDelays;
     }
     std::cout << "\nabs error: " << fabs(error) << std::endl;
     setMotorPowers(0, 0);

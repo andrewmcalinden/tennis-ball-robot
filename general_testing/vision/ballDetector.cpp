@@ -176,6 +176,7 @@ vector<Rect2d> getBoundingBoxes()
     return boundRect;
 }
 
+/*
 vector<Ball> getBalls()
 {
     if (!cameraStarted)
@@ -229,3 +230,4 @@ vector<Ball> getBalls()
     imshow("orig", img);
     return balls;
 }
+*/

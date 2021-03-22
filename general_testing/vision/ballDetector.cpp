@@ -117,7 +117,7 @@ void trackBall(Rect2d initialBBox)
         {
             putText(frame, "Tracking failure detected", Point(100, 80), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(0, 0, 255), 2);
         }
-        mtx.lock()
+        mtx.lock();
         currentBallX = currentBBox.x + currentBBox.width / 2;
         currentBallY = currentBBox.y + currentBBox.height / 2;
         mtx.unlock();

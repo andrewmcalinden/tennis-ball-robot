@@ -39,7 +39,7 @@ double kp_turn, double ki_turn, double kd_turn, double f_turn)
     double angleToPoint = angleWrapDeg(toDegrees(atan2(yError, xError))) - 90; //subtract 90 becaue unit circle vs our angle system thing
     std::cout << "Angle: " << angleToPoint << std::endl;
     turnHeading(angleToPoint, kp_turn, ki_turn, kd_turn, f_turn);
-    
+
     xError = x - getX();
     yError = y - getY();
 
@@ -163,6 +163,11 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
     const unsigned char delayAmount = 20;
     int numDelays = 0;
 
+    double pDivisor = fabs(inches);
+    if (fabs(inches) > 36)
+    {
+        pDivisor = 36;
+    }
     //once we are 3 feet away, use pid
     while (timeAtSetPoint < .3)
     {
@@ -181,7 +186,10 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
         {
             error *= -1;
         }
-        double proportional = error / fabs(inches);
+        
+        
+
+        double proportional = error / pDivisor;
         integral += ((error + pastError) / 2.0)* dt;
         double derivative = (error - pastError) / dt;
 

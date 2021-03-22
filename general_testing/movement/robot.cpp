@@ -41,7 +41,7 @@ double kp_turn, double ki_turn, double kd_turn, double f_turn)
     turnHeading(angleToPoint, kp_turn, ki_turn, kd_turn, f_turn);
 
     double distanceToPoint = hypot(xError, yError);
-    std::cout << "Distance: " << distanceToPoint << std::endl;
+    std::cout << "Distance to Point: " << distanceToPoint << std::endl;
     goStraight(distanceToPoint, kp_straight, ki_straight, kd_straight, f_straight, maxSpeed_straight);
 }
 
@@ -68,22 +68,22 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
     double direction = angleWrapDeg(toDegrees(atan2(yError, xError)) - getHeading()); //if 90, forward, if -90, backward
 
     //scale powers up slowly
-    if (direction > 0 && direction < 180)
-    {
-        for (double i = 0; i <= maxSpeed; i += .01)
-        {
-            setMotorPowers(i, i);
-            delay(15);
-        }
-    }
-    else
-    {
-        for (double i = 0; i >= -maxSpeed; i -= .01)
-        {
-            setMotorPowers(i, i);
-            delay(15);
-        }
-    }
+    // if (direction > 0 && direction < 180)
+    // {
+    //     for (double i = 0; i <= maxSpeed; i += .01)
+    //     {
+    //         setMotorPowers(i, i);
+    //         delay(15);
+    //     }
+    // }
+    // else
+    // {
+    //     for (double i = 0; i >= -maxSpeed; i -= .01)
+    //     {
+    //         setMotorPowers(i, i);
+    //         delay(15);
+    //     }
+    // }
 
     //first, go max power until we are 2 feet away
     while (fabs(error) > 36)
@@ -157,7 +157,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
     double firstTimeAtSetpoint = 0;
     double timeAtSetPoint = 0;
     bool atSetpoint = false;
-    const unsigned char delayAmount = 12;
+    const unsigned char delayAmount = 10;
     int numDelays = 0;
 
     //once we are 2 feet away, use pid
@@ -195,7 +195,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
             {
                 if (angleDiff(angle, initialAngle) < 0) //we are too far to the left
                 {
-                    setMotorPowers(power + f, (power + f) * .5);
+                    setMotorPowers(power + f, (power + f) * .7);
                 }
                 else
                 {
@@ -217,7 +217,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
                 }
                 else
                 {
-                    setMotorPowers(power - f, (power - f) * .5);
+                    setMotorPowers(power - f, (power - f) * .7);
                 }
             }
             else

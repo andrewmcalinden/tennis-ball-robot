@@ -20,9 +20,14 @@
 int main()
 {
     Robot r(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA, L_ENCODER_PIN1, L_ENCODER_PIN2, R_ENCODER_PIN1, R_ENCODER_PIN2, COUNT_INPUT_PIN);
-    r.goToPos(6 , 24,
-              .5, 0, .008, .12, .5,
-              .5, 0, .008, .12);
+    // r.goToPos(6 , 24,
+    //           .5, 0, .008, .12, .5,
+    //           .5, 0, .008, .12);
+    for (int i = 0; i<24;i++){
+        r.goToPos(i/2.0, i,
+                  .5, 0, .008, .12, .5,
+                  .5, 0, .012, .12);
+    }
     // r.goToPos(80, 160,
     //           .37, 0, .002, .12, .5,
     //           .37, 0, .0006, .12);

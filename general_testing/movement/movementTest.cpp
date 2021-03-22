@@ -25,7 +25,7 @@ int main()
     r.goToPos(8 , 24,
               .55, 0, .008, .1, .5,
               .5, 0, .002, .12);
-
+    r.turnHeading(90, .5, 0, .0002, .12);
     // r.goToPos(80, 160,
     //           .37, 0, .002, .12, .5,
     //           .37, 0, .0006, .12);
@@ -47,7 +47,7 @@ int main()
     // r.goToPos(0, 0,
     //           .37, 0, .002, .12, .5,
     //           .37, 0, .0006, .12);
-              
+
     // r.turnHeading(90, .37, 0, .0006, .12);
     //BEST CONSTANTS SO FAR WITH NEW METHOD
     //r.turnHeading(90, .37, 0, .0006, .12);

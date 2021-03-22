@@ -226,7 +226,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
             }
         }
 
-        if (fabs(error) < 1.5)
+        if (fabs(error) < .25)
         {
             if (!atSetpoint)
             {

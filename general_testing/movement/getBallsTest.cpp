@@ -31,7 +31,7 @@ int main()
         r.setMotorPowers(.2, -.2);
     }
     r.setMotorPowers(0, 0);
-    cv::waitKey(100);
+    cv::waitKey(200);
 
     //stopCamera();
     //startCamera();

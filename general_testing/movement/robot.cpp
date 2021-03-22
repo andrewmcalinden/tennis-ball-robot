@@ -171,7 +171,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
 
         error = hypot(xError, yError); //really abs(error)
 
-        currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC) + ((delayAmount / 1000.0) * numDelays);        
+        currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC)/* + ((delayAmount / 1000.0) * numDelays*/);        
         double dt = currentTime - pastTime;
 
         if (!(direction > 0 && direction < 180)) //90 is perfectly forwards, -90 is backwards

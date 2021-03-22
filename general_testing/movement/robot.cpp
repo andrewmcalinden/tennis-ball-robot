@@ -157,7 +157,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
     double firstTimeAtSetpoint = 0;
     double timeAtSetPoint = 0;
     bool atSetpoint = false;
-    const unsigned char delayAmount = 40;
+    const unsigned char delayAmount = 20;
     int numDelays = 0;
 
     //once we are 3 feet away, use pid

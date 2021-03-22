@@ -85,7 +85,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
     //     }
     // }
 
-    //first, go max power until we are 2 feet away
+    //first, go max power until we are 3 feet away
     while (fabs(error) > 36)
     {
         updatePos(encoderL.read(), encoderR.read());
@@ -160,7 +160,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
     const unsigned char delayAmount = 10;
     int numDelays = 0;
 
-    //once we are 2 feet away, use pid
+    //once we are 3 feet away, use pid
     while (timeAtSetPoint < .3)
     {
         updatePos(encoderL.read(), encoderR.read());
@@ -245,8 +245,8 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
         }
         pastTime = currentTime;
         pastError = error;
-        delay(delayAmount);
-        ++numDelays;
+        //delay(delayAmount);
+        //++numDelays;
     }
     std::cout << "\nabs error: " << fabs(error) << std::endl;
     setMotorPowers(0, 0);

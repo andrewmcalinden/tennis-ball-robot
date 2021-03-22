@@ -1,6 +1,6 @@
 #include "robot.h"
 #include <iostream>
-#include <wiringPi>
+#include <wiringPi.h>
 
 
 #define LEFT_MOTOR_DIR_PIN 22

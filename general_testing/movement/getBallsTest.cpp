@@ -34,8 +34,8 @@ int main()
     cv::waitKey(100);
 
     stopCamera();
-    startCamera();
-    boxes = getBoundingBoxes();
+    //startCamera();
+    //boxes = getBoundingBoxes();
 
     // //now that we see a ball on the right of the screen, turn until it is at the left of the screen
     // //r.turnPixel(320, .0625, .12, boxes.at(0));

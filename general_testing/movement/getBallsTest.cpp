@@ -1,4 +1,5 @@
 #include "robot.h"
+#include "../odometry/odometry.h"
 #include <wiringPi.h>
 #include <iostream>
 
@@ -28,6 +29,7 @@ int main()
     {
         boxes = getBoundingBoxes();
         r.setMotorPowers(.2, -.2);
+        updatePos();
     }
     r.setMotorPowers(0, 0);
     cv::waitKey(100);
@@ -37,9 +39,11 @@ int main()
     boxes = getBoundingBoxes();
 
     //now that we see a ball on the right of the screen, turn until it is at the left of the screen
-    r.turnPixel(320, .0625, .14, boxes.at(0));
+    r.turnPixel(320, .0625, .12, boxes.at(0));
 
     for (int i = 0; i < 100; i++){
         std::cout << i << std::endl;
     }
+
+    r.goStraight(10, .37, 0, .002, .12, .7);
 }

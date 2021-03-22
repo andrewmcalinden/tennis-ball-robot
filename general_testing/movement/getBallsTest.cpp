@@ -38,4 +38,8 @@ int main()
 
     //now that we see a ball on the right of the screen, turn until it is at the left of the screen
     r.turnPixel(320, .0625, .14, boxes.at(0));
+
+    for (int i = 0; i < 100; i++){
+        std::cout << i << std::endl;
+    }
 }

@@ -274,12 +274,12 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
     double firstTimeAtSetpoint = 0;
     double timeAtSetPoint = 0;
     bool atSetpoint = false;
-    const unsigned char delayAmount = 12;
+    const unsigned char delayAmount = 20;
     int numDelays = 0;
 
     double integral = 0;
 
-    while (timeAtSetPoint < .05)
+    while (timeAtSetPoint < .1)
     {
         updatePos(encoderL.read(), encoderR.read());
         error = angleDiff(getHeading(), finalAngle);

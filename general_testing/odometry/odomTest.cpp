@@ -8,8 +8,8 @@ int main()
 { 
     Encoder encoderL(7, 0);
     Encoder encoderR(2, 3);
-    // while (true)
-    // {
+    while (true)
+    {
         updatePos(encoderL.read(), encoderR.read());
         printf("\nX: %.2f", getX());
         printf("   Y: %.2f", getY());
@@ -20,5 +20,5 @@ int main()
         printf("\nX: %.2f", getX());
         printf("   Y: %.2f", getY());
         printf("   Heading: %.2f", getHeading());
-    //}
+    }
 }

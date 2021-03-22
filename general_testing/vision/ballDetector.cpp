@@ -69,7 +69,7 @@ void startCamera()
     }
     cameraStarted = 1;
 
-    cap.set(CAP_PROP_BUFFERSIZE, 0);
+    cap.set(CAP_PROP_BUFFERSIZE, 1);
 
     Mat test;
     cap.grab();

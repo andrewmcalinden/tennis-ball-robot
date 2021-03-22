@@ -163,6 +163,7 @@ vector<Rect2d> getBoundingBoxes()
     vector<vector<Point>> conPoly(contours.size());
     vector<Rect2d> boundRect(contours.size());
 
+
     for (int i = 0; i < contours.size(); i++)
     {
         float peri = arcLength(contours[i], true);
@@ -175,7 +176,8 @@ vector<Rect2d> getBoundingBoxes()
     imshow("mask", imgMask);
     imshow("dilated", imgDilate);
     imshow("orig", img);
-    if (boundRect.size() == 0){
+    if (boundRect.size() == 0)
+    {
         cout << "RETURNING EMPTY" << endl;
     }
     return boundRect;

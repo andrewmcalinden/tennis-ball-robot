@@ -13,6 +13,7 @@ volatile int ballCount = 0;
 void countBalls()
 {
     ballCount++;
+    std::cout << "detected ball" << std::endl;
 }
 
 int Robot::getBallCount()

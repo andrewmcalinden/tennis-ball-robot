@@ -429,12 +429,13 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
         setMotorPowers(.2, .2);
         delay(2000);
     //}
-    std::cout << "stopping, initial: " << initialBallCount << "\tfinal: " << ballCount << std::endl;
 
     //stopTracking();
 
     //delay(500); //keep driving for 500ms in case there is a cluster
     setMotorPowers(0, 0);
+    std::cout << "stopping, initial: " << initialBallCount << "\tfinal: " << ballCount << std::endl;
+    delay(2000);
     stopCollector();
 }
 

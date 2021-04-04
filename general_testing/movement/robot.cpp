@@ -18,6 +18,7 @@ void countBalls()
 void Robot::startCollector()
 {
     digitalWrite(ballCollectorPin, HIGH);
+    delay(1000); //wait for collector to turn on
 }
 
 void Robot::stopCollector()
@@ -408,10 +409,12 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
 
         y = getBallY();
 
-        double lPower = leftProportion / (y / 1000.0);
-        double rPower = rightProportion / (y / 1000.0);
+        double heightFactor = 1 - (y / getImageHeight());
 
-        setMotorPowers((lPower + f) * power, (rPower + f) * power);
+        double lPower = leftProportion * heightFactor * power;
+        double rPower = rightProportion * heightFactor * power;
+
+        setMotorPowers(lPower + f, rPower + f);
     }
     stopTracking();
 

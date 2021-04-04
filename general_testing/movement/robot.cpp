@@ -405,6 +405,7 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
     startCollector();
 
     int initialBallCount = ballCount;
+    std::cout << "initial: " << initialBallCount << std::endl;
     double y = getBallY();
     while (initialBallCount == ballCount)
     {

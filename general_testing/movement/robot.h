@@ -37,5 +37,7 @@ class Robot
 
         void startCollector();
         void stopCollector();
+
+        int getBallCount();
 };
 #endif

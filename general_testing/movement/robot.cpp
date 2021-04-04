@@ -15,6 +15,11 @@ void countBalls()
     ballCount++;
 }
 
+int getBallCount()
+{
+    return ballCount;
+}
+
 void Robot::startCollector()
 {
     digitalWrite(ballCollectorPin, HIGH);

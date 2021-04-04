@@ -41,5 +41,8 @@ int main()
     //now that we see a ball on the right of the screen, drive to it
     //r.curveToBall(boxes.at(0), .3, .12);
     r.startCollector();
-    delay(10000);
+    while(cv::waitKey(1) != 32)
+    {
+        std::cout << "count: " << getBallCount() << std::endl;
+    }
 }

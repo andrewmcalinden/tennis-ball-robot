@@ -36,6 +36,8 @@ Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned 
       ballCounterPin{counterPin}, ballCollectorPin{collectorPin}
 
 {
+    pinMode(ballCounterPin, INPUT);
+    pinMode(collectorPin, OUTPUT);
     setPose(initialX, initialY, initialTheta);
     wiringPiISR(ballCounterPin, INT_EDGE_FALLING, &countBalls);
 }

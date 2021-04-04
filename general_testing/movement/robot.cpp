@@ -15,14 +15,24 @@ void countBalls()
     ballCount++;
 }
 
+void Robot::startCollector()
+{
+    digitalWrite(ballCollectorPin, HIGH);
+}
+
+void Robot::stopCollector()
+{
+    digitalWrite(ballCollectorPin, LOW);
+}
+
 Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned char rMotorDirPin, unsigned char rMotorPowerPin,
              double initialX, double initialY, double initialTheta,
              unsigned char lEncoderPin1, unsigned char lEncoderPin2, unsigned char rEncoderPin1, unsigned char rEncoderPin2,
-             unsigned char counterPin)
+             unsigned char counterPin, unsigned char collectorPin)
     //initialize motors and encoders
     : l{lMotorDirPin, lMotorPowerPin}, r{rMotorDirPin, rMotorPowerPin},
       encoderL{lEncoderPin1, lEncoderPin2}, encoderR{rEncoderPin1, rEncoderPin2},
-      ballCounterPin{counterPin}
+      ballCounterPin{counterPin}, ballCollectorPin{collectorPin}
 
 {
     setPose(initialX, initialY, initialTheta);
@@ -384,6 +394,7 @@ void Robot::turnPixel(double finalPixel, double kp, double f, cv::Rect2d initial
 void Robot::curveToBall(cv::Rect2d initialBB, double power, double f) 
 {
     startTracking(initialBB);
+    startCollector();
 
     int initialBallCount = ballCount;
     double y = getBallY();
@@ -400,12 +411,13 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
         double lPower = leftProportion / (y / 1000.0);
         double rPower = rightProportion / (y / 1000.0);
 
-        setMotorPowers(lPower + f, rPower + f);
+        setMotorPowers((lPower + f) * power, (rPower + f) * power);
     }
     stopTracking();
 
-    delay(1000); //keep driving for 1 second in case there is a cluster
+    delay(500); //keep driving for 500ms in case there is a cluster
     setMotorPowers(0, 0);
+    stopCollector();
 }
 
 void Robot::goToBall()

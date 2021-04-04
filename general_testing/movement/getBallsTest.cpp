@@ -18,10 +18,11 @@
 #define R_ENCODER_PIN2 3
 
 #define COUNT_INPUT_PIN 12
+#define COLLECTOR_PIN 4
 
 int main()
 {
-    Robot r(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA, L_ENCODER_PIN1, L_ENCODER_PIN2, R_ENCODER_PIN1, R_ENCODER_PIN2, COUNT_INPUT_PIN);
+    Robot r(LEFT_MOTOR_DIR_PIN, LEFT_MOTOR_POWER_PIN, RIGHT_MOTOR_DIR_PIN, RIGHT_MOTOR_POWER_PIN, INITIAL_X, INITIAL_Y, INITIAL_THETA, L_ENCODER_PIN1, L_ENCODER_PIN2, R_ENCODER_PIN1, R_ENCODER_PIN2, COUNT_INPUT_PIN, COLLECTOR_PIN);
 
     startCamera();
     std::vector<cv::Rect2d> boxes = getBoundingBoxes();
@@ -33,10 +34,10 @@ int main()
     r.setMotorPowers(0, 0);
     cv::waitKey(200);
 
-    //stopCamera();
-    //startCamera();
+    stopCamera();
+    startCamera();
     boxes = getBoundingBoxes();
 
-    //now that we see a ball on the right of the screen, turn until it is at the left of the screen
-    //r.turnPixel(320, .0625, .12, boxes.at(0));
+    //now that we see a ball on the right of the screen, drive to it
+    r.curveToBall(boxes.at(0), .3, .12);
 }

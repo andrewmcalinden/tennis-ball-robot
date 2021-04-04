@@ -15,7 +15,7 @@ void countBalls()
     ballCount++;
 }
 
-int getBallCount()
+int Robot::getBallCount()
 {
     return ballCount;
 }

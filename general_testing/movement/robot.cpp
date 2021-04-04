@@ -30,7 +30,7 @@ void Robot::startCollector()
 void Robot::stopCollector()
 {
     digitalWrite(ballCollectorPin, LOW);
-    std::cout << "STOPPED";
+    std::cout << "STOPPED" << std::endl;
 }
 
 Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned char rMotorDirPin, unsigned char rMotorPowerPin,

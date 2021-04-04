@@ -409,8 +409,8 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
     int initialBallCount = ballCount;
     // std::cout << "initial: " << initialBallCount << std::endl;
     // double y = getBallY();
-    while (initialBallCount == ballCount)
-    {
+    //while (initialBallCount == ballCount)
+   // {
         // updatePos(encoderL.read(), encoderR.read());
         // double currentX = getBallX();
 
@@ -427,7 +427,8 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
         // setMotorPowers(lPower + f, rPower + f);
         //std::cout << "count: " << ballCount << std::endl;
         setMotorPowers(.2, .2);
-    }
+        delay(2000);
+    //}
     std::cout << "stopping, initial: " << initialBallCount << "\tfinal: " << ballCount << std::endl;
 
     //stopTracking();

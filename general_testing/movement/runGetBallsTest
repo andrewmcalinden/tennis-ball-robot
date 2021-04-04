@@ -1,3 +1,3 @@
 git pull
-g++ getBallsTest.cpp robot.cpp ../motor/motor.cpp ../encoder/encoder.cpp ../math/mathUtil.cpp ../odometry/odometry.cpp ../math/vector.cpp ../vision/ballDetector.cpp -o getBallsTest -lwiringPi -pthread `pkg-config --cflags --libs opencv`
+g++ collectionCountTest.cpp robot.cpp ../motor/motor.cpp ../encoder/encoder.cpp ../math/mathUtil.cpp ../odometry/odometry.cpp ../math/vector.cpp ../vision/ballDetector.cpp -o getBallsTest -lwiringPi -pthread `pkg-config --cflags --libs opencv`
 sudo ./getBallsTest

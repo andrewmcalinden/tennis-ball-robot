@@ -411,27 +411,28 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
     double y = getBallY();
     while (initialBallCount == ballCount)
     {
-        updatePos(encoderL.read(), encoderR.read());
-        double currentX = getBallX();
+        // updatePos(encoderL.read(), encoderR.read());
+        // double currentX = getBallX();
 
-        double leftProportion = currentX / getImageWidth();
-        double rightProportion = 1 - leftProportion;
+        // double leftProportion = currentX / getImageWidth();
+        // double rightProportion = 1 - leftProportion;
 
-        y = getBallY();
+        // y = getBallY();
 
-        double heightFactor = 1 - (y / getImageHeight());
+        // double heightFactor = 1 - (y / getImageHeight());
 
-        double lPower = leftProportion * heightFactor * power;
-        double rPower = rightProportion * heightFactor * power;
+        // double lPower = leftProportion * heightFactor * power;
+        // double rPower = rightProportion * heightFactor * power;
 
-        setMotorPowers(lPower + f, rPower + f);
+        // setMotorPowers(lPower + f, rPower + f);
         //std::cout << "count: " << ballCount << std::endl;
+        r.setMotorPowers(.2, .2);
     }
     std::cout << "stopping, initial: " << initialBallCount << "\tfinal: " << ballCount << std::endl;
 
     stopTracking();
 
-    //delay(500); //keep driving for 500ms in case there is a cluster
+    delay(500); //keep driving for 500ms in case there is a cluster
     setMotorPowers(0, 0);
     stopCollector();
 }

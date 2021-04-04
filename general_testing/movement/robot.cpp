@@ -431,7 +431,7 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
 
     stopTracking();
 
-    delay(500); //keep driving for 500ms in case there is a cluster
+    //delay(500); //keep driving for 500ms in case there is a cluster
     setMotorPowers(0, 0);
     stopCollector();
 }

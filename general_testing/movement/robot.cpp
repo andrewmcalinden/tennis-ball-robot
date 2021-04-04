@@ -30,6 +30,7 @@ void Robot::startCollector()
 void Robot::stopCollector()
 {
     digitalWrite(ballCollectorPin, LOW);
+    std::cout << "STOPPED";
 }
 
 Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned char rMotorDirPin, unsigned char rMotorPowerPin,
@@ -424,7 +425,7 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
         double rPower = rightProportion * heightFactor * power;
 
         setMotorPowers(lPower + f, rPower + f);
-        std::cout << "count: " << ballCount << std::endl;
+        //std::cout << "count: " << ballCount << std::endl;
     }
     std::cout << "stopping, initial: " << initialBallCount << "\tfinal: " << ballCount << std::endl;
 

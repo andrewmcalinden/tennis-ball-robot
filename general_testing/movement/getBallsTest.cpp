@@ -43,6 +43,6 @@ int main()
     r.startCollector();
     while(cv::waitKey(1) != 32)
     {
-        std::cout << "count: " << getBallCount() << std::endl;
+        std::cout << "count: " << r.getBallCount() << std::endl;
     }
 }

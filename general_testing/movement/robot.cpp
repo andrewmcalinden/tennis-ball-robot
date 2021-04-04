@@ -426,7 +426,7 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
 
         // setMotorPowers(lPower + f, rPower + f);
         //std::cout << "count: " << ballCount << std::endl;
-        r.setMotorPowers(.2, .2);
+        setMotorPowers(.2, .2);
     }
     std::cout << "stopping, initial: " << initialBallCount << "\tfinal: " << ballCount << std::endl;
 

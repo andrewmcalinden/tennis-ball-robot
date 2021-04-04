@@ -403,12 +403,12 @@ void Robot::turnPixel(double finalPixel, double kp, double f, cv::Rect2d initial
 
 void Robot::curveToBall(cv::Rect2d initialBB, double power, double f) 
 {
-    startTracking(initialBB);
+    //startTracking(initialBB);
     startCollector();
 
     int initialBallCount = ballCount;
-    std::cout << "initial: " << initialBallCount << std::endl;
-    double y = getBallY();
+    // std::cout << "initial: " << initialBallCount << std::endl;
+    // double y = getBallY();
     while (initialBallCount == ballCount)
     {
         // updatePos(encoderL.read(), encoderR.read());
@@ -430,9 +430,9 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
     }
     std::cout << "stopping, initial: " << initialBallCount << "\tfinal: " << ballCount << std::endl;
 
-    stopTracking();
+    //stopTracking();
 
-    delay(500); //keep driving for 500ms in case there is a cluster
+    //delay(500); //keep driving for 500ms in case there is a cluster
     setMotorPowers(0, 0);
     stopCollector();
 }

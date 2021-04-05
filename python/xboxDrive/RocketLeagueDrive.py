@@ -85,6 +85,7 @@ while not joy.Back():
         
         while joy.A():
             time.sleep(.0001)
+    
 
     #GPIO.add_event_detect(countPin, GPIO.RISING)
 

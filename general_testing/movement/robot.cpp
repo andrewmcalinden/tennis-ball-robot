@@ -427,7 +427,7 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
         // setMotorPowers(lPower + f, rPower + f);
         //std::cout << "count: " << ballCount << std::endl;
         setMotorPowers(1, 1);
-        delay(200);
+        delay(20);
         ballCount = 0;
         delay(2000);
     //}

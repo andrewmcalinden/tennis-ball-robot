@@ -403,41 +403,41 @@ void Robot::turnPixel(double finalPixel, double kp, double f, cv::Rect2d initial
 
 void Robot::curveToBall(cv::Rect2d initialBB, double power, double f) 
 {
-    //startTracking(initialBB);
+    startTracking(initialBB);
     startCollector();
 
     int initialBallCount = ballCount;
-    // std::cout << "initial: " << initialBallCount << std::endl;
-    // double y = getBallY();
-    //while (initialBallCount == ballCount)
-   // {
-        // updatePos(encoderL.read(), encoderR.read());
-        // double currentX = getBallX();
+    //std::cout << "initial: " << initialBallCount << std::endl;
+    double y = getBallY();
+    while (y < 700)
+    {
+        updatePos(encoderL.read(), encoderR.read());
+        double currentX = getBallX();
 
-        // double leftProportion = currentX / getImageWidth();
-        // double rightProportion = 1 - leftProportion;
+        double leftProportion = currentX / getImageWidth();
+        double rightProportion = 1 - leftProportion;
 
-        // y = getBallY();
+        y = getBallY();
 
-        // double heightFactor = 1 - (y / getImageHeight());
+        double heightFactor = 1 - (y / getImageHeight());
 
-        // double lPower = leftProportion * heightFactor * power;
-        // double rPower = rightProportion * heightFactor * power;
+        double lPower = leftProportion * heightFactor * power;
+        double rPower = rightProportion * heightFactor * power;
 
-        // setMotorPowers(lPower + f, rPower + f);
+        setMotorPowers(lPower + f, rPower + f);
         //std::cout << "count: " << ballCount << std::endl;
-        setMotorPowers(1, 1);
-        delay(400);
-        ballCount = 0;
-        delay(2000);
-    //}
+        //setMotorPowers(1, 1);
+        //delay(400);
+        //ballCount = 0;
+        //delay(2000);
+    }
 
-    //stopTracking();
+    stopTracking();
 
-    //delay(500); //keep driving for 500ms in case there is a cluster
+    delay(500); //keep driving for 500ms in case there is a cluster
     setMotorPowers(0, 0);
     std::cout << "stopping, initial: " << initialBallCount << "\tfinal: " << ballCount << std::endl;
-    delay(2000);
+    delay(1000);
     stopCollector();
 }
 

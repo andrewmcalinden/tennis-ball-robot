@@ -409,10 +409,13 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
     int initialBallCount = ballCount;
     double y = getBallY();
     std::ofstream file("getballdata.txt");
+
+    set<double> numX;
     while (y < getImageHeight() * .9)
     {
         updatePos(encoderL.read(), encoderR.read());
         double currentX = getBallX();
+        numX.insert(currentX);
 
         double leftProportion = currentX / getImageWidth();
         double rightProportion = 1 - leftProportion;
@@ -436,6 +439,7 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
     delay(500); //keep driving for 500ms in case there is a cluster
     setMotorPowers(0, 0);
     stopCollector();
+    std::cout << "num frames: " << numX.size() << std::endl;
     file.close();
 }
 

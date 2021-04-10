@@ -422,7 +422,7 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
         file << "xPos: " << currentX << "\tyPos: " << y << std::endl;
 
         double heightFactor = 1 - (y / getImageHeight());
-        file << "heightFactor: " << heightFactor << std:endl;
+        file << "heightFactor: " << heightFactor << std::endl;
 
         double lPower = leftProportion * heightFactor * power;
         double rPower = rightProportion * heightFactor * power;

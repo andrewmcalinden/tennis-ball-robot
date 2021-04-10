@@ -407,8 +407,8 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
     startCollector();
 
     int initialBallCount = ballCount;
-    //std::cout << "initial: " << initialBallCount << std::endl;
     double y = getBallY();
+    ofstream file("getballdata.txt");
     while (y < getImageHeight() * .9)
     {
         updatePos(encoderL.read(), encoderR.read());
@@ -416,28 +416,25 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
 
         double leftProportion = currentX / getImageWidth();
         double rightProportion = 1 - leftProportion;
+        file << "lprop: " << leftProportion << "\trightprop: " << rightProportion << std::endl;
 
         y = getBallY();
+        file << "xPos: " << currentX << "\tyPos: " << y << std::endl;
 
         double heightFactor = 1 - (y / getImageHeight());
+        file << "heightFactor: " << heightFactor << std:endl;
 
         double lPower = leftProportion * heightFactor * power;
         double rPower = rightProportion * heightFactor * power;
+        std::cout << "lpower: " << lPower << "\trPower" << rPower << std::endl;
 
         setMotorPowers(lPower + f, rPower + f);
-        //std::cout << "count: " << ballCount << std::endl;
-        //setMotorPowers(1, 1);
-        //delay(400);
-        //ballCount = 0;
-        //delay(2000);
     }
-
     stopTracking();
-
     delay(500); //keep driving for 500ms in case there is a cluster
     setMotorPowers(0, 0);
-    std::cout << "stopping, initial: " << initialBallCount << "\tfinal: " << ballCount << std::endl;
     stopCollector();
+    file.close();
 }
 
 void Robot::goToBall()

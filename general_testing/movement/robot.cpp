@@ -424,8 +424,8 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
         double heightFactor = 1 - (y / getImageHeight());
         file << "heightFactor: " << heightFactor << std::endl;
 
-        double lPower = leftProportion * heightFactor * power;
-        double rPower = rightProportion * heightFactor * power;
+        double lPower = leftProportion * power;
+        double rPower = rightProportion * power;
         file << "lpower: " << lPower << "\trPower" << rPower << std::endl << std::endl;
 
         setMotorPowers(lPower + f, rPower + f);

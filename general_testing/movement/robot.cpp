@@ -409,7 +409,7 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
     int initialBallCount = ballCount;
     //std::cout << "initial: " << initialBallCount << std::endl;
     double y = getBallY();
-    while (y < 600)
+    while (y < getImageHeight() * .9)
     {
         updatePos(encoderL.read(), encoderR.read());
         double currentX = getBallX();

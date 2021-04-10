@@ -40,5 +40,5 @@ int main()
 
     //now that we see a ball on the right of the screen, drive to it
     r.curveToBall(cv::Rect2d(), .3, .12);
-    stopCamera();
+    //stopCamera();
 }

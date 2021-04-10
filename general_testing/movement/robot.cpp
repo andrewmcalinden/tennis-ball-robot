@@ -409,7 +409,7 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
     int initialBallCount = ballCount;
     //std::cout << "initial: " << initialBallCount << std::endl;
     double y = getBallY();
-    while (y < 700)
+    while (y < 600)
     {
         updatePos(encoderL.read(), encoderR.read());
         double currentX = getBallX();
@@ -437,7 +437,6 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
     delay(500); //keep driving for 500ms in case there is a cluster
     setMotorPowers(0, 0);
     std::cout << "stopping, initial: " << initialBallCount << "\tfinal: " << ballCount << std::endl;
-    delay(1000);
     stopCollector();
 }
 

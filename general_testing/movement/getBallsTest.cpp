@@ -39,6 +39,6 @@ int main()
     boxes = getBoundingBoxes();
 
     //now that we see a ball on the right of the screen, drive to it
-    r.curveToBall(boxes.at(0), .6, .12);
+    r.curveToBall(boxes.at(0), .8, .12);
     stopCamera();
 }

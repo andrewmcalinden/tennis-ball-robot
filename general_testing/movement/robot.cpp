@@ -410,7 +410,7 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
     double y = getBallY();
     std::ofstream file("getballdata.txt");
 
-    set<double> numX;
+    std::set<double> numX;
     while (y < getImageHeight() * .9)
     {
         updatePos(encoderL.read(), encoderR.read());

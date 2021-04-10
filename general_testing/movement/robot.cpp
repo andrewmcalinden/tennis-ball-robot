@@ -408,7 +408,7 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
 
     int initialBallCount = ballCount;
     double y = getBallY();
-    ofstream file("getballdata.txt");
+    std::ofstream file("getballdata.txt");
     while (y < getImageHeight() * .9)
     {
         updatePos(encoderL.read(), encoderR.read());

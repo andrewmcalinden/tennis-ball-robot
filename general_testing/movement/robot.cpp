@@ -426,11 +426,12 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
 
         double lPower = leftProportion * heightFactor * power;
         double rPower = rightProportion * heightFactor * power;
-        std::cout << "lpower: " << lPower << "\trPower" << rPower << std::endl;
+        file << "lpower: " << lPower << "\trPower" << rPower << std::endl << std::endl;
 
         setMotorPowers(lPower + f, rPower + f);
     }
     stopTracking();
+    setMotorPowers(.22, .22);
     delay(500); //keep driving for 500ms in case there is a cluster
     setMotorPowers(0, 0);
     stopCollector();

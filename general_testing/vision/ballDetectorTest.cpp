@@ -12,14 +12,14 @@ int hmax = 53, smax = 208, vmax = 255;
 
 int main()
 {
-    //VideoCapture cap(0);
+    VideoCapture cap(0);
     Mat img, imgHSV, imgMask, imgResize, imgDilate;
 
-    // if (!cap.isOpened())
-    // {
-    //     cout << "Could not initialize capturing..." << endl;
-    //     return 0;
-    // }
+    if (!cap.isOpened())
+    {
+        cout << "Could not initialize capturing..." << endl;
+        return 0;
+    }
     
     /*
     namedWindow("Trackbars", (640, 200));

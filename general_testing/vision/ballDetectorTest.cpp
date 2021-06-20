@@ -33,11 +33,11 @@ int main()
 
     for (int i = 1; i < 59; i++)
     {
-        //cap.grab();
-        //cap.retrieve(img);
-        stringstream path;
-        path << "new_images/image_" << i << ".png";
-        img = imread(path.str());
+        cap.grab();
+        cap.retrieve(img);
+        // stringstream path;
+        // path << "new_images/image_" << i << ".png";
+        // img = imread(path.str());
 
         resize(img, imgResize, Size(), .75, .75);
         Size s = imgResize.size();

@@ -21,7 +21,7 @@ int main()
         return 0;
     }
     
-    /*
+    
     namedWindow("Trackbars", (640, 200));
     createTrackbar("hue min", "Trackbars", &hmin, 500);
     createTrackbar("hue max", "Trackbars", &hmax, 500);
@@ -29,7 +29,7 @@ int main()
     createTrackbar("sat max", "Trackbars", &smax, 500);
     createTrackbar("val min", "Trackbars", &vmin, 500);
     createTrackbar("val max", "Trackbars", &vmax, 500);
-    */
+    
 
     for (int i = 1; i < 59; i++)
     {

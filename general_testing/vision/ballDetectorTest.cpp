@@ -48,7 +48,7 @@ int main()
         cout << s.width << " " << s.height << endl;
 
         cvtColor(imgResize, imgHSV, COLOR_BGR2HSV);
-        GaussianBlur(imgHSV, imgBlur, Size(3, 3), 3, 0);
+        GaussianBlur(imgHSV, imgBlur, Size(11, 11), 0);
 
         Scalar lower(hmin, smin, vmin);
         Scalar upper(hmax, smax, vmax);

@@ -11,8 +11,8 @@ using namespace std;
 // int hmax = 53, smax = 208, vmax = 255;
 
 //burning night light values
-int hmin = 37, smin = 0, vmin = 0;
-int hmax = 140, smax = 208, vmax = 255;
+int hmin = 38, smin = 0, vmin = 0;
+int hmax = 82, smax = 208, vmax = 255;
 
 int main()
 {

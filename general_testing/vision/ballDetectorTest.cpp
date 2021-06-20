@@ -80,5 +80,6 @@ int main()
         imshow("original", imgResize);
         // char c=(char)waitKey(1);
         // while(c!=32){ c=(char)waitKey(1);} // do nothing
+        waitKey(1);
     }
 }

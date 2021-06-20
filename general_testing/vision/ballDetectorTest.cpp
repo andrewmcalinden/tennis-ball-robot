@@ -53,7 +53,7 @@ int main()
         Scalar upper(hmax, smax, vmax);
         inRange(imgHSV, lower, upper, imgMask);
 
-        GaussianBlur(imgMask, imgBlur, Size(3, 3), 3, 0);
+        GaussianBlur(imgMask, imgBlur, Size(5, 5), 5, 0);
 
 
         Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));

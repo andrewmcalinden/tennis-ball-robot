@@ -48,16 +48,14 @@ int main()
         cout << s.width << " " << s.height << endl;
 
         cvtColor(imgResize, imgHSV, COLOR_BGR2HSV);
+        GaussianBlur(imgHSV, imgBlur, Size(5, 5), 5, 0);
 
         Scalar lower(hmin, smin, vmin);
         Scalar upper(hmax, smax, vmax);
-        inRange(imgHSV, lower, upper, imgMask);
-
-        GaussianBlur(imgMask, imgBlur, Size(5, 5), 5, 0);
-
+        inRange(imgBlur, lower, upper, imgMask);
 
         Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
-        dilate(imgBlur, imgDilate, kernel);
+        dilate(imgMask, imgDilate, kernel);
 
         vector<vector<Point>> contours;
         vector<Vec4i> hierarchy;

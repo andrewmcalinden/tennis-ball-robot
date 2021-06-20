@@ -31,7 +31,7 @@ int main()
     createTrackbar("val max", "Trackbars", &vmax, 500);
     
 
-    for (int i = 1; i < 59; i++)
+    while(1)
     {
         cap.grab();
         cap.retrieve(img);
@@ -78,7 +78,7 @@ int main()
         imshow("mask", imgMask);
         imshow("dilated masked", imgDilate);
         imshow("original", imgResize);
-        char c=(char)waitKey(1);
-        while(c!=32){ c=(char)waitKey(1);} // do nothing
+        // char c=(char)waitKey(1);
+        // while(c!=32){ c=(char)waitKey(1);} // do nothing
     }
 }

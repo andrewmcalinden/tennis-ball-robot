@@ -13,7 +13,7 @@ int hmax = 53, smax = 208, vmax = 255;
 int main()
 {
     VideoCapture cap(0);
-    Mat img, imgHSV, imgMask, imgResize, imgDilate;
+    Mat img, imgHSV, imgBlur, imgMask, imgResize, imgDilate;
 
     if (!cap.isOpened())
     {
@@ -49,8 +49,11 @@ int main()
         Scalar upper(hmax, smax, vmax);
         inRange(imgHSV, lower, upper, imgMask);
 
+        GaussianBlur(imgMask, imgBlur, Size(3, 3), 3, 0);
+
+
         Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
-        dilate(imgMask, imgDilate, kernel);
+        dilate(imgBlur, imgDilate, kernel);
 
         vector<vector<Point>> contours;
         vector<Vec4i> hierarchy;

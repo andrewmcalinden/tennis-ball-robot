@@ -52,7 +52,7 @@ int main()
 
         Scalar lower(hmin, smin, vmin);
         Scalar upper(hmax, smax, vmax);
-        inRange(imgBlur, lower, upper, imgMask);
+        inRange(imgHSV, lower, upper, imgMask);
 
         Mat kernel = getStructuringElement(MORPH_RECT, Size(5, 5));
         dilate(imgMask, imgDilate, kernel);

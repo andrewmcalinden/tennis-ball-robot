@@ -40,7 +40,7 @@ int main()
         // cap.retrieve(img);
         // stringstream path;
         // path << "new_images/image_" << i << ".png";
-        img = imread("image_1.png");
+        img = imread("new_images/image_1.png");
 
         // resize(img, imgResize, Size(), .75, .75);
         // Size s = imgResize.size();

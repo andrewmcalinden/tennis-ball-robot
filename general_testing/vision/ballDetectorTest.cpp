@@ -6,9 +6,13 @@
 
 using namespace cv;
 using namespace std;
-//day values
-int hmin = 37, smin = 106, vmin = 123;
-int hmax = 53, smax = 208, vmax = 255;
+// original day values
+// int hmin = 37, smin = 106, vmin = 123;
+// int hmax = 53, smax = 208, vmax = 255;
+
+//new, summer day values
+int hmin = 47, smin = 38, vmin = 105;
+int hmax = 68, smax = 255, vmax = 255;
 
 //burning night light values
 // int hmin = 38, smin = 0, vmin = 0;

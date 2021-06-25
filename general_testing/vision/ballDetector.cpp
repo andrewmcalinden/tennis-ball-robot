@@ -146,17 +146,17 @@ void trackBall(Rect2d initialBBox)
 
 vector<Rect2d> getBoundingBoxes()
 {
-    // if (!cameraStarted)
-    // {
-    //     startCamera();
-    // }
+    if (!cameraStarted)
+    {
+        startCamera();
+    }
 
     Mat img, imgCrop, imgHSV, imgMask, imgDilate;
 
-    // cap.grab();
-    // cap.retrieve(img);
+    cap.grab();
+    cap.retrieve(img);
 
-    img = imread("new_images/image_1.png");
+    //img = imread("new_images/image_1.png");
     
     cvtColor(img, imgHSV, COLOR_BGR2HSV);
 

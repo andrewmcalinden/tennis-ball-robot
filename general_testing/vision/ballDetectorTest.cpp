@@ -77,7 +77,7 @@ int main()
             string text = point.str();
 
             putText(img, text, Point((int)xCenter, (int)yCenter), FONT_HERSHEY_DUPLEX, .3, Scalar(255, 255, 255), .2);
-            cout << xCenter << ", " << yCenter << endl;
+            //cout << xCenter << ", " << yCenter << endl;
         }
 
         // line(imgResize, Point(62, 707), Point(716, 219), Scalar(0, 0, 255), 2);

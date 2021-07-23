@@ -40,6 +40,6 @@ int main()
 
     //now that we see a ball on the right of the screen, drive to it
     //r.turnPixel(320, .5, .12, boxes.at(0));
-    r.curveToBall(boxes.at(0), 1.6, .14);
+    r.curveToBall(boxes.at(0), 1.1, .12);
     stopCamera();
 }

@@ -38,6 +38,6 @@ int main()
         imshow("rgb", img);
         imshow("hsv", hsv);
 
-        while (waitKey(1) != ' '){} //do nothing
+        waitKey(0);
     }
 }

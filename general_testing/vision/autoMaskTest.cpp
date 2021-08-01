@@ -37,6 +37,6 @@ int main()
         imshow("rgb", img);
         imshow("hsv", hsv);
 
-        while (waitKey(1) != ' ') //do nothing
+        while (waitKey(1) != ' '){} //do nothing
     }
 }

@@ -23,7 +23,7 @@ int main()
         cap.grab();
         cap.retrieve(img);
 
-        cvtColor(img, hsv, CV_BGR2HSV);
+        cvtColor(img, hsv, COLOR_BGR2HSV);
         int midCol = hsv.cols / 2;
         int midRow = hsv.rows / 2;
         Vec3b values = hsv.at<Vec3b>(midRow, midCol);

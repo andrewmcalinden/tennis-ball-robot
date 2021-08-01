@@ -11,7 +11,7 @@ int main()
     VideoCapture cap(0);
     Mat img;
 
-    cap.set(CAP_PROP_BUFFERSIZE, 1);
+    cap.set(CAP_PROP_BUFFERSIZE, 0);
 
     if (!cap.isOpened())
     {

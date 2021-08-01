@@ -1,0 +1,3 @@
+git pull
+g++ cameraTest.cpp -o cameraTest `pkg-config --cflags --libs opencv`
+./cameraTest

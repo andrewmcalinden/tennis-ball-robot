@@ -24,6 +24,6 @@ int main()
         cap.grab();
         cap.retrieve(img);
         imshow("image", img);
-        waitKey(1);
+        waitKey(0);
     }
 }

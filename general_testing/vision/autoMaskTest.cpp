@@ -9,8 +9,6 @@ using namespace std;
 int main()
 {
     VideoCapture cap(0);
-    Mat img;
-    Mat hsv;
 
     if (!cap.isOpened())
     {
@@ -20,6 +18,9 @@ int main()
 
     while (1)
     {
+        Mat img;
+        Mat hsv;
+        
         cap.grab();
         cap.retrieve(img);
 

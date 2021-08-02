@@ -211,10 +211,10 @@ vector<Rect2d> getBoundingBoxes()
     imshow("mask", imgMask);
     imshow("dilated", imgDilate);
     imshow("orig", img);
-    if (boundRect.size() == 0)
-    {
-        cout << "RETURNING EMPTY" << endl;
-    }
+    // if (boundRect.size() == 0)
+    // {
+    //     cout << "RETURNING EMPTY" << endl;
+    // }
     return boundRect;
 }
 

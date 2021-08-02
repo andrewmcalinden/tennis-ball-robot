@@ -1,33 +1,17 @@
-#include <opencv2/imgcodecs.hpp>
-#include <opencv2/highgui.hpp>
-#include <opencv2/imgproc.hpp>
+#include camera.h
 #include <iostream>
 
-using namespace cv;
 using namespace std;
 
 int main()
 {
-    // VideoCapture cap(0);
-    // Mat img;
+    Camera c(0);
+    Mat frame;
 
-    // cap.set(CAP_PROP_BUFFERSIZE, 1);
-
-    // if (!cap.isOpened())
-    // {
-    //     cout << "Could not initialize capturing..." << endl;
-    //     return 0;
-    // }
-
-    // while (1)
-    // {
-    //     cap.grab();
-    //     cap.retrieve(img);
-    //     imshow("image", img);
-    //     waitKey(0);
-    // }
-
-    cout << "beginning" << endl;
-    waitKey(0);
-    cout << "end" << endl;
+    while (1)
+    {
+        frame = c.getFrame();
+        imshow("image", frame);
+        waitKey(0);
+    }
 }

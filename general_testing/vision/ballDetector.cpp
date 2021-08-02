@@ -71,9 +71,9 @@ void setMask()
 {
     startCamera();
 
-    cout << "PLEASE POINT THE CAMERA AT A BALL" << endl << "TRY TO ENSURE THAT THE BALL FILLS THE CENTER OF THE SCREEN" << endl << "WHEN THE CAMERA IS READY, PRESS THE SPACE BAR" << endl;
+    cout << "PLEASE POINT THE CAMERA AT A BALL" << endl << "TRY TO ENSURE THAT THE BALL FILLS THE CENTER OF THE SCREEN" << endl << "WHEN THE CAMERA IS READY, PRESS ANY KEY" << endl;
     namedWindow("waiting window", WINDOW_AUTOSIZE);
-    while(waitKey(1) != ' '){} //wait for key press
+    waitKey(0);
 
     Mat img;
     Mat hsv;

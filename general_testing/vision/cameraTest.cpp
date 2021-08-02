@@ -1,4 +1,4 @@
-#include camera.h
+#include "camera.h"
 #include <iostream>
 
 using namespace std;
@@ -6,12 +6,12 @@ using namespace std;
 int main()
 {
     Camera c(0);
-    Mat frame;
+    cv::Mat frame;
 
     while (1)
     {
         frame = c.getFrame();
-        imshow("image", frame);
-        waitKey(0);
+        cv::imshow("image", frame);
+        cv::waitKey(0);
     }
 }

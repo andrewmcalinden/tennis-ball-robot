@@ -1,11 +1,12 @@
 #include "camera.h"
+#include <iostream>
 
-void Camera::Camera(unsigned char index)
+Camera::Camera(unsigned char index)
 {
     cap.open(0);
     if (!cap.isOpened())
     {
-        std::cout << "Could not initialize capturing..." << endl;
+        std::cout << "Could not initialize capturing..." << std::endl;
     }
     cap.set(cv::CAP_PROP_BUFFERSIZE, 1); //really makes the camera store 3 images
     

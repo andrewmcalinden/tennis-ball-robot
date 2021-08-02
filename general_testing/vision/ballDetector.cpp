@@ -67,6 +67,32 @@ void stopTracking()
     cout << "joined" << endl;
 }
 
+void setMask()
+{
+    startCamera();
+
+    cout << "PLEASE POINT THE CAMERA A BALL" << endl << "TRY TO ENSURE THAT THE BALL FILLS THE CENTER OF THE SCREEN" << endl << "WHEN THE CAMERA IS READY, PRESS ANY KEY" << endl;
+    waitKey(0); //wait for key press
+
+    Mat img;
+    Mat hsv;
+
+    cap.grab();
+    cap.retrieve(img);
+
+    cvtColor(img, hsv, COLOR_BGR2HSV);
+    int midCol = hsv.cols / 2;
+    int midRow = hsv.rows / 2;
+    Vec3b values = hsv.at<Vec3b>(midRow, midCol);
+
+    int h = values.val[0]; //hue
+    int s = values.val[1]; //saturation
+    int v = values.val[2]; //value
+
+    hmin = max(h - 20, 0), smin = max(s - 150, 0), vmin = max(v - 20, 0);
+    hmax = h + 20, smax = 255, vmax = 255; //dont need min max check because a value greater than 255 changes nothing
+}
+
 void startCamera()
 {
     if (cameraStarted) return;
@@ -78,7 +104,7 @@ void startCamera()
     }
     cameraStarted = 1;
 
-    cap.set(CAP_PROP_BUFFERSIZE, 1);
+    cap.set(CAP_PROP_BUFFERSIZE, 1); //really makes the camera store 3 images
 
     Mat test;
     cap.grab();
@@ -146,10 +172,7 @@ void trackBall(Rect2d initialBBox)
 
 vector<Rect2d> getBoundingBoxes()
 {
-    if (!cameraStarted)
-    {
-        startCamera();
-    }
+    startCamera();
 
     Mat img, imgCrop, imgHSV, imgMask, imgDilate;
 

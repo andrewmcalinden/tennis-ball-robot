@@ -17,6 +17,8 @@ struct Ball
 void startCamera();
 void stopCamera();
 
+void setMask();
+
 //std::vector<Ball> getBalls();           //returns x, y of center of ball and area of ball
 std::vector<cv::Rect2d> getBoundingBoxes(); //returns bounding boxes around each ball in the video
 

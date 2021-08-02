@@ -3,6 +3,7 @@
 
 int main()
 {
+    setMask();
     std::vector<cv::Rect2d> boundingBoxes = getBoundingBoxes();
     while (cv::waitKey(1) != 32) //while we don't see any balls
     {

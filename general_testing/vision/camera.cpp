@@ -27,3 +27,13 @@ cv::Mat Camera::getFrame()
     }
     return img;
 }
+
+int Camera::getImageWidth()
+{
+    return imageWidth;
+}
+
+int Camera::getImageHeight()
+{
+    return imageHeight;
+}

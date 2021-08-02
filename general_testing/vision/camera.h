@@ -14,4 +14,6 @@ class Camera
     public:
     Camera(unsigned char index);
     cv::Mat getFrame();
+    int getImageWidth();
+    int getImageHeight();
 };

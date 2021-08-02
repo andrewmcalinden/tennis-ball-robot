@@ -21,15 +21,11 @@ int hmax = 68, smax = 255, vmax = 255;
 double currentBallX;
 double currentBallY;
 
-double imageWidth;
-double imageHeight;
-
-bool cameraStarted = 0;
 std::atomic<bool> track;
 
 std::mutex mtx;
 
-VideoCapture cap;
+Camera cam(0);
 
 std::thread th;
 
@@ -41,16 +37,6 @@ double getBallX()
 double getBallY()
 {
     return currentBallY;
-}
-
-double getImageWidth()
-{
-    return imageWidth;
-}
-
-double getImageHeight()
-{
-    return imageHeight;
 }
 
 void startTracking(Rect2d initialBB)
@@ -69,17 +55,12 @@ void stopTracking()
 
 void setMask()
 {
-    startCamera();
-
     cout << "PLEASE POINT THE CAMERA AT A BALL" << endl << "TRY TO ENSURE THAT THE BALL FILLS THE CENTER OF THE SCREEN" << endl << "WHEN THE CAMERA IS READY, PRESS ANY KEY" << endl;
     namedWindow("waiting window", WINDOW_AUTOSIZE);
     waitKey(0);
 
-    Mat img;
+    Mat img = cam.getFrame();
     Mat hsv;
-
-    cap.grab();
-    cap.retrieve(img);
 
     cvtColor(img, hsv, COLOR_BGR2HSV);
     int midCol = hsv.cols / 2;
@@ -95,45 +76,10 @@ void setMask()
     cout << "set mask" << endl;
 }
 
-void startCamera()
-{
-    if (cameraStarted) return;
-    
-    cap.open(0);
-    if (!cap.isOpened())
-    {
-        std::cout << "Could not initialize capturing..." << endl;
-    }
-    cameraStarted = 1;
-
-    cap.set(CAP_PROP_BUFFERSIZE, 1); //really makes the camera store 3 images
-
-    Mat test;
-    cap.grab();
-    cap.retrieve(test);
-
-    imageWidth = test.cols;
-    imageHeight = test.rows;
-}
-
-void stopCamera()
-{
-    cap.release();
-    cameraStarted = false;
-}
-
 void trackBall(Rect2d initialBBox)
 {
-    if (!cameraStarted)
-    {
-        startCamera();
-    }
-
-
     Ptr<Tracker> tracker = TrackerMedianFlow::create();
-    Mat frame;
-    cap.grab();
-    cap.retrieve(frame);
+    Mat frame = cam.getFrame();
 
     Rect2d currentBBox = initialBBox;
     rectangle(frame, initialBBox, Scalar(255, 0, 0), 2, 1);
@@ -144,8 +90,7 @@ void trackBall(Rect2d initialBBox)
     while (track.load())
     {
         double timer = (double)getTickCount();
-        cap.grab();
-        cap.retrieve(frame);
+        frame = cam.getFrame();
 
         bool ok = tracker->update(frame, currentBBox);
         if (ok)
@@ -174,12 +119,9 @@ void trackBall(Rect2d initialBBox)
 
 vector<Rect2d> getBoundingBoxes()
 {
-    startCamera();
-
     Mat img, imgCrop, imgHSV, imgMask, imgDilate;
 
-    cap.grab();
-    cap.retrieve(img);
+    img = cam.getFrame();
 
     //img = imread("new_images/image_1.png");
     

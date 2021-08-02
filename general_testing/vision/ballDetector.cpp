@@ -1,4 +1,5 @@
 #include "ballDetector.h"
+#include "camera.h"
 #include <iostream>
 #include <thread>
 #include <atomic>

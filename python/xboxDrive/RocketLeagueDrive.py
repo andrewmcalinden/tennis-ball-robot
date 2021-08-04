@@ -52,7 +52,7 @@ ballCount = 0
 joy = xbox.Joystick()
 
 # Show various axis and button states until Back button is pressed
-print("Xbox controller sample: Press Back button to exit")
+print("Xbox Drive: Press Back button to exit")
 while not joy.Back():
 
     power = joy.rightTrigger()-joy.leftTrigger()

@@ -11,7 +11,7 @@ classifier = sys.argv[1]
 classifier = cv2.CascadeClassifier(classifier)
 
 
-fpsLimit = 2 # throttle limit
+fpsLimit = 4 # throttle limit
 startTime = time.time()
 cap = cv2.VideoCapture(0)
 

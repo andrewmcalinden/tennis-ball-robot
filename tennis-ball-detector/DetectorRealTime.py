@@ -4,7 +4,7 @@ import os
 import time
 
 # Run Command:
-#python3 detector.py data/cascade.xml
+#python3 DetectorRealTime.py data/cascade.xml
 
 classifier = sys.argv[1]
 
@@ -21,7 +21,7 @@ while True:
     img = cap.read
     
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    found = classifier.detectMultiScale(img_gray, minSize =(40, 40))
+    found = classifier.detectMultiScale(img_gray, minSize =(10, 10))
     if(len(found)!=0):
         #with open(f"results/{image[:-4]}_balls.txt", 'w') as f:
             for i, (x, y, width, height) in enumerate(found):

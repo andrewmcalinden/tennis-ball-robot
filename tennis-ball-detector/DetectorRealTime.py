@@ -33,7 +33,7 @@ while True:
             for i, (x, y, width, height) in enumerate(found):
                 cv2.rectangle(img, (x, y), (x + height, y + width), (0, 255, 0), 5)
                 #inches = round(((133.5879*math.e)**(-0.0129*height)), 1)
-                print((133.5879*math.e)**(-0.0129*height),"Inches",end="\n")
+                print(133.5879*(math.e**(-0.0129*height)),"Inches",end="\n")
     cv2.imshow("output", img)
     if cv2.waitKey(1) == 27: 
         break  # esc to quit

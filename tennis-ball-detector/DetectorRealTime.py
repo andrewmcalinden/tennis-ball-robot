@@ -23,7 +23,7 @@ while True:
 
     nowTime = time.time()
     frameRate = 30
-    1/(nowTime - startTime) = frameRate
+    frameRate = 1/(nowTime - startTime)
     print("FPS:",frameRate, end="\r")
     img_gray = cv2.cvtColor(cv2.UMat(img), cv2.COLOR_BGR2GRAY)
     found = classifier.detectMultiScale(img_gray, minSize =(10, 10))

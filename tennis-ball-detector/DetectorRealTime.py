@@ -14,8 +14,8 @@ classifier = cv2.CascadeClassifier(classifier)
 fpsLimit = 1 # throttle limit
 #startTime = time.time()
 cap = cv2.VideoCapture(0)
-cap.set(3, 600)
-cap.set(4, 800)
+cap.set(4, 600)
+cap.set(3, 800)
 
 
 while True:

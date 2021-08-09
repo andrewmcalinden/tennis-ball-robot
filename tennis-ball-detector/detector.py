@@ -14,7 +14,7 @@ if(not os.path.exists('results')):
 for image in images_to_check:
     img = cv2.imread(f"{directory}/{image}")
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    found = classifier.detectMultiScale(img_gray, minSize =(5, 5))
+    found = classifier.detectMultiScale(img_gray, minSize =(2, 2))
     if(len(found)!=0):
         with open(f"results/{image[:-4]}_balls.txt", 'w') as f:
             for i, (x, y, width, height) in enumerate(found):

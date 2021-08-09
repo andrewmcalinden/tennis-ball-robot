@@ -18,7 +18,7 @@ cap = cv2.VideoCapture(0)
 
 
 while True:
-    img = cap.read
+    ret_val, img = cap.read()
     nowTime = time.time()
     if (int(nowTime - startTime)) > fpsLimit:
         
@@ -30,4 +30,7 @@ while True:
                     cv2.rectangle(img, (x, y), (x + height, y + width), (0, 255, 0), 5)
                     #f.write(f"ball_no_{i}: coords ({x}, {y}), size {height}x{width}\n")
         cv2.imshow(img)
+        if cv2.waitKey(1) == 27: 
+            break  # esc to quit
         startTime = time.time() # reset time
+cv2.destroyAllWindows()

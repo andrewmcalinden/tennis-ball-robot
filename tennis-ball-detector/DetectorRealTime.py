@@ -22,7 +22,7 @@ while True:
     nowTime = time.time()
     if (int(nowTime - startTime)) > fpsLimit:
         
-        img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        img_gray = cv2.cvtColor(cv2.UMat(img), cv2.COLOR_BGR2GRAY)
         found = classifier.detectMultiScale(img_gray, minSize =(10, 10))
         if(len(found)!=0):
             #with open(f"results/{image[:-4]}_balls.txt", 'w') as f:

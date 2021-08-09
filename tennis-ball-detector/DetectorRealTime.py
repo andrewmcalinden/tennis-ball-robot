@@ -18,9 +18,10 @@ cap = cv2.VideoCapture(0)
 
 
 while True:
+    img = cap.read
+    nowTime = time.time()
     if (int(nowTime - startTime)) > fpsLimit:
-        img = cap.read
-        nowTime = time.time()
+        
         img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         found = classifier.detectMultiScale(img_gray, minSize =(10, 10))
         if(len(found)!=0):

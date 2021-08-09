@@ -31,7 +31,7 @@ while True:
         
             for i, (x, y, width, height) in enumerate(found):
                 cv2.rectangle(img, (x, y), (x + height, y + width), (0, 255, 0), 5)
-                
+                print(height,"\r")
     cv2.imshow("output", img)
     if cv2.waitKey(1) == 27: 
         break  # esc to quit

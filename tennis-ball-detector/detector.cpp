@@ -21,9 +21,10 @@ int main()
     for (int num = 14; num <= 30; num++)
     {
         stringstream ss;
-        ss << "image_" << num << ".png";
+        ss << "images/image_" << num << ".png";
 
         string path = ss.str();
+        //cout << path << endl;
         Mat img, imgGray;
         img = imread(path);
         cvtColor(img, imgGray, COLOR_BGR2GRAY);

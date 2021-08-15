@@ -3,6 +3,7 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/objdetect.hpp>
 #include <iostream>
+#include "../general_testing/vision/camera.h"
 
 using namespace cv;
 using namespace std;

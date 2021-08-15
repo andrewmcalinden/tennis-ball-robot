@@ -16,6 +16,7 @@ int main()
     ballCascade.load(classifier);
 
     Camera cam(0);
+    cam.setResolution(1280, 720);
 
     while(1)
     {

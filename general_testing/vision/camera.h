@@ -16,4 +16,5 @@ class Camera
     cv::Mat getFrame();
     int getImageWidth();
     int getImageHeight();
+    void setResolution(int w, int h);
 };

@@ -37,3 +37,9 @@ int Camera::getImageHeight()
 {
     return imageHeight;
 }
+
+void Camera::setResolution(int w, int h)
+{
+    cap.set(cv::CAP_PROP_FRAME_WIDTH, w);
+    cap.set(cv::CAP_PROP_FRAME_HEIGHT, h);
+}

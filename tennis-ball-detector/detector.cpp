@@ -23,17 +23,17 @@ int main()
         stringstream ss;
         ss << "image_" << num << ".png";
 
-        string path = ss.str;
+        string path = ss.str();
         Mat img, imgGray;
         img = imread(path);
         cvtColor(img, imgGray, COLOR_BGR2GRAY);
 
         vector<Rect> balls;
-        ballCascade.detectMultiScale(imgGray, faces, 2, 2);
+        ballCascade.detectMultiScale(imgGray, balls, 2, 2);
 
-        for (int i = 0; i < faces.size(); i++)
+        for (int i = 0; i < balls.size(); i++)
         {
-            rectangle(img, faces[i].tl(), faces[i].br(), Scalar(255, 0, 255), 3);
+            rectangle(img, balls[i].tl(), balls[i].br(), Scalar(255, 0, 255), 3);
         }
 
         imshow("found balls", img);

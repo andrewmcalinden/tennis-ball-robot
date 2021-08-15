@@ -6,7 +6,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <filesystem>
-#include <stringstream>
+#include <sstream>
 
 using namespace cv;
 using namespace std;

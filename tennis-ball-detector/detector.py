@@ -2,7 +2,7 @@ import cv2
 import sys
 import os
 
-directory = sys.argv[1] #i assume just "images?"
+directory = sys.argv[1]
 classifier = sys.argv[2]
 
 classifier = cv2.CascadeClassifier(classifier)

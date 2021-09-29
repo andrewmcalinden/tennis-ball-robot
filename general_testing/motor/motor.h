@@ -1,13 +1,11 @@
-#ifndef MOTOR_H
-#define MOTOR_H
+#pragma once
 class Motor
 {
     private:
-    unsigned char dirForwardPin;
-    unsigned char powerPin;
+    const unsigned char dirForwardPin;
+    const unsigned char powerPin;
 
     public:
     Motor(unsigned char dirForwardPinLoc, unsigned char powerPinLoc);
     void setPower(double power);
 };
-#endif

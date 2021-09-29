@@ -5,5 +5,5 @@
 void Encoders::printEncoders()
 {
     std::cout << "L: " << EncoderL::read();
-    std::cout << "  R: " << EncoderR::read() << "\n";
+    std::cout << "\tR: " << EncoderR::read() << "\n";
 }

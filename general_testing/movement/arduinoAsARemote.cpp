@@ -38,7 +38,7 @@ double superMap(double x, double in_min, double in_max, double out_min, double o
 
 void rwmReaderL()
 {
-    piHiPri (99);
+    piHiPri(99);
     if(digitalRead(LEFT_INPUT_PIN) == 1)
     {
         baseTimeL = micros();
@@ -58,8 +58,6 @@ void rwmReaderL()
         if(lPower>-.05 && lPower<.05)
             lPower = 0.0;
     }
-    
-
 }
 
 void rwmReaderR()
@@ -84,8 +82,6 @@ void rwmReaderR()
         if(rPower>-.05&&rPower<.05)
             rPower = 0.0;
     }
-    
-
 }
 
 void collectorToggle(){
@@ -137,8 +133,6 @@ int main()
         printf("\rX: %.2f", globalXPos);
         printf("   Y: %.2f", globalYPos);
         printf("   Heading: %.2f", globalHeading);
-    
     }
-    
 }
 

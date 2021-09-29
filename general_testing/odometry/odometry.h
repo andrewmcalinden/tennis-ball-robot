@@ -1,5 +1,5 @@
-#ifndef ODOMETRY_H
-#define ODOMETRY_H
+#pragma once
+
 void updateLeftEncoder(double reading);
 void updateRightEncoder(double reading);
 
@@ -11,4 +11,3 @@ bool epsilonEquals();
 double getX();
 double getY();
 double getHeading();
-#endif

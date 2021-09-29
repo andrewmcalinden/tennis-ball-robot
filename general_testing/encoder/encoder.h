@@ -2,9 +2,10 @@
 
 class Encoder
 {
+    //vars are public because they have to be modified by interrupt
     public:
-    unsigned char pinA;
-    unsigned char pinB;
+    const unsigned char pinA;
+    const unsigned char pinB;
     int position;
     unsigned char state;
 

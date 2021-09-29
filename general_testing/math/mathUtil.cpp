@@ -44,22 +44,7 @@ double toDegrees(double radians)
 //makes sure to always turn the smallest angle (90 vs -270)
 double angleDiff(double angle1, double angle2)
 {
-    double diff = angle2 - angle1;
-    //within 180 degrees of each other, can just do basic subtraction
-    if (abs(diff) <= 180)
-    {
-        return diff;
-    }
-    //if difference is greater than 180, have to turn the other way, turn -90 vs 270
-    //have to turn across the - to + change
-    else
-    {
-        if (diff > 0)
-        {
-            return diff - 360;
-        }
-        return diff + 360;
-    }
+    return angleWrapDeg(angle2 - angl1);
 }
 
 bool epsilonEquals(double value1, double value2)

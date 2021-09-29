@@ -50,10 +50,9 @@ Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned 
     wiringPiISR(ballCounterPin, INT_EDGE_FALLING, &countBalls);
 }
 
-void Robot::goToPos
-(double x, double y,
-double kp_straight, double ki_straight, double kd_straight, double f_straight, double maxSpeed_straight,
-double kp_turn, double ki_turn, double kd_turn, double f_turn)
+void Robot::goToPos(double x, double y,
+                    double kp_straight, double ki_straight, double kd_straight, double f_straight, double maxSpeed_straight,
+                    double kp_turn, double ki_turn, double kd_turn, double f_turn)
 {
     double xError = x - getX();
     double yError = y - getY();
@@ -118,7 +117,7 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
 
         direction = angleWrapDeg(toDegrees(atan2(yError, xError)) - getHeading()); //if 90, forward, if -90, backward
 
-        error = hypot(xError, yError); //really abs(error)
+        error = hypot(xError, yError);           //really abs(error)
         if (!(direction > 0 && direction < 180)) //90 is perfectly forwards, -90 is backwards
         {
             error *= -1;
@@ -200,21 +199,20 @@ void Robot::goStraight(double inches, double kp, double ki, double kd, double f,
 
         error = hypot(xError, yError); //really abs(error)
 
-        currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC) + ((delayAmount / 1000.0) * numDelays);        
+        currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC) + ((delayAmount / 1000.0) * numDelays);
         double dt = currentTime - pastTime;
 
         if (!(direction > 0 && direction < 180)) //90 is perfectly forwards, -90 is backwards
         {
             error *= -1;
         }
-        
-        
 
         double proportional = error / pDivisor;
-        integral += ((error + pastError) / 2.0)* dt;
+        integral += ((error + pastError) / 2.0) * dt;
         double derivative = (error - pastError) / dt;
 
-        std::cout << "\n" << error;
+        std::cout << "\n"
+                  << error;
 
         double power = kp * proportional + ki * integral + kd * derivative;
         outputFile << "Error: " << error << "\tP: " << proportional * kp << "\tI: " << integral * ki << "\tD: " << derivative * kd << "\tpower: " << power << "\tX: " << getX() << "\tY: " << getY() << std::endl;
@@ -316,7 +314,7 @@ void Robot::turnHeading(double finalAngle, double kp, double ki, double kd, doub
         updatePos(encoderL.read(), encoderR.read());
         error = angleDiff(getHeading(), finalAngle);
 
-        currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC) + ((delayAmount / 1000.0) * numDelays);        
+        currentTime = ((std::clock() - timer) / (double)CLOCKS_PER_SEC) + ((delayAmount / 1000.0) * numDelays);
         double dt = currentTime - pastTime;
 
         double proportional = error / fabs(initialAngleDiff);
@@ -402,7 +400,7 @@ void Robot::turnPixel(double finalPixel, double kp, double f, cv::Rect2d initial
     stopTracking();
 }
 
-void Robot::curveToBall(cv::Rect2d initialBB, double power, double f) 
+void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
 {
     startTracking(initialBB);
     startCollector();
@@ -431,7 +429,8 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
 
         double lPower = (leftProportion + f) * power * heightFactor;
         double rPower = (rightProportion + f) * power * heightFactor;
-        file << "lpower: " << lPower << "\trPower" << rPower << std::endl << std::endl;
+        file << "lpower: " << lPower << "\trPower" << rPower << std::endl
+             << std::endl;
 
         setMotorPowers(lPower, rPower);
     }
@@ -465,7 +464,7 @@ void Robot::goToBall()
     //find closest ball
     int minY = boxes.at(0).y;
     cv::Rect2d minBox = boxes.at(0);
-    for (cv::Rect2d &box: boxes)
+    for (cv::Rect2d &box : boxes)
     {
         if (box.y < minY)
         {

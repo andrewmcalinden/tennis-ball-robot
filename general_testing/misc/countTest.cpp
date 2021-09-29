@@ -25,14 +25,9 @@ int main()
     
     wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_FALLING, &countUp);
     
-    while(millis()<10000)
+    while(millis() < 10000)
     {
-        
-        
-            cout << count;
-            
-        
+        cout << count;
     }
     digitalWrite(COLLECTOR_PIN, LOW);
-    
 }

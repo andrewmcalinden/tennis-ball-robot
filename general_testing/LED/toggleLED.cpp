@@ -15,8 +15,8 @@ int main()
 		//if button pressed, toggle LED
 		if(digitalRead(BUTTON_IN) == 0)
 		{
-		digitalWrite(LED_OUT, !digitalRead(LED_OUT));
-		delay(500);
+			digitalWrite(LED_OUT, !digitalRead(LED_OUT));
+			delay(500);
 		}
 	}
 }

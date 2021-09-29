@@ -1,8 +1,8 @@
 class EncoderL
 {
 private:
-    static int const pinA = 0;
-    static int const pinB = 7;
+    static unsigned char const pinA = 0;
+    static unsigned char const pinB = 7;
     static int position;
     static unsigned char state;
 

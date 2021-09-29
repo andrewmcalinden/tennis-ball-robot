@@ -2,33 +2,29 @@
 #include <cmath>
 #include <iostream>
 
-//make while loop for angles like 800 degrees
+//BOTH ANGLE WRAPS MIGHT NOT WORK AFTER I MADE SCARY CHANGES
 double angleWrapDeg(double angle)
 {
-    double correctAngle = angle;
-    while (correctAngle > 180)
+    double zeroTo360 = angle + 180;      //convert to 0-360
+    double start = fmod(zeroTo360, 360); //will work for positive angles
+    //angle is (-360, 0), add 360 to make it from 0-360
+    if (start < 0)
     {
-        correctAngle -= 360;
+        start += 360;
     }
-    while (correctAngle < -180)
-    {
-        correctAngle += 360;
-    }
-    return correctAngle;
+    return start - 180; //bring it back to -180 to 180
 }
 
 double angleWrapRad(double angle)
 {
-    double correctAngle = angle;
-    while (correctAngle > M_PI)
+    double zeroTo2Pi = angle + M_PI;          //convert to 0-2pi
+    double start = fmod(zeroTo2Pi, M_PI * 2); //will work for positive angles
+    //angle is (-2PI, 0), add 2PI to make it from 0-2PI
+    if (start < 0)
     {
-        correctAngle -= (2 * M_PI);
+        start += M_PI * 2;
     }
-    while (correctAngle < (-1 * M_PI))
-    {
-        correctAngle += (2 * M_PI);
-    }
-    return correctAngle;
+    return start - M_OI; //bring it back to -PI to PI
 }
 
 double toRadians(double degrees)
@@ -41,26 +37,28 @@ double toDegrees(double radians)
     return (radians * 180) / M_PI;
 }
 
+//MIGHT NOT WORK AFTER I MADE SCARY CHANGES
 //returns how many degrees angle 1 is from 2
 //degrees needed to turn from angle1 to angle 2
 //ex: angleDiff(30, 90) returns 60
+//makes sure to always turn the smallest angle (90 vs -270)
 double angleDiff(double angle1, double angle2)
 {
-    if (angle1 >= 0 && angle2 >= 0 || angle1 <= 0 && angle2 <= 0)
-    { //curr & goal are both positive or both negative
-        return -(angle1 - angle2);
+    double diff = angle2 - angle1;
+    //within 180 degrees of each other, can just do basic subtraction
+    if (abs(diff) <= 180)
+    {
+        return diff;
     }
-    else if (abs(angle1 - angle2) <= 180)
-    { //diff btwn curr & goal is less than or equal to 180
-        return -(angle1 - angle2);
-    }
-    else if (angle1 > angle2)
-    { //curr is greater than goal
-        return (360 - (angle1 - angle2));
-    }
+    //if difference is greater than 180, have to turn the other way, turn -90 vs 270
+    //have to turn across the - to + change
     else
-    { //goal is greater than curr
-        return -(360 + (angle1 - angle2));
+    {
+        if (diff > 0)
+        {
+            return diff - 360;
+        }
+        return diff + 360;
     }
 }
 

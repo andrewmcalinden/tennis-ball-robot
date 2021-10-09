@@ -6,16 +6,7 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/tracking.hpp>
 #include <opencv2/core/ocl.hpp>
-
-/*
-struct Ball
-{
-    double area;
-    cv::Point center;
-};*/
-
-void startCamera();
-void stopCamera();
+#include "camera.h"
 
 void setMask();
 
@@ -24,9 +15,6 @@ std::vector<cv::Rect2d> getBoundingBoxes(); //returns bounding boxes around each
 
 double getBallX();
 double getBallY();
-
-double getImageWidth();
-double getImageHeight();
 
 void trackBall(cv::Rect2d initialBBox); //draws bounding box around the ball initially passed as a parameter
 void stopTracking();

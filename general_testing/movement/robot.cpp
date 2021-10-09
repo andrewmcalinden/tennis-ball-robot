@@ -448,7 +448,6 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
 
 void Robot::goToBall()
 {
-    startCamera();
     std::vector<cv::Rect2d> boxes = getBoundingBoxes();
     while (boxes.size() == 0) //while we don't see any balls
     {

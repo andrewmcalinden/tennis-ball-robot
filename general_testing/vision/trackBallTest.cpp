@@ -21,7 +21,7 @@ int main()
     }
     startTracking(boundingBoxes.at(0));
     motorL.setPower(.15);
-    motorR.setPower(-.15)
+    motorR.setPower(-.15);
     while(getBallX() < 600)
     {
         //std::cout << getBallX() << std::endl;

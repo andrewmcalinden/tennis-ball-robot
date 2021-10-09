@@ -408,42 +408,42 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
 
     int initialBallCount = ballCount;
     double y = getBallY();
-    std::ofstream file("getballdata.txt");
+    //std::ofstream file("getballdata.txt");
 
-    std::set<double> numX;
+   // std::set<double> numX;
     while (y < getImageHeight() * .9)
     {
         updatePos(encoderL.read(), encoderR.read());
         double currentX = getBallX();
-        numX.insert(currentX);
+        //numX.insert(currentX);
 
         double leftProportion = currentX / getImageWidth();
         double rightProportion = 1 - leftProportion;
-        file << "lprop: " << leftProportion << "\trightprop: " << rightProportion << std::endl;
+        //file << "lprop: " << leftProportion << "\trightprop: " << rightProportion << std::endl;
 
         y = getBallY();
-        file << "xPos: " << currentX << "\tyPos: " << y << std::endl;
+        //file << "xPos: " << currentX << "\tyPos: " << y << std::endl;
 
         //double heightFactor = 1 - (y / getImageHeight());
         double heightFactor = 1;
-        file << "heightFactor: " << heightFactor << std::endl;
+        //file << "heightFactor: " << heightFactor << std::endl;
 
         double lPower = (leftProportion + f) * power;
         double rPower = (rightProportion + f) * power;
-        file << "lpower: " << lPower << "\trPower" << rPower << std::endl
-             << std::endl;
+       // file << "lpower: " << lPower << "\trPower" << rPower << std::endl
+             //<< std::endl;
 
         setMotorPowers(lPower, rPower);
     }
     stopTracking();
     setMotorPowers(.22, .22);
-    std::cout << "driving for 500 ms" << std::endl;
+    //std::cout << "driving for 500 ms" << std::endl;
     delay(2100); //keep driving for 500ms in case there is a cluster
     setMotorPowers(0, 0);
     delay(500);
     stopCollector();
-    std::cout << "num frames: " << numX.size() << std::endl;
-    file.close();
+    //std::cout << "num frames: " << numX.size() << std::endl;
+    //file.close();
 }
 
 void Robot::goToBall()

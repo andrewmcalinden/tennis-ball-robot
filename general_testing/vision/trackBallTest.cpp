@@ -4,6 +4,7 @@
 #define POWER_PIN_RIGHT 26
 
 #include "../vision/ballDetector.h"
+#include"../motor/motor.h"
 #include <iostream>
 
 

@@ -26,7 +26,7 @@ std::atomic<bool> track;
 
 std::mutex mtx;
 
-Camera cam(1);
+Camera cam(0);
 
 std::thread th;
 

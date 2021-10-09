@@ -84,6 +84,8 @@ void setMask()
 
     hmin = max(h - 20, 0), smin = max(s - 150, 0), vmin = max(v - 20, 0);
     hmax = h + 20, smax = 255, vmax = 255; //dont need min max check because a value greater than 255 changes nothing
+    cout << hmin << "\t" << smin << "\t" << vmin << endl;
+    cout << hmax << "\t" << smax << "\t" << vmax << endl;
     cout << "set mask" << endl;
 }
 

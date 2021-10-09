@@ -13,8 +13,6 @@ using namespace std;
 
 int main()
 {
-    wiringPiSetup();
-
     Motor motorL(DIRECTION_PIN_FORWARD_LEFT, POWER_PIN_LEFT);
     Motor motorR(DIRECTION_PIN_FORWARD_RIGHT, POWER_PIN_RIGHT);
 

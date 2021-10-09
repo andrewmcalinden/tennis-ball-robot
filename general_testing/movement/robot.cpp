@@ -2,6 +2,7 @@
 #include "../odometry/odometry.h"
 #include "../math/mathUtil.h"
 #include "../math/vector.h"
+#include "../vision/ballDetector.h"
 #include <wiringPi.h>
 #include <cmath>
 #include <ctime>

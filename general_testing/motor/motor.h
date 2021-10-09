@@ -1,4 +1,7 @@
 #pragma once
+
+#include <wiringPi.h>
+
 class Motor
 {
     private:

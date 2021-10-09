@@ -1,7 +1,6 @@
 #include "motor.h"
 #include <cmath>
 #include <iostream>
-#include <wiringPi.h>
 Motor::Motor(unsigned char dirForwardPinLoc, unsigned char powerPinLoc)
     : dirForwardPin{dirForwardPinLoc}, powerPin{powerPinLoc}
 {

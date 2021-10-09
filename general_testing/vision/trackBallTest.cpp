@@ -20,11 +20,23 @@ int main()
         boundingBoxes = getBoundingBoxes();
     }
     startTracking(boundingBoxes.at(0));
-    motorL.setPower(.25);
-    motorR.setPower(-.25);
-    while(getBallX() < 600)
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (double d = .20; d <= .5; d += .05)
+        {
+            motorL.setPower(d);
+            motorR.setPower(-d);
+            delay(100);
+        }
+        delay(500);
+    }
+
+    while (cv::waitKey(1) != 32)
     {
         //std::cout << getBallX() << std::endl;
     }
+    motorL.setPower(0);
+    motorR.setPower(0);
     stopTracking();
 }

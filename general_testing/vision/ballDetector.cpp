@@ -30,6 +30,16 @@ Camera cam(0);
 
 std::thread th;
 
+int getImageWidth()
+{
+    return cam.getImageWidth();
+}
+
+int getImageHeight()
+{
+    return cam.getImageHeight();
+}
+
 double getBallX()
 {
     return currentBallX;

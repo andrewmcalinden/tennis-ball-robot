@@ -1,5 +1,6 @@
 #include "robot.h"
 #include "../odometry/odometry.h"
+#include "../vision/ballDetector.h"
 #include <wiringPi.h>
 #include <iostream>
 
@@ -32,7 +33,7 @@ int main()
         r.setMotorPowers(.2, -.2);
     }
     r.setMotorPowers(0, 0);
-    
+
     cv::waitKey(200);
     boxes = getBoundingBoxes();
 

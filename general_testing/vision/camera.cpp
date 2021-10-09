@@ -9,7 +9,7 @@ Camera::Camera(unsigned char index)
         std::cout << "Could not initialize capturing..." << std::endl;
     }
     cap.set(cv::CAP_PROP_BUFFERSIZE, 1); //really makes the camera store 3 images
-    cap.set(cv::CAP_PROP_EXPOSURE, 10);
+  //  cap.set(cv::CAP_PROP_EXPOSURE, 10);
 
     cv::Mat test;
     cap.read(test);

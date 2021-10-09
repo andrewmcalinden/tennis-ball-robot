@@ -8,8 +8,8 @@ using namespace cv;
 using namespace std;
 
 // original day values
-int hmin = 20, smin = 77, vmin = 98;
-int hmax = 60, smax = 255, vmax = 255;
+int hmin = 38, smin = 29, vmin = 115;
+int hmax = 78, smax = 255, vmax = 255;
 
 //new, summer day values
 // int hmin = 47, smin = 38, vmin = 105;

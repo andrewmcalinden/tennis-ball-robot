@@ -3,7 +3,7 @@
 
 Camera::Camera(unsigned char index)
 {
-    cap.open(0);
+    cap.open(index);
     if (!cap.isOpened())
     {
         std::cout << "Could not initialize capturing..." << std::endl;

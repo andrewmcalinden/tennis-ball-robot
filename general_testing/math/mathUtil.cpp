@@ -24,7 +24,7 @@ double angleWrapRad(double angle)
     {
         start += M_PI * 2;
     }
-    return start - M_OI; //bring it back to -PI to PI
+    return start - M_PI; //bring it back to -PI to PI
 }
 
 double toRadians(double degrees)
@@ -44,7 +44,7 @@ double toDegrees(double radians)
 //makes sure to always turn the smallest angle (90 vs -270)
 double angleDiff(double angle1, double angle2)
 {
-    return angleWrapDeg(angle2 - angl1);
+    return angleWrapDeg(angle2 - angle1);
 }
 
 bool epsilonEquals(double value1, double value2)

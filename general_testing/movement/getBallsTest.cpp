@@ -32,10 +32,8 @@ int main()
         r.setMotorPowers(.2, -.2);
     }
     r.setMotorPowers(0, 0);
+    
     cv::waitKey(200);
-
-    stopCamera();
-    startCamera();
     boxes = getBoundingBoxes();
 
     //now that we see a ball on the right of the screen, drive to it

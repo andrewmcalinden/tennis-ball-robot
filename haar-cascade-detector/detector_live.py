@@ -7,9 +7,8 @@ import math
 # Run Command:
 #python3 DetectorRealTime.py data/cascade.xml
 
-classifier = sys.argv[1]
 
-classifier = cv2.CascadeClassifier(classifier)
+classifier = cv2.CascadeClassifier("data/cascade.xml")
 
 
 fpsLimit = 1 # throttle limit
@@ -17,7 +16,7 @@ startTime = time.time()
 cap = cv2.VideoCapture(0)
 cap.set(4, 720)
 cap.set(3, 1280)
-
+cap.set(cv2.CAP_PROP_EXPOSURE, -3)
 
 while True:
     ret_val, img = cap.read()
@@ -27,14 +26,15 @@ while True:
     #frameRate = 1/(nowTime - startTime)
     #print("FPS:",frameRate, end="\r")
     img_gray = cv2.cvtColor(cv2.UMat(img), cv2.COLOR_BGR2GRAY)
-    found = classifier.detectMultiScale(img_gray, minSize =(10, 10))
+    img_HSV = cv2.cvtColor(cv2.UMat(img), cv2.COLOR_BGR2HSV)
+    found = classifier.detectMultiScale(img, minSize =(10, 10))
     if(len(found)!=0):
         
             for i, (x, y, width, height) in enumerate(found):
-                cv2.rectangle(img, (x, y), (x + height, y + width), (0, 255, 0), 5)
+                cv2.rectangle(img_HSV, (x, y), (x + height, y + width), (0, 255, 0), 5)
                 #inches = round(((133.5879*math.e)**(-0.0129*height)), 1)
                 print((2.65*1350)/height,"Inches",end="\n")
-    cv2.imshow("output", img)
+    cv2.imshow("output", img_HSV)
     if cv2.waitKey(1) == 27: 
         break  # esc to quit
     #startTime = time.time() # reset time

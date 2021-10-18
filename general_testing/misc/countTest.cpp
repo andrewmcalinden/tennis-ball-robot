@@ -10,11 +10,19 @@ using namespace std;
 
 volatile int count = 0;
 volatile int oldCount = 0;
+volatile int startTime = 0;
+
 
 void countUp()
 {
-    count++;
-    delay(10);
+    if(digitalRead(COUNT_INPUT_PIN == HIGH){
+        startTime = milis();
+    }
+    else{
+        if(millis()-startTime > 10){
+            count++;
+        }
+    }
 }
 
 int main()
@@ -23,7 +31,7 @@ int main()
     pinMode(COUNT_INPUT_PIN, INPUT);
     digitalWrite(COLLECTOR_PIN, HIGH);
     
-    wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_FALLING, &countUp);
+    wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_BOTH, &countUp);
     
     while(millis() < 10000)
     {

@@ -16,7 +16,7 @@ int main()
 
     int frame_width = vcap.get(CAP_PROP_FRAME_WIDTH);
     int frame_height = vcap.get(CAP_PROP_FRAME_HEIGHT);
-    VideoWriter video("out.avi", FOURCC('M', 'J', 'P', 'G'), 10, Size(frame_width, frame_height), true);
+    VideoWriter video("out.avi", VideoWriter::FOURCC('M', 'J', 'P', 'G'), 10, Size(frame_width, frame_height), true);
 
     for (;;)
     {

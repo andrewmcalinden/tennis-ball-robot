@@ -2,7 +2,6 @@
 #include "camera.h"
 #include <iostream>
 #include <thread>
-#include <atomic>
 
 using namespace cv;
 using namespace std;

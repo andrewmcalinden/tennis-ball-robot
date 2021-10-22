@@ -23,4 +23,4 @@ void trackBall(cv::Rect2d initialBBox); //draws bounding box around the ball ini
 void stopTracking();
 void startTracking(cv::Rect2d initialBB);
 
-std::atomic<bool> track;
+extern std::atomic<bool> track;

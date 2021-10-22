@@ -23,6 +23,8 @@ double currentBallY;
 
 std::mutex mtx;
 
+std::atomic<bool> track;
+
 Camera cam(0);
 
 std::thread th;

@@ -29,6 +29,7 @@ int main()
     std::vector<cv::Rect2d> boxes;
     while (count++ < 10)
     {
+        scan:
         boxes = getBoundingBoxes();
         while (boxes.size() == 0) //while we don't see any balls
         {
@@ -39,6 +40,7 @@ int main()
 
         cv::waitKey(200);
         boxes = getBoundingBoxes();
+        if (boxes.size() == 0) goto scan;
 
         //now that we see a ball on the right of the screen, drive to it
         //r.turnPixel(320, .5, .12, boxes.at(0));

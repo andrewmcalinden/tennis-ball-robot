@@ -110,7 +110,8 @@ void trackBall(Rect2d initialBBox)
         else
         {
             putText(frame, "Tracking failure detected", Point(100, 80), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(0, 0, 255), 2);
-            stopTracking(); //maybe breaks everything because stops a thread inside itself
+            track = false;
+            return;
         }
         mtx.lock();
         currentBallX = currentBBox.x + currentBBox.width / 2;

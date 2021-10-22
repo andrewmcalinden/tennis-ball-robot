@@ -27,6 +27,7 @@ int main()
     //setMask();
     int count = 0;
     std::vector<cv::Rect2d> boxes;
+    setMask();
     while (count++ < 10)
     {
         scan:

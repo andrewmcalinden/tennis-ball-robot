@@ -14,9 +14,9 @@ int main()
         return -1;
     }
 
-    int frame_width = vcap.get(CV_CAP_PROP_FRAME_WIDTH);
-    int frame_height = vcap.get(CV_CAP_PROP_FRAME_HEIGHT);
-    VideoWriter video("out.avi", CV_FOURCC('M', 'J', 'P', 'G'), 10, Size(frame_width, frame_height), true);
+    int frame_width = vcap.get(CAP_PROP_FRAME_WIDTH);
+    int frame_height = vcap.get(CAP_PROP_FRAME_HEIGHT);
+    VideoWriter video("out.avi", FOURCC('M', 'J', 'P', 'G'), 10, Size(frame_width, frame_height), true);
 
     for (;;)
     {

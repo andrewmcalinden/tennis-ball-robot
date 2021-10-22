@@ -22,8 +22,6 @@ int hmax = 70, smax = 255, vmax = 255;
 double currentBallX;
 double currentBallY;
 
-std::atomic<bool> track;
-
 std::mutex mtx;
 
 Camera cam(0);
@@ -58,10 +56,8 @@ void startTracking(Rect2d initialBB)
 
 void stopTracking()
 {
-    cout << "starrting method" << endl;
     track = false;
     th.join();
-    cout << "joined" << endl;
 }
 
 void setMask()
@@ -113,6 +109,7 @@ void trackBall(Rect2d initialBBox)
         else
         {
             putText(frame, "Tracking failure detected", Point(100, 80), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(0, 0, 255), 2);
+            stopTracking(); //maybe breaks everything because stops a thread inside itself
         }
         mtx.lock();
         currentBallX = currentBBox.x + currentBBox.width / 2;

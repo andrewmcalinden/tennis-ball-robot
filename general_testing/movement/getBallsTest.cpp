@@ -29,7 +29,6 @@ int main()
     std::vector<cv::Rect2d> boxes;
     while (count++ < 10)
     {
-        std::cout << "loop" << std::endl;
         boxes = getBoundingBoxes();
         while (boxes.size() == 0) //while we don't see any balls
         {

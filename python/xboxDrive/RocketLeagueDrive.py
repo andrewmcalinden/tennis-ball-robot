@@ -2,6 +2,7 @@ from __future__ import print_function
 import RPi.GPIO as GPIO
 import xbox
 import time
+import cv2
 
 rPowerPin = 12
 rDirPin = 16
@@ -12,7 +13,7 @@ countPin = 10
 
 GPIO.setmode(GPIO.BCM)
 
-GPIO.setup(rPowerPin, GPIO.OUT)
+GPIO.setup(rPowerPin, GPIO.OUT) 
 GPIO.setup(rDirPin, GPIO.OUT)
 GPIO.setup(lPowerPin, GPIO.OUT)
 GPIO.setup(lDirPin, GPIO.OUT)
@@ -51,10 +52,40 @@ ballCount = 0
 # Instantiate the controller
 joy = xbox.Joystick()
 
+video = cv2.VideoCapture(0)
+   
+# We need to check if camera
+# is opened previously or not
+if (video.isOpened() == False): 
+    print("Error reading video file")
+  
+# We need to set resolutions.
+# so, convert them from float to integer.
+frame_width = int(video.get(3))
+frame_height = int(video.get(4))
+   
+size = (frame_width, frame_height)
+   
+# Below VideoWriter object will create
+# a frame of above defined The output 
+# is stored in 'filename.avi' file.
+result = cv2.VideoWriter('filename.avi', 
+                         cv2.VideoWriter_fourcc(*'MJPG'),
+                         10, size)
+
+
 # Show various axis and button states until Back button is pressed
 print("Xbox Drive: Press Back button to exit")
 while not joy.Back():
-
+    
+    ret, frame = video.read()
+  
+    if ret == True: 
+  
+        # Write the frame into the
+        # file 'filename.avi'
+        result.write(frame)
+    
     power = joy.rightTrigger()-joy.leftTrigger()
     #if (joy.leftX()>0 and joy.leftX()<.75):
         
@@ -113,3 +144,7 @@ while not joy.Back():
 # Close out when done
 GPIO.cleanup()
 joy.close()
+
+video.release()
+result.release()
+

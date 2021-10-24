@@ -30,14 +30,7 @@ volatile int startTime = 0;
 
 void countUp()
 {
-    if(digitalRead(COUNT_INPUT_PIN == HIGH)){
-        startTime = millis();
-    }
-    else{
-        if(millis()-startTime > 10){
-            count++;
-        }
-    }
+    count++;
 }
 
 int main()
@@ -48,7 +41,7 @@ int main()
     pinMode(COUNT_INPUT_PIN, INPUT);
     digitalWrite(COLLECTOR_PIN, HIGH);
     
-    wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_BOTH, &countUp);
+    wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_FALLING, &countUp);
     
     while(millis() < 10000)
     {

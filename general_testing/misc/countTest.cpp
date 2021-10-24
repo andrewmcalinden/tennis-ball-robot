@@ -31,7 +31,7 @@ volatile int startTime = 0;
 void countUp()
 {
     if(digitalRead(COUNT_INPUT_PIN == HIGH)){
-        startTime = milis();
+        startTime = millis();
     }
     else{
         if(millis()-startTime > 10){

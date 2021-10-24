@@ -14,8 +14,14 @@ volatile int ballCount = 0;
 
 void countBalls()
 {
-    ballCount++;
-    //std::cout << "detected ball" << std::endl;
+    if(digitalRead(COUNT_INPUT_PIN == HIGH){
+        startTime = milis();
+    }
+    else{
+        if(millis()-startTime > 10){
+            ballCount++;
+        }
+    }
 }
 
 int Robot::getBallCount()
@@ -48,7 +54,7 @@ Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned 
     pinMode(ballCounterPin, INPUT);
     pinMode(collectorPin, OUTPUT);
     setPose(initialX, initialY, initialTheta);
-    wiringPiISR(ballCounterPin, INT_EDGE_FALLING, &countBalls);
+    wiringPiISR (ballCounterPin, INT_EDGE_BOTH, &countBalls);
 }
 
 void Robot::goToPos(double x, double y,

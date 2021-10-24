@@ -1,6 +1,8 @@
 #include <ctime>
 #include <iostream>
 #include <wiringPi.h>
+#include "robot.h"
+
 int main()
 {
     std::clock_t timer;

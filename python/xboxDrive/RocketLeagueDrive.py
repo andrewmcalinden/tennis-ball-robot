@@ -10,6 +10,9 @@ lPowerPin = 13
 lDirPin = 6
 collectPin = 23
 countPin = 10
+startTime = 0
+count = 0
+
 
 GPIO.setmode(GPIO.BCM)
 
@@ -18,7 +21,7 @@ GPIO.setup(rDirPin, GPIO.OUT)
 GPIO.setup(lPowerPin, GPIO.OUT)
 GPIO.setup(lDirPin, GPIO.OUT)
 GPIO.setup(collectPin, GPIO.OUT)
-#GPIO.setup(countPin, GPIO.IN)
+GPIO.setup(countPin, GPIO.IN)
 
 rightPwn = GPIO.PWM(rPowerPin, 5000)
 leftPwn = GPIO.PWM(lPowerPin, 5000)
@@ -45,6 +48,22 @@ def setLeftPower(power):
     else:
         GPIO.output(lDirPin,GPIO.LOW)
 
+def countUp(countPin):
+
+    if GPIO.input(countPin)==1:
+        global startTime
+        startTime = time.time()
+    
+    else:
+        
+        if (time.time() - startTime) > 10:
+            global count
+            count +=1
+        
+    
+
+
+GPIO.add_event_detect(countPin, GPIO.BOTH, callback=countUp)
 
 collectOn = False
 ballCount = 0
@@ -116,31 +135,12 @@ while not joy.Back():
         
         while joy.A():
             time.sleep(.0001)
+
+    print(count)
     
 
-    #GPIO.add_event_detect(countPin, GPIO.RISING)
-
-    #if GPIO.event_detected(countPin):
-        #ballCount+=1
-
-    #print("right: " + fmtFloat(rightPower))
-    #print("left: " + fmtFloat(leftPower))
-
-
-    # Show connection status
     
-    #showIf(joy.connected(), "Y", "N")
-    # Left analog stick
-    #show("  Left X/Y:", fmtFloat(joy.leftX()), "/", fmtFloat(joy.leftY()))
-    # Right trigger
-    
-    #show("  RightTrg:", fmtFloat(joy.rightTrigger()))
-    # A/B/X/Y buttons
-    #show("  LeftTrg:", fmtFloat(joy.leftTrigger()))
-    #show("  Buttons:")
-    
-      
-    
+
 # Close out when done
 GPIO.cleanup()
 joy.close()

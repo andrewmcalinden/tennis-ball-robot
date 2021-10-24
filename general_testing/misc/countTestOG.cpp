@@ -41,7 +41,7 @@ int main()
     pinMode(COUNT_INPUT_PIN, INPUT);
     digitalWrite(COLLECTOR_PIN, HIGH);
     
-    wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_FALLING, &countUp);
+    wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_RISING, &countUp);
     
     while(millis() < 10000)
     {

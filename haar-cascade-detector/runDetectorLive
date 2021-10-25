@@ -1,3 +1,0 @@
-git pull
-g++ detectorLive.cpp ../general_testing/vision/camera.cpp -o detectorLive `pkg-config --cflags --libs opencv`
-./detectorLive

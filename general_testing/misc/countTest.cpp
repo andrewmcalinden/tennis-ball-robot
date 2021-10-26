@@ -27,7 +27,7 @@ void countUp()
         startTime = millis();
     }
     else{
-        if((millis()-startTime) > 50){
+        if((millis()-startTime) > 20){
             count++;
         }
     }

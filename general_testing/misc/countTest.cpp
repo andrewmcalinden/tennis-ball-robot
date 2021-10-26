@@ -33,10 +33,7 @@ void countUp()
     }
     countState = !countState;
 }
-void countUpOG()
-{
-    count++;
-}
+
 int main()
 {   
    
@@ -61,7 +58,7 @@ int main()
     pwmWrite(POWER_PIN_LEFT, 60);
 
     delay(200);
-    wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_BOTH, &countUpOG);
+    wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_BOTH, &countUp);
     
     delay(1000);
     cout << count << endl;

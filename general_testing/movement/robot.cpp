@@ -11,17 +11,21 @@
 #include <set>
 
 volatile int ballCount = 0;
+volatile int startTime = 0;
+volatile int tempCount = 0;
+bool countState = true;
 
 void countBalls()
 {
-    if(digitalRead(COUNT_INPUT_PIN == HIGH){
+    if(countState){
         startTime = milis();
     }
     else{
-        if(millis()-startTime > 10){
+        if(millis()-startTime > 20){
             ballCount++;
         }
     }
+    countState = !countState;
 }
 
 int Robot::getBallCount()
@@ -31,14 +35,17 @@ int Robot::getBallCount()
 
 void Robot::startCollector()
 {
+    tempCount = ballCount;
     digitalWrite(ballCollectorPin, HIGH);
-    delay(1000); //wait for collector to turn on
+    delay(200); //wait for collector to turn on
+    countState = true;
+    ballCount = tempCount ;
 }
 
 void Robot::stopCollector()
 {
     digitalWrite(ballCollectorPin, LOW);
-    std::cout << "STOPPED" << std::endl;
+    std::cout << "Collector Off" << std::endl;
 }
 
 Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned char rMotorDirPin, unsigned char rMotorPowerPin,

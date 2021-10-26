@@ -54,8 +54,8 @@ int main()
     digitalWrite(DIRECTION_PIN_FORWARD_RIGHT, HIGH);
     digitalWrite(DIRECTION_PIN_FORWARD_LEFT, LOW);
 
-    pwmWrite(POWER_PIN_RIGHT, 25);
-    pwmWrite(POWER_PIN_LEFT, 25);
+    pwmWrite(POWER_PIN_RIGHT, 60);
+    pwmWrite(POWER_PIN_LEFT, 60);
 
     delay(200);
     wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_BOTH, &countUp);

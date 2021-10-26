@@ -57,6 +57,7 @@ int main()
     pwmWrite(POWER_PIN_RIGHT, 25);
     pwmWrite(POWER_PIN_LEFT, 25);
 
+    delay(200);
     wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_BOTH, &countUp);
     
     delay(1000);

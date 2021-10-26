@@ -18,7 +18,7 @@ bool countState = true;
 
 void countUp()
 {
-    if(countState)){
+    if(countState){
         startTime = millis();
     }
     else{

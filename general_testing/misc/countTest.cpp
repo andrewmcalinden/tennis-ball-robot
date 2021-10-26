@@ -59,11 +59,10 @@ int main()
 
     wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_BOTH, &countUp);
     
-    while(millis() < 10000)
-    {
-        cout << count << endl;
-    }
+    delay(10000);
+    
     digitalWrite(COLLECTOR_PIN, LOW);
     pwmWrite(POWER_PIN_RIGHT, 0);
     pwmWrite(POWER_PIN_LEFT, 0);
+    cout << count << endl;
 }

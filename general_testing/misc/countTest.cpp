@@ -27,7 +27,7 @@ void countUp()
         startTime = millis();
     }
     else{
-        if(millis()-startTime > 50){
+        if((millis()-startTime) > 50){
             count++;
         }
     }
@@ -59,10 +59,24 @@ int main()
 
     wiringPiISR (COUNT_INPUT_PIN, INT_EDGE_BOTH, &countUp);
     
-    delay(10000);
-    
+    delay(1000);
+    cout << count << endl;
+    delay(1000);
+    cout << count << endl;
+    delay(1000);
+    cout << count << endl;
+    delay(1000);
+    cout << count << endl;
+    delay(1000);
+    cout << count << endl;
+    delay(1000);
+    cout << count << endl;
+    delay(1000);
+    cout << count << endl;
+    delay(1000);
+    cout << count << endl;
+
     digitalWrite(COLLECTOR_PIN, LOW);
     pwmWrite(POWER_PIN_RIGHT, 0);
     pwmWrite(POWER_PIN_LEFT, 0);
-    cout << count << endl;
-}
+}    

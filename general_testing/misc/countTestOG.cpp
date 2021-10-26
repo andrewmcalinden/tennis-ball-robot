@@ -5,19 +5,7 @@
 
 #define COLLECTOR_PIN 4
 #define COUNT_INPUT_PIN 12
-#define LEFT_MOTOR_DIR_PIN 22
-#define LEFT_MOTOR_POWER_PIN 23
-#define RIGHT_MOTOR_DIR_PIN 27
-#define RIGHT_MOTOR_POWER_PIN 26
 
-#define INITIAL_X 0
-#define INITIAL_Y 0
-#define INITIAL_THETA 0
-
-#define L_ENCODER_PIN1 7
-#define L_ENCODER_PIN2 0
-#define R_ENCODER_PIN1 2
-#define R_ENCODER_PIN2 3
 
 
 using namespace std;

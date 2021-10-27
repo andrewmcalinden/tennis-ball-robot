@@ -17,11 +17,14 @@ bool countState = true;
 
 void countBalls()
 {
-    if(countState){
+    if (countState)
+    {
         startTime = milis();
     }
-    else{
-        if(millis()-startTime > 20){
+    else
+    {
+        if (millis() - startTime > 20)
+        {
             ballCount++;
         }
     }
@@ -36,10 +39,12 @@ int Robot::getBallCount()
 void Robot::startCollector()
 {
     tempCount = ballCount;
+
     digitalWrite(ballCollectorPin, HIGH);
     delay(200); //wait for collector to turn on
+
     countState = true;
-    ballCount = tempCount ;
+    ballCount = tempCount;
 }
 
 void Robot::stopCollector()
@@ -61,7 +66,7 @@ Robot::Robot(unsigned char lMotorDirPin, unsigned char lMotorPowerPin, unsigned 
     pinMode(ballCounterPin, INPUT);
     pinMode(collectorPin, OUTPUT);
     setPose(initialX, initialY, initialTheta);
-    wiringPiISR (ballCounterPin, INT_EDGE_BOTH, &countBalls);
+    wiringPiISR(ballCounterPin, INT_EDGE_BOTH, &countBalls);
 }
 
 void Robot::goToPos(double x, double y,
@@ -423,8 +428,8 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
     double y = getBallY();
     //std::ofstream file("getballdata.txt");
 
-   // std::set<double> numX;
-    while (y < getImageHeight() * .9 && track.load())
+    // std::set<double> numX;
+    while (/*y < getImageHeight() * .9*/ ballCount == initialBallCount && track.load())
     {
         updatePos(encoderL.read(), encoderR.read());
         double currentX = getBallX();
@@ -443,8 +448,8 @@ void Robot::curveToBall(cv::Rect2d initialBB, double power, double f)
 
         double lPower = (leftProportion + f) * power * 1.2;
         double rPower = (rightProportion + f) * power * 1.2;
-       // file << "lpower: " << lPower << "\trPower" << rPower << std::endl
-             //<< std::endl;
+        // file << "lpower: " << lPower << "\trPower" << rPower << std::endl
+        //<< std::endl;
 
         setMotorPowers(lPower, rPower);
     }

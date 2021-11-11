@@ -20,7 +20,7 @@ int main(int argc, char** argv)
     //cap.set(cv::CAP_PROP_FOURCC, 0x21);
     cap.set(cv::CAP_PROP_FPS, 48);
 
-    int count = 1;
+    int count = 59;
     std::stringstream ss;
     std::string name;
     Mat src, previewPic;

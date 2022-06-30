@@ -1,3 +1,0 @@
-git pull
-g++ motorTestNoEncoder.cpp motor.cpp -lwiringPi
-sudo ./a.out

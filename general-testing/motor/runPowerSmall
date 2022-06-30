@@ -1,3 +1,0 @@
-git pull
-g++ smallPower.cpp motor.cpp -lwiringPi
-sudo ./a.out

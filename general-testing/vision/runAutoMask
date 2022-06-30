@@ -1,3 +1,0 @@
-git pull
-g++ autoMaskTest.cpp -o autoMaskTest `pkg-config --cflags --libs opencv`
-./autoMaskTest

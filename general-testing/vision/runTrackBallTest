@@ -1,3 +1,0 @@
-git pull
-g++ trackBallTest.cpp ballDetector.cpp camera.cpp ../motor/motor.cpp -o trackBallTest -lwiringPi -pthread -Wno-psabi `pkg-config --cflags --libs opencv`
-./trackBallTest

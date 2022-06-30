@@ -1,3 +1,0 @@
-git pull
-g++ houghDetect.cpp -o houghDetect `pkg-config --cflags --libs opencv`
-./houghDetect

@@ -1,0 +1,3 @@
+git pull
+g++ ballDetectorTest.cpp -o ballDetector `pkg-config --cflags --libs opencv`
+./ballDetector

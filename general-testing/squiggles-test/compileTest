@@ -1,0 +1,1 @@
+g++ -I../squiggles-include test.cpp ../squiggles-src/spline.cpp ../squiggles-src/quinticpolynomial.cpp ../squiggles-src/tankmodel.cpp ../motor/motor.cpp ../encoder/encoder.cpp -lwiringPi -std=c++17 -Wno-psabi -o test.o

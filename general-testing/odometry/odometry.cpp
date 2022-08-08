@@ -31,7 +31,7 @@ void updateLeftEncoder(double reading)
 {
     const double currentPulses = reading; //actual encoder reading
     const double currentRotations = currentPulses / PULSES_PER_REV;
-    const double currentInches = currentRotations * LEFT_WHEEL__DIAMETER * M_PI;
+    const double currentInches = currentRotations * WHEEL__DIAMETER * M_PI;
     leftChange = currentInches - prevLeft;
     prevLeft = currentInches;
 }
@@ -89,6 +89,6 @@ void updatePos(double leftReading, double rightReading)
     globalYPos -= deltaVector.getX();
 }
 
-double getX() {return globalXPos;}
-double getY() {return globalYPos;}
-double getHeading() {return globalHeading;}
+double getX() { return globalXPos; }
+double getY() { return globalYPos; }
+double getHeading() { return globalHeading; }

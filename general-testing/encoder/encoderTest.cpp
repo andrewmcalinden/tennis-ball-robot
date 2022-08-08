@@ -1,10 +1,23 @@
 #include "encoder.h"
+#include "../motor/motor.h"
 #include <iostream>
-#include <wiringPi.h>
+
+#define DIRECTION_PIN_FORWARD_LEFT 22
+#define POWER_PIN_LEFT 23
+#define DIRECTION_PIN_FORWARD_RIGHT 27
+#define POWER_PIN_RIGHT 26
+
+
 int main()
 {
     Encoder enc1(0, 7);
-    Encoder enc2(2, 3);
+    Encoder enc2(3, 2);
+
+    Motor motorL(DIRECTION_PIN_FORWARD_LEFT, POWER_PIN_LEFT);
+    Motor motorR(DIRECTION_PIN_FORWARD_RIGHT, POWER_PIN_RIGHT);
+
+    // motorL.setPower(.2);
+    // motorR.setPower(-.2);
 
     int read1 = 0;
     int pastRead1 = 0;
@@ -27,7 +40,7 @@ int main()
         {
             std::cout << "\n";
         }
-        delay(15);
+        delay(1);
         pastRead1 = read1;
         pastRead2 = read2;
     }

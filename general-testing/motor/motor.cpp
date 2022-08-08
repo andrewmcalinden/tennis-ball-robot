@@ -11,6 +11,11 @@ Motor::Motor(unsigned char dirForwardPinLoc, unsigned char powerPinLoc)
     pwmSetRange(100);
 }
 
+Motor::~Motor()
+{
+    pwmWrite(powerPin, 0);
+}
+
 void Motor::setPower(double power)
 {
     if (fabs(power) > 1) 
@@ -25,7 +30,7 @@ void Motor::setPower(double power)
         }
     }
 
-    power /= 2.0;
+    //power /= 2.0; used to half the speed of the motor, uncapping for now
     if (power < 0) //if power less than -0.5, dont do anything
     {
         //make motor spin backwards

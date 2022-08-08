@@ -1,3 +1,3 @@
 git pull
-g++ motorTestNoEncoder.cpp motor.cpp -lwiringPi
-sudo ./a.out
+g++ motorTestNoEncoder.cpp motor.cpp -o typePower.o -lwiringPi
+sudo ./typePower.o

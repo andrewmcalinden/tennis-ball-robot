@@ -1,52 +1,78 @@
 #include <iostream>
 #include <ctime>
-
-#include <opencv2/highgui.hpp>
+#include <cmath>
+#include <fstream>
 
 #include "../encoder/encoder.h"
 #include "../motor/motor.h"
 
+#define PULSES_PER_REV 1440.0
+#define WHEEL__DIAMETER 0.063627 //meters
+
 int main()
 {
-    double vTarget = 0; //in/sec
-    cv::createTrackbar("Velocity Target", "Targets", &vTarget, 20); //max of 20in/sec, likely needs to be adjusted
+    std::ifstream constants("constants.txt");
+    double vTarget;
+    constants >> vTarget;
 
-    double kp = 0, ki = 0, kd = 0;
-    cv::createTrackbar("kp", "PID", &kp, 1);
-    cv::createTrackbar("ki", "PID", &ki, 1);
-    cv::createTrackbar("kd", "PID", &kd, 1);
+    double kp, ki, kd;
+    constants >> kp >> ki >> kd;
 
-    Motor m(22, 23);
-    Encoder e(7, 0);
+    std::ofstream points("points.txt");
+    std::ofstream outputs("outputs.txt");
 
-    double prevPos = e.read();
-    double prevTime = std::clock() / ((double) CLOCKS_PER_SEC);
+    Motor l(22, 23);
+    Motor r(27, 26);
+    Encoder e(0, 7);
+
+    double prevPos = e.read() * WHEEL__DIAMETER * M_PI / PULSES_PER_REV;
+    double prevTime = std::clock() / ((double)CLOCKS_PER_SEC);
+    double lastUpdate = std::clock() / ((double)CLOCKS_PER_SEC); //prevTime;
     double prevError = vTarget;
+
+    double velocity = 0;
 
     double i = 0;
     while (true)
     {
-        double currentTime = std::clock() / ((double) CLOCKS_PER_SEC);
-        double currentPos = e.read();
+        double currentTime = std::clock() / ((double)CLOCKS_PER_SEC);
+        // double currentPos = e.read() * WHEEL__DIAMETER * M_PI / PULSES_PER_REV;
 
-        double posChange = currentPos - prevPos;
-        double dt = currentTime - prevTime;
+        // double posChange = currentPos - prevPos;
+        // double dt = currentTime - prevTime;
 
-        double velocity = posChange / dt;
-        std::cout << velocity << std::endl;
+        if (currentTime - lastUpdate > .05)
+        {
+            double dt = currentTime - lastUpdate;
 
-        double error = velocity - vTarget;
-        double p = error;
+            double currentPos = e.read() * WHEEL__DIAMETER * M_PI / PULSES_PER_REV;
+            double posChange = currentPos - prevPos;
 
-        i += dt * (prevError + error) / 2.0;
+            velocity = posChange / (dt);
 
-        double d = (error - prevError) / dt;
+            double error = vTarget - velocity;
+            double p = error;
 
-        double output = kp * p + ki * i + kd * d;
-        m.setPower(output);
+            i += dt * (prevError + error) / 2.0;
 
-        prevPos = currentPos;
-        prevTime = currentTime;
-        prevError = error;
+            double d = (error - prevError) / dt;
+
+            double output = (kp * p) + (ki * i) + (kd * d);
+            if (output < 0) output -= .12;
+            else output += .12;
+
+            l.setPower(output);
+            r.setPower(-output);
+
+            outputs << currentTime << ", " << output << std::endl;
+
+            lastUpdate = currentTime;
+            prevPos = currentPos;
+
+            prevError = error;
+            prevTime = currentTime;
+
+            points << currentTime << ", " << velocity << std::endl;
+        }
     }
 }

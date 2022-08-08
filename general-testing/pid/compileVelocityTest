@@ -1,1 +1,1 @@
-g++ velocityTest.cpp ../motor/motor.cpp ../encoder/encoder.cpp -lwiringPi `pkg-config --cflags --libs opencv` -o velocityTest.o
+g++ velocityTest.cpp -o velocityTest.o ../motor/motor.cpp ../encoder/encoder.cpp -lwiringPi

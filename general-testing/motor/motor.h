@@ -11,4 +11,5 @@ class Motor
     public:
     Motor(unsigned char dirForwardPinLoc, unsigned char powerPinLoc);
     void setPower(double power);
+    ~Motor();
 };

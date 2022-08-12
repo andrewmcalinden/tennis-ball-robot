@@ -1,5 +1,6 @@
 #include "squiggles.hpp"
 #include <ctime>
+#include <fstream>
 
 #include "../encoder/encoder.h"
 #include "../motor/motor.h"
@@ -7,8 +8,8 @@
 #define PULSES_PER_REV 1440.0
 #define WHEEL__DIAMETER 0.063627 //meters
 
-const double MAX_VEL = .3;     // in meters per second
-const double MAX_ACCEL = 1.0;   // in meters per second per second
+const double MAX_VEL = .6;     // in meters per second
+const double MAX_ACCEL = 1;   // in meters per second per second
 const double MAX_JERK = 2;    // in meters per second per second per second
 const double ROBOT_WIDTH = 0.253575989275506; // in meters
 
@@ -16,12 +17,6 @@ squiggles::Constraints constraints = squiggles::Constraints(MAX_VEL, MAX_ACCEL, 
 squiggles::SplineGenerator generator = squiggles::SplineGenerator(
     constraints,
     std::make_shared<squiggles::TankModel>(ROBOT_WIDTH, constraints));
-
-Motor l(22, 23);
-Motor r(27, 26);
-
-Encoder eL(0, 7);
-Encoder eR(3, 2);
 
 double startTime = 0;
 
@@ -32,10 +27,24 @@ double getTime()
 
 int main()
 {
-    std::vector<squiggles::ProfilePoint> path = generator.generate({ squiggles::Pose(0.0, 0.0, 1.0),
-                                                                    squiggles::Pose(3, 1.5, 1.0) });
+    Motor l(22, 23);
+    Motor r(27, 26);
 
-    double kp = 10, ki = 10;
+    Encoder eL(0, 7);
+    Encoder eR(3, 2);
+
+    std::vector<squiggles::ProfilePoint> path = generator.generate({squiggles::Pose(0.0, 0.0, 1.0),
+                                                                    squiggles::Pose(.18, 1.07, .5),
+                                                                    squiggles::Pose(1.2, 1.34, 0),
+                                                                    squiggles::Pose(2.37, 1.4, -.5)});
+
+    std::ofstream pointsL("pointsL.txt");
+    std::ofstream pointsR("pointsR.txt");
+
+    std::ofstream outputsL("outputsL.txt");
+    std::ofstream outputsR("outputsR.txt");
+
+    double kp = 2, ki = 1;
 
     double lastVL = 0;
     double lastVR = 0;
@@ -59,7 +68,7 @@ int main()
         double iR = 0;
         double prevErrorR = vTargetR - velocityR;
 
-        std::cout << vTargetL << " " << vTargetR << std::endl;
+        //std::cout << vTargetL << " " << vTargetR << std::endl;
 
         double nextTime = path.at(i + 1).time;
         double prevTime = getTime();
@@ -68,45 +77,52 @@ int main()
         {
             //pid to needed velocities
             double currentTime = getTime();
-            double dt = currentTime - prevTime;
-
-            double currentPosL = eL.read() * WHEEL__DIAMETER * M_PI / PULSES_PER_REV;
-            double posChangeL = currentPosL - prevPosL;
-
-            double currentPosR = eR.read() * WHEEL__DIAMETER * M_PI / PULSES_PER_REV;
-            double posChangeR = currentPosR - prevPosR;
 
             if (currentTime - lastUpdate > .05)
             {
+                double dt = currentTime - prevTime;
+
+                double currentPosL = eL.read() * WHEEL__DIAMETER * M_PI / PULSES_PER_REV;
+                double posChangeL = currentPosL - prevPosL;
+
+                double currentPosR = eR.read() * WHEEL__DIAMETER * M_PI / PULSES_PER_REV;
+                double posChangeR = currentPosR - prevPosR;
+
                 velocityL = posChangeL / (currentTime - lastUpdate);
                 velocityR = posChangeR / (currentTime - lastUpdate);
 
-                lastUpdate = currentTime;
+                double pL = vTargetL - velocityL;
+                double pR = vTargetR - velocityR;
+
+                iL += dt * (prevErrorL + pL) / 2.0;
+                iR += dt * (prevErrorR + pR) / 2.0;
+
+                double outputL = (kp * pL) + (ki * iL);
+                if (vTargetL < 0) outputL -= .07;
+                else outputL += .07;
+
+                double outputR = (kp * pR) + (ki * iR);
+                if (vTargetR < 0) outputR -= .07;
+                else outputR += .07;
+
+                l.setPower(outputL);
+                r.setPower(outputR);
+
+                outputsL << currentTime << ", " << outputL << std::endl;
+                outputsR << currentTime << ", " << outputR << std::endl;
+
+                pointsL << currentTime << ", " << velocityL << std::endl;
+                pointsR << currentTime << ", " << velocityR << std::endl;
+
+                prevErrorL = pL;
+                prevErrorR = pR;
+
                 prevPosL = currentPosL;
                 prevPosR = currentPosR;
+
+                prevTime = currentTime;
+                lastUpdate = currentTime;
             }
-
-            double pL = vTargetL - velocityL;
-            double pR = vTargetR - velocityR;
-
-            iL += dt * (prevErrorL + pL) / 2.0;
-            iR += dt * (prevErrorR + pR) / 2.0;
-
-            double outputL = (kp * pL) + (ki * iL);
-            if (outputL < 0) outputL -= .12;
-            else outputL += .12;
-
-            double outputR = (kp * pR) + (ki * iR);
-            if (outputR < 0) outputR -= .12;
-            else outputR += .12;
-
-            l.setPower(outputL);
-            r.setPower(outputR);
-
-            prevErrorL = pL;
-            prevErrorR = pR;
-
-            prevTime = currentTime;
         }
         lastVL = velocityL;
         lastVR = velocityR;

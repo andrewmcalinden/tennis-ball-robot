@@ -15,12 +15,11 @@ int main()
     double vTarget;
     constants >> vTarget;
 
-    double kp, ki, kd;
-    constants >> kp >> ki >> kd;
+    double kp, ki, kd, kf;
+    constants >> kp >> ki >> kd >> kf;
 
     std::ofstream points("points.txt");
     std::ofstream outputs("outputs.txt");
-
     Motor l(22, 23);
     Motor r(27, 26);
     Encoder e(0, 7);
@@ -57,9 +56,7 @@ int main()
 
             double d = (error - prevError) / dt;
 
-            double output = (kp * p) + (ki * i) + (kd * d);
-            if (output < 0) output -= .12;
-            else output += .12;
+            double output = (kp * p) + (ki * i) + (kd * d) + kf;
 
             l.setPower(output);
             r.setPower(-output);

@@ -22,7 +22,7 @@ int main()
         getline(cin, c);
         double power = stod(c);
         motorL.setPower(power);
-        motorR.setPower(-power);
+        // motorR.setPower(-power);
     }
 }
 
